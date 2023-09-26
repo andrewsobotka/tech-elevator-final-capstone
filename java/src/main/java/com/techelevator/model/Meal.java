@@ -10,6 +10,8 @@ public class Meal {
 
     private Date date;
 
+    public Meal() { }
+
     public Meal(int meal_id, String meal, Date date) {
         this.meal_id = meal_id;
         this.meal = meal;

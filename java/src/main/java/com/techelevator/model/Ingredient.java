@@ -6,6 +6,8 @@ public class Ingredient {
 
     private String ingredient;
 
+    public Ingredient() { }                                     //Required for mapRowToIngredient in jdbcIngredientDao to work
+
     public Ingredient(int ingredient_id, String ingredient) {
         this.ingredient_id = ingredient_id;
         this.ingredient = ingredient;
