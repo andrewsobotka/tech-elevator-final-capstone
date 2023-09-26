@@ -1,7 +1,7 @@
 <template>
-  <div id="register" class="text-center">
-    <form @submit.prevent="register">
-      <h1>Create Account</h1>
+  <div id="register" class="text-center body" >
+    <form @submit.prevent="register" class = "title-serving-combo">
+      <h3>Create Account</h3>
       <div role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
@@ -79,5 +79,21 @@ export default {
 }
 label {
   margin-right: 0.5rem;
+}
+
+.body {
+  background: #fff;
+
+  border-radius: 30px;
+  border: 2px solid #333;
+  width: auto;
+  height: auto;
+  margin: 1rem 2rem;
+  padding: 2rem 3rem 2rem 2rem;
+  width: 30%;
+}
+
+.title-servings-combo a {
+  color:#333;
 }
 </style>

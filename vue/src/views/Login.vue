@@ -1,7 +1,7 @@
 <template>
-  <div id="login">
-    <form @submit.prevent="login">
-      <h1 >Please Sign In</h1>
+  <div id="login" class="body">
+    <form @submit.prevent="login" class = "title-serving-combo">
+      <h3 >Please Sign In</h3>
       <div role="alert" v-if="invalidCredentials">
         Invalid username and password!
       </div>
@@ -17,7 +17,7 @@
         <input type="password" id="password" v-model="user.password" required />
       </div>
       <button type="submit">Sign in</button>
-      <p>
+      <p id="sign-up"> 
       <router-link :to="{ name: 'register' }">Need an account? Sign up.</router-link></p>
     </form>
   </div>
@@ -68,4 +68,25 @@ export default {
 label {
   margin-right: 0.5rem;
 }
+.body {
+  background: #fff;
+
+  border-radius: 30px;
+  border: 2px solid #333;
+  width: auto;
+  height: auto;
+  margin: 1rem 2rem;
+  padding: 2rem 3rem 2rem 2rem;
+  width: 30%;
+}
+
+.title-servings-combo a {
+  color:#333;
+}
+
+#sign-up a {
+  color:#333;
+}
+
+
 </style>
