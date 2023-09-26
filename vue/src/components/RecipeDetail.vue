@@ -107,6 +107,16 @@ font-family: 'Montserrat', sans-serif;
   overflow: auto;
   display: flex;
   flex-direction: column;
+    
+  background: #fff;
+  border-radius: 20px;
+  border: 1px #333 solid;
+  padding: 1.3rem;
+  width: 30%;
+  height: 70vh;
+  margin: 1rem 2rem;
+  overflow-y: scroll;
+
 }
 h2 {
   font-size: 1.4rem;

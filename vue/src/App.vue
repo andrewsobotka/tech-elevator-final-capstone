@@ -4,7 +4,7 @@
       <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
       <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
 
-<RecipeCard/>
+<RecipeDetail/>
       
     </div>
     <router-view />
@@ -14,9 +14,8 @@
 
 
 <script>
+import RecipeDetail from './components/RecipeDetail.vue'
 
-
-import RecipeCard from './components/RecipeCard.vue'
 
 export default {
 
@@ -25,7 +24,7 @@ export default {
 
   },
   components: {
-  RecipeCard
+  RecipeDetail,
     
   }
 }
