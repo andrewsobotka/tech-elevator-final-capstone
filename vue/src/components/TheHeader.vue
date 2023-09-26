@@ -1,6 +1,7 @@
 <template>
   <div>
-      
+      <img logo/>
+      <h2>Sage</h2>
   </div>
 </template>
 
