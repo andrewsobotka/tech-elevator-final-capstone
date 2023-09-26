@@ -26,7 +26,7 @@ export default new Vuex.Store({
         recipeName: "Cheese Pizza",
         recipeDescription: "Cheese, Sauce, and Crust. It's always good. Make it.",
         servingSize: 4, 
-        ingredients: ["cheese", "dough", "sauce"],
+        ingredients: ["mozzerella cheese", "dough", "sauce"],
         steps: ["Set the oven to 375 degrees.", "Roll out your dough.", "Spread the sauce on the dough.","Sprinkle on the cheese on.", "Bake for 15 minutes."]
       },
       {
@@ -34,16 +34,16 @@ export default new Vuex.Store({
         recipeName: "Sourdough Bread",
         recipeDescription: "It's not actually sour, but it is bread.",
         servingSize: 6, 
-        ingredients: [],
-        steps: []
+        ingredients: ["yeast", "flour", "water","salt"],
+        steps: ["Set the oven to 375 degrees.", "Mix wet ingredients.", "Slowly add dry ingredients", "Let bread sit for an hour to rise.", "Put dough in oven and bake for 1 hour."]
       },
       {
         recipeId:3,
         recipeName: "Spaghetti",
         recipeDescription: "Delicious red tomato sauce and amazing spaghetti.",
         servingSize: 2, 
-        ingredients: [],
-        steps: []
+        ingredients: ["pasta", "tomato sauce", "parmesan cheese"],
+        steps: ["Boil water", "Put pasta in boiling water and cook for 10 minutes or until al dente", "Put the sauce on."]
       },
 
     ]
