@@ -1,5 +1,6 @@
 <template>
   <div>
+    <footer>2023 ® Sage, Inc.</footer>
   </div>
 </template>
 
