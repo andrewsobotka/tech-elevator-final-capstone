@@ -1,6 +1,5 @@
 <template>
   <div class="body">
-   <RecipeDetail/>
 
   </div>
 
@@ -8,7 +7,7 @@
 </template>
 
 <script>
-import RecipeDetail from './RecipeDetail.vue'
+
 
 
 export default {
@@ -16,9 +15,7 @@ export default {
   props:{
 
   },
-  components: {
-    RecipeDetail,
-    
+  components: {    
   }
 
 }

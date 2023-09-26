@@ -1,43 +1,25 @@
 <template>
   <div class="container">
     <h3>
-      Recipe Name
-      <!-- {{recipe.name}} -->
+      {{recipe.recipeName}}
     </h3>
 
     <section class="servings">
-      <!-- {{recipe.servingsize}} | {{recipe.cookTime}} | {{recipe.etc}}  -->
-
-      3 servings | prep time: 30 min | total time: 1 hour
+      Serving Size: {{recipe.servingSize}} 
     </section>
 
     <section class="description">
     <p>
     
-      <!-- {{recipe.description}} -->
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae iusto
-      aspernatur dolorem dolores? Distinctio, assumenda omnis! Aut magnam
-      laborum vel.
+      {{recipe.recipeDescription}}
     </p>
 </section>
     <div class="ingredients-img-container">
       <div class="ingredients">
         <!-- where ID = XYZ v-for Data.Ingredients -->
+        <h4>Ingredients</h4>
         <ul>
-          <li class="ingredient">13 seashells</li>
-          <li class="ingredient">2 friends</li>
-          <li class="ingredient">1/4 tbs green tea</li>
-          <li class="ingredient">13 small rocks</li>
-          <li class="ingredient">1lb sugar</li>
-          <li class="ingredient">2 turtles</li>
-          <li class="ingredient">1/4 tbs green tea</li>
-          
-          <li class="ingredient">13 small rocks</li>
-          <li class="ingredient">1lb flour</li>
-          <li class="ingredient">2 friends</li>
-          <li class="ingredient">1/4 tbs green tea</li>
-          <li class="ingredient">13 small rocks</li>
-          <li class="ingredient">1lb sugar</li>
+          <li v-for="(ingredient,index) in recipe.ingredients" v-bind:key="index" class="ingredient">{{ingredient}}</li>
         </ul>
       </div>
 
@@ -45,7 +27,7 @@
         <!-- {{recipe.imgUrl}} -->
 
         <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_xdKg2OssMWPE-SqkgOduIZDcEykLm6N6_hdmsJfl&s"
+          :src="recipe.image"
         />
       </div>
     </div>
@@ -57,30 +39,10 @@
     <div class="instructions">
       <h2>Instructions:</h2>
       <ol>
-        <li class="steps">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore,
-          dolores!
-        </li>
-        <li class="steps">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex iusto,
-          magnam aut iste amet rerum.
-        </li>
-        <li class="steps">Lorem, ipsum dolor. Lorem ipsum dolor sit amet.</li>
-        <li class="steps">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed optio
-          enim velit accusantium quo, magnam neque aut tempore omnis amet
-          necessitatibus provident, maxime dicta? Eos aliquid provident, iste
-          quos quam corrupti harum ducimus temporibus? Quam perferendis nobis
-          architecto nulla! Quis, quisquam totam cupiditate quos quae nobis eius
-          eos provident voluptatum, fugit dignissimos delectus dolorum quam
-          itaque aperiam distinctio culpa perferendis?
+        <li class="steps" v-for="(step,index) in recipe.steps" v-bind:key="index">
+          {{step}}
         </li>
 
-        <li class="steps">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur,
-          provident quasi asperiores laborum odit ducimus quod explicabo aliquid
-          eaque, recusandae, corporis quibusdam sequi incidunt ex?
-        </li>
       </ol>
     </div>
   </div>
