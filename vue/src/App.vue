@@ -1,19 +1,20 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
-      <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
+      <NavigationMenu />
+      <!-- <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link> -->
+    <!-- <router-view /> -->
 
 
       
     </div>
-    <router-view />
   </div>
 </template>
 
 
 
 <script>
+import NavigationMenu from './components/NavigationMenu.vue'
 // import RecipeCard from './components/RecipeCard.vue'
 
 export default {
@@ -24,6 +25,7 @@ export default {
   },
   components: {
   // RecipeCard,
+  NavigationMenu 
     
   }
 }
@@ -40,8 +42,9 @@ export default {
 }
 #app{
  
-  /* background-image: url('https://media.istockphoto.com/id/1531971918/photo/colour-old-concrete-wall-texture-background-close-up-retro-plain-cream-color-cement-wall.webp?b=1&s=170667a&w=0&k=20&c=d9Rw-za44oCqaTBT7ayhHocKmGPh-AOA9bTVxqytpRs='); */
-  padding-bottom: 100%;
+  background-image: url('https://img.freepik.com/premium-photo/abstract-white-background-text-paper-page-texture_84485-2550.jpg?w=740');
+
+ padding-bottom: 100%;
 }
 
 
