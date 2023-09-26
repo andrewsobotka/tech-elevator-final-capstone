@@ -19,10 +19,22 @@ if(currentToken != null) {
 export default new Vuex.Store({
   state: {
     token: currentToken || '',
-    user: currentUser || {},
+    user: currentUser || [
+      {
+        userId:1,
+        username:"user",
+        isPrivate: false,
+      },
+      {
+        userId:2,
+        username:"admin",
+        isPrivate: true
+      }
+    ],
     recipes:[
       {
         recipeId:1,
+        creatorUsername: "user",
         recipeName: "Cheese Pizza",
         recipeDescription: "Cheese, Sauce, and Crust. It's always good. Make it.",
         servingSize: 4, 
@@ -32,6 +44,7 @@ export default new Vuex.Store({
       },
       {
         recipeId:2,
+        creatorUsername: "admin",
         recipeName: "Sourdough Bread",
         recipeDescription: "It's not actually sour, but it is bread.",
         servingSize: 6, 
@@ -42,6 +55,7 @@ export default new Vuex.Store({
       },
       {
         recipeId:3,
+        creatorUsername: "user",
         recipeName: "Spaghetti",
         recipeDescription: "Delicious red tomato sauce and amazing spaghetti.",
         servingSize: 2, 

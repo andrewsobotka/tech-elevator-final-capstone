@@ -5,7 +5,7 @@
     </h3>
 
     <section class="servings">
-      Serving Size: {{recipe.servingSize}} 
+      Serving Size: {{recipe.servingSize}} | Created By: {{recipe.creatorUsername}}
     </section>
 
     <section class="description">
