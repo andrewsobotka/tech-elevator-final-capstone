@@ -10,10 +10,10 @@
         <div class="navbar">
           <router-link v-bind:to="{ name: 'home' }">Home </router-link>
           <router-link v-bind:to="{ name: 'recipes' }"  v-if="$store.state.token != ''"> Explore Recipes </router-link>
-          <router-link v-bind:to="{name:'my-recipes'}">My Recipes</router-link>
+          <router-link v-bind:to="{name:'my-recipes'}"  v-if="$store.state.token != ''">My Recipes</router-link>
           <router-link v-bind:to="{name:'grocery-list'}" v-if="$store.state.token != ''">Grocery List</router-link>
-          <a ref="#">My Account</a>
-          <!-- <a ref="#">Setting</a> | -->
+          <router-link v-bind:to="{name:'settings'}" v-if="$store.state.token != ''">My Account</router-link>
+          <!-- <a ref="#">Setting</a> | --> 
 
           <router-link
             v-bind:to="{ name: 'logout' }"
