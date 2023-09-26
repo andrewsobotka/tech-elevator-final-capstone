@@ -26,7 +26,7 @@ export default new Vuex.Store({
         recipeName: "Cheese Pizza",
         recipeDescription: "Cheese, Sauce, and Crust. It's always good. Make it.",
         servingSize: 4, 
-        ingredients: ["mozzerella cheese", "dough", "sauce"],
+        ingredients: ["mozzarella cheese", "dough", "sauce"],
         steps: ["Set the oven to 375 degrees.", "Roll out your dough.", "Spread the sauce on the dough.","Sprinkle on the cheese on.", "Bake for 15 minutes."]
       },
       {
