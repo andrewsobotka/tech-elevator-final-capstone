@@ -19,18 +19,8 @@ if(currentToken != null) {
 export default new Vuex.Store({
   state: {
     token: currentToken || '',
-    user: currentUser || [
-      {
-        userId:1,
-        username:"user",
-        isPrivate: false,
-      },
-      {
-        userId:2,
-        username:"admin",
-        isPrivate: true
-      }
-    ],
+    user: currentUser || {},
+    
     recipes:[
       {
         recipeId:1,
