@@ -27,14 +27,9 @@ export default {
 
   },
   components: {
-<<<<<<< HEAD
-  // RecipeCard,
-  NavigationMenu 
-=======
   TheHeader,
   TheFooter,
   NavigationMenu
->>>>>>> 19a7df63a1c8bbcad38068b4a2811d4d62478554
     
   }
 }
