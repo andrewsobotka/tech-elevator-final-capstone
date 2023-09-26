@@ -22,8 +22,12 @@
             >Logout</router-link
           >
         </div>
+        
       </div>
+
+      <RecipeList/>
     </div>
+<<<<<<< HEAD
     <!-- <nav>
       <li><router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;</li>
       <li><router-link v-bind:to="{name:'recipes'}" ">My Recipes</router-link></li>
@@ -34,11 +38,19 @@
       <li v-if="$store.state.token != ''">&nbsp;|&nbsp;</li>
       <li><router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link></li>
     </nav> -->
+=======
+>>>>>>> 8f6a6518da0600f5bbd7440743ac3e2a0efd6cf2
   </div>
 </template>
 
 <script>
-export default {};
+import RecipeList from '../views/RecipeList.vue';
+
+export default {
+components:{
+  RecipeList
+}
+};
 </script>
 
 <style>
