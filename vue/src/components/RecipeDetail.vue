@@ -2,6 +2,7 @@
   <div class="container">
     <h3>
       {{recipe.recipeName}}
+      <div class="borderbox"></div>
     </h3>
 
     <section class="servings">
@@ -61,7 +62,6 @@ export default {
   overflow: auto;
   display: flex;
   flex-direction: column;
-    
   background: #fff;
   border-radius: 20px;
   border: 1px #333 solid;
@@ -69,12 +69,21 @@ export default {
   width: 30%;
   height: 70vh;
   margin: 1rem 2rem;
-  overflow-y: scroll;
-
+  overflow-y: auto;
 }
+
 h2 {
   font-size: 1.4rem;
   border-bottom: 3px solid #444;
+}
+.borderbox{
+  border-bottom: 10px solid #55695659;
+ padding-top: 0.3rem;
+ position: relative;
+ width: auto;
+ 
+
+
 }
 h3 {
   font-family: "Averia Serif Libre", cursive;
@@ -82,7 +91,7 @@ h3 {
   letter-spacing: 1px;
   padding-bottom: 0.3rem;
   font-size: 1.5rem;
-  border-bottom: 10px solid #55695659;
+
 }
 .servings {
   position: relative;
@@ -90,7 +99,7 @@ h3 {
   font-family: "Montserrat";
   color: #555;
   font-size: 0.8em;
-  margin-top: -1rem;
+  margin-top:auto;
 }
 
 .description{
@@ -106,7 +115,7 @@ p {
 .ingredients {
   font-size: 1rem;
   font-family: "Montserrat", sans-serif;
-  overflow: auto;
+ 
 }
 .ingredients-img-container {
   position: relative;
