@@ -93,6 +93,10 @@ label {
   width: 30%;
 }
 
+label{
+  font-family: "Montserrat";
+}
+
 .title-servings-combo a {
   color:#333;
 }

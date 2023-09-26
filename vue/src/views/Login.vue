@@ -84,8 +84,13 @@ label {
   color:#333;
 }
 
+label{
+  font-family: "Montserrat";
+}
+
 #sign-up a {
   color:#333;
+  font-family: "Montserrat";
 }
 
 

@@ -1,6 +1,6 @@
 <template>
-  <div class="home">
-    <h1>Welcome, {{$store.state.user.username}}!</h1>
+  <div class="home title-servings-combo">
+    <h3 >Welcome, {{$store.state.user.username}}!</h3>
     <p>If you are seeing this, you are authenticated.</p>
   </div>
 </template>
@@ -10,3 +10,14 @@ export default {
   name: "home",
 };
 </script>
+
+<style scoped>
+.title-servings-combo a {
+  color:#333;
+}
+
+p{
+  font-family: "Montserrat";
+}
+
+</style>
