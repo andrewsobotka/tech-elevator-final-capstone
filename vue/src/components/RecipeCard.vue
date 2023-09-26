@@ -1,6 +1,6 @@
 <template>
   <div class="cardContainer">
-   <recipeDetail>
+   <RecipeDetail/>
 
   </div>
 
@@ -8,7 +8,8 @@
 </template>
 
 <script>
-import recipeDetail from '../src/components/RecipeDetail.vue'
+import RecipeDetail from './RecipeDetail.vue'
+
 
 export default {
     name: 'recipeCard',
@@ -16,7 +17,7 @@ export default {
 
   },
   components: {
-    recipeDetail,
+    RecipeDetail,
     
   }
 
