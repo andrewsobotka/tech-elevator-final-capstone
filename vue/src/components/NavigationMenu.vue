@@ -1,11 +1,12 @@
 <template>
   <div>
     <nav>
-      <a ref="../views/Home.vue">Home</a>
-      <a ref="#">My Recipes</a>
-      <a ref="#">Grocery List</a>
-      <a ref="#">Search</a>
-      <a ref="#">Setting</a>
+      <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
+      <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>&nbsp;|&nbsp;
+      <router-link v-bind:to="{name:'recipes'}">My Recipes</router-link>&nbsp;|&nbsp;
+      <router-link v-bind:to="{name:''}">Grocery List</router-link>&nbsp;|&nbsp;
+      <router-link v-bind:to="{name:''}">Search</router-link>&nbsp;|&nbsp;
+      <router-link v-bind:to="{name:''}">Settings</router-link>
     </nav>
   </div>
 </template>
