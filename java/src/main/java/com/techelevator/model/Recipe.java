@@ -4,19 +4,16 @@ public class Recipe {
 
     private int recipe_id;
     private String title;
-
     private String description;
-
     private double serving_size;
 
-    private boolean is_private;
+    public Recipe() { }                                     //Required for mapRowToRecipe in jdbcRecipeDao to work
 
-    public Recipe(int recipe_id, String title, String description, double serving_size, boolean is_private) {
+    public Recipe(int recipe_id, String title, String description, double serving_size) {
         this.recipe_id = recipe_id;
         this.title = title;
         this.description = description;
         this.serving_size = serving_size;
-        this.is_private = is_private;
     }
 
     public int getRecipe_id() {
@@ -51,11 +48,4 @@ public class Recipe {
         this.serving_size = serving_size;
     }
 
-    public boolean isIs_private() {
-        return is_private;
-    }
-
-    public void setIs_private(boolean is_private) {
-        this.is_private = is_private;
-    }
 }

@@ -8,6 +8,8 @@ public class Step {
 
     private String instruction;
 
+    public Step() { }
+
     public Step(int step_id, int rank, String instruction) {
         this.step_id = step_id;
         this.rank = rank;
