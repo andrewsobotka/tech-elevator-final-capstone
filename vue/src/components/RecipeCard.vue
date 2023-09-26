@@ -1,18 +1,39 @@
 <template>
-  <div>
-    <img/>
-    <h2> Recipe Name </h2>
-    <p> Recipe Description </p>
-    <p>Serving Size: # </p>
+  <div class="cardContainer">
+   <RecipeDetail/>
+
   </div>
+
+
 </template>
 
 <script>
+import RecipeDetail from './RecipeDetail.vue'
+
+
 export default {
+    name: 'recipeCard',
+  props:{
+
+  },
+  components: {
+    RecipeDetail,
+    
+  }
 
 }
 </script>
 
 <style>
+
+.cardContainer{
+  background: #fff;
+  border-radius: 20px;
+  border: 1px #333 solid;
+
+}
+
+
+
 
 </style>
