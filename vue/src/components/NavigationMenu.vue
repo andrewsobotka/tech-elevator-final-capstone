@@ -1,6 +1,5 @@
 <template>
   <div>
-<<<<<<< HEAD
     <div class="navigationmenu">
       <div class="headerbar">
         <div class="logo">
@@ -23,23 +22,22 @@
             >Logout</router-link
           >
         </div>
+        
       </div>
+
+      <RecipeList/>
     </div>
-=======
-    <nav>
-      <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
-      <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>&nbsp;|&nbsp;
-      <router-link v-bind:to="{name:'recipes'}">My Recipes</router-link>&nbsp;|&nbsp;
-      <router-link v-bind:to="{name:''}">Grocery List</router-link>&nbsp;|&nbsp;
-      <router-link v-bind:to="{name:''}">Search</router-link>&nbsp;|&nbsp;
-      <router-link v-bind:to="{name:''}">Settings</router-link>
-    </nav>
->>>>>>> 19a7df63a1c8bbcad38068b4a2811d4d62478554
   </div>
 </template>
 
 <script>
-export default {};
+import RecipeList from '../views/RecipeList.vue';
+
+export default {
+components:{
+  RecipeList
+}
+};
 </script>
 
 <style>
