@@ -1,6 +1,5 @@
 <template>
   <div>
-<<<<<<< HEAD
     <div class="navigationmenu">
       <div class="headerbar">
         <div class="logo">
@@ -10,9 +9,9 @@
 
         <div class="navbar">
           <router-link v-bind:to="{ name: 'home' }">Home </router-link>
-           <router-link v-bind:to="{ name: 'recipes' }"> Explore Recipes </router-link>
+           <router-link v-bind:to="{ name: 'recipes' }"  v-if="$store.state.token != ''"> Explore Recipes </router-link>
           <a ref="#">My Recipes</a>
-          <!-- <a ref="#">Grocery List</a> -->
+          <router-link v-bind:to="{name:'grocery-list'}" v-if="$store.state.token != ''">Grocery List</router-link>
           <a ref="#">My Account</a>
           <!-- <a ref="#">Setting</a> | -->
 
@@ -25,20 +24,16 @@
         </div>
       </div>
     </div>
-=======
-    <nav>
+    <!-- <nav>
       <li><router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;</li>
-      <li><router-link v-bind:to="{name:'recipes'}"  v-if="$store.state.token != ''">My Recipes</router-link></li>
+      <li><router-link v-bind:to="{name:'recipes'}" ">My Recipes</router-link></li>
       <li v-if="$store.state.token != ''"> &nbsp;|&nbsp;</li>
-      <li><router-link v-bind:to="{name:'grocery-list'}" v-if="$store.state.token != ''">Grocery List</router-link></li>
       <li v-if="$store.state.token != ''"> &nbsp;|&nbsp;</li>
-      <li><router-link v-bind:to="{name:'search'}">Search</router-link></li>
       <li v-if="$store.state.token != ''"> &nbsp;|&nbsp;</li>
       <li><router-link v-bind:to="{name:'settings'}" v-if="$store.state.token != ''">Settings</router-link></li> 
       <li v-if="$store.state.token != ''">&nbsp;|&nbsp;</li>
       <li><router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link></li>
-    </nav>
->>>>>>> 19a7df63a1c8bbcad38068b4a2811d4d62478554
+    </nav> -->
   </div>
 </template>
 
@@ -47,12 +42,6 @@ export default {};
 </script>
 
 <style>
-<<<<<<< HEAD
-  nav{
-    display: flex;
-    list-style: none;
-  }
-=======
 .navigationmenu {
   width: 100%;
   left: 0px;
@@ -122,5 +111,4 @@ a {
   letter-spacing: 3px;
   color: #054713;
 }
->>>>>>> be944918d2e7929ef082a32e702101888f339d52
 </style>

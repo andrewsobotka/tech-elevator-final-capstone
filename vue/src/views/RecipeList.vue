@@ -1,20 +1,5 @@
 <template>
-<<<<<<< HEAD
- <div class="cardsContainer">
-   <RecipeCard/>
- </div>
-</template>
-
-<script>
-import RecipeCard from '../components/RecipeCard.vue'
-
-export default {
-  name: 'RecipeList',
- components: {    
-   RecipeCard
- }
-=======
-  <div>
+  <div class="cardsContainer">
     <RecipeCard 
     v-for="recipe in $store.state.recipes"
       v-bind:key="recipe.recipeId"
@@ -26,9 +11,8 @@ export default {
 <script>
 import RecipeCard from "../components/RecipeCard.vue"
 export default {
+  name: 'RecipeList',
   components:{RecipeCard}
->>>>>>> 19a7df63a1c8bbcad38068b4a2811d4d62478554
-
 }
 
 </script>
