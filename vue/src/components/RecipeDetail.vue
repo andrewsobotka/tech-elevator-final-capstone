@@ -1,10 +1,51 @@
 <template>
   <div class="container">
+    <h3>
+      {{recipe.recipeName}}
+      <div class="borderbox"></div>
+    </h3>
 
-    <h3>Lorem, ipsum dolor.</h3>
-   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae iusto aspernatur dolorem dolores? Distinctio, assumenda omnis! Aut magnam laborum vel.
-</p>
+    <section class="servings">
+      Serving Size: {{recipe.servingSize}} | Created By: {{recipe.creatorUsername}}
+    </section>
 
+    <section class="description">
+    <p>
+    
+      {{recipe.recipeDescription}}
+    </p>
+</section>
+    <div class="ingredients-img-container">
+      <div class="ingredients">
+        <!-- where ID = XYZ v-for Data.Ingredients -->
+        <h4>Ingredients</h4>
+        <ul>
+          <li v-for="(ingredient,index) in recipe.ingredients" v-bind:key="index" class="ingredient">{{ingredient}}</li>
+        </ul>
+      </div>
+
+      <div class="recipeImage">
+        <!-- {{recipe.imgUrl}} -->
+
+        <img
+          :src="recipe.image"
+        />
+      </div>
+    </div>
+
+    <button class="steps-btn">
+      Click Here to Follow the Instructions Step by Step
+    </button>
+
+    <div class="instructions">
+      <h2>Instructions:</h2>
+      <ol>
+        <li class="steps" v-for="(step,index) in recipe.steps" v-bind:key="index">
+          {{step}}
+        </li>
+
+      </ol>
+    </div>
   </div>
 </template>
 
@@ -12,14 +53,133 @@
 export default {
   name: 'recipeDetail',
   props:{
-
-  },
-  components: {
-    
+    recipe: Object
   }
 }
 </script>
-
 <style>
+.container {
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 20px;
+  border: 1px #333 solid;
+  padding: 1.3rem;
+  width: 30%;
+  height: 70vh;
+  margin: 1rem 2rem;
+  overflow-y: auto;
+}
 
+h2 {
+  font-size: 1.4rem;
+  border-bottom: 3px solid #444;
+}
+.borderbox{
+  border-bottom: 10px solid #55695659;
+ padding-top: 0.3rem;
+ position: relative;
+ width: auto;
+ 
+
+
+}
+h3 {
+  font-family: "Averia Serif Libre", cursive;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+  padding-bottom: 0.3rem;
+  font-size: 1.5rem;
+
+}
+.servings {
+  position: relative;
+  text-align: right;
+  font-family: "Montserrat";
+  color: #555;
+  font-size: 0.8em;
+  margin-top:auto;
+}
+
+.description{
+  text-align: justify;
+  padding: 0rem .5rem;
+font-family: 'DM Sans', sans-serif;
+font-weight: 300;
+}
+p {
+
+}
+
+.ingredients {
+  font-size: 1rem;
+  font-family: "Montserrat", sans-serif;
+ 
+}
+.ingredients-img-container {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding-bottom: 1rem;
+}
+.recipeImage img {
+  width: auto;
+  padding-top: 10px;
+  height: 100%;
+  max-height: 260px;
+
+}
+
+.steps-btn {
+  font-family: "Montserrat", sans-serif;
+  background: rgb(57, 82, 76);
+  color: #fff;
+  border-radius: 30px;
+  border: 1px solid #333;
+  font-size: 1rem;
+  padding: 1.4%;
+  float: right;
+  margin: 0rem 0rem;
+  transition: ease-in .4s;
+}
+
+.steps-btn:hover {
+  background: #883410;
+  /* background-image: url('https://t4.ftcdn.net/jpg/02/87/02/71/240_F_287027124_R2xwyI2l2ncGKFqy6JF3Izaue1xEWfMn.jpg'); */
+  transition: ease-out .3s;
+}
+
+.instructions {
+  font-size: .9rem;
+  padding-right: 1.3rem;
+  line-height: 2rem;
+font-family: 'Lexend', sans-serif;
+
+}
+
+.instructions ol li:nth-child(odd) {
+  color: rgb(170, 84, 84);
+}
+::-webkit-scrollbar {
+  width: 10px;
+  scroll-padding-right: 3rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgb(224, 222, 207);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #304b39e7;
+  border-radius: 5px;
+  scroll-padding-right: auto;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(111, 187, 130);
+}
 </style>
