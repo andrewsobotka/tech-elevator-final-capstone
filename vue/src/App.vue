@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <div id="nav">
+<<<<<<< HEAD
       <NavigationMenu />
       <!-- <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link> -->
     <!-- <router-view /> -->
@@ -8,14 +9,29 @@
 
       
     </div>
+=======
+      <TheHeader/>
+      <NavigationMenu/>   
+       
+    </div>
+    <router-view />
+    <TheFooter/>  
+>>>>>>> 19a7df63a1c8bbcad38068b4a2811d4d62478554
   </div>
 </template>
 
 
 
 <script>
+<<<<<<< HEAD
 import NavigationMenu from './components/NavigationMenu.vue'
 // import RecipeCard from './components/RecipeCard.vue'
+=======
+import TheHeader from './components/TheHeader.vue'
+import TheFooter from './components/TheFooter.vue'
+import NavigationMenu from './components/NavigationMenu.vue'
+
+>>>>>>> 19a7df63a1c8bbcad38068b4a2811d4d62478554
 
 export default {
 
@@ -24,8 +40,14 @@ export default {
 
   },
   components: {
+<<<<<<< HEAD
   // RecipeCard,
   NavigationMenu 
+=======
+  TheHeader,
+  TheFooter,
+  NavigationMenu
+>>>>>>> 19a7df63a1c8bbcad38068b4a2811d4d62478554
     
   }
 }
