@@ -8,10 +8,12 @@
         </div>
 
         <div class="navbar">
+          <router-link v-bind:to="{ name: 'home' }">Home </router-link>
+           <router-link v-bind:to="{ name: 'recipes' }"> Explore Recipes </router-link>
           <a ref="#">My Recipes</a>
-          <a ref="#">Grocery List</a>
-          <a ref="#">Search</a>
-          <a ref="#">Setting</a> |
+          <!-- <a ref="#">Grocery List</a> -->
+          <a ref="#">My Account</a>
+          <!-- <a ref="#">Setting</a> | -->
 
           <router-link
             v-bind:to="{ name: 'logout' }"
@@ -55,11 +57,13 @@ export default {};
 
 a {
   color: #fff;
+  text-decoration: none;
 }
 
 .headerbar a {
   margin: 0.4rem;
 }
+
 .navbar {
   justify-content: flex-end;
   position: relative;
