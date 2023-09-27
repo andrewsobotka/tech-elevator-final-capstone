@@ -134,4 +134,11 @@ button:hover{
   color: rgb(89, 148, 0);
 }
 
+#alert{
+  color:red;
+  font-family: "Montserrat";
+  display: flex;
+  justify-content: center;
+  padding-bottom: .5rem;
+}
 </style>
