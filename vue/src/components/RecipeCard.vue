@@ -62,7 +62,7 @@ export default {
 }
 .image img {
   padding-top: 1.2rem;
-  width: auto;
+  width: 200px;
   height: auto;
   max-height: 200px;
   z-index: 90;
