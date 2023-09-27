@@ -3,7 +3,7 @@
   <div id="register" class="text-center body" >
     <form @submit.prevent="register" class = "title-serving-combo">
       <h2>Create Account</h2>
-      <div role="alert" v-if="registrationErrors">
+      <div id="alert" role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
       <div id=form-container>
@@ -110,6 +110,7 @@ label{
 
 .title-servings-combo a {
   color:#333;
+  font-family: "Montserrat";
 }
 
 #container{
@@ -155,6 +156,14 @@ p a{
 
 #form-container{
   justify-content: center;
+}
+
+#alert{
+  color:red;
+  font-family: "Montserrat";
+  display: flex;
+  justify-content: center;
+  padding-bottom: .5rem;
 }
 
 

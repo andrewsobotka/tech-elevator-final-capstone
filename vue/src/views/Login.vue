@@ -3,7 +3,7 @@
   <div id="login" class="body">
     <form @submit.prevent="login" class = "title-serving-combo">
       <h2 >Please Sign In</h2>
-      <div role="alert" v-if="invalidCredentials">
+      <div id= "alert" role="alert" v-if="invalidCredentials">
         Invalid username and password!
       </div>
       <div role="alert" v-if="this.$route.query.registration">
@@ -133,4 +133,5 @@ button:hover{
 #register a:hover{
   color: rgb(89, 148, 0);
 }
+
 </style>
