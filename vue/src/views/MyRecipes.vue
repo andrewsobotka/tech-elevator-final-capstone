@@ -29,10 +29,11 @@ export default {
 
 <style scoped>
 .body {
-  background: #fff;
-
-  border-radius: 30px;
-  border: 2px solid #333;
+ 
+  display: inline-flex;
+  justify-content: center;
+  /* border-radius: 30px;
+  border: 2px solid #333; */
   width: auto;
   height: auto;
   margin: 1rem 2rem;
