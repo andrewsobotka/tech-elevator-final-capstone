@@ -91,8 +91,6 @@ h3 {
   
 }
 
-
-
 .servings {
   color: rgba(100, 66, 15, 0.664);
   font-weight: bold;

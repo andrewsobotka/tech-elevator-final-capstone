@@ -63,7 +63,31 @@ export default {
 };
 </script>
 <style>
+  .ingredients-img-container {
+    position: relative;
+    display: flex;
+    padding-bottom: 1.5rem;
+  }
+ 
+  .instructions li {
+    font-size: 1.2rem;
+  }
 
+
+
+  .desc-serve {
+    display: flex;
+  }
+
+
+ /* image properties for WITHIN Recipe */
+  .detail-img {
+    position: relative;
+    width: 50vw;
+    max-height: 60vh;
+    object-fit: cover;
+    margin-left: 3rem;
+  }
 
 @media only screen and (max-width: 780px) {
   .borderbox {

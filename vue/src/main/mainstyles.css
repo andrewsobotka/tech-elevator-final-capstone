@@ -14,20 +14,9 @@
     padding-bottom: 3rem;
   }
   
-  .instructions li {
-    font-size: 1.2rem;
-  }
   h2 {
     font-size: 1.4rem;
     border-bottom: 3px solid #444;
-  }
-  .borderbox {
-    border-bottom: 10px solid #55695659;
-    padding-top: 0rem;
-  
-    margin: -30px 0px 0px 0px;
-    position: relative;
-    width: auto;
   }
   h3,
   h2 {
@@ -44,9 +33,22 @@
     color: #555;
     font-size: 0.8em;
     margin-top: 1%;
-  text-align: right;
+    text-align: right;
   }
+
+  /* that muted green underline under main headers */
+
+  .borderbox {
+    border-bottom: 10px solid #55695659;
+    padding-top: 0rem;
   
+    margin: -30px 0px 0px 0px;
+    position: relative;
+    width: auto;
+  }
+
+/* food descriptions */
+
   .description {
     padding: 0rem 0.5rem;
     margin-top: -10px;
@@ -55,9 +57,12 @@
     font-size: 18px;
     flex-grow: 3;
   }
+
+
   p {
   }
   
+  /* ingredients listing */
   .ingredients {
     font-size: 1rem;
     position: relative;
@@ -65,22 +70,8 @@
     max-width: 80%;
     flex-grow: 200;
   }
-  .ingredients-img-container {
-    position: relative;
-    display: flex;
-    padding-bottom: 1.5rem;
-  }
-  
-  .desc-serve {
-    display: flex;
-  }
-  .detail-img {
-    position: relative;
-    width: 50vw;
-    max-height: 60vh;
-    object-fit: cover;
-    margin-left: 3rem;
-  }
+
+  /* button for seeing step by step instructions */
   
   .steps-btn {
     font-family: "Montserrat", sans-serif;
@@ -101,11 +92,13 @@
   }
   
   .steps-btn:hover {
-    background: #883410;
+    background: #893410;
     /* background-image: url('https://t4.ftcdn.net/jpg/02/87/02/71/240_F_287027124_R2xwyI2l2ncGKFqy6JF3Izaue1xEWfMn.jpg'); */
     transition: ease-out 0.3s;
   }
   
+
+  /* instructions properties textwise */
   .instructions {
     font-size: 0.9rem;
     padding-right: 1.3rem;
@@ -116,6 +109,8 @@
   .instructions ol li:nth-child(odd) {
     color: rgb(170, 84, 84);
   }
+
+  /* scrollbar properties */
   ::-webkit-scrollbar {
     width: 10px;
     scroll-padding-right: 3rem;
@@ -135,6 +130,92 @@
   
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
-    background: rgb(111, 187, 130);
+    background: #6fbb82;
   }
   
+
+
+  /* controls label + input pair */
+
+  
+.form-input-group {
+  text-align: center;
+  margin-bottom: 1rem;
+  align-items: center;
+  position: relative;
+  justify-content: center;
+}
+
+.form-input-group{
+  display:flex;
+  justify-content: center;
+}
+
+/* Login/Register button */
+
+.login-btn{
+  margin-top: 30px;
+  font-size: 1rem;
+  background-color: #378541d7;
+  color: #fff;
+font-family: 'Lexend', sans-serif;
+  padding: .4rem 1rem;
+  border-radius: 33px;
+}
+.login-link{
+  display: flex;
+  justify-content:center;
+  color: #333;
+  font-family: "Montserrat";
+}
+.login-link a:hover{
+  color: rgb(89, 148, 0);
+}
+
+
+/* label for input */
+label {
+  font-family: "Montserrat";
+}
+
+/* input properties (color etc) */
+  
+input{
+  border-radius: 2px;
+  font-size: 1rem;
+  background-color: #d9e9fa;
+  border-bottom: 1px solid #333;
+  border: none;
+  font-family: 'DM Sans', sans-serif;
+  margin-left: 5px;
+  padding: 5px;
+  }
+
+  /* standard button properties */
+
+  button{
+    margin-top: 30px;
+     font-size: 1rem;
+     background-color: rgba(55, 133, 65, 0.842);
+     color: #fff;
+     font-family: 'Lexend', sans-serif;
+     padding: .4rem 1rem;
+     border-radius: 33px;
+   }
+   
+   button:hover{
+     background-color: #56907ece;
+     border-color: rgba(86, 144, 126, 0.808);
+   }
+
+
+   /* alerts */
+
+
+#alert{
+  color:red;
+  font-family: "Montserrat";
+  display: flex;
+  justify-content: center;
+  padding-bottom: .5rem;
+}
