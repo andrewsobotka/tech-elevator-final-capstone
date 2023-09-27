@@ -1,9 +1,9 @@
 <template>
 
-   <div id="explore">
-   <div>
-    <h2>Explore Recipes</h2>
-   </div>
+   <div class="explore">
+
+    <h3>Explore Recipes</h3>
+<div class="borderbox"></div>
    <div class="cardsContainer">
      <RecipeCard
       v-for="recipe in $store.state.recipes"
@@ -12,20 +12,40 @@
      /> 
    </div>
  </div>
+ 
 </template>
 
 <script>
 import RecipeCard from '../components/RecipeCard.vue';
+import APIService from '../services/APIService.js';
 
 export default {
   name: 'RecipeList',
-  components: {RecipeCard}
+  components: {RecipeCard},
+  created(){
+    APIService.getRecipes().then(response => {
+      this.$store.commit('SET_RECIPES', response.data)
+    })
+  }
 
 }
 
 </script>
 
 <style scoped>
+
+h3{
+  text-align: center;
+    text-decoration: none;
+
+}
+.borderbox{
+  width: 50%;
+  position: relative;
+ left: 25%;
+}
+
+
 .cardsContainer{
   margin: 2rem;
   position: relative;
@@ -35,8 +55,5 @@ export default {
   justify-content: center;
 }
 
-#explore{
-  text-align: center;
-}
 
 </style>

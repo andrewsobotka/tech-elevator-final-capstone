@@ -99,7 +99,7 @@ h2 {
   text-transform: capitalize;
   letter-spacing: 1px;
   padding-bottom: 0.1rem;
-  font-size: 3vw;
+  font-size: 2rem;
 }
 .servings {
   position: relative;

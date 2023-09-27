@@ -1,17 +1,15 @@
 <template>
 
-    <div id="my-recipes" >
-      <div id ="recipe">
-      <h2 id="recipe-title">My Recipes</h2>
-      </div>
-      <div class="cardsContainer">
-      <RecipeCard
-        v-for="recipe in myRecipes"
-        v-bind:key="recipe.recipeId"
-        v-bind:recipe="recipe"
-      />
-      </div>
-    </div>
+ <div class="cardsContainer">
+    <h3>My Recipes</h3>
+<div class="borderbox"></div>
+    <div class="recipesList">
+     <RecipeCard
+      v-for="recipe in myRecipes"
+      v-bind:key="recipe.recipeId"
+      v-bind:recipe ="recipe"
+     /> 
+ </div></div>
 </template>
 
 <script>
@@ -32,20 +30,28 @@ export default {
 
 <style scoped>
 .cardsContainer{
-  /* margin: 2rem; */
-  position: relative;
-  display: flex;
+
+}
+.recipesList {
+ margin-top: 3rem;
+  display: flex; 
   flex-wrap: wrap;
+  position: relative;
   gap: .3rem;
-  justify-content: center;
+ justify-content: center;
 }
-#my-recipes{
-  text-align: center;
+
+
+h3{
+text-align: center;
+font-size: 2.5rem
+;
 }
-#recipe-title {
-  display: flex;
-  justify-content: center;
-  text-align: center;
+
+.borderbox{
+  width: 50%;
+  position: relative;
+ left: 25%;
 }
 
 

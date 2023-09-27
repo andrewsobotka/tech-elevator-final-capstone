@@ -9,12 +9,34 @@
 
         <div class="navbar">
           <router-link v-bind:to="{ name: 'home' }">Home </router-link>
+<<<<<<< HEAD
+          <router-link v-bind:to="{ name: 'recipes' }">
+            Explore Recipes
+          </router-link>
+          <router-link
+            v-bind:to="{ name: 'my-recipes' }"
+            v-if="$store.state.token != ''"
+            >My Recipes</router-link
+          >
+          <router-link
+            v-bind:to="{ name: 'grocery-list' }"
+            v-if="$store.state.token != ''"
+            >Grocery List</router-link
+          >
+          <router-link
+            v-bind:to="{ name: 'settings' }"
+            v-if="$store.state.token != ''"
+            >My Account</router-link
+          >
+          <!-- <a ref="#">Setting</a> | -->
+=======
           <router-link v-bind:to="{ name: 'recipes' }"> Explore Recipes </router-link>
           <router-link v-bind:to="{name:'my-recipes'}"  v-if="$store.state.token != ''">My Recipes</router-link>
           <router-link v-bind:to="{name:'meals'}"  v-if="$store.state.token != ''">My Meals</router-link>
           <router-link v-bind:to="{name:'grocery-list'}" v-if="$store.state.token != ''">Grocery List</router-link>
           <router-link v-bind:to="{name:'settings'}" v-if="$store.state.token != ''">My Account</router-link>
           <!-- <a ref="#">Setting</a> | --> 
+>>>>>>> cab31b7fa17169ec6d3c40a82b21d25c0cf9b664
 
           <router-link
             v-bind:to="{ name: 'logout' }"
@@ -23,9 +45,7 @@
             >Logout</router-link
           >
         </div>
-        
       </div>
-
     </div>
     <!-- <nav>
       <li><router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;</li>
@@ -41,10 +61,8 @@
 </template>
 
 <script>
-
 export default {
-components:{
-}
+  components: {},
 };
 </script>
 
@@ -71,7 +89,6 @@ components:{
   font-family: "Montserrat";
 }
 
-
 a {
   color: #fff;
   text-decoration: none;
@@ -87,10 +104,13 @@ a {
   margin-top: 2rem;
   font-family: "Lexend", sans-serif;
   font-size: 1rem;
+  transition: ease 3s;
 }
 .navbar a:hover {
-  color: rgb(186, 216, 156);
+  color: #bad89c;
   transition: ease 0.7s;
+  border-bottom: 3px solid #bad89c;
+  transform: scale(0.1);
 }
 
 .logout {
@@ -111,8 +131,7 @@ a {
   margin-top: -1rem;
   color: blanchedalmond;
   transition: all 0.5s ease;
-    -webkit-text-stroke: 1.2px rgba(33, 63, 41, 0.836);
-
+  -webkit-text-stroke: 1.2px rgba(33, 63, 41, 0.836);
 }
 .logo a:hover {
   letter-spacing: 3px;

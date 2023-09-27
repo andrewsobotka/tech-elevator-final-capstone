@@ -1,14 +1,22 @@
 <template>
+<<<<<<< HEAD
+<div class="container">
+  <div class="buttons">
+    
+      <h3 id="welcome" >Welcome{{$store.state.token != ''? ", " + $store.state.user.username : " to Sage"}}!</h3>
+ 
+=======
   <div class="home title-servings-combo">
     <div id="top">
       <h2 id="welcome" >Welcome{{$store.state.token != ''? ", " + $store.state.user.username : " to Sage"}}!</h2>
       </div>
       <div id="middle">
+>>>>>>> cab31b7fa17169ec6d3c40a82b21d25c0cf9b664
       <button id="login"  v-if="$store.state.token == ''"><router-link  v-bind:to="{name:'login'}" >Login</router-link></button>
-      </div>
-      <div id="explore">
+  
       <button id="explore-button" ><router-link  v-bind:to="{name:'recipes'}" >Explore Recipes</router-link></button>
-      </div>
+ 
+  </div>
 
   <div id="recipeCardContainer">
     <RecipeCard
@@ -37,48 +45,69 @@ export default {
 <style scoped>
 
 
-div.home.title-servings-combo{
+.container{
   background-color:transparent;
   font-family: "Montserrat";
-  
-}
-
-#top{
+  margin:auto;
   display: flex;
-  justify-content: center;
+  align-items: center;
+
 }
 
-#middle{
-  display: flex;
-  justify-content: center;
+.buttons{
+  display:flex;
+  flex-direction: column;
+
+  align-items: center;
+  position: relative;
+  margin-bottom: 1rem;
+
 }
 
-.title-servings-combo a {
+/* .title-servings-combo a {
   color:#333;
-}
+} */
 
+<<<<<<< HEAD
+/* #welcome{
+  font-size: 2rem;
+=======
 #welcome{
+>>>>>>> cab31b7fa17169ec6d3c40a82b21d25c0cf9b664
   text-align: center;
-}
+} */
 
-div.cardContainer{
+/* div.cardContainer{
   display: inline-flex;
   justify-content: center;
-}
+} */
 
-div.body{
+/* div.body{
   display: flex;
   justify-content: center;  
-}
+} */
 
 button{
   width:25%;
   height: 10%;;
-  border-radius: 20px;
   font-family: "Montserrat";
-  font-size: 1.5rem;
-  background-color: rgb(144, 175, 144);
-  color: #fff;
+  font-size: 1.2rem;
+  border: 1px solid rgba(51, 51, 51, 0.527);
+  border-radius: 12px;
+  background-color: #90af90;
+  padding:3px;
+  width: 15rem;
+  margin: .5rem 0rem;
+}
+
+button:nth-child(odd){
+  color:  #90af90;
+  background: rgba(62, 117, 42, 0.849);
+  
+}
+button:hover{
+ background: rgba(231, 217, 92, 0.466);
+ transition: .3s ease;
 }
 
 #recipeCardContainer{
@@ -86,11 +115,12 @@ button{
   justify-content: center;
 }
 
-#explore{
+
+/* #explore{
    display: flex;
   justify-content: center;
   padding: 1rem;
-}
+} */
 
 
 

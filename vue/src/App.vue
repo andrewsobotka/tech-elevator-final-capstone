@@ -39,12 +39,14 @@ export default {
   top: 0px;
   left: 0px;
   background-size: auto;
+  
 }
 #app{
  
   background-image: url('https://img.freepik.com/premium-photo/abstract-white-background-text-paper-page-texture_84485-2550.jpg?w=740');
   background-size: repeat;
- padding-bottom: 100%;
+  padding-bottom: 30%;
+ 
 }
 
 

@@ -124,10 +124,10 @@ public class JdbcUserDao implements UserDao {
 
     private Recipe mapRowToRecipe(SqlRowSet rs) {
         Recipe recipe = new Recipe();
-        recipe.setRecipe_id(rs.getInt("recipe_id"));
-        recipe.setTitle(rs.getString("title"));
-        recipe.setDescription(rs.getString("description"));
-        recipe.setServing_size(rs.getDouble("serving_size"));
+        recipe.setRecipeId(rs.getInt("recipe_id"));
+        recipe.setRecipeName(rs.getString("title"));
+        recipe.setRecipeDescription(rs.getString("description"));
+        recipe.setServingSize(rs.getDouble("serving_size"));
         return recipe;
     }
 
