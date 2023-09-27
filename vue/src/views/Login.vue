@@ -1,7 +1,7 @@
 <template>
   <div id="login" class="body">
     <form @submit.prevent="login" class = "title-serving-combo">
-      <h3 >Please Sign In</h3>
+      <h2 >Please Sign In</h2>
       <div role="alert" v-if="invalidCredentials">
         Invalid username and password!
       </div>

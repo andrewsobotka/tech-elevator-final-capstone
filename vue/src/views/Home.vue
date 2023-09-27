@@ -6,12 +6,25 @@
       <div id="middle">
       <button id="login"  v-if="$store.state.token == ''"><router-link  v-bind:to="{name:'login'}" >Login</router-link></button>
       </div>
+      <div id="explore">
+      <button id="explore-button" ><router-link  v-bind:to="{name:'recipes'}" >Explore Recipes</router-link></button>
+      </div>
+
+  <div id="recipeCardContainer">
+    <RecipeCard
+      v-for="recipe in $store.state.recipes"
+      v-bind:key="recipe.recipeId"
+      v-bind:recipe ="recipe"
+     /> 
+  </div>
     
   </div>
 </template>
 
 <script>
+import RecipeCard from '../components/RecipeCard.vue';
 export default {
+  components: { RecipeCard },
   name: "home",
   method:{
     loginPage(){
@@ -67,6 +80,17 @@ button{
   font-size: 1.5rem;
   background-color: rgb(144, 175, 144);
   color: #fff;
+}
+
+#recipeCardContainer{
+  display: flex;
+  justify-content: center;
+}
+
+#explore{
+   display: flex;
+  justify-content: center;
+  padding: 1rem;
 }
 
 
