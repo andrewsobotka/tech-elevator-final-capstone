@@ -2,18 +2,14 @@ package com.techelevator.dao;
 
 import com.techelevator.exception.DaoException;
 import com.techelevator.model.Recipe;
-import com.techelevator.model.User;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @Component
 public class JdbcRecipeDao implements RecipeDao {
@@ -97,7 +93,7 @@ public class JdbcRecipeDao implements RecipeDao {
         try {
 
             int id = jdbcTemplate.queryForObject(sql, int.class,
-                    recipe.getTitle(), recipe.getDescription(), recipe.getServing_size());
+                    recipe.getRecipeName(), recipe.getRecipeDescription(), recipe.getServingSize());
 
             return getRecipe(id);
 
@@ -117,10 +113,10 @@ public class JdbcRecipeDao implements RecipeDao {
 
     private Recipe mapRowToRecipe(SqlRowSet rs) {
         Recipe recipe = new Recipe();
-        recipe.setRecipe_id(rs.getInt("recipe_id"));
-        recipe.setTitle(rs.getString("title"));
-        recipe.setDescription(rs.getString("description"));
-        recipe.setServing_size(rs.getDouble("serving_size"));
+        recipe.setRecipeId(rs.getInt("recipe_id"));
+        recipe.setRecipeName(rs.getString("title"));
+        recipe.setRecipeDescription(rs.getString("description"));
+        recipe.setServingSize(rs.getDouble("serving_size"));
         return recipe;
     }
 }

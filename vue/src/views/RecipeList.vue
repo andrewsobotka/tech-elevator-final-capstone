@@ -11,10 +11,16 @@
 
 <script>
 import RecipeCard from '../components/RecipeCard.vue';
+import APIService from '../services/APIService.js';
 
 export default {
   name: 'RecipeList',
-  components: {RecipeCard}
+  components: {RecipeCard},
+  created(){
+    APIService.getRecipes().then(response => {
+      this.$store.commit('SET_RECIPES', response.data)
+    })
+  }
 
 }
 

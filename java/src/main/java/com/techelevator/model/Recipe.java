@@ -2,10 +2,10 @@ package com.techelevator.model;
 
 public class Recipe {
 
-    private int recipe_id;
-    private String title;
-    private String description;
-    private double serving_size;
+    private int recipeId;
+    private String recipeName;
+    private String recipeDescription;
+    private double servingSize;
     private Ingredient ingredient;
     private Step step;
     private String imgUrl;
@@ -13,42 +13,42 @@ public class Recipe {
     public Recipe() { }                                     //Required for mapRowToRecipe in jdbcRecipeDao to work
 
     public Recipe(int recipe_id, String title, String description, double serving_size) {
-        this.recipe_id = recipe_id;
-        this.title = title;
-        this.description = description;
-        this.serving_size = serving_size;
+        this.recipeId = recipe_id;
+        this.recipeName = title;
+        this.recipeDescription = description;
+        this.servingSize = serving_size;
     }
 
-    public int getRecipe_id() {
-        return recipe_id;
+    public int getRecipeId() {
+        return recipeId;
     }
 
-    public void setRecipe_id(int recipe_id) {
-        this.recipe_id = recipe_id;
+    public void setRecipeId(int recipeId) {
+        this.recipeId = recipeId;
     }
 
-    public String getTitle() {
-        return title;
+    public String getRecipeName() {
+        return recipeName;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setRecipeName(String recipeName) {
+        this.recipeName = recipeName;
     }
 
-    public String getDescription() {
-        return description;
+    public String getRecipeDescription() {
+        return recipeDescription;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setRecipeDescription(String recipeDescription) {
+        this.recipeDescription = recipeDescription;
     }
 
-    public double getServing_size() {
-        return serving_size;
+    public double getServingSize() {
+        return servingSize;
     }
 
-    public void setServing_size(double serving_size) {
-        this.serving_size = serving_size;
+    public void setServingSize(double servingSize) {
+        this.servingSize = servingSize;
     }
 
 }

@@ -16,21 +16,15 @@ public class User {
    @JsonIgnore
    private boolean activated;
    private Set<Authority> authorities = new HashSet<>();
-   private List<Recipe> recipes;     //"my library of rec")
-   private List<Ingredient> ingredients;      //for shopping list....keep string together-quantity+ing)
-   private String profileUrl;
 
    public User() { }
 
-   public User(int id, String username, String password, String authorities, Recipe recipe, Ingredient ingredient, String profileUrl) {
+   public User(int id, String username, String password, String authorities) {
       this.id = id;
       this.username = username;
       this.password = password;
       if(authorities != null) this.setAuthorities(authorities);
       this.activated = true;
-      this.recipes = recipes;
-      this.ingredients = ingredients;
-      this.profileUrl = profileUrl;
    }
 
    public int getId() {
@@ -73,29 +67,6 @@ public class User {
       this.authorities = authorities;
    }
 
-   public Recipe getRecipe() {
-      return recipe;
-   }
-
-   public void setRecipe(Recipe recipe) {
-      this.recipe = recipe;
-   }
-
-   public Ingredient getIngredient() {
-      return ingredient;
-   }
-
-   public void setIngredient(Ingredient ingredient) {
-      this.ingredient = ingredient;
-   }
-
-   public String getProfileUrl() {
-      return profileUrl;
-   }
-
-   public void setProfileUrl(String profileUrl) {
-      this.profileUrl = profileUrl;
-   }
 
    public void setAuthorities(String authorities) {
       String[] roles = authorities.split(",");
