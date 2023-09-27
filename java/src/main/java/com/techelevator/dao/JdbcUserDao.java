@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import com.techelevator.model.Ingredient;
+import com.techelevator.model.Recipe;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -82,7 +84,35 @@ public class JdbcUserDao implements UserDao {
         return jdbcTemplate.update(insertUserSql, username, password_hash, ssRole) == 1;
     }
 
-    private User mapRowToUser(SqlRowSet rs) {
+    @Override
+    public List<Recipe> listOfUsersRecipes() {              //users personal "library of recipes
+        List<Recipe> recipes = new ArrayList<>();
+        String sql = "select * from recipes";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        while (results.next()) {
+            Recipe recipe = mapRowToRecipe(results);
+            recipes.add(recipe);
+        }
+
+        return recipes;
+    }
+
+    @Override
+    public List<Ingredient> listOfUsersIngredients() {              //users personal "library" of recipes
+        List<Ingredient> ingredients = new ArrayList<>();
+        String sql = "select * from ingredients";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        while (results.next()) {
+            Ingredient ingredient = mapRowToIngredient(results);
+            ingredients.add(ingredient);
+        }
+
+        return ingredients;
+    }
+
+    private User mapRowToUser(SqlRowSet rs) {                       //users personal list of ingredients
         User user = new User();
         user.setId(rs.getInt("user_id"));
         user.setUsername(rs.getString("username"));
@@ -90,5 +120,21 @@ public class JdbcUserDao implements UserDao {
         user.setAuthorities(Objects.requireNonNull(rs.getString("role")));
         user.setActivated(true);
         return user;
+    }
+
+    private Recipe mapRowToRecipe(SqlRowSet rs) {
+        Recipe recipe = new Recipe();
+        recipe.setRecipe_id(rs.getInt("recipe_id"));
+        recipe.setTitle(rs.getString("title"));
+        recipe.setDescription(rs.getString("description"));
+        recipe.setServing_size(rs.getDouble("serving_size"));
+        return recipe;
+    }
+
+    private Ingredient mapRowToIngredient(SqlRowSet rs) {
+        Ingredient ingredient = new Ingredient();
+        ingredient.setIngredient_id(rs.getInt("ingredient_id"));
+        ingredient.setIngredient(rs.getString("ingredient"));
+        return ingredient;
     }
 }

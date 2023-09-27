@@ -25,7 +25,7 @@ public class JdbcRecipeDao implements RecipeDao {
     }
 
     @Override
-    public List<Recipe> getListOfRecipes() {
+    public List<Recipe> getListOfRecipes() {                //All Recipes in main "library"
         List<Recipe> recipes = new ArrayList<>();
         String sql = "select * from recipes";
 
@@ -92,7 +92,7 @@ public class JdbcRecipeDao implements RecipeDao {
         String sql = "INSERT INTO recipes (title, description, serving_size) " +
                 "VALUES (?,?,?) RETURNING recipe_id ;";
 
-//TODO: TO UPDATE INGREDIENT, STEPS TABLES
+//TODO: TO UPDATE INGREDIENT & STEPS TABLES
 
         try {
 
