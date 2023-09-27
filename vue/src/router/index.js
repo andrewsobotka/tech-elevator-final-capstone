@@ -10,6 +10,7 @@ import RecipeDisplay from '../views/RecipeDisplay.vue'
 import GroceryList from '../views/GroceryList.vue'
 import Search from '../views/Search.vue'
 import Settings from '../views/Settings.vue'
+import MyRecipes from '../views/MyRecipes.vue'
 
 Vue.use(Router)
 
@@ -31,7 +32,7 @@ const router = new Router({
       name: 'home',
       component: Home,
       meta: {
-        requiresAuth: true
+        requiresAuth: false
       }
     },
     {
@@ -67,11 +68,19 @@ const router = new Router({
       }
     },
     {
+      path: "/my-recipes",
+      name: "my-recipes",
+      component: MyRecipes,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
       path: "/recipes/:id",
       name: "recipe",
       component:RecipeDisplay,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {

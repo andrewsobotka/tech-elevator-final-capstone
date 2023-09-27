@@ -1,44 +1,33 @@
 <template>
-<<<<<<< HEAD
-  <div class="cardsContainer">
-    <RecipeCard 
-=======
 
  <div class="cardsContainer">
-     <RecipeCard 
->>>>>>> 8f6a6518da0600f5bbd7440743ac3e2a0efd6cf2
-    v-for="recipe in $store.state.recipes"
+     <RecipeCard
+      v-for="recipe in $store.state.recipes"
       v-bind:key="recipe.recipeId"
-      v-bind:recipe="recipe"
-      class="recipes"/>> 
-<<<<<<< HEAD
-  </div>
-</template>
-
-<script>
-import RecipeCard from "../components/RecipeCard.vue"
-export default {
-  name: 'RecipeList',
-  components:{RecipeCard}
-=======
- 
+      v-bind:recipe ="recipe"
+     /> 
  </div>
 </template>
 
 <script>
-import RecipeCard from '../components/RecipeCard.vue'
+import RecipeCard from '../components/RecipeCard.vue';
 
 export default {
   name: 'RecipeList',
- components: {    
-   RecipeCard
- }
+  components: {RecipeCard}
 
->>>>>>> 8f6a6518da0600f5bbd7440743ac3e2a0efd6cf2
 }
 
 </script>
 
 <style scoped>
+.cardsContainer{
+  margin: 2rem;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .3rem;
+}
+
 
 </style>

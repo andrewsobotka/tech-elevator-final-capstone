@@ -1,92 +1,104 @@
 <template>
   <div class="body">
     <div class="name-img-container">
+      <img :src="recipe.image" class="image-fit" />
       <div class="title-servings-combo">
-    <h3>clam chowder
-       </h3> 
-       <div class="borderbox"></div> 
-
-    <div class="servings">
-            Serving Size: 30 
-
-    </div>
-     <div class="description">
-    <p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error architecto exercitationem provident illum fugit ipsa laudantium est accusantium ut, deserunt, repellendus quod sequi? Fuga debitis accusantium, eligendi quae officia magni!</p>
+        <h3>
+          <router-link
+            v-bind:to="{ name: 'recipe', params: { id: recipe.recipeId } }"
+            >{{ recipe.recipeName }}</router-link
+          >
+        </h3>
+        <h3 v-on:click.prevent="pleaseLogin"><router-link v-bind:to="{name:'recipe', params:{id:recipe.recipeId}}">{{recipe.recipeName }}</router-link></h3>
+        <div class="borderbox"></div>
     
-    </div> 
-
-    </div>
-    
-  <div class="image"> <img src="https://thecozycook.com/wp-content/uploads/2022/08/Chicken-Potato-Soup-f.jpg"></div>
-  
-  
-  </div>
-  
-  
-
+          <div class="description">
+            <p>{{ recipe.recipeDescription }}</p>
+         </div>
+          <div class="servings">
+            Serving Size: {{ recipe.servingSize }} | Total Time:
+            {{ recipe.servingSize }}
  
-
-</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
-
-
-
 export default {
-    name: 'recipeCard',
- props:{
-  },
-  components: {    
+  name: "recipeCard",
+  props: {recipe:Object}, 
+  methods:{
+    pleaseLogin(){
+      if(this.$store.state.token ===''){
+        this.$router.push("/login");
+      }
+      
+    }
   }
 
-}
+};
 </script>
 
 <style scoped>
-
-.body{
-  background: #fff;
-
-  border-radius: 30px;
-  border: 2px solid #333;
-  width: auto;
-  height: auto;
+.image-fit {
+   border: 3px solid rgba(158, 125, 125, 0.747);
+  height: 30rem;
+  width: 20rem;
+  object-fit: cover;
+  border-radius: 15px;
   margin: 1rem 2rem;
-  padding:2rem 3rem 2rem 2rem;
-  width: 30%;
-
-
 }
-.borderbox{
+
+.name-img-container {
   position: relative;
-  margin-top: -30px;
-  width: 19vw;
- 
-
 }
 
-.servings{
-  padding-top: 5px;
+.title-servings-combo {
+  position: absolute;
+  top: 67%;
+  left: 35px;
+  border-radius:0px 0px 3px 3px;
+  width: 20rem;
+  height: 8rem;
+  object-fit: contain;
+  background: #fff0e4e0;
+  overflow: hidden;
+}
+.title-servings-combo a {
+  color: #333;
+}
+.borderbox {
+  top: 30px;
+  border-bottom: 7px solid #55695659;
+  margin: 3px 0px;
+}
+
+h3 {
+  position: absolute;
+  top: -15%;
+  left: 3%;
+  font-size: 1.5rem;
+}
+
+.description {
+  position: absolute;
+  padding: 2%;
+   margin-top: 0px;
+   top: 20%;
+  object-fit: contain;
+  
 }
 
 
-.name-img-container{
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  /* position: relative;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  padding-bottom: 1rem;
-  grid-template-areas: "title, title, image"; */
 
-}
-.image img{
-  padding-top: 1.2rem;
-  width: auto;
-  height: auto;
-  max-height: 200px;
-  z-index: 90;
+.servings {
+  color: rgba(100, 66, 15, 0.664);
+  font-weight: bold;
+  position: absolute;
+  right: 3%;
+  top: 80%;
+  
 }
 </style>

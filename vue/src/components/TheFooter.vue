@@ -10,6 +10,11 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
+
+  div{
+    font-family: "Montserrat";
+    background-color: transparent;
+  }
 </style>

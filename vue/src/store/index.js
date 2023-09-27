@@ -19,18 +19,8 @@ if(currentToken != null) {
 export default new Vuex.Store({
   state: {
     token: currentToken || '',
-    user: currentUser || [
-      {
-        userId:1,
-        username:"user",
-        isPrivate: false,
-      },
-      {
-        userId:2,
-        username:"admin",
-        isPrivate: true
-      }
-    ],
+    user: currentUser || {},
+    
     recipes:[
       {
         recipeId:1,
@@ -40,7 +30,7 @@ export default new Vuex.Store({
         servingSize: 4, 
         ingredients: ["1 cup mozzarella cheese", "1/2 pound dough", "1 jar of sauce"],
         steps: ["Set the oven to 375 degrees.", "Roll out your dough.", "Spread the sauce on the dough.","Sprinkle on the cheese on.", "Bake for 15 minutes."],
-        image:"https://plus.unsplash.com/premium_photo-1672198597143-45a4b5f064c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+        image:"https://www.recipetineats.com/wp-content/uploads/2023/05/Garlic-cheese-pizza_9.jpg" 
       },
       {
         recipeId:2,

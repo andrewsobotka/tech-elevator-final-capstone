@@ -1,33 +1,19 @@
 <template>
   <div id="app">
     <div id="nav">
-<<<<<<< HEAD
-      <TheHeader/>
       <NavigationMenu/>   
        
     </div>
     <router-view />
     <TheFooter/>  
-=======
-      <NavigationMenu />
-      <!-- <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link> -->
-    <!-- <router-view /> -->
-
-
-      
-    </div>
->>>>>>> 8f6a6518da0600f5bbd7440743ac3e2a0efd6cf2
   </div>
 </template>
 
 
 
 <script>
-<<<<<<< HEAD
-=======
 // import RecipeCard from './components/RecipeCard.vue'
->>>>>>> 8f6a6518da0600f5bbd7440743ac3e2a0efd6cf2
-import TheHeader from './components/TheHeader.vue'
+// import TheHeader from './components/TheHeader.vue'
 import TheFooter from './components/TheFooter.vue'
 import NavigationMenu from './components/NavigationMenu.vue'
 
@@ -39,7 +25,6 @@ export default {
 
   },
   components: {
-  TheHeader,
   TheFooter,
   NavigationMenu
     
@@ -53,7 +38,6 @@ export default {
 *{
   top: 0px;
   left: 0px;
-  background: #fae7dd;
   background-size: auto;
 }
 #app{

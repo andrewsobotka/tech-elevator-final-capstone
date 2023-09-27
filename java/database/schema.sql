@@ -9,10 +9,11 @@ BEGIN TRANSACTION;
 DROP TABLE IF EXISTS users CASCADE;
 CREATE TABLE users (
 	user_id SERIAL,
-	username varchar(50) NOT NULL UNIQUE,
+	username varchar (50) NOT NULL UNIQUE,
+	profile_url varchar (255),
 	password_hash varchar (200) NOT NULL,
 	role varchar (50) NOT NULL,
-	is_private boolean,
+	is_private boolean DEFAULT false,
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
 );
 
@@ -22,8 +23,11 @@ CREATE TABLE recipes (
     recipe_id SERIAL,
     creator_id int,
     title varchar (63) NOT NULL UNIQUE,
+    image_url varchar (255),
     description text NOT NULL,
     serving_size int NOT NULL,
+    is_published boolean DEFAULT true,
+    is_featured boolean DEFAULT false,
     CONSTRAINT PK_recipe PRIMARY KEY (recipe_id)
 );
 
@@ -31,7 +35,8 @@ CREATE TABLE recipes (
 DROP TABLE IF EXISTS ingredients CASCADE;
 CREATE TABLE ingredients (
     ingredient_id SERIAL,
-    name varchar (63),
+    ingredient varchar (63),
+    quantity varchar (64),
     CONSTRAINT PK_ingredient PRIMARY KEY (ingredient_id)
 );
 
