@@ -1,10 +1,12 @@
 <template>
+<div id="container">
   <div id="register" class="text-center body" >
     <form @submit.prevent="register" class = "title-serving-combo">
-      <h3>Create Account</h3>
+      <h2>Create Account</h2>
       <div role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
+      <div id=form-container>
       <div class="form-input-group">
         <label for="username">Username</label>
         <input type="text" id="username" v-model="user.username" required autofocus />
@@ -17,10 +19,17 @@
         <label for="confirmPassword">Confirm Password</label>
         <input type="password" id="confirmPassword" v-model="user.confirmPassword" required />
       </div>
+      </div>
+      <div id ="bottom">
       <button type="submit">Create Account</button>
-      <p><router-link :to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
+      </div>
+      <div class="login-link">
+      <p id="login-link">
+        <router-link :to="{ name: 'login' }"  >Already have an account? Log in.</router-link></p>
+      </div>
     </form>
   </div>
+</div>
 </template>
 
 <script>
@@ -91,6 +100,8 @@ label {
   margin: 1rem 2rem;
   padding: 2rem 3rem 2rem 2rem;
   width: 30%;
+  display: flex;
+  justify-content: center;
 }
 
 label{
@@ -100,4 +111,51 @@ label{
 .title-servings-combo a {
   color:#333;
 }
+
+#container{
+  display: flex;
+  justify-content: center;
+}
+
+button{
+  font-family: "Montserrat";
+  border-radius: 30px;
+   background-color: rgba(0, 53, 36, 0.808);
+   color: #fff;
+}
+
+button:hover{
+  background-color: rgba(86, 144, 126, 0.808);
+  border-color: rgba(86, 144, 126, 0.808);
+}
+
+p a{
+  color:#333;
+  font-family: "Montserrat";
+}
+
+#bottom{
+  display:flex;
+  justify-content: center;
+}
+
+.form-input-group{
+  display:flex;
+  justify-content: center;
+}
+
+.login-link{
+  display: flex;
+  justify-content:center;
+}
+
+.login-link a:hover{
+  color: rgb(89, 148, 0);
+}
+
+#form-container{
+  justify-content: center;
+}
+
+
 </style>

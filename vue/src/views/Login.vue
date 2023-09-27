@@ -1,4 +1,5 @@
 <template>
+<div id="container">
   <div id="login" class="body">
     <form @submit.prevent="login" class = "title-serving-combo">
       <h2 >Please Sign In</h2>
@@ -16,11 +17,16 @@
         <label for="password">Password</label>
         <input type="password" id="password" v-model="user.password" required />
       </div>
+      <div id="submit-button">
       <button type="submit">Sign in</button>
+      </div>
+      <div id="register">
       <p id="sign-up"> 
       <router-link :to="{ name: 'register' }">Need an account? Sign up.</router-link></p>
+      </div>
     </form>
   </div>
+</div>
 </template>
 
 <script>
@@ -64,6 +70,8 @@ export default {
 <style scoped>
 .form-input-group {
   margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
 }
 label {
   margin-right: 0.5rem;
@@ -78,6 +86,8 @@ label {
   margin: 1rem 2rem;
   padding: 2rem 3rem 2rem 2rem;
   width: 30%;
+  display: flex;
+  justify-content: center;
 }
 
 .title-servings-combo a {
@@ -93,5 +103,34 @@ label{
   font-family: "Montserrat";
 }
 
+#container{
+  display: flex;
+  justify-content: center;
+}
 
+button{
+  font-family: "Montserrat";
+  border-radius: 30px;
+   background-color: rgba(0, 53, 36, 0.808);
+   color: #fff;
+}
+
+button:hover{
+  background-color: rgba(86, 144, 126, 0.808);
+  border-color: rgba(86, 144, 126, 0.808);
+}
+
+#submit-button{
+  display:flex;
+  justify-content: center;
+}
+
+#register{
+  display: flex;
+  justify-content: center;
+}
+
+#register a:hover{
+  color: rgb(89, 148, 0);
+}
 </style>

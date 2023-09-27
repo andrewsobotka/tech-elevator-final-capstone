@@ -1,7 +1,7 @@
 <template>
   <div class="home title-servings-combo">
     <div id="top">
-      <h3 id="welcome" >Welcome{{$store.state.token != ''? ", " + $store.state.user.username : " to Sage"}}!</h3>
+      <h2 id="welcome" >Welcome{{$store.state.token != ''? ", " + $store.state.user.username : " to Sage"}}!</h2>
       </div>
       <div id="middle">
       <button id="login"  v-if="$store.state.token == ''"><router-link  v-bind:to="{name:'login'}" >Login</router-link></button>
@@ -58,7 +58,6 @@ div.home.title-servings-combo{
 }
 
 #welcome{
-  font-size: 2rem;
   text-align: center;
 }
 

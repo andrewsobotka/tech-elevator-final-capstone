@@ -40,8 +40,6 @@ export default {
   text-align: center;
 }
 
-#username{
-  text-align:cen ;
-}
+
 
 </style>
