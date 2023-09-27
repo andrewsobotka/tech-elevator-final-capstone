@@ -11,6 +11,7 @@ import GroceryList from '../views/GroceryList.vue'
 import Search from '../views/Search.vue'
 import Settings from '../views/Settings.vue'
 import MyRecipes from '../views/MyRecipes.vue'
+import Meals from '../views/MyMeals.vue'
 
 Vue.use(Router)
 
@@ -103,6 +104,14 @@ const router = new Router({
       path: "/settings",
       name: "settings",
       component: Settings,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/my-meals",
+      name: "meals",
+      component: Meals,
       meta: {
         requiresAuth: true
       }

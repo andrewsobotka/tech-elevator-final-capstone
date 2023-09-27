@@ -1,6 +1,6 @@
 <template>
   <div>
-      <h1>My Grocery List</h1>
+      <h2 id="grocery-title">My Grocery List</h2>
     </div>
 </template>
 
@@ -11,5 +11,8 @@ export default {
 </script>
 
 <style>
-
+#grocery-title {
+  display: flex;
+  justify-content: center;
+}
 </style>

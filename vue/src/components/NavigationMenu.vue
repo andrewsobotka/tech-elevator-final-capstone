@@ -9,6 +9,7 @@
 
         <div class="navbar">
           <router-link v-bind:to="{ name: 'home' }">Home </router-link>
+<<<<<<< HEAD
           <router-link v-bind:to="{ name: 'recipes' }">
             Explore Recipes
           </router-link>
@@ -28,6 +29,14 @@
             >My Account</router-link
           >
           <!-- <a ref="#">Setting</a> | -->
+=======
+          <router-link v-bind:to="{ name: 'recipes' }"> Explore Recipes </router-link>
+          <router-link v-bind:to="{name:'my-recipes'}"  v-if="$store.state.token != ''">My Recipes</router-link>
+          <router-link v-bind:to="{name:'meals'}"  v-if="$store.state.token != ''">My Meals</router-link>
+          <router-link v-bind:to="{name:'grocery-list'}" v-if="$store.state.token != ''">Grocery List</router-link>
+          <router-link v-bind:to="{name:'settings'}" v-if="$store.state.token != ''">My Account</router-link>
+          <!-- <a ref="#">Setting</a> | --> 
+>>>>>>> cab31b7fa17169ec6d3c40a82b21d25c0cf9b664
 
           <router-link
             v-bind:to="{ name: 'logout' }"
