@@ -6,6 +6,9 @@ public class Recipe {
     private String title;
     private String description;
     private double serving_size;
+    private Ingredient ingredient;
+    private Step step;
+    private String imgUrl;
 
     public Recipe() { }                                     //Required for mapRowToRecipe in jdbcRecipeDao to work
 
