@@ -76,15 +76,11 @@ p {
   object-fit: cover;
 }
 
-<<<<<<< HEAD
 #username {
   text-align: left;
   position: relative;
   left: 10%;
 }
-=======
-
->>>>>>> cab31b7fa17169ec6d3c40a82b21d25c0cf9b664
 
 .settings2change {
   width: 100%;
