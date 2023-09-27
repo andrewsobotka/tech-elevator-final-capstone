@@ -2,7 +2,9 @@
 <div id="container">
   <div id="register" class="text-center body" >
     <form @submit.prevent="register" class = "title-serving-combo">
+      <div id ="title">
       <h2>Create Account</h2>
+      </div>
       <div id="alert" role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
@@ -106,6 +108,7 @@ font-family: 'Lexend', sans-serif;
   border-radius: 33px;
   
 }
+
 .body {
   position: relative;
   background: #fff;
@@ -118,6 +121,7 @@ font-family: 'Lexend', sans-serif;
   width: 30%;
   display: flex;
   justify-content: center;
+  text-align:center;
 }
 
 
@@ -206,6 +210,7 @@ p a{
   justify-content: center;
   padding-bottom: .5rem;
 }
+
 
 
 </style>

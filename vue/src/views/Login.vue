@@ -96,7 +96,8 @@ label {
 }
 
 .login-btn:hover{
-  background-color: rgb(55, 133, 66);
+  background-color: rgba(86, 144, 126, 0.808);
+  border-color: rgba(86, 144, 126, 0.808);
 }
 .body {
   position: relative;
