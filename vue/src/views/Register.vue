@@ -25,7 +25,8 @@
       </div>
       <div class="login-link">
       <p id="login-link">
-        <router-link :to="{ name: 'login' }"  >Already have an account? Log in.</router-link></p>
+        Already have an account?
+        <router-link :to="{ name: 'login' }"  > Log in.</router-link></p>
       </div>
     </form>
   </div>
@@ -154,10 +155,13 @@ font-family: 'DM Sans', sans-serif;
 }
 
 button{
-  font-family: "Montserrat";
-  border-radius: 30px;
-   background-color: rgba(0, 53, 36, 0.808);
-   color: #fff;
+ margin-top: 30px;
+  font-size: 1rem;
+  background-color: rgba(55, 133, 65, 0.842);
+  color: #fff;
+  font-family: 'Lexend', sans-serif;
+  padding: .4rem 1rem;
+  border-radius: 33px;
 }
 
 button:hover{
@@ -183,6 +187,8 @@ p a{
 .login-link{
   display: flex;
   justify-content:center;
+  color: #333;
+  font-family: "Montserrat";
 }
 
 .login-link a:hover{

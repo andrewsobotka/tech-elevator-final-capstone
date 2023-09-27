@@ -1,17 +1,9 @@
 <template>
-<<<<<<< HEAD
-<div class="container">
-  <div class="buttons">
-    
-      <h3 id="welcome" >Welcome{{$store.state.token != ''? ", " + $store.state.user.username : " to Sage"}}!</h3>
- 
-=======
   <div class="home title-servings-combo">
     <div id="top">
       <h2 id="welcome" >Welcome{{$store.state.token != ''? ", " + $store.state.user.username : " to Sage"}}!</h2>
       </div>
       <div id="middle">
->>>>>>> cab31b7fa17169ec6d3c40a82b21d25c0cf9b664
       <button id="login"  v-if="$store.state.token == ''"><router-link  v-bind:to="{name:'login'}" >Login</router-link></button>
   
       <button id="explore-button" ><router-link  v-bind:to="{name:'recipes'}" >Explore Recipes</router-link></button>
@@ -30,6 +22,7 @@
 </template>
 
 <script>
+import APIService from '../services/APIService.js';
 import RecipeCard from '../components/RecipeCard.vue';
 export default {
   components: { RecipeCard },
@@ -38,6 +31,11 @@ export default {
     loginPage(){
       this.$router.push("login");
     }
+  },
+  created(){
+    APIService.getRecipes().then(response => {
+      this.$store.commit('SET_RECIPES', response.data)
+    })
   }
 };
 </script>
@@ -68,24 +66,9 @@ export default {
   color:#333;
 } */
 
-<<<<<<< HEAD
-/* #welcome{
-  font-size: 2rem;
-=======
 #welcome{
->>>>>>> cab31b7fa17169ec6d3c40a82b21d25c0cf9b664
   text-align: center;
-} */
-
-/* div.cardContainer{
-  display: inline-flex;
-  justify-content: center;
-} */
-
-/* div.body{
-  display: flex;
-  justify-content: center;  
-} */
+} 
 
 button{
   width:25%;
@@ -116,11 +99,16 @@ button:hover{
 }
 
 
-/* #explore{
+#explore{
    display: flex;
   justify-content: center;
   padding: 1rem;
-} */
+}
+
+#middle{
+  display: flex;
+  justify-content: center;
+}
 
 
 

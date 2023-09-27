@@ -94,6 +94,10 @@ label {
   border-radius: 33px;
   
 }
+
+.login-btn:hover{
+  background-color: rgb(55, 133, 66);
+}
 .body {
   position: relative;
   background: #fff;
@@ -129,6 +133,11 @@ font-family: 'DM Sans', sans-serif;
 }
 #sign-up a {
   color: #333;
+  font-family: "Montserrat";
+}
+
+#sign-up a:hover {
+  color: green;
   font-family: "Montserrat";
 }
 
