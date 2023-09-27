@@ -2,54 +2,58 @@
 
  <div class="cardsContainer">
     <h3>My Recipes</h3>
+<div class="borderbox"></div>
+    <div class="recipesList">
      <RecipeCard
       v-for="recipe in myRecipes"
       v-bind:key="recipe.recipeId"
       v-bind:recipe ="recipe"
      /> 
- </div>
+ </div></div>
 </template>
 
 <script>
-import RecipeCard from '../components/RecipeCard.vue';
+import RecipeCard from "../components/RecipeCard.vue";
 
 export default {
-  name: 'RecipeList',
-  components: {RecipeCard},
-  computed:{
+  name: "RecipeList",
+  components: { RecipeCard },
+  computed: {
     myRecipes() {
       return this.$store.state.recipes.filter((recipe) => {
         return recipe.creatorUsername == this.$store.state.user.username;
       });
-    }}
-
-}
-
+    },
+  },
+};
 </script>
 
 <style scoped>
-.body {
- 
-  display: inline-flex;
-  justify-content: center;
-  /* border-radius: 30px;
-  border: 2px solid #333; */
-  width: auto;
-  height: auto;
-  margin: 1rem 2rem;
-  padding: 2rem 3rem 2rem 2rem;
-  width: 30%;
+.cardsContainer{
+
 }
-.title-servings-combo a {
-  color:#333;
-}
-.borderbox {
+.recipesList {
+ margin-top: 3rem;
+  display: flex; 
+  flex-wrap: wrap;
   position: relative;
-  margin-top: -30px;
-  width: 19vw;
+  gap: .3rem;
+ justify-content: center;
 }
 
-.servings {
-  padding-top: 5px;
+
+h3{
+text-align: center;
+font-size: 2.5rem
+;
 }
+
+.borderbox{
+  width: 50%;
+  position: relative;
+ left: 25%;
+}
+
+
+
 </style>
