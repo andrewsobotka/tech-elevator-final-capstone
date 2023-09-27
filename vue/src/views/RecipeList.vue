@@ -21,5 +21,13 @@ export default {
 </script>
 
 <style scoped>
+.cardsContainer{
+  margin: 2rem;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .3rem;
+}
+
 
 </style>

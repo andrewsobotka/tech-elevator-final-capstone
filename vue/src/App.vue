@@ -38,7 +38,6 @@ export default {
 *{
   top: 0px;
   left: 0px;
-  background: #fae7dd;
   background-size: auto;
 }
 #app{
