@@ -24,6 +24,7 @@ CREATE TABLE recipes (
     title varchar (63) NOT NULL UNIQUE,
     description text NOT NULL,
     serving_size int NOT NULL,
+    is_published boolean DEFAULT false,
     CONSTRAINT PK_recipe PRIMARY KEY (recipe_id)
 );
 
