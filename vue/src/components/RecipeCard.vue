@@ -3,7 +3,7 @@
   <div class="body">
     <div class="name-img-container">
       <div class="title-servings-combo">
-        <h3><router-link v-bind:to="{name:'recipe', params:{id:recipe.recipeId}}">{{recipe.recipeName }}</router-link></h3>
+        <h3 v-on:click.prevent="pleaseLogin"><router-link v-bind:to="{name:'recipe', params:{id:recipe.recipeId}}">{{recipe.recipeName }}</router-link></h3>
         <div class="borderbox"></div>
 
         <div class="servings">Serving Size: {{ recipe.servingSize }}</div>
@@ -20,7 +20,15 @@
 <script>
 export default {
   name: "recipeCard",
-  props: {recipe:Object}
+  props: {recipe:Object}, 
+  methods:{
+    pleaseLogin(){
+      if(this.$store.state.token ===''){
+        this.$router.push("/login");
+      }
+      
+    }
+  }
 
 };
 </script>

@@ -9,7 +9,7 @@
 
         <div class="navbar">
           <router-link v-bind:to="{ name: 'home' }">Home </router-link>
-          <router-link v-bind:to="{ name: 'recipes' }"  v-if="$store.state.token != ''"> Explore Recipes </router-link>
+          <router-link v-bind:to="{ name: 'recipes' }"> Explore Recipes </router-link>
           <router-link v-bind:to="{name:'my-recipes'}"  v-if="$store.state.token != ''">My Recipes</router-link>
           <router-link v-bind:to="{name:'grocery-list'}" v-if="$store.state.token != ''">Grocery List</router-link>
           <router-link v-bind:to="{name:'settings'}" v-if="$store.state.token != ''">My Account</router-link>
