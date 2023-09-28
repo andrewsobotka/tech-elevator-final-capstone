@@ -1,7 +1,9 @@
 <template>
   <div>
+    <h3  id="meals-title">My Meals</h3>
     <div>
-      <h2  id="meals-title">My Meals</h2>
+      
+      <div class="borderbox"></div>
       <p>Search by Tag:
         <tagSelectBox/> </p>
     </div>
@@ -20,9 +22,17 @@ export default {
 
 <style>
 
-#meals-title {
-  display: flex;
-  justify-content: center;
+
+h3{
+text-align: center;
+font-size: 2.5rem
+;
+}
+
+.borderbox{
+  width: 50%;
+  position: relative;
+ left: 25%;
 }
 
 

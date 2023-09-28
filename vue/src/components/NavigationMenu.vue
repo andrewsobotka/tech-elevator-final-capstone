@@ -21,6 +21,11 @@
             v-bind:to="{ name: 'grocery-list' }"
             v-if="$store.state.token != ''"
             >Grocery List</router-link>
+
+          <router-link
+            v-bind:to="{ name: 'my-meals' }"
+            v-if="$store.state.token != ''"
+            >My Meals</router-link>
           
           <NavDropDown/>
 
@@ -74,14 +79,15 @@ export default {
   overflow-x: hidden;
   top: 0px;
   padding: 1.3rem;
-  background: rgb(100, 151, 111);
-  /* background-image: url(''); */
-  background-image: url("https://bonnieplants.com/cdn/shop/articles/BONNIE_sage_iStock-664890210-1800px_f839c896-3f8b-4470-8ab8-7ebe7dd93bb2.jpg?v=1642541975");
+background: #e0fcdf;  
+
+/* background-image: url(''); */
+  /* background-image: url("https://bonnieplants.com/cdn/shop/articles/BONNIE_sage_iStock-664890210-1800px_f839c896-3f8b-4470-8ab8-7ebe7dd93bb2.jpg?v=1642541975"); */
   background-size: cover;
   background-repeat: no-repeat;
   display: flex;
   justify-content: space-between;
-  color: #fff;
+  color: #333;
   font-family: "Montserrat";
   z-index: 3;
 }
@@ -111,7 +117,7 @@ a {
 }
 
 .logout {
-  color: rgb(207, 229, 155);
+  color: rgb(80, 104, 25);
   text-decoration: none;
 
   /* background: #9bad8f;

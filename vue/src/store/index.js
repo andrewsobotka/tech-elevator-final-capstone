@@ -20,7 +20,14 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
-  
+    listOfTags: [
+      "breakfast",
+      "lunch",
+      "dinner",
+      "vegan",
+      "dairy-free",
+      "keto",
+    ],
     recipes:[
       // {
       //   recipeId:1,

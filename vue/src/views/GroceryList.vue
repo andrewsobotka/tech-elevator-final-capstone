@@ -1,6 +1,7 @@
 <template>
   <div>
-      <h2 id="grocery-title">My Grocery List</h2>
+      <h3 id="grocery-title">My Grocery List</h3>
+      <div class="borderbox"></div>
     </div>
 </template>
 
@@ -11,8 +12,19 @@ export default {
 </script>
 
 <style>
-#grocery-title {
-  display: flex;
-  justify-content: center;
+h3{
+text-align: center;
+font-size: 2.5rem
+;
 }
+
+.borderbox{
+  width: 50%;
+  position: relative;
+  left: 25%;
+}
+
+
+
+
 </style>

@@ -1,10 +1,14 @@
 <template>
 
  <div class="cardsContainer">
-    <h3>My Recipes <br>
-      <button v-on:click="showForm=!showForm">{{showForm? "Hide Form" : "Add Recipe"}}</button>
-    </h3>
+    <h3>My Recipes <br>    </h3>
+    
 <div class="borderbox"></div>
+
+<div class="form-btn">
+  <button v-on:click="showForm=!showForm" >{{showForm? "Hide Form" : "Add Recipe"}}</button>
+ </div>
+
     <div class="recipesList">
      <RecipeCard
       v-for="recipe in myRecipes"
@@ -35,7 +39,7 @@ export default {
         return recipe.creatorUsername == this.$store.state.user.username;
       });
     },
-  },
+  }
 };
 </script>
 
@@ -57,12 +61,24 @@ font-size: 2.5rem
 ;
 }
 
+.form-btn{
+  display: flex;
+position: relative;
+justify-content: center;
+  margin: auto;
+}
+
 .borderbox{
   width: 50%;
   position: relative;
  left: 25%;
+
 }
 
-
+@media only screen and (max-width: 800px) {
+  .borderbox{
+    margin: .5rem;
+  }
+}
 
 </style>
