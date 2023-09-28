@@ -3,11 +3,13 @@
     <div id="top">
       <h2 id="welcome" >Welcome{{$store.state.token != ''? ", " + $store.state.user.username : " to Sage"}}!</h2>
       </div>
-      <div id="middle">
+      <div >
+      <div class="middle">
       <button id="login"  v-if="$store.state.token == ''"><router-link  v-bind:to="{name:'login'}" >Login</router-link></button>
-  
+      </div>
+      <div class="middle">
       <button id="explore-button" ><router-link  v-bind:to="{name:'recipes'}" >Explore Recipes</router-link></button>
- 
+      </div>
   </div>
 
   <div id="recipeCardContainer">
@@ -105,7 +107,7 @@ button:hover{
   padding: 1rem;
 }
 
-#middle{
+.middle{
   display: flex;
   justify-content: center;
 }

@@ -1,7 +1,7 @@
 <template>
 <div id="container">
-  <div id="login" class="body">
-    <form @submit.prevent="login" class = "title-serving-combo">
+  <div id="login" class="login-body">
+    <form @submit.prevent="login" class = "loginDiv">
       <h2 >Please Sign In</h2>
       <div id= "alert" role="alert" v-if="invalidCredentials">
         Invalid username and password!
@@ -20,7 +20,7 @@
         />
       </div>
       <div class="form-input-group">
-        <label for="password">Password:</label>
+        <label for="password">Password: </label>
         <input type="password" id="password" v-model="user.password" class="inputbox" required />
       </div>
       <button type="submit" class="login-btn">Login</button>
@@ -72,33 +72,10 @@ export default {
 </script>
 
 <style scoped>
-.form-input-group {
-  text-align: center;
-  margin-bottom: 1rem;
-  align-items: center;
-  position: relative;
-  justify-content: center;
-}
 
-label {
-  margin-right: 0.5rem;
-}
 
-.login-btn{
-  margin-top: 30px;
-  font-size: 1rem;
-  background-color: rgba(55, 133, 65, 0.842);
-  color: #fff;
-  font-family: 'Lexend', sans-serif;
-  padding: .4rem 1rem;
-  border-radius: 33px;
-  
-}
 
-.login-btn:hover{
-  background-color: rgb(55, 133, 66);
-}
-.body {
+.login-body {
   position: relative;
   background: #fff;
   border-radius: 30px;
@@ -114,23 +91,11 @@ label {
   width: 40%;
 }
 
-.title-servings-combo a {
+.loginDiv a {
   color: #333;
 }
 
-label {
-  font-family: "Montserrat";
-}
 
-input{
-border-radius: 2px;
-font-size: 1rem;
-background-color: #d9e9fa;
-border: none;
-padding: 8px;
-font-family: 'DM Sans', sans-serif;
-
-}
 #sign-up a {
   color: #333;
   font-family: "Montserrat";
