@@ -87,7 +87,7 @@
         </ol>
       </div>
       <label for="tags">Tags:</label>
-      <div class="field" v-for="(tag, index) in listOfTags" v-bind:key="index">
+      <div class="field" v-for="(tag, index) in $store.state.listOfTags" v-bind:key="index">
         <input
           type="checkbox"
           id="tag"
@@ -109,14 +109,6 @@ export default {
   data() {
     return {
       currentValue: 0,
-      listOfTags: [
-        "breakfast",
-        "lunch",
-        "dinner",
-        "vegan",
-        "dairy-free",
-        "keto",
-      ],
       indexOfSteps: [],
       indexOfIngredients: [],
       newRecipe: {

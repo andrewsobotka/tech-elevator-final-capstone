@@ -21,7 +21,7 @@ font-size: 2.5rem
 .borderbox{
   width: 50%;
   position: relative;
- left: 25%;
+  left: 25%;
 }
 
 
