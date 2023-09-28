@@ -9,15 +9,19 @@
       v-bind:key="recipe.recipeId"
       v-bind:recipe ="recipe"
      /> 
+     <div>
+       <NewRecipeForm/>
+     </div>
  </div></div>
 </template>
 
 <script>
+import NewRecipeForm from '../components/NewRecipeForm.vue';
 import RecipeCard from "../components/RecipeCard.vue";
 
 export default {
   name: "RecipeList",
-  components: { RecipeCard },
+  components: { RecipeCard, NewRecipeForm },
   computed: {
     myRecipes() {
       return this.$store.state.recipes.filter((recipe) => {
@@ -29,9 +33,7 @@ export default {
 </script>
 
 <style scoped>
-.cardsContainer{
 
-}
 .recipesList {
  margin-top: 3rem;
   display: flex; 
