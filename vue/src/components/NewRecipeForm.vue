@@ -1,46 +1,63 @@
 <template>
-  <div>
+  <div class="container">
     <form id="addNewRecipe" v-on:submit.prevent="createNewRecipe">
       <div>
         <h3>Add New Recipe</h3>
       </div>
       <div class="field">
-        <label for="recipeName">Title:</label>
-        <input type="text" name="recipeName" v-model="newRecipe.recipeName" />
+        <label for="recipeName">Title: </label>
+        <input
+          type="text"
+          name="recipeName"
+          v-model="newRecipe.recipeName"
+          placeholder="ie: Apple Crumble"
+        />
       </div>
       <br />
       <div class="field">
         <label for="servingSize">Serving Size:</label>
-        <input type="text" name="servingSize" v-model="newRecipe.servingSize" />
+        <input type="text" name="servingSize" v-model="newRecipe.servingSize" 
+        placeholder="ie: 6" />
       </div>
       <br />
       <div class="field">
-        <label for="description">Description:</label><br />
+        <label for="description">Description: </label><br />
         <textarea name="description" v-model="newRecipe.recipeDescription" />
       </div>
-      <div class="field">
-        <label for="ingredient">Ingredients:</label><br />
-        <a v-on:click="newRecipe.ingredients.push('')">Add Ingredient</a><br />
+
+
+      
+      <div class="ingredientList">
+        <label for="ingredient">Ingredients:</label>
+        <button class="ingredients-btn"><a v-on:click="newRecipe.ingredients.push('')">Add Ingredient</a>
+        </button>
+        
+        <br />
+        
+
         <li
           v-for="(ingredient, index) in newRecipe.ingredients"
-          v-bind:key="index"
-        >
-          <input
-            type="text"
-            name="Ingredient"
-            v-model="newRecipe.ingredients[index]"
-            @keyup.enter="newRecipe.ingredients.push('')"
-          />
-          <input
+          v-bind:key="index" class="ingredientList"  >
+        
+
+             <input
             type="checkbox"
             id="step"
             v-bind:key="index"
             v-bind:value="index"
             v-model="indexOfIngredients"
           />
+          <input
+            type="text"
+            name="Ingredient" id="ingredient-input"
+            v-model="newRecipe.ingredients[index]"
+            @keyup.enter="newRecipe.ingredients.push('')"
+          />
+     
           <br /><br />
         </li>
-        <a v-on:click="deleteIngredients">Delete Ingredients</a>
+       <button class="delete-btn"> <a v-on:click="deleteIngredients" >Delete Ingredients</a>
+      </button>
       </div>
       <div class="field">
         <ol>
@@ -64,8 +81,9 @@
             />
             <br /><br />
           </li>
-          <a v-on:click="deleteSteps">Delete Steps</a
-          ><br />
+        <button class="delete-btn"> <a v-on:click="deleteSteps">Delete Steps</a
+          ></button> 
+
         </ol>
       </div>
       <label for="tags">Tags:</label>
@@ -112,6 +130,7 @@ export default {
   methods: {
     createNewRecipe() {},
     deleteIngredients() {
+
       let newArray = [];
       for (let i = 0; i < this.newRecipe.ingredients.length; i++) {
         if (!this.indexOfIngredients.includes(i)) {
@@ -132,13 +151,16 @@ export default {
       this.newRecipe.steps = newArray;
 
       this.indexOfSteps = [];
-    }, 
+    },
   },
   computed: {},
 };
 </script>
 
 <style>
+.container{
+  
+}
 div a {
   color: #333;
 }
@@ -148,5 +170,61 @@ textarea {
   width: 20rem;
   height: 10rem;
   background-color: #d9e9fa;
+  border:none;
+font-family: 'Montserrat', sans-serif;
+  color: rgba(14, 0, 0, 0.623);
+  margin-bottom: 30px;
+
+}
+
+input::placeholder {
+font-family: 'Montserrat', sans-serif; 
+ padding: 6px;
+  color: rgba(119, 119, 119, 0.623);
+}
+
+
+input{
+  width: 95%;
+  margin: 0px 0px 0px 1rem;
+ 
+}
+
+input[name="recipeName"]{
+
+  margin-top: .7rem;
+
+}
+
+.ingredientList li{
+  list-style-type: none;
+}
+
+
+.ingredients-check-group{
+  display: flex;
+}
+
+
+input[name="servingSize"]{
+  width: 6rem;
+}
+
+.field ul li{
+  list-style-type: none;
+}
+label {
+  margin-bottom: 5px;
+}
+
+.ingredients-btn{
+  margin-left: 20%; 
+}
+
+.delete-btn, .delete-btn a{
+  background: rgb(206, 74, 74);
+  color: #fff;
+  text-align: center;
+  position: relative;
 }
 </style>

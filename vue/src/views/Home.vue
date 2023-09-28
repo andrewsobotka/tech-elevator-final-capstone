@@ -4,14 +4,12 @@
       <h2 id="welcome" >Welcome{{$store.state.token != ''? ", " + $store.state.user.username : " to Sage"}}!</h2>
       </div>
       <div >
-      <div class="middle">
+        <div class="buttons">
       <button id="login"  v-if="$store.state.token == ''"><router-link  v-bind:to="{name:'login'}" >Login</router-link></button>
-      </div>
-      <div class="middle">
+    
       <button id="explore-button" ><router-link  v-bind:to="{name:'recipes'}" >Explore Recipes</router-link></button>
-      </div>
   </div>
-
+</div>
   <div id="recipeCardContainer">
     <RecipeCard
       v-for="recipe in $store.state.recipes"
@@ -64,9 +62,6 @@ export default {
 
 }
 
-/* .title-servings-combo a {
-  color:#333;
-} */
 
 #welcome{
   text-align: center;
@@ -101,16 +96,6 @@ button:hover{
 }
 
 
-#explore{
-   display: flex;
-  justify-content: center;
-  padding: 1rem;
-}
-
-.middle{
-  display: flex;
-  justify-content: center;
-}
 
 
 
