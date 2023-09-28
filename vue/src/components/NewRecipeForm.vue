@@ -15,91 +15,125 @@
       </div>
       <br />
       <div class="field">
-        <label for="servingSize">Serving Size:</label>
-        <input type="text" name="servingSize" v-model="newRecipe.servingSize" 
-        placeholder="ie: 6" />
+        <label for="servingSize">  Serving Size:</label>
+        <input
+          type="text"
+          name="servingSize"
+          v-model="newRecipe.servingSize"
+          placeholder="ie: 6"
+        />
       </div>
       <br />
       <div class="field">
-        <label for="description">Description: </label><br />
+        <label for="description">Description: </label>
         <textarea name="description" v-model="newRecipe.recipeDescription" />
       </div>
 
-
-      
       <div class="ingredientList">
         <label for="ingredient">Ingredients:</label>
-        <button class="ingredients-btn"><a v-on:click="newRecipe.ingredients.push('')">Add Ingredient</a>
+        <button class="ingredients-btn">
+          <a v-on:click="newRecipe.ingredients.push('')">Add Ingredient</a>
         </button>
-        
+
         <br />
-        
 
-        <li
-          v-for="(ingredient, index) in newRecipe.ingredients"
-          v-bind:key="index" class="ingredientList"  >
-        
-
-             <input
-            type="checkbox"
-            id="step"
+        <ul>
+          <li
+            v-for="(ingredient, index) in newRecipe.ingredients"
             v-bind:key="index"
-            v-bind:value="index"
-            v-model="indexOfIngredients"
-          />
-          <input
-            type="text"
-            name="Ingredient" id="ingredient-input"
-            v-model="newRecipe.ingredients[index]"
-            @keyup.enter="newRecipe.ingredients.push('')"
-          />
-     
-          <br /><br />
-        </li>
-       <button class="delete-btn"> <a v-on:click="deleteIngredients" >Delete Ingredients</a>
-      </button>
-      </div>
-      <div class="field">
-        <ol>
-          <label for="steps">Steps:</label
-          ><br />
-          <a v-on:click="newRecipe.steps.push('')">Add Step</a
-          ><br />
-          <li v-for="(step, index) in newRecipe.steps" v-bind:key="index">
-            <input
-              type="text"
-              name="steps"
-              v-model="newRecipe.steps[index]"
-              @keyup.enter="newRecipe.steps.push('')"
-            />
-            <input
-              type="checkbox"
-              id="step-checkbox"
-              v-bind:key="index"
-              v-bind:value="index"
-              v-model="indexOfSteps"
-            />
-            <br /><br />
-          </li>
-        <button class="delete-btn"> <a v-on:click="deleteSteps">Delete Steps</a
-          ></button> 
+            class="ingredientList"
+          >
+            <div class="ingredients-check-group">
+              <input
+                type="checkbox"
+                id="step"
+                class="ingredient-checkbox"
+                v-bind:key="index"
+                v-bind:value="index"
+                v-model="indexOfIngredients"
+              />
 
-        </ol>
+              <input
+                type="text"
+                name="Ingredient"
+                class="ingredients-input"
+                placeholder="ie. Apples"
+                v-model="newRecipe.ingredients[index]"
+                @keyup.enter="newRecipe.ingredients.push('')"
+              />
+            </div>
+          </li>
+        </ul>     </div>
+
+
+        <div class="deleteDiv">
+          <button class="delete-btn">
+            <a v-on:click="deleteIngredients">Delete Selected Ingredients</a>
+          </button>
+   
       </div>
+
+      <div class="stepsList">
+          <ol>
+          <label for="ingredient" class="stepsLabel">Steps:</label>
+          <button class="ingredients-btn addSteps-btn">
+            <a v-on:click="newRecipe.steps.push('')">Add Step</a>
+          </button>
+          <br />
+          <br />
+
+          <li v-for="(step, index) in newRecipe.steps" v-bind:key="index">
+            <div class="ingredients-check-group">
+              <input
+                type="checkbox"
+                id="step"
+                v-bind:key="index"
+                v-bind:value="index"
+                v-model="indexOfSteps"
+              />
+
+              <input
+                type="text"
+                class="steps-input"
+                placeholder="ie: Gather Ingredients..."
+                v-model="newRecipe.steps[index]"
+                @keyup.enter="newRecipe.steps.push('')"
+              />
+            </div>
+          </li>    </ol>  </div>
+
+
+          <div class="deleteDiv">
+            <button class="delete-btn">
+              <a v-on:click="deleteSteps">Delete Selected Steps</a>
+            </button>
+        
+    
+      </div>
+
       <label for="tags">Tags:</label>
-      <div class="field" v-for="(tag, index) in $store.state.listOfTags" v-bind:key="index">
-        <input
-          type="checkbox"
-          id="tag"
-          v-bind:value="tag"
-          v-bind:name="tag"
-          v-model="newRecipe.tags"
-        />
-        <label for="vegan">{{ tag }}</label>
+      <div class="tagsList">
+        <div
+          class="field"
+          v-for="(tag, index) in $store.state.listOfTags"
+          v-bind:key="index"
+        >
+          <input
+            type="checkbox"
+            id="tag"
+            v-bind:value="tag"
+            v-bind:name="tag"
+            v-model="newRecipe.tags"
+          />
+          <label for="tagLabel">{{ tag }}</label>
+        </div>
       </div>
-      <button type="submit" value="Submit New Recipe" class="btn save">
-        Submit New Recipe
-      </button>
+
+      <div class="submitDiv">
+        <button type="submit" value="Submit New Recipe" class="submit-btn">
+          Submit New Recipe
+        </button>
+      </div>
     </form>
   </div>
 </template>
@@ -112,7 +146,6 @@ export default {
       indexOfSteps: [],
       indexOfIngredients: [],
       newRecipe: {
-        quantity: [],
         ingredients: [""],
         steps: [""],
         tags: [],
@@ -122,7 +155,6 @@ export default {
   methods: {
     createNewRecipe() {},
     deleteIngredients() {
-
       let newArray = [];
       for (let i = 0; i < this.newRecipe.ingredients.length; i++) {
         if (!this.indexOfIngredients.includes(i)) {
@@ -150,7 +182,13 @@ export default {
 </script>
 
 <style>
-
+.container {
+  max-width: 21rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  cursor: pointer;
+}
 div a {
   color: #333;
 }
@@ -160,62 +198,138 @@ textarea {
   width: 20rem;
   height: 10rem;
   background-color: #d9e9fa;
-  border:none;
-font-family: 'Montserrat', sans-serif;
+  border: none;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1rem;
+  letter-spacing: 1.5px;
   color: rgba(14, 0, 0, 0.623);
-  margin-bottom: 30px;
-
+  margin: 10px 0;
 }
 
 input::placeholder {
-font-family: 'Montserrat', sans-serif; 
- padding: 6px;
+  font-family: "Montserrat", sans-serif;
+  padding: 6px;
   color: rgba(119, 119, 119, 0.623);
 }
 
-
-input{
+input[name="recipeName"] {
+  margin-top: 0.7rem;
   width: 95%;
-  margin: 0px 0px 0px 1rem;
+}
+
+.ingredientList li {
+  list-style-type: none;
+}
+
+input[name="servingSize"] {
+  width: 5rem;
+  margin-left: 1rem;
+}
+
+.addSteps-btn {
+  position: relative;
+  left: 15%;
+}
+
+.stepsLabel {
+  margin-left: 1rem;
+  position: relative;
+  left: -3.3rem;
+}
+
+.field ul li {
+  list-style-type: none;
+}
+
+.ingredients-btn {
+  margin-left: 20%;
+  background: rgb(228, 243, 187);
+  border-radius: 0;
+  position: relative;
+}
+
+.steps-btn {
+  margin-left: 60px;
+  transition: ease 0.5s;
+}
+
+.ingredients-check-group {
+  display: flex;
+  margin-bottom: 1rem;
+  position: relative;
+  left: -2.5rem;
+  justify-content: left;
+}
+
+.ingredients-input,
+.steps-input {
+  position: relative;
+  width: 20rem;
+  margin-left: 2rem;
+}
+
+
+.delete-btn {
+  background: rgb(206, 74, 74);
+  color: #fff;
+
+  font-size: 0.8rem;
+
+  transition: ease 0.5s;
+}
+
+.deleteDiv{
+  position: relative;
+   display: flex;
+  justify-content: center;
+  left: -.5rem;
+  margin: 1rem;
  
 }
 
-input[name="recipeName"]{
-
-  margin-top: .7rem;
-
-}
-
-.ingredientList li{
-  list-style-type: none;
-}
 
 
-.ingredients-check-group{
-  display: flex;
-}
-
-
-input[name="servingSize"]{
-  width: 6rem;
-}
-
-.field ul li{
-  list-style-type: none;
-}
-label {
-  margin-bottom: 5px;
-}
-
-.ingredients-btn{
-  margin-left: 20%; 
-}
-
-.delete-btn, .delete-btn a{
-  background: rgb(206, 74, 74);
+.delete-btn a {
   color: #fff;
+}
+
+.delete-btn:hover {
+  background: #7a2217;
+}
+.submitDiv{
+  display: flex;
+  justify-content: center;
+}
+
+.submitDiv button {
+  background: rgba(115, 202, 198, 0.623);
+  border-radius: 0;
+  color: rgb(39, 2, 2);
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+
+  transition: ease 0.5s;
+}
+.submit-btn:hover {
+  background: rgb(63, 133, 98);
+  color: #fff;
+}
+
+.tagsList {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 1rem 0;
+}
+
+.tagsList input, .tagsList label{
+  margin: .2rem;
+  margin-bottom: 1rem;
   text-align: center;
-  position: relative;
+}
+
+li{
+    font-family: "Montserrat";
+    text-justify: top;
 }
 
 </style>

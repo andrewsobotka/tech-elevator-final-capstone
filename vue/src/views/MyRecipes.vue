@@ -75,5 +75,10 @@ justify-content: center;
 
 }
 
+@media only screen and (max-width: 800px) {
+  .borderbox{
+    margin: .5rem;
+  }
+}
 
 </style>
