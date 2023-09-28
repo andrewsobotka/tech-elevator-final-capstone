@@ -44,20 +44,20 @@
       </div>
       <div class="field">
         <ol>
-          <label for="ingredient">Steps:</label
+          <label for="steps">Steps:</label
           ><br />
           <a v-on:click="newRecipe.steps.push('')">Add Step</a
           ><br />
           <li v-for="(step, index) in newRecipe.steps" v-bind:key="index">
             <input
               type="text"
-              name="Ingredient"
+              name="steps"
               v-model="newRecipe.steps[index]"
               @keyup.enter="newRecipe.steps.push('')"
             />
             <input
               type="checkbox"
-              id="step"
+              id="step-checkbox"
               v-bind:key="index"
               v-bind:value="index"
               v-model="indexOfSteps"
@@ -149,4 +149,5 @@ textarea {
   height: 10rem;
   background-color: #d9e9fa;
 }
+
 </style>
