@@ -72,13 +72,13 @@ public class RecipeImportService {
 
         Recipe recipe = new Recipe();
         recipe.setRecipeName(name);
-        recipe.setRecipeDescription(description);
+        recipe.setDescription(description);
         recipe.setImgUrl(imgUrl);
 
         try {
             recipe.setServingSize(Double.parseDouble(servings));
         } catch (NumberFormatException ex) {
-            recipe.setServingSize(0);
+            recipe.setServingSize(0.0);
         }
 
         List<Ingredient> ingredientsList = new ArrayList<>();

@@ -126,8 +126,8 @@ public class JdbcUserDao implements UserDao {
         Recipe recipe = new Recipe();
         recipe.setRecipeId(rs.getInt("recipe_id"));
         recipe.setRecipeName(rs.getString("title"));
-        recipe.setRecipeDescription(rs.getString("description"));
-        recipe.setServingSize(rs.getString("serving_size"));
+        recipe.setDescription(rs.getString("description"));
+        recipe.setServingSize(rs.getDouble("serving_size"));
         return recipe;
     }
 
