@@ -1,9 +1,9 @@
 package com.techelevator.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class Tag {
-
     private int tagId;
-
     private String tag;
 
     public Tag() { }
