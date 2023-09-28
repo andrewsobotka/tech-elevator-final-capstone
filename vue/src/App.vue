@@ -37,6 +37,7 @@ export default {
 
 *{
   top: 0px;
+  
   left: 0px;
   background-size: auto;
   
