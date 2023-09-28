@@ -78,16 +78,20 @@ export default {
 .headerbar {
   overflow-x: hidden;
   top: 0px;
-  padding: 1.3rem;
-background: #e0fcdf;  
+    padding: 1.3rem;
 
-/* background-image: url(''); */
+background: #e0fcdf;  
+background-image: url('https://img.freepik.com/free-photo/spring-floral-border-background-green-with-leaf-watercolor-illustration_53876-126807.jpg?w=1060&t=st=1695934598~exp=1695935198~hmac=2af1dcbab7220b3737772d365afc7af0c3c54a5950c0fc42c9b587f252ed49ab');
   /* background-image: url("https://bonnieplants.com/cdn/shop/articles/BONNIE_sage_iStock-664890210-1800px_f839c896-3f8b-4470-8ab8-7ebe7dd93bb2.jpg?v=1642541975"); */
-  background-size: cover;
+ 
+ /* background-image: url('https://img.freepik.com/free-photo/blurred-plants_23-2148013432.jpg?w=1060&t=st=1695934812~exp=1695935412~hmac=9a38faa6dc5dd961de3eb896f72d81821c117da1402598836ed4bb24037eb0f2'); */
+ 
+ background-image: url('https://img.freepik.com/free-photo/grainy-ground-view-shot-bokeh-style_53876-104709.jpg?w=1060&t=st=1695935109~exp=1695935709~hmac=2a9ad39d790f8f22e59dde61f2706a4f020c4ff9ace2307d693a7cb6703bb88d');
+ background-size: cover;
   background-repeat: no-repeat;
   display: flex;
   justify-content: space-between;
-  color: #333;
+  color: #fff;
   font-family: "Montserrat";
   z-index: 3;
 }
@@ -99,12 +103,12 @@ a {
 
 .headerbar a {
   margin: 0.4rem;
+  color: #fff;
 }
 
 .navbar {
   justify-content: flex-end;
   position: relative;
-  margin-top: 2rem;
   font-family: "Lexend", sans-serif;
   font-size: 1rem;
   transition: ease 3s;
@@ -119,11 +123,6 @@ a {
 .logout {
   color: rgb(80, 104, 25);
   text-decoration: none;
-
-  /* background: #9bad8f;
-  border: 1px solid #233b13;
-  padding: 6px 6px;
-  border-radius: 20px; */
   font-size: 1rem;
 }
 
@@ -131,13 +130,15 @@ a {
   text-decoration: none;
   font-family: "Caprasimo", cursive;
   font-size: 3rem;
-  margin-top: -1rem;
+
   color: blanchedalmond;
   transition: all 0.5s ease;
   -webkit-text-stroke: 1.2px rgba(33, 63, 41, 0.836);
 }
 .logo a:hover {
   letter-spacing: 3px;
-  color: #054713;
+  color: #fbfbfb;
+    -webkit-text-stroke: 1.2px #c5b39e77;
+
 }
 </style>

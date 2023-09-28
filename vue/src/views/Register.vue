@@ -96,7 +96,9 @@ label {
 }
 
 
-
+h2{
+    border-bottom: none;
+}
 .register-body {
   position: relative;
   background: #fff;

@@ -2,7 +2,7 @@
 <div id="container">
   <div id="login" class="login-body">
     <form @submit.prevent="login" class = "loginDiv">
-      <h2 >Please Sign In</h2>
+      <h2 >Please Sign In</h2><br/>
       <div id= "alert" role="alert" v-if="invalidCredentials">
         Invalid username and password!
       </div>
@@ -112,6 +112,11 @@ export default {
   display: flex;
   justify-content: center;
   padding-bottom: .5rem;
+}
+
+h2{
+  text-decoration:none;
+  border-bottom: none;
 }
 
 
