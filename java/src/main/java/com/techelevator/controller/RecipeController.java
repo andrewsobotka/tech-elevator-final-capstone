@@ -3,10 +3,7 @@ package com.techelevator.controller;
 import com.techelevator.dao.RecipeDao;
 import com.techelevator.model.Recipe;
 import com.techelevator.service.RecipeService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -33,7 +30,7 @@ public class RecipeController {
     @GetMapping("/recipes/{recipeId}")
     public Recipe getRecipeById(@PathVariable int recipeId){
 
-        return recipeDao.getRecipeByRecipeId(recipeId);
+        return recipeService.getRecipe(recipeId);       //calling the service
 
     }
 
@@ -41,6 +38,13 @@ public class RecipeController {
     public List<Recipe> getFeaturedRecipes(@PathVariable int recipeId){
 
         return recipeDao.getFeaturedRecipesByRecipeId(recipeId);
+
+    }
+
+    @GetMapping("/import")
+    public Recipe getImportedRecipe(@RequestParam String url){
+
+        return recipeService.importRecipe(url);
 
     }
 

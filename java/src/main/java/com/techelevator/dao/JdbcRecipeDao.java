@@ -87,25 +87,6 @@ public class JdbcRecipeDao implements RecipeDao {
 
     }
 
-    @Override
-    public List<Tag> getTagsByRecipeId(int recipe_id){
-
-        List<Tag> tags = new ArrayList<>();
-        String sql = "select * from tags join recipes_tags on recipes_tags.tag_id = tags.tag_id " +
-                "join recipes on recipes_tags.recipe_id = recipes.recipe_id where recipes.recipe_id = ? ;";
-
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, recipe_id);
-        while (results.next()) {
-            Tag tag = mapRowToTag(results);
-            tags.add(tag);
-        }
-
-        return tags;
-
-    }
-
-
-
     private Recipe mapRowToRecipe(SqlRowSet rs) {
         Recipe recipe = new Recipe();
         recipe.setRecipeId(rs.getInt("recipe_id"));
@@ -121,12 +102,5 @@ public class JdbcRecipeDao implements RecipeDao {
         return recipe;
     }
 
-    private Tag mapRowToTag(SqlRowSet rs) {
-        Tag tag = new Tag();
-        tag.setTagId(rs.getInt("tag_id"));
-        tag.setTag(rs.getString("tag"));
-
-        return tag;
-    }
 
 }
