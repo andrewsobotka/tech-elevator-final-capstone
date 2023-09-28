@@ -20,13 +20,16 @@
           <router-link
             v-bind:to="{ name: 'grocery-list' }"
             v-if="$store.state.token != ''"
-            >Grocery List</router-link
-          >
-          <router-link
+            >Grocery List</router-link>
+          
+          <NavDropDown/>
+
+
+          <!-- <router-link
             v-bind:to="{ name: 'settings' }"
             v-if="$store.state.token != ''"
             >My Account</router-link
-          >
+          > -->
           <!-- <a ref="#">Setting</a> | -->
 
           <router-link
@@ -52,8 +55,10 @@
 </template>
 
 <script>
+import NavDropDown from './NavDropDown.vue';
+
 export default {
-  components: {},
+  components: {NavDropDown},
 };
 </script>
 
@@ -78,6 +83,7 @@ export default {
   justify-content: space-between;
   color: #fff;
   font-family: "Montserrat";
+  z-index: 3;
 }
 
 a {

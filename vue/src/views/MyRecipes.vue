@@ -1,7 +1,9 @@
 <template>
 
  <div class="cardsContainer">
-    <h3>My Recipes</h3>
+    <h3>My Recipes <br>
+      <button v-on:click="showForm=!showForm">{{showForm? "Hide Form" : "Add Recipe"}}</button>
+    </h3>
 <div class="borderbox"></div>
     <div class="recipesList">
      <RecipeCard
@@ -10,7 +12,7 @@
       v-bind:recipe ="recipe"
      /> 
      <div>
-       <NewRecipeForm/>
+       <NewRecipeForm v-if="showForm===true"/>
      </div>
  </div></div>
 </template>
@@ -21,6 +23,11 @@ import RecipeCard from "../components/RecipeCard.vue";
 
 export default {
   name: "RecipeList",
+  data(){
+    return{
+      showForm:false
+    }
+  },
   components: { RecipeCard, NewRecipeForm },
   computed: {
     myRecipes() {
