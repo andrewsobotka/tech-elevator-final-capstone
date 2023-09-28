@@ -1,7 +1,5 @@
 package com.techelevator.model;
 
-import java.time.OffsetDateTime;
-import java.util.Date;
 import java.util.List;
 
 public class Recipe {
@@ -9,8 +7,8 @@ public class Recipe {
     private int recipeId;
     private int creatorId;
     private String recipeName;
-    private String recipeDescription;
-    private String servingSize;
+    private String description;
+    private double servingSize;
     private String keyWords;
     private List<Ingredient> ingredients;
     private List<Step> steps;
@@ -21,11 +19,11 @@ public class Recipe {
 
     public Recipe() { }                                     //Required for mapRowToRecipe in jdbcRecipeDao to work
 
-    public Recipe(int recipeId, int creatorId, String recipeName, String recipeDescription, String servingSize, String keyWords, List<Ingredient> ingredients, List<Step> steps, String imgUrl, boolean isPublished, boolean isFeatured) {
+    public Recipe(int recipeId, int creatorId, String recipeName, String description, Double servingSize, String keyWords, List<Ingredient> ingredients, List<Step> steps, String imgUrl, boolean isPublished, boolean isFeatured) {
         this.recipeId = recipeId;
         this.creatorId = creatorId;
         this.recipeName = recipeName;
-        this.recipeDescription = recipeDescription;
+        this.description = description;
         this.servingSize = servingSize;
         this.keyWords = keyWords;
         this.ingredients = ingredients;
@@ -51,19 +49,19 @@ public class Recipe {
         this.recipeName = recipeName;
     }
 
-    public String getRecipeDescription() {
-        return recipeDescription;
+    public String getDescription() {
+        return description;
     }
 
-    public void setRecipeDescription(String recipeDescription) {
-        this.recipeDescription = recipeDescription;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String getServingSize() {
+    public Double getServingSize() {
         return servingSize;
     }
 
-    public void setServingSize(String servingSize) {
+    public void setServingSize(Double servingSize) {
         this.servingSize = servingSize;
     }
 
