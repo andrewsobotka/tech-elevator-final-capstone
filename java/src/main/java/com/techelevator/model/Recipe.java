@@ -1,27 +1,38 @@
 package com.techelevator.model;
 
+import java.time.OffsetDateTime;
+import java.util.Date;
 import java.util.List;
 
 public class Recipe {
 
     private int recipeId;
+    private int creatorId;
     private String recipeName;
     private String recipeDescription;
-    private double servingSize;
+    private String servingSize;
+    private String keyWords;
     private List<Ingredient> ingredients;
     private List<Step> steps;
     private String imgUrl;
+    private boolean isPublished;
+    private boolean isFeatured;
+
 
     public Recipe() { }                                     //Required for mapRowToRecipe in jdbcRecipeDao to work
 
-    public Recipe(int recipeId, String recipeName, String recipeDescription, double servingSize, List<Ingredient> ingredients, List<Step> steps, String imgUrl) {
+    public Recipe(int recipeId, int creatorId, String recipeName, String recipeDescription, String servingSize, String keyWords, List<Ingredient> ingredients, List<Step> steps, String imgUrl, boolean isPublished, boolean isFeatured) {
         this.recipeId = recipeId;
+        this.creatorId = creatorId;
         this.recipeName = recipeName;
         this.recipeDescription = recipeDescription;
         this.servingSize = servingSize;
+        this.keyWords = keyWords;
         this.ingredients = ingredients;
         this.steps = steps;
         this.imgUrl = imgUrl;
+        this.isPublished = isPublished;
+        this.isFeatured = isFeatured;
     }
 
     public int getRecipeId() {
@@ -48,11 +59,11 @@ public class Recipe {
         this.recipeDescription = recipeDescription;
     }
 
-    public double getServingSize() {
+    public String getServingSize() {
         return servingSize;
     }
 
-    public void setServingSize(double servingSize) {
+    public void setServingSize(String servingSize) {
         this.servingSize = servingSize;
     }
 
@@ -79,4 +90,37 @@ public class Recipe {
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
     }
+
+    public int getCreatorId() {
+        return creatorId;
+    }
+
+    public void setCreatorId(int creatorId) {
+        this.creatorId = creatorId;
+    }
+
+    public String getKeyWords() {
+        return keyWords;
+    }
+
+    public void setKeyWords(String keyWords) {
+        this.keyWords = keyWords;
+    }
+
+    public boolean isPublished() {
+        return isPublished;
+    }
+
+    public void setPublished(boolean published) {
+        isPublished = published;
+    }
+
+    public boolean isFeatured() {
+        return isFeatured;
+    }
+
+    public void setFeatured(boolean featured) {
+        isFeatured = featured;
+    }
+    
 }
