@@ -25,5 +25,9 @@ export default {
 </script>
 
 <style>
+    .recipe-details{
+        display: flex;
+        justify-content: center;
+    }
 
 </style>

@@ -44,14 +44,7 @@
             class="ingredientList"
           >
             <div class="ingredients-check-group">
-              <input
-                type="checkbox"
-                id="step"
-                class="ingredient-checkbox"
-                v-bind:key="index"
-                v-bind:value="index"
-                v-model="indexOfIngredients"
-              />
+              
 
               <input
                 type="text"
@@ -60,6 +53,15 @@
                 placeholder="ie. Apples"
                 v-model="newRecipe.ingredients[index]"
                 @keyup.enter="newRecipe.ingredients.push('')"
+              />
+
+              <input
+                type="checkbox"
+                id="step"
+                class="ingredient-checkbox"
+                v-bind:key="index"
+                v-bind:value="index"
+                v-model="indexOfIngredients"
               />
             </div>
           </li>
@@ -84,13 +86,6 @@
 
           <li v-for="(step, index) in newRecipe.steps" v-bind:key="index">
             <div class="ingredients-check-group">
-              <input
-                type="checkbox"
-                id="step"
-                v-bind:key="index"
-                v-bind:value="index"
-                v-model="indexOfSteps"
-              />
 
               <input
                 type="text"
@@ -98,6 +93,13 @@
                 placeholder="ie: Gather Ingredients..."
                 v-model="newRecipe.steps[index]"
                 @keyup.enter="newRecipe.steps.push('')"
+              />
+              <input
+                type="checkbox"
+                id="step"
+                v-bind:key="index"
+                v-bind:value="index"
+                v-model="indexOfSteps"
               />
             </div>
           </li>    </ol>  </div>
@@ -261,11 +263,15 @@ input[name="servingSize"] {
   justify-content: left;
 }
 
-.ingredients-input,
+.ingredients-input{
+    position: relative;
+  width: 20rem;
+  margin-left: 1rem;
+}
 .steps-input {
   position: relative;
   width: 20rem;
-  margin-left: 2rem;
+  margin-left: 3rem;
 }
 
 

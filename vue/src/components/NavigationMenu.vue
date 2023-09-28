@@ -23,7 +23,7 @@
             >Grocery List</router-link>
 
           <router-link
-            v-bind:to="{ name: 'my-meals' }"
+            v-bind:to="{ name: 'meals' }"
             v-if="$store.state.token != ''"
             >My Meals</router-link>
           

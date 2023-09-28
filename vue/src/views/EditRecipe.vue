@@ -1,15 +1,23 @@
 <template>
-  <div>
-      Edit Recipe
+  <div id="container">
+      <div>
+      <EditRecipeForm/>
+      </div>
   </div>
 </template>
 
 <script>
+import EditRecipeForm from '../components/EditRecipeForm.vue';
 export default {
+    components:{EditRecipeForm}
 
 }
 </script>
 
 <style>
+    #container{
+        display: flex;
+        justify-content: center;
+    }
 
 </style>
