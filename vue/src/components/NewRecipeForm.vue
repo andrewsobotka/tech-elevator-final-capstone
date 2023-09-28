@@ -74,7 +74,7 @@
       </div>
 
       <div class="stepsList">
-        <ol>
+          <ol>
           <label for="ingredient" class="stepsLabel">Steps:</label>
           <button class="ingredients-btn addSteps-btn">
             <a v-on:click="newRecipe.steps.push('')">Add Step</a>
@@ -146,7 +146,6 @@ export default {
       indexOfSteps: [],
       indexOfIngredients: [],
       newRecipe: {
-        quantity: [],
         ingredients: [""],
         steps: [""],
         tags: [],
@@ -266,6 +265,7 @@ input[name="servingSize"] {
 .steps-input {
   position: relative;
   width: 20rem;
+  margin-left: 2rem;
 }
 
 
@@ -325,6 +325,11 @@ input[name="servingSize"] {
   margin: .2rem;
   margin-bottom: 1rem;
   text-align: center;
+}
+
+li{
+    font-family: "Montserrat";
+    text-justify: top;
 }
 
 </style>
