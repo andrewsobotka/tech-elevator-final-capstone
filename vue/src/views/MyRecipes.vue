@@ -39,7 +39,7 @@ export default {
         return recipe.creatorUsername == this.$store.state.user.username;
       });
     },
-  },
+  }
 };
 </script>
 
