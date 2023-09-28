@@ -150,9 +150,7 @@ export default {
 </script>
 
 <style>
-.container{
-  
-}
+
 div a {
   color: #333;
 }
