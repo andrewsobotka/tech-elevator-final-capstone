@@ -15,7 +15,7 @@
       </div>
       <br />
       <div class="field">
-        <label for="servingSize">Serving Size:</label>
+        <label for="servingSize">  Serving Size:</label>
         <input
           type="text"
           name="servingSize"
@@ -115,7 +115,7 @@
       <div class="tagsList">
         <div
           class="field"
-          v-for="(tag, index) in listOfTags"
+          v-for="(tag, index) in $store.state.listOfTags"
           v-bind:key="index"
         >
           <input
@@ -143,14 +143,6 @@ export default {
   data() {
     return {
       currentValue: 0,
-      listOfTags: [
-        "breakfast",
-        "lunch",
-        "dinner",
-        "vegan",
-        "dairy-free",
-        "keto",
-      ],
       indexOfSteps: [],
       indexOfIngredients: [],
       newRecipe: {
@@ -209,6 +201,8 @@ textarea {
   background-color: #d9e9fa;
   border: none;
   font-family: "Montserrat", sans-serif;
+  font-size: 1rem;
+  letter-spacing: 1.5px;
   color: rgba(14, 0, 0, 0.623);
   margin: 10px 0;
 }
@@ -229,7 +223,8 @@ input[name="recipeName"] {
 }
 
 input[name="servingSize"] {
-  width: 6rem;
+  width: 5rem;
+  margin-left: 1rem;
 }
 
 .addSteps-btn {
@@ -270,8 +265,9 @@ input[name="servingSize"] {
 .ingredients-input,
 .steps-input {
   position: relative;
-  width: 100%;
+  width: 20rem;
 }
+
 
 .delete-btn {
   background: rgb(206, 74, 74);
@@ -285,8 +281,8 @@ input[name="servingSize"] {
 .deleteDiv{
   position: relative;
    display: flex;
-  justify-content: right;
-  
+  justify-content: center;
+  left: -.5rem;
   margin: 1rem;
  
 }
@@ -330,4 +326,5 @@ input[name="servingSize"] {
   margin-bottom: 1rem;
   text-align: center;
 }
+
 </style>

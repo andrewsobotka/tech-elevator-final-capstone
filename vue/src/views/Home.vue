@@ -65,6 +65,11 @@ export default {
 
 #welcome{
   text-align: center;
+  font-size: 5rem;
+  background: #333;
+  color: #fff;
+  opacity: 30%;
+  padding: 5%;
 } 
 
 button{
