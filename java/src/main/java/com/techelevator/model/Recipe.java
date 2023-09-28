@@ -9,28 +9,29 @@ public class Recipe {
     private String recipeName;
     private String description;
     private double servingSize;
-    private String keyWords;
+    private String keywords;
     private List<Ingredient> ingredients;
     private List<Step> steps;
     private String imgUrl;
     private boolean isPublished;
     private boolean isFeatured;
-
+    private List<Tag> tags;
 
     public Recipe() { }                                     //Required for mapRowToRecipe in jdbcRecipeDao to work
 
-    public Recipe(int recipeId, int creatorId, String recipeName, String description, Double servingSize, String keyWords, List<Ingredient> ingredients, List<Step> steps, String imgUrl, boolean isPublished, boolean isFeatured) {
+    public Recipe(int recipeId, int creatorId, String recipeName, String description, Double servingSize, String keywords, List<Ingredient> ingredients, List<Step> steps, String imgUrl, boolean isPublished, boolean isFeatured, List<Tag> tags) {
         this.recipeId = recipeId;
         this.creatorId = creatorId;
         this.recipeName = recipeName;
         this.description = description;
         this.servingSize = servingSize;
-        this.keyWords = keyWords;
+        this.keywords = keywords;
         this.ingredients = ingredients;
         this.steps = steps;
         this.imgUrl = imgUrl;
         this.isPublished = isPublished;
         this.isFeatured = isFeatured;
+        this.tags = tags;
     }
 
     public int getRecipeId() {
@@ -57,7 +58,7 @@ public class Recipe {
         this.description = description;
     }
 
-    public Double getServingSize() {
+    public double getServingSize() {
         return servingSize;
     }
 
@@ -97,12 +98,12 @@ public class Recipe {
         this.creatorId = creatorId;
     }
 
-    public String getKeyWords() {
-        return keyWords;
+    public String getKeywords() {
+        return keywords;
     }
 
-    public void setKeyWords(String keyWords) {
-        this.keyWords = keyWords;
+    public void setKeywords(String keywords) {
+        this.keywords = keywords;
     }
 
     public boolean isPublished() {
@@ -120,5 +121,12 @@ public class Recipe {
     public void setFeatured(boolean featured) {
         isFeatured = featured;
     }
-    
+
+    public List<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<Tag> tags) {
+        this.tags = tags;
+    }
 }

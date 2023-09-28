@@ -52,6 +52,7 @@ public class JdbcIngredientDao implements IngredientDao{
         Ingredient ingredient = new Ingredient();
         ingredient.setIngredient_id(rs.getInt("ingredient_id"));
         ingredient.setIngredient(rs.getString("ingredient"));
+        ingredient.setQuantity(rs.getString("quantity"));
         return ingredient;
     }
 

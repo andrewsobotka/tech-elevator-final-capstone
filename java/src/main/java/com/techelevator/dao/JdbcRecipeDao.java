@@ -2,6 +2,7 @@ package com.techelevator.dao;
 
 import com.techelevator.exception.DaoException;
 import com.techelevator.model.Recipe;
+import com.techelevator.model.Tag;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -21,7 +22,7 @@ public class JdbcRecipeDao implements RecipeDao {
     }
 
     @Override
-    public List<Recipe> getListOfRecipes() {                //All Recipes in main "library"
+    public List<Recipe> getListOfRecipes() {                //Displayed on Explore Recipes page (whole "library" of recipes)
         List<Recipe> recipes = new ArrayList<>();
         String sql = "select * from recipes";
 
@@ -54,45 +55,78 @@ public class JdbcRecipeDao implements RecipeDao {
 
     }
 
-
-    //Get a recipe by username...accessing your own "library" of recipes
-//    @Override
-//    public Recipe getRecipeByUsername(String username) throws UsernameNotFoundException {
-//        String sql = "SELECT title, description, serving_size FROM recipes WHERE username ILIKE ?;";
-//        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, username);
-//        if (rowSet.next()){
-//            return mapRowToRecipe(rowSet);
-//        }
-//        throw new UsernameNotFoundException("User " + username + " was not found.");
-//    }
-
     @Override
-    public Recipe getRecipe(int recipe_id) {
+    public List<Recipe> getFeaturedRecipesByRecipeId(int recipe_id) {           //Display Top3-Featured Recipes
 
-        String sql = "SELECT * FROM recipes where recipe_id = ?";
+        List<Recipe> recipes = new ArrayList<>();
+        String sql = "select * from recipes where recipe_id = ? ";
 
-        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, recipe_id);
-        Recipe recipe = null;
-
-        if (rowSet.next()) {
-            recipe = mapRowToRecipe(rowSet);
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, recipe_id);
+        while (results.next()) {
+            Recipe recipe = mapRowToRecipe(results);
+            recipes.add(recipe);
         }
 
-        return recipe;
+        return recipes;
+
     }
+
+    @Override
+    public List<Recipe> getRecipesByKeyWords(String keywords) {           //Display Recipes from user input keywords
+
+        List<Recipe> recipes = new ArrayList<>();
+        String sql = "select * from recipes where keywords ILIKE ? ";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, keywords);
+        while (results.next()) {
+            Recipe recipe = mapRowToRecipe(results);
+            recipes.add(recipe);
+        }
+
+        return recipes;
+
+    }
+
+    @Override
+    public List<Tag> getTagsByRecipeId(int recipe_id){
+
+        List<Tag> tags = new ArrayList<>();
+        String sql = "select * from tags join recipes_tags on recipes_tags.tag_id = tags.tag_id " +
+                "join recipes on recipes_tags.recipe_id = recipes.recipe_id where recipes.recipe_id = ? ;";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, recipe_id);
+        while (results.next()) {
+            Tag tag = mapRowToTag(results);
+            tags.add(tag);
+        }
+
+        return tags;
+
+    }
+
+
 
     private Recipe mapRowToRecipe(SqlRowSet rs) {
         Recipe recipe = new Recipe();
         recipe.setRecipeId(rs.getInt("recipe_id"));
         recipe.setCreatorId(rs.getInt("creator_id"));
         recipe.setRecipeName(rs.getString("recipe_name"));
-        recipe.setImgUrl(rs.getString("img_url"));
+        recipe.setImgUrl(rs.getString("image_url"));
         recipe.setDescription(rs.getString("description"));
         recipe.setServingSize(rs.getDouble("serving_size"));
-        recipe.setKeyWords(rs.getString("keywords"));
+        recipe.setKeywords(rs.getString("keywords"));
         recipe.setPublished(rs.getBoolean("is_published"));
         recipe.setFeatured(rs.getBoolean("is_featured"));
 
         return recipe;
     }
+
+    private Tag mapRowToTag(SqlRowSet rs) {
+        Tag tag = new Tag();
+        tag.setTagId(rs.getInt("tag_id"));
+        tag.setTag(rs.getString("tag"));
+
+        return tag;
+    }
+
 }
