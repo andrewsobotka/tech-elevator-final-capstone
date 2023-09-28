@@ -32,7 +32,7 @@
           </li>
         </ul>
       </div>
-      <img :src="recipe.imgUrlg" class="detail-img" />
+      <img :src="recipe.imgUrl" class="detail-img" />
     </div>
 
     <div class="instructions">
