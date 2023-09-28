@@ -1,7 +1,8 @@
 <template>
   <div>
-      <h3 id="grocery-title">My Grocery List</h3>
-      <div class="borderbox"></div>
+    <h3>My Grocery List  </h3>
+    
+<div class="borderbox"></div>
     </div>
 </template>
 
@@ -12,13 +13,12 @@ export default {
 </script>
 
 <style>
-h3{
-text-align: center;
-font-size: 2.5rem
-;
-}
 
+h3{
+  margin: 2rem;
+}
 .borderbox{
+  margin-top: 1rem;
   width: 50%;
   position: relative;
   left: 25%;

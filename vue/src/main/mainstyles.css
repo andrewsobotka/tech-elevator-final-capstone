@@ -39,10 +39,8 @@
   /* that muted green underline under main headers */
 
   .borderbox {
-    border-bottom: 10px solid #55695659;
+    border-bottom: 10px solid #3b583c59;
     padding-top: 0rem;
-  
-    margin: -30px 0px 0px 0px;
     position: relative;
     width: auto;
   }

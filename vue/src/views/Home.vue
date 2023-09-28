@@ -66,10 +66,10 @@ export default {
 #welcome{
   text-align: center;
   font-size: 5rem;
-  background: #333;
+  background: rgb(161, 136, 96);
   color: #fff;
   opacity: 30%;
-  padding: 5%;
+  padding: 4%;
 } 
 
 button{
@@ -78,16 +78,19 @@ button{
   font-family: "Montserrat";
   font-size: 1.2rem;
   border: 1px solid rgba(51, 51, 51, 0.527);
-  border-radius: 12px;
-  background-color: #90af90;
-  padding:3px;
+  border-radius: 20px;
+  background-color: #81cf81;
   width: 15rem;
   margin: .5rem 0rem;
+  padding: .6rem;
 }
 
+button a{
+  color: rgba(255, 255, 255, 0.952);
+}
 button:nth-child(odd){
   color:  #90af90;
-  background: rgba(62, 117, 42, 0.849);
+  background: rgba(70, 139, 45, 0.849);
   
 }
 button:hover{

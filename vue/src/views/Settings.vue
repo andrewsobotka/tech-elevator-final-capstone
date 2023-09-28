@@ -13,14 +13,27 @@
             alt=""
           />
         </div>
-        <div id="username">
-          <p><u>You are currently logged in as:</u></p>
-          <h4>{{ $store.state.user.username }}</h4>
+
+        <div class="textcontainer">
+          <div id="username">
+            <h3>
+              <p>Hello {{ $store.state.user.username }}!</p>
+            </h3>
+            <p>you have x saved recipes</p>
+          </div>
         </div>
       </div>
+
       <div class="settings2change">
         <h2>settings</h2>
         <input type="checkbox" class="checkbox" /> Make my account private
+
+        <br />
+        <div class="settingsLinks">
+          <a href="" class="settings-link">Update Tags</a>
+          <a href="" class="settings-link">Edit Saved Recipes</a>
+          <a href="" class="settings-link">Delete Recipes</a>
+        </div>
       </div>
     </div>
   </div>
@@ -31,33 +44,39 @@ export default {};
 </script>
 
 <style scoped>
+.settings{
+  overflow: hidden;
+}
 .account-container {
-  margin: auto;
   display: flex;
-  border-radius: 10px;
-  border: 2px solid #333;
-  margin: auto;
+  border-radius: 1px;
+  border: 2px solid rgba(51, 51, 51, 0.897);
   background-color: #fff;
   font-size: 1rem;
   font-family: "montserrat";
   height: 40vh;
   max-width: 950px;
+  position: relative;
+  left: 10%;
+
 }
 
 .user-identification {
   display: flex;
   flex-direction: column;
-  padding: 3px;
   background-color: rgb(151, 199, 156);
   color: rgb(15, 13, 13);
   border-right: 2px solid #333;
-  width: 30%;
- 
+  width: 20%;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+  
 }
 
 p {
   font-size: 1rem;
-
+  text-align: center;
 }
 .image {
   margin-right: 0px;
@@ -67,19 +86,20 @@ p {
 .image img {
   position: relative;
   border-radius: 100px;
-  left: 1rem;
-  top: 1rem;
-  border-radius: 1px solid #333;
-  margin: auto;
+  border: solid #fff 12px;
   height: 100px;
   width: 100px;
   object-fit: cover;
 }
 
-#username {
-  text-align: left;
+.username {
   position: relative;
-  left: 10%;
+}
+
+.textcontainer {
+  background: rgba(238, 255, 217, 0.863);
+  padding-bottom: 10px;
+  margin: 8px;
 }
 
 .settings2change {
@@ -89,9 +109,11 @@ p {
   max-width: 690px;
 }
 h2 {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   font-weight: 300;
   color: rgb(109, 108, 108);
+  padding: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 h3 {
@@ -99,7 +121,7 @@ h3 {
   text-decoration: none;
 }
 h4 {
-  font-size: 1.4rem;
+  font-size:3rem;
   font-family: "Averia Serif Libre", cursive;
   margin-top: 0px;
 }
@@ -108,5 +130,30 @@ h4 {
   position: relative;
   left: 25%;
   margin-bottom: 30px;
+}
+
+.settings-link {
+  background: rgb(208, 247, 157);
+  position: relative;
+  width: 50%;
+  margin: 0.3rem;
+  padding: 0.5rem 0.5rem;
+  transition: ease-in 0.3s;
+}
+.settings-link:hover {
+  background: rgba(122, 165, 122, 0.76);
+  font-weight: bold;
+}
+
+.settings-link :nth-child(even) {
+}
+
+.settingsLinks {
+  display: flex;
+  flex-direction: flex;
+  margin: 30px;
+
+  justify-content: center;
+  text-align: center;
 }
 </style>

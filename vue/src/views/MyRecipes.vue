@@ -1,7 +1,7 @@
 <template>
 
  <div class="cardsContainer">
-    <h3>My Recipes <br>    </h3>
+    <h3>My Recipes  </h3>
     
 <div class="borderbox"></div>
 
@@ -55,11 +55,7 @@ export default {
 }
 
 
-h3{
-text-align: center;
-font-size: 2.5rem
-;
-}
+
 
 .form-btn{
   display: flex;
@@ -67,13 +63,13 @@ position: relative;
 justify-content: center;
   margin: auto;
 }
-
 .borderbox{
   width: 50%;
   position: relative;
  left: 25%;
 
 }
+
 
 @media only screen and (max-width: 800px) {
   .borderbox{
