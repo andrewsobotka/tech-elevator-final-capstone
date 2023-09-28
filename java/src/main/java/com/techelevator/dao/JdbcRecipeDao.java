@@ -81,41 +81,11 @@ public class JdbcRecipeDao implements RecipeDao {
         return recipe;
     }
 
-    @Override
-    public Recipe createRecipe(String title, String description, double serving_size) {
-        Recipe recipe = null;
-
-        String sql = "INSERT INTO recipes (title, description, serving_size) " +
-                "VALUES (?,?,?) RETURNING recipe_id ;";
-
-//TODO: TO UPDATE INGREDIENT & STEPS TABLES
-
-        try {
-
-            int id = jdbcTemplate.queryForObject(sql, int.class,
-                    recipe.getRecipeName(), recipe.getRecipeDescription(), recipe.getServingSize());
-
-            return getRecipe(id);
-
-
-        } catch (CannotGetJdbcConnectionException e) {
-            throw new DaoException ("Unable to connect to server or database", e);
-        } catch (DataIntegrityViolationException e) {
-            throw new DaoException ("Data integrity violation", e);
-        }
-    }
-
-//TODO: CREATE 'COPYRECIPE' METHOD
-//    @Override
-//    public Recipe copyRecipe(String title, String description, double serving_size) {
-//
-//    }
-
     private Recipe mapRowToRecipe(SqlRowSet rs) {
         Recipe recipe = new Recipe();
         recipe.setRecipeId(rs.getInt("recipe_id"));
-        recipe.setRecipeName(rs.getString("title"));
-        recipe.setRecipeDescription(rs.getString("description"));
+        recipe.setRecipeName(rs.getString("recipe_name"));
+        recipe.setRecipeDescription(rs.getString("recipe_description"));
         recipe.setServingSize(rs.getDouble("serving_size"));
         return recipe;
     }

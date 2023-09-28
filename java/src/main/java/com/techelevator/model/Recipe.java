@@ -1,22 +1,27 @@
 package com.techelevator.model;
 
+import java.util.List;
+
 public class Recipe {
 
     private int recipeId;
     private String recipeName;
     private String recipeDescription;
     private double servingSize;
-    private Ingredient ingredient;
-    private Step step;
+    private List<Ingredient> ingredients;
+    private List<Step> steps;
     private String imgUrl;
 
     public Recipe() { }                                     //Required for mapRowToRecipe in jdbcRecipeDao to work
 
-    public Recipe(int recipe_id, String title, String description, double serving_size) {
-        this.recipeId = recipe_id;
-        this.recipeName = title;
-        this.recipeDescription = description;
-        this.servingSize = serving_size;
+    public Recipe(int recipeId, String recipeName, String recipeDescription, double servingSize, List<Ingredient> ingredients, List<Step> steps, String imgUrl) {
+        this.recipeId = recipeId;
+        this.recipeName = recipeName;
+        this.recipeDescription = recipeDescription;
+        this.servingSize = servingSize;
+        this.ingredients = ingredients;
+        this.steps = steps;
+        this.imgUrl = imgUrl;
     }
 
     public int getRecipeId() {
@@ -51,4 +56,27 @@ public class Recipe {
         this.servingSize = servingSize;
     }
 
+    public List<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(List<Ingredient> ingredients) {
+        this.ingredients = ingredients;
+    }
+
+    public List<Step> getSteps() {
+        return steps;
+    }
+
+    public void setSteps(List<Step> steps) {
+        this.steps = steps;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
 }

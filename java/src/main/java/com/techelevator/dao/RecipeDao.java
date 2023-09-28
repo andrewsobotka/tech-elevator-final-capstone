@@ -15,6 +15,6 @@ public interface RecipeDao {
 
     Recipe getRecipe(int recipe_id);
 
-    Recipe createRecipe(String title, String description, double serving_size);
+
 
 }
