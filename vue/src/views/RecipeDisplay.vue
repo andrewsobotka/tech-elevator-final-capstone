@@ -15,7 +15,10 @@ export default {
                 ;
                 return someRecipe;
         }
-    }
+    },
+     created(){
+    
+  }
 
 
 }

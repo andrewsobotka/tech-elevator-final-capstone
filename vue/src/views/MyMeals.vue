@@ -1,7 +1,8 @@
 <template>
   <div>
+    <h3  id="meals-title">My Meals</h3>
     <div>
-      <h3  id="meals-title">My Meals</h3>
+      
       <div class="borderbox"></div>
       <p>Search by Tag:
         <tagSelectBox/> </p>

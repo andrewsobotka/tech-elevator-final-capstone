@@ -39,7 +39,7 @@ export default {
         return recipe.creatorUsername == this.$store.state.user.username;
       });
     },
-  },
+  }
 };
 </script>
 
@@ -75,5 +75,10 @@ justify-content: center;
 
 }
 
+@media only screen and (max-width: 800px) {
+  .borderbox{
+    margin: .5rem;
+  }
+}
 
 </style>

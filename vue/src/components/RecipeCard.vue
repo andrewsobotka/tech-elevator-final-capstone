@@ -1,7 +1,7 @@
 <template>
   <div class="body">
     <div class="name-img-container">
-      <img :src="recipe.imgUrl" class="image-fit" />
+      <router-link v-bind:to="{name:'recipe', params:{id:recipe.recipeId}}"><img :src="recipe.imgUrl" class="image-fit" /></router-link>
       <div class="title-servings-combo">
         <h3>
           <router-link
