@@ -79,16 +79,14 @@ export default {
   }
 };
 </script>
-<<<<<<< HEAD
 <style scoped>
 .container {
   overflow: auto;
-
   background: rgba(255, 255, 255, 0.808);
   border-radius: 5px;
   border: 1px #333 solid;
   padding: 0rem 2.5rem;
-  width: 1000px;
+  width: 300rem;
   height: 70vh;
   margin: 1rem 2rem;
   overflow-y: auto;
@@ -109,8 +107,6 @@ export default {
   position: relative;
   left: 0;
 }
-=======
-<style>
 
   .ingredients-img-container {
     position: relative;
@@ -125,7 +121,6 @@ export default {
   .desc-serve {
     display: flex;
   }
->>>>>>> c602a0e77de86b4badcee2666a4c42588e06b231
 
 
 .desc-serve {

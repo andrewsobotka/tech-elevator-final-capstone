@@ -44,10 +44,6 @@ z-index: 1;
 }
 
 *{
-<<<<<<< HEAD
-  background-size: auto;
-  overflow-x: hidden;
-=======
   top: 0px;
   left: 0px;
   background-size: auto;
@@ -56,20 +52,14 @@ z-index: 1;
     margin: 0px;
     padding: 0px;
     overflow-x: hidden; 
->>>>>>> c602a0e77de86b4badcee2666a4c42588e06b231
   
 }
 #app{
   background-image: url('https://img.freepik.com/free-photo/cream-canvas-textured-background-beige-minimal-design_53876-160754.jpg?w=996&t=st=1695935379~exp=1695935979~hmac=a0470e262b41f6a2915a9ffac22c8d9aadbc2cca6150b1a0d6bba519287344e1');
   /* background-image: url('https://img.freepik.com/premium-photo/abstract-white-background-text-paper-page-texture_84485-2550.jpg?w=740'); */
   background-size: repeat;
-<<<<<<< HEAD
-=======
   margin:0px;
->>>>>>> c602a0e77de86b4badcee2666a4c42588e06b231
 
-  margin:0px;
-  
 
  
 }

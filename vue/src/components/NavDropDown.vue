@@ -62,7 +62,7 @@ ul {
 button{
   border-radius: 0;
   border: .4px solid #555;
-  padding: .6rem 1.4rem;
+  padding: .6rem 1.4rem; 
   transition: ease .8s;
   background-color: rgb(43, 143, 39);
 }
