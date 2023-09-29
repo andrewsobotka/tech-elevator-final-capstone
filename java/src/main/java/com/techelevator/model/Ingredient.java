@@ -6,14 +6,11 @@ public class Ingredient {
 
     private String ingredient;
 
-    private String quantity;
-
     public Ingredient() { }                                     //Required for mapRowToIngredient in jdbcIngredientDao to work
 
-    public Ingredient(int ingredient_id, String ingredient, String quantity) {
+    public Ingredient(int ingredient_id, String ingredient) {
         this.ingredient_id = ingredient_id;
         this.ingredient = ingredient;
-        this.quantity = quantity;
     }
 
     public int getIngredient_id() {
@@ -32,11 +29,4 @@ public class Ingredient {
         this.ingredient = ingredient;
     }
 
-    public String getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(String quantity) {
-        this.quantity = quantity;
-    }
 }
