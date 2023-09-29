@@ -30,11 +30,15 @@ INSERT INTO recipes_tags (tag_id, recipe_id) VALUES (1,1);
 
 --Adding cheese to ingredients table
 INSERT INTO ingredients (ingredient) VALUES ('14 oz cheese');
+INSERT INTO ingredients (ingredient) VALUES ('1/2 gal of milk');
+INSERT INTO ingredients (ingredient) VALUES ('1 tomato');
 
 --Links cheese to pizza
 INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (1, 1);
 
--- Adding Cheese to users Grocery List
+-- Adding Cheese, Milk, and Tomato to the "user" 'Grocery List'
 INSERT INTO users_ingredients (user_id, ingredient_id, is_completed) VALUES (1, 1, false);
+INSERT INTO users_ingredients (user_id, ingredient_id, is_completed) VALUES (1, 2, true);
+INSERT INTO users_ingredients (user_id, ingredient_id, is_completed) VALUES (1, 3, false);
 
 COMMIT TRANSACTION;
