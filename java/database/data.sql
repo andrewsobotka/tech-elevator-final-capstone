@@ -25,6 +25,13 @@ INSERT INTO tags (tag) VALUES ('raw-food');
 INSERT INTO tags (tag) VALUES ('low-cholesterol');
 INSERT INTO tags (tag) VALUES ('renal-diet');
 
+--Links vegan to pizza
 INSERT INTO recipes_tags (tag_id, recipe_id) VALUES (1,1);
+
+--Adding cheese to ingredients table
+INSERT INTO ingredients (ingredient) VALUES ('14 oz cheese');
+
+--Links cheese to pizza
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (1, 1);
 
 COMMIT TRANSACTION;
