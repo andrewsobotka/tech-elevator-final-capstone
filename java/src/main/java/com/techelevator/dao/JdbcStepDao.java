@@ -1,5 +1,6 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.Ingredient;
 import com.techelevator.model.Meal;
 import com.techelevator.model.Recipe;
 import com.techelevator.model.Step;
@@ -35,25 +36,23 @@ public class JdbcStepDao implements StepDao{
         return steps;
     }
 
-//    @Override
-//    public Step getStepsByRecipeId(int recipe_id) {
-//
-//        Recipe recipe = null;
-//        String sql = "SELECT * from steps where recipe_id = ? ;";
-//        try {
-//            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, recipe_id);
-//            if (results.next()) {
-//                recipe = mapRowToRecipe(results);
-//            }
-//        } catch (CannotGetJdbcConnectionException e) {
-//            throw new DaoException("Unable to connect to server or database", e);
-//        } catch (DataIntegrityViolationException e) {
-//            throw new DaoException("Data integrity violation", e);
-//        }
-//
-//        return recipe;
-//
-//    }
+    @Override
+    public List<Step> getListOfStepsByRecipeId(int recipe_id) {
+        List<Step> steps = new ArrayList<>();
+
+        String sql = "select * from steps " +
+                "join steps_recipes on steps_recipes.step_id = steps.step_id " +
+                "join recipes on steps_recipes.recipe_id = recipes.recipe_id " +
+                "where recipes.recipe_id = ?";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, recipe_id);
+        while (results.next()) {
+            Step step = mapRowToStep(results);
+            steps.add(step);
+        }
+
+        return steps;
+    }
 
     private Step mapRowToStep(SqlRowSet rs) {
         Step step = new Step();
