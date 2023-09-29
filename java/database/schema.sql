@@ -45,7 +45,7 @@ CREATE TABLE steps (
 -- Meals Table
 DROP TABLE IF EXISTS meals CASCADE;
 CREATE TABLE meals (
-    meal_id int,
+    meal_id SERIAL,
     meal_name varchar (63),
     meal_date date,
     CONSTRAINT PK_meals PRIMARY KEY (meal_id)
@@ -133,5 +133,20 @@ ALTER TABLE meals_recipes
     ADD CONSTRAINT "fk_meals_recipes_id"
     FOREIGN KEY (recipe_id)
     REFERENCES recipes (recipe_id);
+
+-- Joining users on recipes
+DROP TABLE IF EXISTS users_meals CASCADE;
+CREATE TABLE users_meals (
+    user_id int NOT NULL,
+    meal_id int NOT NULL
+);
+ALTER TABLE users_meals
+    ADD CONSTRAINT "fk_user_meals_id"
+    FOREIGN KEY (user_id)
+    REFERENCES users (user_id);
+ALTER TABLE users_meals
+    ADD CONSTRAINT "fk_meals_user_id"
+    FOREIGN KEY (meal_id)
+    REFERENCES meals (meal_id);
 
 COMMIT TRANSACTION;

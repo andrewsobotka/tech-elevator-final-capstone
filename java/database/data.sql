@@ -25,6 +25,7 @@ INSERT INTO tags (tag) VALUES ('raw-food');
 INSERT INTO tags (tag) VALUES ('low-cholesterol');
 INSERT INTO tags (tag) VALUES ('renal-diet');
 
+<<<<<<< HEAD
 --Links vegan to pizza
 INSERT INTO recipes_tags (tag_id, recipe_id) VALUES (1,1);
 
@@ -33,5 +34,14 @@ INSERT INTO ingredients (ingredient) VALUES ('14 oz cheese');
 
 --Links cheese to pizza
 INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (1, 1);
+=======
+-- Making Recipe 1 (Pizza) Vegan
+INSERT INTO recipes_tags (tag_id, recipe_id) VALUES (1,1);
+
+-- Adding a Meal to "user"
+INSERT INTO meals (meal_name, meal_date) VALUES ('Delicious Pizza and Sourdough Breakfast Treat', '2023-09-29');
+INSERT INTO meals_recipes (meal_id, recipe_id) VALUES (1,1);
+INSERT INTO meals_recipes (meal_id, recipe_id) VALUES (1,2);
+>>>>>>> main
 
 COMMIT TRANSACTION;
