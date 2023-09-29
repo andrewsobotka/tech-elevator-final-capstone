@@ -5,7 +5,7 @@ import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
-import RecipeList from '../views/RecipeList.vue'
+import ExploreRecipes from '../views/ExploreRecipes.vue'
 import RecipeDisplay from '../views/RecipeDisplay.vue'
 import GroceryList from '../views/GroceryList.vue'
 import Search from '../views/Search.vue'
@@ -64,8 +64,8 @@ const router = new Router({
     },
     {
       path: "/recipes",
-      name: "recipes",
-      component: RecipeList,
+      name: "explore-recipes",
+      component: ExploreRecipes,
       meta: {
         requiresAuth: false
       }

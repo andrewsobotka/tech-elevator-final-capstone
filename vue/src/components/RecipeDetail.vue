@@ -155,8 +155,7 @@ export default {
 
   .steps-btn {
     padding: 3%;
-    font-size: 1.5rem;
-    align-content: start;
+    font-size: 1rem;
     margin-bottom: 3rem;
     text-align: center;
   }
@@ -173,7 +172,7 @@ export default {
 
 @media only screen and (width > 780px) {
   .container{
-    width:1000px;
+    width:60%;
   }
   
 }

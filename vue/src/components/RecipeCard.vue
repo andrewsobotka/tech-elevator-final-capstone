@@ -61,6 +61,7 @@ export default {
   object-fit: cover;
   border-radius: 6px;
   margin: 1rem 2rem;
+  
 }
 
 .name-img-container {
@@ -89,6 +90,7 @@ export default {
 }
 .title-servings-combo a {
   color: #333;
+  text-decoration: none;
 }
 .borderbox {
   top: 30px;
