@@ -49,6 +49,6 @@ INSERT INTO steps (rank, instruction) VALUES (3, E'Don\'t eat the raw dough.');
 -- Add Steps to Pizza
 INSERT INTO steps_recipes (step_id, recipe_id) VALUES (1,1);
 INSERT INTO steps_recipes (step_id, recipe_id) VALUES (2,1);
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (2,1);
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (3,1);
 
 COMMIT TRANSACTION;

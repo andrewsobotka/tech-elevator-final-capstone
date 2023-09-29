@@ -38,7 +38,7 @@ public class RecipeService {
         return recipeImportService.importFromUrl(url);
     }
 
-    public Recipe getRecipeTags(int recipe_id) {
+    public Recipe getRecipe(int recipe_id) {
         Recipe recipe = recipeDao.getRecipeByRecipeId(recipe_id);       //get recipe by recipeId
 
         List<Tag> tags = tagDao.getTagsByRecipeId(recipe_id);        //then get their tags now...
