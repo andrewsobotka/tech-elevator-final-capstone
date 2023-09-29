@@ -29,7 +29,7 @@
             v-bind:key="index"
             class="ingredient"
           >
-            {{ ingredient }}
+            {{ ingredient.ingredient }}
           </li>
         </ul>
       </div>
@@ -47,11 +47,10 @@
           class="steps"
           v-for="(step, index) in recipe.steps"
           v-bind:key="index"
-        >
-          {{ step }}
+        >Step {{step.rank}}: 
+          {{ step.instruction }}
         </li>
       </ol>
-      {{recipe.steps}}
     </div>
     <!-- v-on:click="addToLibrary" v-if="recipes.recipeId.includes(recipe.recipeId)" -->
     <button>Add to My Recipes</button>
@@ -68,14 +67,23 @@
 </template>
 
 <script>
+import APIService from "../services/APIService.js";
 export default {
   name: "recipeDetail",
-  props: {
-    recipe: Object,
-  },
+
   methods:{
     addToLibrary(){
 
+    }
+  },
+  created() {
+    APIService.getRecipe(this.$route.params.id).then((response) => {
+      this.$store.commit("SET_RECIPE", response.data);
+    });
+  },
+  computed:{
+    recipe(){
+      return this.$store.state.recipe;
     }
   }
 };

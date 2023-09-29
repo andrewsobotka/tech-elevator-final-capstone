@@ -29,6 +29,7 @@ export default new Vuex.Store({
       "keto",
     ],
     groceryList:["1 carton of milk", "1 carton of eggs", "1 block of parmesan cheese", "5 oranges" ],
+    recipe:{},
     recipes:[
       // {
       //   recipeId:1,
@@ -88,6 +89,9 @@ export default new Vuex.Store({
     },
     ADD_INGREDIENT(state, ingredient) {
       state.groceryList.push(ingredient);
+    },
+    SET_RECIPE(state, recipe){
+      state.recipe=recipe;
     }
   }
 })
