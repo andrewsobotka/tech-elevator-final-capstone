@@ -18,7 +18,7 @@ public class JdbcIngredientDao implements IngredientDao{
     }
 
     @Override
-    public List<Ingredient> getListOfIngredients() {
+    public List<Ingredient> getListOfIngredients() {                    //list of ALL ingredients in "main library"
         List<Ingredient> ingredients = new ArrayList<>();
         String sql = "select * from ingredients";
 
@@ -37,7 +37,8 @@ public class JdbcIngredientDao implements IngredientDao{
 
         String sql = "select * from ingredients " +
                 "join ingredients_recipes on ingredients_recipes.ingredient_id = ingredients.ingredient_id " +
-                "join recipes on ingredients_recipes.recipe_id = recipes.recipe_id where recipes.recipe_id = ?";
+                "join recipes on ingredients_recipes.recipe_id = recipes.recipe_id " +
+                "where recipes.recipe_id = ?";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, recipe_id);
         while (results.next()) {

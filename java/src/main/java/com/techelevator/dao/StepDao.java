@@ -8,6 +8,6 @@ public interface StepDao {
 
     List<Step> getListOfSteps();
 
-
+    List<Step> getListOfStepsByRecipeId(int recipe_id);
 
 }
