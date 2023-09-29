@@ -3,7 +3,7 @@
     <div id="top">
 
       <!-- Added Font Awesome Icon-->
-      <i class="fa-solid fa-leaf" style="font-size: 5em;color: green;"></i>
+       <i class="fa-solid fa-leaf" style="font-size: 1.5em;color: green;"/>
       <h2 id="welcome">Welcome{{$store.state.token != ''? ", " + $store.state.user.username : " to Sage"}}!</h2>
       </div>
       <div >
@@ -107,6 +107,14 @@ button:hover{
 #recipeCardContainer{
   display: flex;
   justify-content: center;
+}
+
+i{
+  position: absolute;
+  display: -webkit-box;
+  text-align: center;
+  margin-left: 40rem;
+  opacity: 30%;
 }
 
 
