@@ -57,7 +57,7 @@ export default {};
   height: 40vh;
   max-width: 950px;
   position: relative;
-  left: 10%;
+  left: 21%;
 
 }
 
