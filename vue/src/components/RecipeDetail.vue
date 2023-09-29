@@ -3,6 +3,7 @@
     <h3>
       {{ recipe.recipeName }}
     </h3>
+
     <div class="borderbox"></div>
 
     <div class="desc-serve">
@@ -51,6 +52,17 @@
         </li>
       </ol>
     </div>
+    <!-- v-on:click="addToLibrary" v-if="recipes.recipeId.includes(recipe.recipeId)" -->
+    <button>Add to My Recipes</button>
+    <!-- //this is just here so I can check the edit link 
+
+    v-if="recipe.creatorUserName===$store.state.user.username"
+    
+    -->
+    <router-link v-bind:to="{name:'edit-recipe', params:{id:recipe.recipeId}}"><button>Edit Recipe</button></router-link>
+
+    
+    
   </div>
 </template>
 
@@ -60,9 +72,42 @@ export default {
   props: {
     recipe: Object,
   },
+  methods:{
+    addToLibrary(){
+
+    }
+  }
 };
 </script>
-<style>
+<style scoped>
+.container {
+  overflow: auto;
+  background: rgba(255, 255, 255, 0.808);
+  border-radius: 5px;
+  border: 1px #333 solid;
+  padding: 0rem 2.5rem;
+  width: 300rem;
+  height: 70vh;
+  margin: 1rem 2rem;
+  overflow-y: auto;
+  padding-bottom: 3rem;
+}
+
+.ingredients-img-container {
+  position: relative;
+  display: flex;
+  padding-bottom: 1.5rem;
+}
+
+.instructions li {
+  font-size: 1.2rem;
+}
+
+.borderbox {
+  position: relative;
+  left: 0;
+}
+
   .ingredients-img-container {
     position: relative;
     display: flex;
@@ -73,23 +118,25 @@ export default {
     font-size: 1.2rem;
   }
 
-
-
   .desc-serve {
     display: flex;
   }
 
 
- /* image properties for WITHIN Recipe */
-  .detail-img {
-    position: relative;
-    width: 50vw;
-    max-height: 60vh;
-    object-fit: cover;
-    margin-left: 3rem;
-  }
+.desc-serve {
+  display: flex;
+}
 
-@media only screen and (max-width: 780px) {
+/* image properties for WITHIN Recipe */
+.detail-img {
+  position: relative;
+  width: 50vw;
+  max-height: 30vh;
+  object-fit: cover;
+  margin-left: 3rem;
+}
+
+@media only screen and (width < 780px) {
   .borderbox {
     position: relative;
     margin-top: 0%;
@@ -108,11 +155,10 @@ export default {
 
   .steps-btn {
     padding: 3%;
-    font-size: 13px;
-    align-content: start;
+    font-size: 1rem;
     margin-bottom: 3rem;
+    text-align: center;
   }
-
 
   h3,
   h2 {
@@ -122,5 +168,12 @@ export default {
   .servings {
     margin: 3px 0px;
   }
+}
+
+@media only screen and (width > 780px) {
+  .container{
+    width:60%;
+  }
+  
 }
 </style>

@@ -5,13 +5,15 @@ import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
-import RecipeList from '../views/RecipeList.vue'
+import ExploreRecipes from '../views/ExploreRecipes.vue'
 import RecipeDisplay from '../views/RecipeDisplay.vue'
 import GroceryList from '../views/GroceryList.vue'
 import Search from '../views/Search.vue'
 import Settings from '../views/Settings.vue'
 import MyRecipes from '../views/MyRecipes.vue'
 import Meals from '../views/MyMeals.vue'
+import EditRecipe from '../views/EditRecipe.vue'
+import EditGroceryList from '../views/EditGroceryList.vue'
 
 Vue.use(Router)
 
@@ -62,8 +64,8 @@ const router = new Router({
     },
     {
       path: "/recipes",
-      name: "recipes",
-      component: RecipeList,
+      name: "explore-recipes",
+      component: ExploreRecipes,
       meta: {
         requiresAuth: false
       }
@@ -85,11 +87,27 @@ const router = new Router({
       }
     },
     {
+      path: "/recipes/1/edit",
+      name: "edit-recipe",
+      component: EditRecipe,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
       path: "/grocery-list",
       name: "grocery-list",
       component: GroceryList,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/grocery-list/edit",
+      name: "edit-grocery-list",
+      component: EditGroceryList,
+      meta: {
+        requiresAuth: true
       }
     },
     {

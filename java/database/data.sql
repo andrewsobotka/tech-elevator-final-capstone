@@ -25,23 +25,30 @@ INSERT INTO tags (tag) VALUES ('raw-food');
 INSERT INTO tags (tag) VALUES ('low-cholesterol');
 INSERT INTO tags (tag) VALUES ('renal-diet');
 
-<<<<<<< HEAD
 --Links vegan to pizza
 INSERT INTO recipes_tags (tag_id, recipe_id) VALUES (1,1);
 
 --Adding cheese to ingredients table
 INSERT INTO ingredients (ingredient) VALUES ('14 oz cheese');
+INSERT INTO ingredients (ingredient) VALUES ('1/2 gal of milk');
+INSERT INTO ingredients (ingredient) VALUES ('1 tomato');
 
 --Links cheese to pizza
 INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (1, 1);
-=======
--- Making Recipe 1 (Pizza) Vegan
-INSERT INTO recipes_tags (tag_id, recipe_id) VALUES (1,1);
 
--- Adding a Meal to "user"
-INSERT INTO meals (meal_name, meal_date) VALUES ('Delicious Pizza and Sourdough Breakfast Treat', '2023-09-29');
-INSERT INTO meals_recipes (meal_id, recipe_id) VALUES (1,1);
-INSERT INTO meals_recipes (meal_id, recipe_id) VALUES (1,2);
->>>>>>> main
+-- Adding Cheese, Milk, and Tomato to the "user" 'Grocery List'
+INSERT INTO users_ingredients (user_id, ingredient_id, is_completed) VALUES (1, 1, false);
+INSERT INTO users_ingredients (user_id, ingredient_id, is_completed) VALUES (1, 2, true);
+INSERT INTO users_ingredients (user_id, ingredient_id, is_completed) VALUES (1, 3, false);
+
+-- Adding 3 Steps to Pizza
+INSERT INTO steps (rank, instruction) VALUES (1, 'Preheat Oven to 400 Degrees');
+INSERT INTO steps (rank, instruction) VALUES (2, 'Roll Dough');
+INSERT INTO steps (rank, instruction) VALUES (2, E'Don\'t eat the raw dough.');
+
+-- Add Steps to Pizza
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (1,1);
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (2,1);
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (2,1);
 
 COMMIT TRANSACTION;

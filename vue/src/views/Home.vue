@@ -3,14 +3,19 @@
     <div id="top">
 
       <!-- Added Font Awesome Icon-->
-      <i class="fa-solid fa-leaf" style="font-size: 5em;color: green;"></i>
+<<<<<<< HEAD
+      <!-- <i class="fa-solid fa-leaf" style="font-size: 5em;color: green;"></i> -->
       <h2 id="welcome" >Welcome{{$store.state.token != ''? ", " + $store.state.user.username : " to Sage"}}!</h2>
+=======
+      <i class="fa-solid fa-leaf" style="font-size: 5em;color: green;"></i>
+      <h2 id="welcome">Welcome{{$store.state.token != ''? ", " + $store.state.user.username : " to Sage"}}!</h2>
+>>>>>>> 94dea25d614f2a19da3150ea38a051009ccc08fd
       </div>
       <div >
-        <div class="buttons">
+        <div class="buttons"> 
       <button id="login"  v-if="$store.state.token == ''"><router-link  v-bind:to="{name:'login'}" >Login</router-link></button>
     
-      <button id="explore-button" ><router-link  v-bind:to="{name:'recipes'}" >Explore Recipes</router-link></button>
+      <button id="explore-button" ><router-link  v-bind:to="{name:'explore-recipes'}" >Explore Recipes</router-link></button>
   </div>
 </div>
   <div id="recipeCardContainer">
@@ -72,20 +77,23 @@ export default {
   background: rgb(161, 136, 96);
   color: #fff;
   opacity: 30%;
-  padding: 4%;
+  width: 100vw;
+  padding-top: 4%;
+  padding-bottom: 4%;
+  margin-bottom: 2rem;
 } 
 
 button{
   width:25%;
   height: 10%;;
   font-family: "Montserrat";
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   border: 1px solid rgba(51, 51, 51, 0.527);
-  border-radius: 20px;
+  border-radius: 2px;
   background-color: #81cf81;
   width: 15rem;
   margin: .5rem 0rem;
-  padding: .6rem;
+  padding: .5rem;
 }
 
 button a{

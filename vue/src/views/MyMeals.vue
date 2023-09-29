@@ -1,39 +1,36 @@
 <template>
-  <div>
-    <h3  id="meals-title">My Meals</h3>
-    <div>
-      
-      <div class="borderbox"></div>
-      <p>Search by Tag:
-        <tagSelectBox/> </p>
-    </div>
+  <div class="explore">
+    <h3>My Meals</h3>
+    <div class="borderbox"></div>
   </div>
 </template>
 
 <script>
-import tagSelectBox from '../components/tagSelectBox.vue';
-
 export default {
-  components: {
-    tagSelectBox
-  }
+  name: "My-Meals",
+  components: {},
 };
 </script>
 
-<style>
-
-
-h3{
-text-align: center;
-font-size: 2.5rem
-;
+<style scoped>
+h3 {
+  text-align: center;
+  text-decoration: none;
+  font-size: 2.5rem;
 }
 
-.borderbox{
+.borderbox {
   width: 50%;
   position: relative;
- left: 25%;
+  left: 25%;
 }
 
-
+.cardsContainer {
+  margin: 2rem;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  justify-content: center;
+}
 </style>

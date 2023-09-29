@@ -1,7 +1,10 @@
 <template>
-  <div class="body">
+  <div class="cardBody">
     <div class="name-img-container">
-      <router-link v-bind:to="{name:'recipe', params:{id:recipe.recipeId}}"><img :src="recipe.imgUrl" class="image-fit" /></router-link>
+      <router-link
+        v-bind:to="{ name: 'recipe', params: { id: recipe.recipeId } }"
+        ><img :src="recipe.imgUrl" class="image-fit"
+      /></router-link>
       <div class="title-servings-combo">
         <h3>
           <router-link
@@ -9,16 +12,21 @@
             >{{ recipe.recipeName }}</router-link
           >
         </h3>
-        <h3 v-on:click.prevent="pleaseLogin"><router-link v-bind:to="{name:'recipe', params:{id:recipe.recipeId}}">{{recipe.recipeName }}</router-link></h3>
+        <h3 v-on:click.prevent="pleaseLogin">
+          <router-link
+            v-bind:to="{ name: 'recipe', params: { id: recipe.recipeId } }"
+            >{{ recipe.recipeName }}</router-link
+          >
+        </h3>
         <div class="borderbox"></div>
-    
-          <div class="description">
-            <p>{{ recipe.description }}</p>
-         </div>
-          <div class="servings">
-            Serving Size: {{ recipe.servingSize }} | Total Time:
-            {{ recipe.servingSize }}
- 
+
+        <div class="description">
+          <p>{{ recipe.description }}</p>
+        </div>
+
+        <div class="servings">
+          Serving Size: {{ recipe.servingSize }} | Total Time:
+          {{ recipe.servingSize }}
         </div>
       </div>
     </div>
@@ -28,38 +36,52 @@
 <script>
 export default {
   name: "recipeCard",
-  props: {recipe:Object}, 
-  methods:{
-    pleaseLogin(){
-      if(this.$store.state.token ===''){
+  props: { recipe: Object },
+  methods: {
+    pleaseLogin() {
+      if (this.$store.state.token === "") {
         this.$router.push("/login");
       }
-      
-    }
-  }
-
+    },
+  },
 };
 </script>
 
 <style scoped>
+.cardBody {
+  will-change: transform, opacity;
+
+  filter: saturate(1);
+  transition: all ease-in-out 2s;
+}
 .image-fit {
-   border: 3px solid rgba(158, 125, 125, 0.747);
+  border: 2px solid rgba(158, 125, 125, 0.747);
   height: 30rem;
   width: 20rem;
   object-fit: cover;
-  border-radius: 15px;
+  border-radius: 6px;
   margin: 1rem 2rem;
+  
 }
 
 .name-img-container {
   position: relative;
 }
 
+.name-img-container:hover {
+  will-change: transform, opacity;
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  transform: scale(1.1);
+  filter: saturate(1.2);
+  transition: all ease-in-out 0.5s;
+}
+
 .title-servings-combo {
   position: absolute;
   top: 67%;
-  left: 35px;
-  border-radius:0px 0px 3px 3px;
+  left: 34px;
+  border-radius: 0px 0px 3px 3px;
   width: 20rem;
   height: 8rem;
   object-fit: contain;
@@ -68,11 +90,16 @@ export default {
 }
 .title-servings-combo a {
   color: #333;
+  text-decoration: none;
 }
 .borderbox {
   top: 30px;
   border-bottom: 7px solid #55695659;
-  margin: 3px 0px;
+  margin: 10px 0px;
+  position: relative;
+  left: 0;
+
+  width: 30rem;
 }
 
 h3 {
@@ -85,10 +112,9 @@ h3 {
 .description {
   position: absolute;
   padding: 2%;
-   margin-top: 0px;
-   top: 20%;
+  margin-top: 0px;
+  top: 20%;
   object-fit: contain;
-  
 }
 
 .servings {
@@ -97,6 +123,6 @@ h3 {
   position: absolute;
   right: 3%;
   top: 80%;
-  
 }
+
 </style>
