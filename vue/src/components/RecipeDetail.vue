@@ -51,6 +51,7 @@
           {{ step }}
         </li>
       </ol>
+      {{recipe.steps}}
     </div>
     <!-- v-on:click="addToLibrary" v-if="recipes.recipeId.includes(recipe.recipeId)" -->
     <button>Add to My Recipes</button>
