@@ -55,6 +55,7 @@ z-index: 1;
   
 }
 #app{
+  padding-top: 7rem;
   background-image: url('https://img.freepik.com/free-photo/cream-canvas-textured-background-beige-minimal-design_53876-160754.jpg?w=996&t=st=1695935379~exp=1695935979~hmac=a0470e262b41f6a2915a9ffac22c8d9aadbc2cca6150b1a0d6bba519287344e1');
   /* background-image: url('https://img.freepik.com/premium-photo/abstract-white-background-text-paper-page-texture_84485-2550.jpg?w=740'); */
   background-size: repeat;
