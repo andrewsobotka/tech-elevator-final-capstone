@@ -1,14 +1,15 @@
 <template>
-  <div class="explore">
-    <h3>My Grocery List</h3>
-    <div class="borderbox"></div>
-  </div>
+  <div class="grocery">
+    <FoodList/>
+  </div>  
 </template>
 
 <script>
+import FoodList from '../components/FoodList.vue';
+
 export default {
   name: "My-Meals",
-  components: {},
+  components: {FoodList},
 };
 </script>
 

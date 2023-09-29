@@ -13,6 +13,7 @@ import Settings from '../views/Settings.vue'
 import MyRecipes from '../views/MyRecipes.vue'
 import Meals from '../views/MyMeals.vue'
 import EditRecipe from '../views/EditRecipe.vue'
+import EditGroceryList from '../views/EditGroceryList.vue'
 
 Vue.use(Router)
 
@@ -98,7 +99,15 @@ const router = new Router({
       name: "grocery-list",
       component: GroceryList,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/grocery-list/edit",
+      name: "edit-grocery-list",
+      component: EditGroceryList,
+      meta: {
+        requiresAuth: true
       }
     },
     {
