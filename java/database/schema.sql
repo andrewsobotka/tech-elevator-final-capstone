@@ -149,4 +149,20 @@ ALTER TABLE users_meals
     FOREIGN KEY (meal_id)
     REFERENCES meals (meal_id);
 
+-- Joining users on recipes
+DROP TABLE IF EXISTS users_ingredients CASCADE;
+CREATE TABLE users_ingredients (
+    user_id int NOT NULL,
+    ingredient_id int NOT NULL,
+    is_completed boolean
+);
+ALTER TABLE users_ingredients
+    ADD CONSTRAINT "fk_user_ingredients_id"
+    FOREIGN KEY (user_id)
+    REFERENCES users (user_id);
+ALTER TABLE users_ingredients
+    ADD CONSTRAINT "fk_ingredients_user_id"
+    FOREIGN KEY (ingredient_id)
+    REFERENCES ingredients (ingredient_id);
+
 COMMIT TRANSACTION;

@@ -34,4 +34,7 @@ INSERT INTO ingredients (ingredient) VALUES ('14 oz cheese');
 --Links cheese to pizza
 INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (1, 1);
 
+-- Adding Cheese to users Grocery List
+INSERT INTO users_ingredients (user_id, ingredient_id, is_completed) VALUES (1, 1, false);
+
 COMMIT TRANSACTION;
