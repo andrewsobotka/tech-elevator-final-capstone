@@ -44,7 +44,7 @@ INSERT INTO users_ingredients (user_id, ingredient_id, is_completed) VALUES (1, 
 -- Adding 3 Steps to Pizza
 INSERT INTO steps (rank, instruction) VALUES (1, 'Preheat Oven to 400 Degrees');
 INSERT INTO steps (rank, instruction) VALUES (2, 'Roll Dough');
-INSERT INTO steps (rank, instruction) VALUES (2, E'Don\'t eat the raw dough.');
+INSERT INTO steps (rank, instruction) VALUES (3, E'Don\'t eat the raw dough.');
 
 -- Add Steps to Pizza
 INSERT INTO steps_recipes (step_id, recipe_id) VALUES (1,1);
