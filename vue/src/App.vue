@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-    <div id="nav">
+    <div id="nav" class="navLayer">
       <NavigationMenu/>   
        
     </div>
-    <router-view />
+    <router-view class='appLayer'/>
     <TheFooter/>  
   </div>
 </template>
@@ -35,6 +35,14 @@ export default {
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@0,300;1,300&family=Caprasimo&family=DM+Sans:opsz,wght@9..40,200;9..40,300;9..40,500&family=Lexend:wght@200;300&family=Montserrat:wght@300;400&display=swap');
 
+.appLayer{
+z-index: 1;
+}
+
+.navLayer{
+  z-index: 10;
+}
+
 *{
   top: 0px;
   left: 0px;
@@ -55,8 +63,6 @@ export default {
 
  
 }
-
-
 
 
 </style>
