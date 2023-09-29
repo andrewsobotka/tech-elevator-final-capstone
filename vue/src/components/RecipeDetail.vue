@@ -82,6 +82,7 @@
           eaque, recusandae, corporis quibusdam sequi incidunt ex?
         </li>
       </ol>
+      {{recipe.steps}}
     </div>
   </div>
 </template>

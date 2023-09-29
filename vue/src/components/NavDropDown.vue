@@ -12,10 +12,10 @@
             {{ page.label }}
           </router-link>
         </li>
-         <li v-if="isLoggedIn">
+         <li v-if="$store.state.token != ''">
           <router-link to="/logout">Logout</router-link>
         </li>
-        <li v-else>
+        <li v-if="$store.state.token == ''">
           <router-link to="/login">Log In</router-link>
         </li>
       </ul>
@@ -31,7 +31,7 @@ export default {
       selectedPage: null,
       pages: [
         { label: "Home", name: "home" },
-        { label: "Explore Recipes", name: "recipes" },
+        { label: "Explore Recipes", name: "explore-recipes" },
         { label: "My Recipes", name: "my-recipes" },
         { label: "Grocery List", name: "grocery-list" },
         { label: "My Meals", name: "my-meals" },

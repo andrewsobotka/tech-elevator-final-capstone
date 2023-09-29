@@ -3,8 +3,9 @@
     <div id="top">
 
       <!-- Added Font Awesome Icon-->
-      <i class="fa-solid fa-leaf" style="font-size: 5em;color: green;"></i>
-      <h2 id="welcome">Welcome{{$store.state.token != ''? ", " + $store.state.user.username : " to Sage"}}!</h2>
+      <i class="fa-solid fa-leaf" style="font-size: 1.5em;color: green;"></i>
+      
+      <h2 id="welcome">Welcome{{$store.state.token != ''? ", " + $store.state.user.username : "to Sage"}}!</h2>
       </div>
       <div >
         <div class="buttons"> 
@@ -97,6 +98,7 @@ button a{
 button:nth-child(odd){
   color:  #90af90;
   background: rgba(70, 139, 45, 0.849);
+  text-decoration: none;
   
 }
 button:hover{
@@ -108,9 +110,6 @@ button:hover{
   display: flex;
   justify-content: center;
 }
-
-
-
 
 
 </style>
