@@ -30,7 +30,7 @@ public class  RecipeController {
     @GetMapping("/recipes/{recipeId}")
     public Recipe getRecipeById(@PathVariable int recipeId){    //retrieving recipe tags by recipeId
 
-        return recipeService.getRecipeTags(recipeId);           //calling the recipe service
+        return recipeService.getRecipe(recipeId);           //calling the recipe service
 
     }
 
