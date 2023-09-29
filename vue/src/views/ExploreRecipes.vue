@@ -56,6 +56,10 @@ h3 {
   justify-content: center;
 }
 
+input{
+  background: #fff;
+  border: 1px #333 solid;
+}
 #search{
   display: flex;
   justify-content: center;

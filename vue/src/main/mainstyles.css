@@ -63,53 +63,7 @@ body {
   p {
   }
   
-  /* ingredients listing */
-  .ingredients {
-    font-size: 1rem;
-    position: relative;
-    font-family: "Montserrat", sans-serif;
-    max-width: 80%;
-    flex-grow: 200;
-  }
-
-  /* button for seeing step by step instructions */
   
-  .steps-btn {
-    font-family: "Montserrat", sans-serif;
-    background: rgb(57, 82, 76);
-    color: #fff;
-    border-radius: 30px;
-    border: 1px solid #333;
-    max-width: 40rem;
-    max-height: 3rem;
-    font-size: 1rem;
-    padding: 1.4%;
-    float: right;
-    margin: 0rem 0rem;
-    position: relative;
-    bottom: 0px;
-    cursor: pointer;
-    transition: ease-in 0.4s;
-  }
-  
-  .steps-btn:hover {
-    background: #893410;
-    /* background-image: url('https://t4.ftcdn.net/jpg/02/87/02/71/240_F_287027124_R2xwyI2l2ncGKFqy6JF3Izaue1xEWfMn.jpg'); */
-    transition: ease-out 0.3s;
-  }
-  
-
-  /* instructions properties textwise */
-  .instructions {
-    font-size: 0.9rem;
-    padding-right: 1.3rem;
-    line-height: 2rem;
-    font-family: "Lexend", sans-serif;
-  }
-  
-  .instructions ol li:nth-child(odd) {
-    color: rgb(170, 84, 84);
-  }
 
   /* scrollbar properties */
   ::-webkit-scrollbar {

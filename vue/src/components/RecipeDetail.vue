@@ -1,179 +1,225 @@
 <template>
   <div class="container">
     <h3>
-      {{ recipe.recipeName }}
+      Recipe Name
+      <!-- {{recipe.name}} -->
     </h3>
 
-    <div class="borderbox"></div>
+    <section class="servings">
+      <!-- {{recipe.servingsize}} | {{recipe.cookTime}} | {{recipe.etc}}  -->
 
-    <div class="desc-serve">
-      <section class="description">
-        <p>
-          {{ recipe.recipeDescription }}
-        </p>
-      </section>
+      3 servings | prep time: 30 min | total time: 1 hour
+    </section>
 
-      <section class="servings">
-        Serving Size: {{ recipe.servingSize }} | Created By:
-        {{ recipe.creatorUsername }}
-      </section>
-    </div>
-
+    <section class="description">
+    <p>
+    
+      <!-- {{recipe.description}} -->
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae iusto
+      aspernatur dolorem dolores? Distinctio, assumenda omnis! Aut magnam
+      laborum vel.
+    </p>
+</section>
     <div class="ingredients-img-container">
       <div class="ingredients">
         <!-- where ID = XYZ v-for Data.Ingredients -->
-        <h4>Ingredients</h4>
         <ul>
-          <li
-            v-for="(ingredient, index) in recipe.ingredients"
-            v-bind:key="index"
-            class="ingredient"
-          >
-            {{ ingredient }}
-          </li>
+          <li class="ingredient">13 seashells</li>
+          <li class="ingredient">2 friends</li>
+          <li class="ingredient">1/4 tbs green tea</li>
+          <li class="ingredient">13 small rocks</li>
+          <li class="ingredient">1lb sugar</li>
+          <li class="ingredient">2 turtles</li>
+          <li class="ingredient">1/4 tbs green tea</li>
+          
+          <li class="ingredient">13 small rocks</li>
+          <li class="ingredient">1lb flour</li>
+          <li class="ingredient">2 friends</li>
+          <li class="ingredient">1/4 tbs green tea</li>
+          <li class="ingredient">13 small rocks</li>
+          <li class="ingredient">1lb sugar</li>
         </ul>
       </div>
-      <img :src="recipe.imgUrl" class="detail-img" />
+
+      <div class="recipeImage">
+        <!-- {{recipe.imgUrl}} -->
+
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_xdKg2OssMWPE-SqkgOduIZDcEykLm6N6_hdmsJfl&s"
+        />
+      </div>
     </div>
 
-    <div class="instructions">
-      <button class="steps-btn">
-        Click Here to Follow the Instructions Step by Step
-      </button>
-      <h2>Instructions:</h2>
+    <button class="steps-btn">
+      Click Here to Follow the Instructions Step by Step
+    </button>
 
+    <div class="instructions">
+      <h2>Instructions:</h2>
       <ol>
-        <li
-          class="steps"
-          v-for="(step, index) in recipe.steps"
-          v-bind:key="index"
-        >
-          {{ step }}
+        <li class="steps">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore,
+          dolores!
+        </li>
+        <li class="steps">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex iusto,
+          magnam aut iste amet rerum.
+        </li>
+        <li class="steps">Lorem, ipsum dolor. Lorem ipsum dolor sit amet.</li>
+        <li class="steps">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed optio
+          enim velit accusantium quo, magnam neque aut tempore omnis amet
+          necessitatibus provident, maxime dicta? Eos aliquid provident, iste
+          quos quam corrupti harum ducimus temporibus? Quam perferendis nobis
+          architecto nulla! Quis, quisquam totam cupiditate quos quae nobis eius
+          eos provident voluptatum, fugit dignissimos delectus dolorum quam
+          itaque aperiam distinctio culpa perferendis?
+        </li>
+
+        <li class="steps">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur,
+          provident quasi asperiores laborum odit ducimus quod explicabo aliquid
+          eaque, recusandae, corporis quibusdam sequi incidunt ex?
         </li>
       </ol>
     </div>
-    <!-- v-on:click="addToLibrary" v-if="recipes.recipeId.includes(recipe.recipeId)" -->
-    <button>Add to My Recipes</button>
-    <!-- //this is just here so I can check the edit link 
-
-    v-if="recipe.creatorUserName===$store.state.user.username"
-    
-    -->
-    <router-link v-bind:to="{name:'edit-recipe', params:{id:recipe.recipeId}}"><button>Edit Recipe</button></router-link>
-
-    
-    
   </div>
 </template>
 
 <script>
 export default {
   name: "recipeDetail",
-  props: {
-    recipe: Object,
-  },
-  methods:{
-    addToLibrary(){
-
-    }
-  }
+  props: {},
+  components: {},
 };
 </script>
+
 <style scoped>
+/*
+font-family: 'Averia Serif Libre', cursive;
+font-family: 'Caprasimo', cursive;
+font-family: 'DM Sans', sans-serif;
+font-family: 'Lexend', sans-serif;
+font-family: 'Montserrat', sans-serif;
+*/
+
 .container {
   overflow: auto;
-  background: rgba(255, 255, 255, 0.808);
-  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 20px;
   border: 1px #333 solid;
-  padding: 0rem 2.5rem;
-  width: 300rem;
-  height: 70vh;
+  padding: 1.3rem;
+  width:70vw;
+  max-width: 60rem;
+  height: 90vh;
   margin: 1rem 2rem;
-  overflow-y: auto;
-  padding-bottom: 3rem;
+  overflow-y: scroll;
+padding-bottom: 5rem;
+}
+h2 {
+  font-size: 1.4rem;
+   width: 100%;
+
+ border-bottom: 3px solid #444;
+}
+h3 {
+  font-family: "Averia Serif Libre", cursive;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+  padding-bottom: 0.3rem;
+  font-size: 1.5rem;
+  border-bottom: 10px solid #55695659;
+}
+.servings {
+  position: relative;
+  text-align: right;
+  font-family: "Montserrat";
+  color: #555;
+  font-size: 0.8em;
+  margin-top: -1rem;
 }
 
+.description{
+  text-align: justify;
+  padding: 0rem .5rem;
+font-family: 'DM Sans', sans-serif;
+font-weight: 300;
+}
+p {
+
+}
+
+.ingredients {
+  font-size: 1rem;
+  font-family: "Montserrat", sans-serif;
+  overflow: none;
+  width: 15rem;
+}
 .ingredients-img-container {
   position: relative;
-  display: flex;
-  padding-bottom: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding-bottom: 1rem;
+}
+.recipeImage img {
+  width: auto;
+  padding-top: 10px;
+  height: 100%;
+  max-height: 260px;
+
 }
 
-.instructions li {
-  font-size: 1.2rem;
+.steps-btn {
+  font-family: "Montserrat", sans-serif;
+  background: rgb(57, 82, 76);
+  color: #fff;
+  border-radius: 30px;
+  border: 1px solid #333;
+  font-size: 1rem;
+  padding: 1.4%;
+  float: right;
+  margin: 0rem 0rem;
+  transition: ease-in .4s;
 }
 
-.borderbox {
-  position: relative;
-  left: 0;
+.steps-btn:hover {
+  background: #883410;
+  /* background-image: url('https://t4.ftcdn.net/jpg/02/87/02/71/240_F_287027124_R2xwyI2l2ncGKFqy6JF3Izaue1xEWfMn.jpg'); */
+  transition: ease-out .3s;
 }
 
-  .ingredients-img-container {
-    position: relative;
-    display: flex;
-    padding-bottom: 1.5rem;
-  }
- 
-  .instructions li {
-    font-size: 1.2rem;
-  }
+.instructions {
+  font-size: .9rem;
+  padding-right: 1.3rem;
+  line-height: 2rem;
+font-family: 'Lexend', sans-serif;
 
-  .desc-serve {
-    display: flex;
-  }
-
-
-.desc-serve {
-  display: flex;
 }
 
-/* image properties for WITHIN Recipe */
-.detail-img {
-  position: relative;
-  width: 50vw;
-  max-height: 30vh;
-  object-fit: cover;
-  margin-left: 3rem;
+.instructions ol li:nth-child(odd) {
+  color: rgb(170, 84, 84);
+}
+::-webkit-scrollbar {
+  width: 10px;
+  scroll-padding-right: 3rem;
 }
 
-@media only screen and (width < 780px) {
-  .borderbox {
-    position: relative;
-    margin-top: 0%;
-  }
-
-  .detail-img {
-    width: auto;
-    height: 30vh;
-    position: relative;
-    margin-left: 0px;
-  }
-  .ingredients-img-container {
-    display: flex;
-    flex-direction: column-reverse;
-  }
-
-  .steps-btn {
-    padding: 3%;
-    font-size: 1rem;
-    margin-bottom: 3rem;
-    text-align: center;
-  }
-
-  h3,
-  h2 {
-    font-size: 2rem;
-    margin-bottom: 0.2rem;
-  }
-  .servings {
-    margin: 3px 0px;
-  }
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgb(224, 222, 207);
 }
 
-@media only screen and (width > 780px) {
-  .container{
-    width:60%;
-  }
-  
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #304b39e7;
+  border-radius: 5px;
+  scroll-padding-right: auto;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(111, 187, 130);
 }
 </style>
