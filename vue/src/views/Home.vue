@@ -1,6 +1,9 @@
 <template>
   <div class="home title-servings-combo">
     <div id="top">
+
+      <!-- Added Font Awesome Icon-->
+      <i class="fa-solid fa-leaf" style="font-size: 5em;color: green;"></i>
       <h2 id="welcome" >Welcome{{$store.state.token != ''? ", " + $store.state.user.username : " to Sage"}}!</h2>
       </div>
       <div >
