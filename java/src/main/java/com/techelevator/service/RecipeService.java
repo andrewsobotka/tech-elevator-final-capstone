@@ -2,6 +2,7 @@ package com.techelevator.service;
 
 import com.techelevator.dao.RecipeDao;
 import com.techelevator.dao.TagDao;
+import com.techelevator.model.Ingredient;
 import com.techelevator.model.Recipe;
 import com.techelevator.model.Tag;
 import org.springframework.stereotype.Component;
@@ -28,9 +29,9 @@ public class RecipeService {
         return recipeImportService.importFromUrl(url);
     }
 
-    public Recipe getRecipe(int recipe_id) {
-        Recipe recipe = recipeDao.getRecipeByRecipeId(recipe_id);       //get recipes
-        List<Tag> tags = tagDao.getTagsByRecipeId(recipe_id);        //get tags now...
+    public Recipe getRecipeTags(int recipe_id) {
+        Recipe recipe = recipeDao.getRecipeByRecipeId(recipe_id);       //get recipe by recipeId
+        List<Tag> tags = tagDao.getTagsByRecipeId(recipe_id);        //then get their tags now...
         recipe.setTags(tags);
         //DO THIS FOR STEPS, INGREDIENTS
 //        List<Tag> tags = recipeDao.getTagsByRecipeId(recipe_id);
@@ -38,6 +39,15 @@ public class RecipeService {
         return recipe;
     }
 
+    public List<Recipe> getRecipesByIngredient (String ingredient) {
+        List<Recipe> recipes = recipeDao.getRecipesByIngredient(ingredient);
+        return recipes;
+    }
 
+//TODO: CREATE A SERVICE FOR RETRIEVING RECIPES BY INGREDIENT
+    //List<Ingredient> ingredients = ingredientDao.getTagsByRecipeId(recipe_id);
+    //ingredient.setTags(tags);
+
+//TODO: CREATE A SERVICE FOR RETRIEVING A RECIPE BY STEPS
 
 }

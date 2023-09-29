@@ -16,5 +16,7 @@ public interface RecipeDao {
 
     List<Recipe> getRecipesByKeyWords(String keywords);
 
+    List<Recipe> getRecipesByIngredient(String ingredient);
+
 
 }

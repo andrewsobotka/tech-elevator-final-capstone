@@ -7,5 +7,6 @@ import java.util.List;
 public interface MealDao {
 
     List<Meal> getListOfMeals();
+    Meal getMealByMealId(int meal_id);
 
 }
