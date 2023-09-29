@@ -42,6 +42,10 @@ export default {
 </script>
 
 <style scoped>
+.body{
+  background-color: transparent;
+}
+
 .image-fit {
    border: 3px solid rgba(158, 125, 125, 0.747);
   height: 30rem;
@@ -49,6 +53,7 @@ export default {
   object-fit: cover;
   border-radius: 15px;
   margin: 1rem 2rem;
+  
 }
 
 .name-img-container {
@@ -68,6 +73,7 @@ export default {
 }
 .title-servings-combo a {
   color: #333;
+  text-decoration: none;
 }
 .borderbox {
   top: 30px;

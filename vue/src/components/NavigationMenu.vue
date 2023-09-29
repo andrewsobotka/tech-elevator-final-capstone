@@ -9,7 +9,7 @@
 
         <div class="navbar">
           <router-link v-bind:to="{ name: 'home' }">Home </router-link>
-          <router-link v-bind:to="{ name: 'recipes' }">
+          <router-link v-bind:to="{ name: 'explore-recipes' }">
             Explore Recipes
           </router-link>
           <router-link
@@ -67,7 +67,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .navigationmenu {
   width: 100%;
   left: 0px;

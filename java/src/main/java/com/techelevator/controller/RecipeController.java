@@ -9,7 +9,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-public class RecipeController {
+public class  RecipeController {
 
     private RecipeDao recipeDao;
 

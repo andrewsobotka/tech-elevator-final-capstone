@@ -4,13 +4,13 @@
 
       <!-- Added Font Awesome Icon-->
       <i class="fa-solid fa-leaf" style="font-size: 5em;color: green;"></i>
-      <h2 id="welcome" >Welcome{{$store.state.token != ''? ", " + $store.state.user.username : " to Sage"}}!</h2>
+      <h2 id="welcome">Welcome{{$store.state.token != ''? ", " + $store.state.user.username : " to Sage"}}!</h2>
       </div>
       <div >
         <div class="buttons">
       <button id="login"  v-if="$store.state.token == ''"><router-link  v-bind:to="{name:'login'}" >Login</router-link></button>
     
-      <button id="explore-button" ><router-link  v-bind:to="{name:'recipes'}" >Explore Recipes</router-link></button>
+      <button id="explore-button" ><router-link  v-bind:to="{name:'explore-recipes'}" >Explore Recipes</router-link></button>
   </div>
 </div>
   <div id="recipeCardContainer">
@@ -72,7 +72,10 @@ export default {
   background: rgb(161, 136, 96);
   color: #fff;
   opacity: 30%;
-  padding: 4%;
+  width: 100vw;
+  padding-top: 4%;
+  padding-bottom: 4%;
+  margin-bottom: 2rem;
 } 
 
 button{
