@@ -5,6 +5,7 @@
         <div class="logo">         
 
           <div class="logo-img">
+            <img src="https://i.imgur.com/q1E063E.png" alt="">
              </div>
           <router-link v-bind:to="{ name: 'home' }">
             Sage
@@ -42,6 +43,15 @@ export default {
 </script>
 
 <style scoped>
+*{
+  
+}
+.logo-img img{
+  width: 4rem;
+  height: 3.5rem;
+  margin: .1rem;
+
+}
 .navigationmenu {
   width: 100%;
   left: 0px;
@@ -90,7 +100,6 @@ font-weight: 200;
 .navbar {
   justify-content: flex-end;
   position: relative;
-  font-family: "Lexend", sans-serif;
   font-size: 1rem;
   transition: ease 3s;
 }
@@ -107,14 +116,19 @@ font-weight: 200;
   font-size: 1rem;
 }
 
+.logo{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .logo a {
   text-decoration: none;
-  font-family: georgia;
+font-family: 'Young Serif', serif;
   font-size: 3rem;
-  font-weight: bold;
-  color: rgb(75, 75, 75);
+  letter-spacing: 1px;
+  color: rgb(15, 92, 21);
   transition: all 0.5s ease;
-  -webkit-text-stroke: 1.2px rgba(33, 63, 41, 0.432);
+  -webkit-text-stroke:1.5px rgba(255, 255, 255, 0.432);
 }
 .logo a:hover {
   letter-spacing: 3px;

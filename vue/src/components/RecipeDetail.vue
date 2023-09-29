@@ -96,13 +96,7 @@ export default {
 </script>
 
 <style scoped>
-/*
-font-family: 'Averia Serif Libre', cursive;
-font-family: 'Caprasimo', cursive;
-font-family: 'DM Sans', sans-serif;
-font-family: 'Lexend', sans-serif;
-font-family: 'Montserrat', sans-serif;
-*/
+
 
 .container {
   overflow: auto;

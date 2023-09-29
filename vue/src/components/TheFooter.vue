@@ -5,7 +5,7 @@
       <div class="footerlinks-container">
         <div class="links">
 
-
+<img src="https://i.imgur.com/q1E063E.png" alt="">
 <h3>Sage</h3>
         </div>
         <div class="links">
