@@ -4,7 +4,7 @@
       <h2 id="welcome" >Welcome{{$store.state.token != ''? ", " + $store.state.user.username : " to Sage"}}!</h2>
       </div>
       <div >
-        <div class="buttons">
+        <div class="buttons"> 
       <button id="login"  v-if="$store.state.token == ''"><router-link  v-bind:to="{name:'login'}" >Login</router-link></button>
     
       <button id="explore-button" ><router-link  v-bind:to="{name:'recipes'}" >Explore Recipes</router-link></button>
@@ -70,6 +70,7 @@ export default {
   color: #fff;
   opacity: 30%;
   padding: 4%;
+  border: none;
 } 
 
 button{

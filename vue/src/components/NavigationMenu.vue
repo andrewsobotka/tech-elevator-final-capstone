@@ -73,6 +73,7 @@ export default {
   left: 0px;
   top: 0px;
   cursor: pointer;
+  border-bottom: 2px solid rgb(39, 109, 54);
 }
 
 .headerbar {
