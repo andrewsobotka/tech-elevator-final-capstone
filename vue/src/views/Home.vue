@@ -3,13 +3,8 @@
     <div id="top">
 
       <!-- Added Font Awesome Icon-->
-<<<<<<< HEAD
-      <!-- <i class="fa-solid fa-leaf" style="font-size: 5em;color: green;"></i> -->
-      <h2 id="welcome" >Welcome{{$store.state.token != ''? ", " + $store.state.user.username : " to Sage"}}!</h2>
-=======
       <i class="fa-solid fa-leaf" style="font-size: 5em;color: green;"></i>
       <h2 id="welcome">Welcome{{$store.state.token != ''? ", " + $store.state.user.username : " to Sage"}}!</h2>
->>>>>>> 94dea25d614f2a19da3150ea38a051009ccc08fd
       </div>
       <div >
         <div class="buttons"> 
