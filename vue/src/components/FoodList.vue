@@ -7,8 +7,8 @@
         <div id = "list-container">
         <ul>
             
-            <li v-for="(item,index) in $store.state.groceryList" v-bind:key="index" v-bind:class=" isChecked(index) ? 'checked':'unchecked'">
-                <input id= "check" type="checkbox" v-bind:key="index" v-bind:value="index"/>
+            <li v-for="(item,index) in $store.state.groceryList" v-bind:key="index" :class="isChecked()?'checked':'unchecked'">
+                <input id= "check" type="checkbox" v-bind:key="index" v-bind:value="index" v-on:click="isChecked()"/>
                 {{item}}
                 
                 <div id = "line"><br></div>
@@ -20,10 +20,8 @@
         </div><br>
         <div id = "button-container-2">
         <div id="button-container">
-        <!-- <button class= "delete-btn" v-on:click="deleteItems">Delete Items</button>
-        <button class= "add-btn" v-on:click="addItem">Add Item</button> -->
-        <button><router-link
-            v-bind:to="{ name: 'edit-grocery-list' }">Edit Grocery List</router-link></button>
+        <router-link
+            v-bind:to="{ name: 'edit-grocery-list' }"><button>Edit Grocery List</button></router-link>
         </div>  
         </div>
     </div>
@@ -49,17 +47,18 @@ export default {
 
       this.indexOfGroceryList = [];
     },
-    isChecked(index){
-        if(this.indexOfGroceryList.includes(index)){
+    isChecked(){
+        if(this.indexOfGroceryList.includes(this.index)){
             return true;
+        }else{
+            return false;
         }
-        return false;
     }
   },
 };
 </script>
 
-<style scoped>
+<style>
 .body{
     background: white;
 }
@@ -120,7 +119,7 @@ div #line {
 #button-container-2{
     display:flex;
     justify-content: center;
-    
+    text-decoration: none;
 
 }
 
@@ -133,9 +132,11 @@ div #line {
 #list-container{
     display: flex;
     justify-content: center;
+    font-family: "Montserrat";
 }
-.add-btn,
-.delete-btn{
-    margin-top:0px;
+
+
+.checked{
+    text-decoration: line-through  ;
 }
 </style>

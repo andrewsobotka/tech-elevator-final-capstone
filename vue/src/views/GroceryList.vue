@@ -25,12 +25,4 @@ h3 {
   left: 25%;
 }
 
-.cardsContainer {
-  margin: 2rem;
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.3rem;
-  justify-content: center;
-}
 </style>
