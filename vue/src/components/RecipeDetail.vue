@@ -3,6 +3,7 @@
     <h3>
       {{ recipe.recipeName }}
     </h3>
+
     <div class="borderbox"></div>
 
     <div class="desc-serve">
@@ -51,6 +52,17 @@
         </li>
       </ol>
     </div>
+    <!-- v-on:click="addToLibrary" v-if="recipes.recipeId.includes(recipe.recipeId)" -->
+    <button>Add to My Recipes</button>
+    <!-- //this is just here so I can check the edit link 
+
+    v-if="recipe.creatorUserName===$store.state.user.username"
+    
+    -->
+    <router-link v-bind:to="{name:'edit-recipe', params:{id:recipe.recipeId}}"><button>Edit Recipe</button></router-link>
+
+    
+    
   </div>
 </template>
 
@@ -60,8 +72,14 @@ export default {
   props: {
     recipe: Object,
   },
+  methods:{
+    addToLibrary(){
+
+    }
+  }
 };
 </script>
+<<<<<<< HEAD
 <style scoped>
 .container {
   overflow: auto;
@@ -91,6 +109,23 @@ export default {
   position: relative;
   left: 0;
 }
+=======
+<style>
+
+  .ingredients-img-container {
+    position: relative;
+    display: flex;
+    padding-bottom: 1.5rem;
+  }
+ 
+  .instructions li {
+    font-size: 1.2rem;
+  }
+
+  .desc-serve {
+    display: flex;
+  }
+>>>>>>> c602a0e77de86b4badcee2666a4c42588e06b231
 
 
 .desc-serve {
@@ -106,7 +141,7 @@ export default {
   margin-left: 3rem;
 }
 
-@media only screen and (max-width: 780px) {
+@media only screen and (width < 780px) {
   .borderbox {
     position: relative;
     margin-top: 0%;
@@ -125,9 +160,10 @@ export default {
 
   .steps-btn {
     padding: 3%;
-    font-size: 13px;
+    font-size: 1.5rem;
     align-content: start;
     margin-bottom: 3rem;
+    text-align: center;
   }
 
   h3,
@@ -138,5 +174,12 @@ export default {
   .servings {
     margin: 3px 0px;
   }
+}
+
+@media only screen and (width > 780px) {
+  .container{
+    width:1000px;
+  }
+  
 }
 </style>

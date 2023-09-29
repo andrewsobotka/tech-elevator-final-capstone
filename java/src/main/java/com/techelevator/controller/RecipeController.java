@@ -21,35 +21,45 @@ public class RecipeController {
     }
 
     @GetMapping("/recipes")
-    public List<Recipe> getRecipes(){
+    public List<Recipe> getRecipes(){               //retrieving all recipes from "main" library
 
-        return recipeDao.getListOfRecipes();
+        return recipeDao.getListOfRecipes();        //calling recipeDao
 
     }
 
     @GetMapping("/recipes/{recipeId}")
-    public Recipe getRecipeById(@PathVariable int recipeId){
+    public Recipe getRecipeById(@PathVariable int recipeId){    //retrieving recipe tags by recipeId
 
-        return recipeService.getRecipe(recipeId);       //calling the service
+        return recipeService.getRecipeTags(recipeId);           //calling the recipe service
 
     }
 
     @GetMapping("/featured")
-    public List<Recipe> getFeaturedRecipes(@PathVariable int recipeId){
+    public List<Recipe> getFeaturedRecipes(@PathVariable int recipeId){     //retrieving featured recipes
 
-        return recipeDao.getFeaturedRecipesByRecipeId(recipeId);
+        return recipeDao.getFeaturedRecipesByRecipeId(recipeId);            //calling recipeDao
 
     }
 
     @GetMapping("/import")
-    public Recipe getImportedRecipe(@RequestParam String url){
+    public Recipe getImportedRecipe(@RequestParam String url){              //retrieving imported recipe
 
-        return recipeService.importRecipe(url);
+        return recipeService.importRecipe(url);                             //calling the recipe service
 
     }
 
-    //TODO: Create keywords endpoint
+    @GetMapping("/keywords")
+    public List<Recipe> getRecipesByKeywords(@RequestParam String keywords){        //retrieving list of recipes
 
-    //TODO: Create tags endpoint
+        return recipeDao.getRecipesByKeyWords(keywords);
+
+    }
+
+    @GetMapping("/ingredients")
+    public List<Recipe> getRecipesByIngredient(@RequestParam String ingredient){
+
+        return recipeService.getRecipesByIngredient(ingredient);            //calling the recipe service
+
+    }
 
 }

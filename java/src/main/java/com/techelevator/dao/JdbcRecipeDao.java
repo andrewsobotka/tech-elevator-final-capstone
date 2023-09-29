@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.exception.DaoException;
+import com.techelevator.model.Ingredient;
 import com.techelevator.model.Recipe;
 import com.techelevator.model.Tag;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -75,9 +76,9 @@ public class JdbcRecipeDao implements RecipeDao {
     public List<Recipe> getRecipesByKeyWords(String keywords) {           //Display Recipes from user input keywords
 
         List<Recipe> recipes = new ArrayList<>();
-        String sql = "select * from recipes where keywords ILIKE ? ";
+        String sql = "select * from recipes where keywords ILIKE ?";
 
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, keywords);
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, '%'+keywords+'%');
         while (results.next()) {
             Recipe recipe = mapRowToRecipe(results);
             recipes.add(recipe);
@@ -85,6 +86,24 @@ public class JdbcRecipeDao implements RecipeDao {
 
         return recipes;
 
+    }
+
+    @Override
+    public List<Recipe> getRecipesByIngredient(String ingredient) {
+
+        List<Recipe> recipes = new ArrayList<>();
+        String sql = "select * from recipes " +
+                "join ingredients_recipes on recipes.recipe_id = ingredients_recipes.recipe_id " +
+                "join ingredients on ingredients_recipes.ingredient_id = ingredients.ingredient_id " +
+                "where ingredient ILIKE ?";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, '%'+ingredient+'%');
+        while (results.next()) {
+            Recipe recipe = mapRowToRecipe(results);
+            recipes.add(recipe);
+        }
+
+        return recipes;
     }
 
     private Recipe mapRowToRecipe(SqlRowSet rs) {

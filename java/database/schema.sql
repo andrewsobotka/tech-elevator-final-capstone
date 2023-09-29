@@ -32,7 +32,6 @@ DROP TABLE IF EXISTS ingredients CASCADE;
 CREATE TABLE ingredients (
     ingredient_id SERIAL,
     ingredient text,
-    quantity text,
     CONSTRAINT PK_ingredient PRIMARY KEY (ingredient_id)
 );
 -- Steps Table
