@@ -52,8 +52,13 @@ footer a {
   font-size: 1.3rem;
   font-family: "Averia Serif Libre", cursive;
   margin: 3px;
+  text-align: left;
 }
 
+footer a:hover{
+  color: rgb(145, 194, 113);
+  transform: scale(1.03);
+}
 div {
   position: relative;
   margin-top: 30px;

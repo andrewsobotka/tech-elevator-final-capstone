@@ -3,7 +3,7 @@
     <div id="top">
 
       <!-- Added Font Awesome Icon-->
-      <i class="fa-solid fa-leaf" style="font-size: 5em;color: green;"></i>
+      <!-- <i class="fa-solid fa-leaf" style="font-size: 5em;color: green;"></i> -->
       <h2 id="welcome" >Welcome{{$store.state.token != ''? ", " + $store.state.user.username : " to Sage"}}!</h2>
       </div>
       <div >
@@ -68,25 +68,24 @@ export default {
 
 #welcome{
   text-align: center;
-  font-size: 5rem;
-  background: rgb(161, 136, 96);
-  color: #fff;
-  opacity: 30%;
-  padding: 4%;
+  font-size: 3rem;
+  color: rgb(12, 2, 2);
   border: none;
+  text-align: left;
+  padding: 0rem 2rem;
 } 
 
 button{
   width:25%;
   height: 10%;;
   font-family: "Montserrat";
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   border: 1px solid rgba(51, 51, 51, 0.527);
-  border-radius: 20px;
+  border-radius: 2px;
   background-color: #81cf81;
   width: 15rem;
   margin: .5rem 0rem;
-  padding: .6rem;
+  padding: .5rem;
 }
 
 button a{
