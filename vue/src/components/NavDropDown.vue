@@ -2,18 +2,23 @@
 <template>
   <div class="navigation-menu">
     <button @click="toggleDropdown">
-      {{ selectedPage ? selectedPage.label : 'Menu' }}
-      </button>
+      {{ selectedPage ? selectedPage.label : "Menu" }}
+    </button>
 
     <div class="overlay">
-    <ul v-if="isDropdownOpen" class="overlay-content">
-      <li v-for="page in pages" :key="page.name">
-        <router-link :to="{ name: page.name }" 
-        @click="closeDropdown">
-        {{ page.label }}
-        </router-link>
-      </li>
-    </ul>
+      <ul v-if="isDropdownOpen" class="overlay-content">
+        <li v-for="page in pages" :key="page.name">
+          <router-link :to="{ name: page.name }" @click="closeDropdown">
+            {{ page.label }}
+          </router-link>
+        </li>
+         <li v-if="isLoggedIn">
+          <router-link to="/logout">Logout</router-link>
+        </li>
+        <li v-else>
+          <router-link to="/login">Log In</router-link>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -25,9 +30,12 @@ export default {
       isDropdownOpen: false,
       selectedPage: null,
       pages: [
-        { label: 'Home', name: 'home' },
-        { label: 'Explore Recipes', name: 'recipes' },
-        { label: 'My Recipes', name: 'my-recipes' },
+        { label: "Home", name: "home" },
+        { label: "Explore Recipes", name: "recipes" },
+        { label: "My Recipes", name: "my-recipes" },
+        { label: "Grocery List", name: "grocery-list" },
+        { label: "My Meals", name: "my-meals" },
+
         // Add more pages as needed
       ],
     };
@@ -50,12 +58,13 @@ export default {
 }
 
 .overlay {
-    height: 100%;
-      width: 0;
-      position: fixed;
-      z-index: 1;
-      top: 0;
-  }
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+
+  top: 0;
+}
 
 .overlay-content {
   position: relative;
@@ -65,36 +74,50 @@ export default {
   margin-top: 30px;
 }
 
-
 ul {
   list-style-type: none;
   padding: 0;
-  top: 100%;
-  left: 0;
-  background-color: #fff;
+ 
+  left: -1rem;
+
+border-radius: 3px;
+  filter: blur(30%);
   border: 1px solid #ccc;
   z-index: 13;
 }
 
-button{
+ul a {
+  font-family: "Montserrat";
+  color: #333;
+  font-weight: bold;
+  text-decoration: none;
+}
+button {
   border-radius: 0;
-  border: .4px solid #555;
-  padding: .6rem 1.4rem; 
-  transition: ease .8s;
+  border: 0.4px solid rgb(255, 255, 255);
+  padding: 0.6rem 3rem;
+  transition: ease 0.8s;
   background-color: rgb(43, 143, 39);
 }
-button:hover{
-  color:rgb(255, 255, 255);
+button:hover {
+  color: rgb(255, 255, 255);
   background-color: rgb(12, 68, 5);
 }
 li {
+  position: relative;
   padding: 10px;
   border-bottom: 1px solid #ccc;
   width: 150px;
-  background-color: gray;
+  background-color: rgb(255, 255, 255);
+  align-items: center;
+
 }
 
+li:hover {
+  background: rgb(216, 241, 200);
+transform: scale(1.03);
+}
 li:last-child {
-  border-bottom: none;
+  border-bottom: solid #333 2px;
 }
 </style>

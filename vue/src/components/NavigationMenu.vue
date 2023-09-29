@@ -12,7 +12,7 @@
         </div>
 
         <div class="navbar">
-          <router-link v-bind:to="{ name: 'home' }">Home </router-link>
+          <!-- <router-link v-bind:to="{ name: 'home' }">Home </router-link>
           <router-link v-bind:to="{ name: 'explore-recipes' }">
             Explore Recipes
           </router-link>
@@ -31,17 +31,17 @@
             v-bind:to="{ name: 'meals' }"
             v-if="$store.state.token != ''"
             >My Meals</router-link
-          >
+          > -->
 
-          <!-- <NavDropDown /> -->
+          <NavDropDown class="menu"/>
 
 
-          <router-link
+          <!-- <router-link
             v-bind:to="{ name: 'logout' }"
             v-if="$store.state.token != ''"
             class="logout"
             >Logout</router-link
-          >
+          > -->
         </div>
       </div>
     </div>
@@ -51,11 +51,11 @@
 </template>
 
 <script>
-// import NavDropDown from "./NavDropDown.vue";
+import NavDropDown from "./NavDropDown.vue";
 
 export default {
   components: {
-    //  NavDropDown
+     NavDropDown
       },
 };
 </script>
@@ -66,10 +66,15 @@ export default {
   left: 0px;
   top: 0px;
   cursor: pointer;
+  position: Fixed;
+  z-index: 99;
   border-bottom: 2px solid rgba(56, 68, 58, 0.39);
 }
 
-
+.menu{
+  position: relative;
+  left: -50px;
+}
 
 .headerbar {
   top: 0px;
@@ -95,9 +100,9 @@ a {
 
 .headerbar a {
   margin: 0.4rem;
-    font-family: "Averia Serif Libre", cursive;
+    font-family: 'Montserrat';
 font-size: 1rem;
-font-weight: bold;
+font-weight: 200;
   color: #fff;
 }
 
