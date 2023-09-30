@@ -117,7 +117,7 @@ export default {
 h2{
   text-decoration:none;
   border-bottom: none;
+  background: transparent;
 }
-
 
 </style>
