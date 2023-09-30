@@ -3,8 +3,12 @@ package com.techelevator.controller;
 import com.techelevator.dao.RecipeDao;
 import com.techelevator.model.Recipe;
 import com.techelevator.service.RecipeService;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -26,21 +30,30 @@ public class  RecipeController {
         return recipeDao.getListOfRecipes();        //calling recipeDao
 
     }
+//    @PreAuthorize("isAuthenticated()")
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping("/recipes")
+    public Recipe createNewRecipe(@RequestBody Recipe recipe){
+//TODO: NEED TO GET THE LOGGED IN USER'S ID...USING USER_ID = 1 FOR NOW..........
+
+        return recipeDao.createNewRecipe(recipe);
+
+    }
 
     @GetMapping("/recipes/{recipeId}")
-    public Recipe getRecipeById(@PathVariable int recipeId){    //retrieving recipe tags by recipeId
+    public Recipe getRecipeById(@PathVariable int recipeId){    //retrieving recipe by recipeId
 
         return recipeService.getRecipe(recipeId);           //calling the recipe service
 
     }
 
     @GetMapping("/featured")
-    public List<Recipe> getFeaturedRecipes(@PathVariable int recipeId){     //retrieving featured recipes
+    public List<Recipe> getFeaturedRecipes(@PathVariable int recipeId){     //retrieving featured recipes by recipeId
 
         return recipeDao.getFeaturedRecipesByRecipeId(recipeId);            //calling recipeDao
 
     }
-
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/import")
     public Recipe getImportedRecipe(@RequestParam String url){              //retrieving imported recipe
 
@@ -49,17 +62,19 @@ public class  RecipeController {
     }
 
     @GetMapping("/keywords")
-    public List<Recipe> getRecipesByKeywords(@RequestParam String keywords){        //retrieving list of recipes
+    public List<Recipe> getRecipesByKeywords(@RequestParam String keywords){        //retrieving list of recipes by keywords
 
         return recipeDao.getRecipesByKeyWords(keywords);
 
     }
 
     @GetMapping("/ingredients")
-    public List<Recipe> getRecipesByIngredient(@RequestParam String ingredient){
+    public List<Recipe> getRecipesByIngredient(@RequestParam String ingredient){        //retrieving list of recipes by ingredient
 
         return recipeService.getRecipesByIngredient(ingredient);            //calling the recipe service
 
     }
+
+
 
 }

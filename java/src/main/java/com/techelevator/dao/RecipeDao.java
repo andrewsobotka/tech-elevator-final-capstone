@@ -18,5 +18,6 @@ public interface RecipeDao {
 
     List<Recipe> getRecipesByIngredient(String ingredient);
 
+    Recipe createNewRecipe(Recipe recipe);          //deleted user
 
 }
