@@ -31,7 +31,6 @@
       </div>
 
       <div class="recipeImage">
-        <!-- {{recipe.imgUrl}} -->
 
         <img
           :src="recipe.imgUrl"
@@ -54,6 +53,7 @@
           {{ step.instruction }}
         </li>
       </ol>
+      <router-link v-bind:to="{name:'edit-recipe' ,params:{ id: recipe.recipeId }}"><button>Edit Recipe</button></router-link>
     </div>
   </div>
 </template>
@@ -76,6 +76,7 @@ export default {
   },
   computed:{
     recipe(){
+      
       return this.$store.state.recipe;
     }
   }

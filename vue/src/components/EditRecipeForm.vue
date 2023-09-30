@@ -9,7 +9,7 @@
         <input
           type="text"
           name="recipeName"
-          v-model="newRecipe.recipeName"
+          v-model="editRecipe.recipeName"
           placeholder="ie: Apple Crumble"
         />
       </div>
@@ -19,27 +19,27 @@
         <input
           type="text"
           name="servingSize"
-          v-model="newRecipe.servingSize"
+          v-model="editRecipe.servingSize"
           placeholder="ie: 6"
         />
       </div>
       <br />
       <div class="field">
         <label for="description">Description: </label>
-        <textarea name="description" v-model="newRecipe.recipeDescription" />
+        <textarea name="description" v-model="editRecipe.description" />
       </div>
 
       <div class="ingredientList">
         <label for="ingredient">Ingredients:</label>
         <button class="ingredients-btn">
-          <a v-on:click="newRecipe.ingredients.push('')">Add Ingredient</a>
+          <a v-on:click="editRecipe.ingredients.push('')">Add Ingredient</a>
         </button>
 
         <br />
 
         <ul>
           <li
-            v-for="(ingredient, index) in newRecipe.ingredients"
+            v-for="(ingredient, index) in editRecipe.ingredients"
             v-bind:key="index"
             class="ingredientList"
           >
@@ -51,8 +51,8 @@
                 name="Ingredient"
                 class="ingredients-input"
                 placeholder="ie. Apples"
-                v-model="newRecipe.ingredients[index]"
-                @keyup.enter="newRecipe.ingredients.push('')"
+                v-model="ingredient.ingredient"
+                @keyup.enter="ingredient.ingredient.push('')"
               />
 
               <input
@@ -79,20 +79,20 @@
           <ol>
           <label for="ingredient" class="stepsLabel">Steps:</label>
           <button class="ingredients-btn addSteps-btn">
-            <a v-on:click="newRecipe.steps.push('')">Add Step</a>
+            <a v-on:click="editRecipe.steps.push('')">Add Step</a>
           </button>
           <br />
           <br />
 
-          <li v-for="(step, index) in newRecipe.steps" v-bind:key="index">
+          <li v-for="(step, index) in editRecipe.steps" v-bind:key="index">
             <div class="ingredients-check-group">
 
               <input
                 type="text"
                 class="steps-input"
                 placeholder="ie: Gather Ingredients..."
-                v-model="newRecipe.steps[index]"
-                @keyup.enter="newRecipe.steps.push('')"
+                v-model="step.instruction"
+                @keyup.enter="editRecipe.steps.push('')"
               />
               <input
                 type="checkbox"
@@ -125,7 +125,7 @@
             id="tag"
             v-bind:value="tag"
             v-bind:name="tag"
-            v-model="newRecipe.tags"
+            v-model="editRecipe.tags"
           />
           <label for="tagLabel">{{ tag }}</label>
         </div>
@@ -141,15 +141,16 @@
 </template>
 
 <script>
+import APIService from "../services/APIService.js";
 export default {
   data() {
     return {
       currentValue: 0,
       indexOfSteps: [],
       indexOfIngredients: [],
-      newRecipe: {
-        ingredients: [""],
-        steps: [""],
+      editRecipe: {
+        ingredients: [],
+        steps: [],
         tags: [],
       },
     };
@@ -158,28 +159,39 @@ export default {
     createNewRecipe() {},
     deleteIngredients() {
       let newArray = [];
-      for (let i = 0; i < this.newRecipe.ingredients.length; i++) {
+      for (let i = 0; i < this.editRecipe.ingredients.length; i++) {
         if (!this.indexOfIngredients.includes(i)) {
-          newArray.push(this.newRecipe.ingredients[i]);
+          newArray.push(this.editRecipe.ingredients[i]);
         }
       }
-      this.newRecipe.ingredients = newArray;
+      this.editRecipe.ingredients = newArray;
 
       this.indexOfIngredients = [];
     },
     deleteSteps() {
       let newArray = [];
-      for (let i = 0; i < this.newRecipe.steps.length; i++) {
+      for (let i = 0; i < this.editRecipe.steps.length; i++) {
         if (!this.indexOfSteps.includes(i)) {
-          newArray.push(this.newRecipe.steps[i]);
+          newArray.push(this.editRecipe.steps[i]);
         }
       }
-      this.newRecipe.steps = newArray;
+      this.editRecipe.steps = newArray;
 
       this.indexOfSteps = [];
-    },
+    }
   },
-  computed: {},
+  computed: {
+    recipe(){
+      return this.$store.state.recipe;
+    }
+  },
+  created() {
+    APIService.getRecipe(this.$route.params.id).then((response) => {
+      this.$store.commit("SET_RECIPE", response.data);
+      this.editRecipe = this.$store.state.recipe;
+    });
+    
+  }
 };
 </script>
 
@@ -336,6 +348,10 @@ input[name="servingSize"] {
 li{
     font-family: "Montserrat";
     text-justify: top;
+}
+
+ul{
+  color:#333;
 }
 
 </style>

@@ -27,6 +27,7 @@ export default new Vuex.Store({
       "vegan",
       "dairy-free",
       "keto",
+      "vegetarian",
     ],
     groceryList:["1 carton of milk", "1 carton of eggs", "1 block of parmesan cheese", "5 oranges" ],
     recipe:{},
