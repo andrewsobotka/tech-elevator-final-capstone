@@ -52,19 +52,13 @@ public class RecipeService {
 
         return recipe;
     }
-
     public List<Recipe> getRecipesByIngredient (String ingredient) {
         List<Recipe> recipes = recipeDao.getRecipesByIngredient(ingredient);
         return recipes;
     }
-
-<<<<<<< HEAD
-
-=======
     public Integer createRecipe(Recipe recipe, Principal principal) {
         return recipeDao.createRecipe(recipe, principal);
     }
->>>>>>> bc60f87e77c324969b937eac362c1875f5bbcc07
 
 //TODO: CREATE A SERVICE FOR RETRIEVING A RECIPE BY STEPS
 

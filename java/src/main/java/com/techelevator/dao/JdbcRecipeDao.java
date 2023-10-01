@@ -57,8 +57,12 @@ public class JdbcRecipeDao implements RecipeDao {
     }
 
     @Override
+<<<<<<< HEAD
     public List<Recipe> getFeaturedRecipesByRecipeId(int recipe_id) {           //Display Top3-Featured Recipes
 
+=======
+    public List<Recipe> getFeaturedRecipesByRecipeId() {           //Display Top3-Featured Recipes
+>>>>>>> ec5d030a93e7c4b41fde621b0d87ebd39d2eceec
         List<Recipe> recipes = new ArrayList<>();
         String sql = "select * from recipes where recipe_id = ? ";
 
@@ -106,6 +110,28 @@ public class JdbcRecipeDao implements RecipeDao {
         return recipes;
     }
 
+<<<<<<< HEAD
+=======
+    @Override
+    public Integer createRecipe(Recipe recipe, Principal principal) {
+        // Get the User ID by Username
+        String sql_user_id = "SELECT user_id FROM users " +
+                "WHERE username = ?;";
+        // Create New Recipe
+        String sql_create_recipe = "INSERT INTO recipes (creator_id, recipe_name, image_url, description, serving_size, keywords, is_published, is_featured) " +
+                "VALUES (?,?,?,?,?,?,?,?) " +
+                "RETURNING recipe_id;";
+        Integer recipeId, userId = 0;
+        try {
+            userId = jdbcTemplate.queryForObject(sql_user_id, Integer.class, principal.getName());
+            recipeId = jdbcTemplate.queryForObject(sql_create_recipe, Integer.class, userId, recipe.getRecipeName(), recipe.getImgUrl(), recipe.getDescription(), recipe.getServingSize(), recipe.getKeywords(), recipe.isPublished(), recipe.isFeatured());
+        } catch (DataAccessException e){
+            throw new DataAccessException(e.toString()) {};
+        }
+        return recipeId;
+    }
+
+>>>>>>> ec5d030a93e7c4b41fde621b0d87ebd39d2eceec
     private Recipe mapRowToRecipe(SqlRowSet rs) {
         Recipe recipe = new Recipe();
         recipe.setRecipeId(rs.getInt("recipe_id"));
