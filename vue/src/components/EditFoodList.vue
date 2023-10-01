@@ -25,7 +25,7 @@
               v-model="$store.state.groceryList[index]"
             />
 
-            <div id="line"><br /></div>
+                <div id = "line" v-if="index != $store.state.groceryList.length-1"><br></div>
           </li>
         </ul>
         </form>

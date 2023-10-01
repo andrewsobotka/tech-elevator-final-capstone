@@ -51,7 +51,7 @@
 
         </li>
       </ol>
-      <router-link v-bind:to="{name:'edit-recipe' ,params:{ id: recipe.recipeId }}"><button>Edit Recipe</button></router-link>
+      <router-link v-bind:to="{name:'edit-recipe' ,params:{ id: recipe.recipeId }}" v-if="$store.state.user.id === recipe.creatorId || $store.state.user.authorities[0].name == 'ROLE_ADMIN'"><button>Edit Recipe</button></router-link>
     </div>
   </div>
 </template>
