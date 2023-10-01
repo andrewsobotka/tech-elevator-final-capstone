@@ -19,10 +19,5 @@ public interface RecipeDao {
 
     List<Recipe> getRecipesByIngredient(String ingredient);
 
-<<<<<<< HEAD
-    Recipe createNewRecipe(Recipe recipe);          //deleted user
-
-=======
     Integer createRecipe(Recipe recipe, Principal principal);
->>>>>>> bc60f87e77c324969b937eac362c1875f5bbcc07
 }
