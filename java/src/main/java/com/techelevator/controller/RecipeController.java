@@ -13,28 +13,19 @@ import java.util.List;
 @RestController
 @CrossOrigin
 public class  RecipeController {
-
-    private RecipeDao recipeDao;
-
-    private RecipeService recipeService;
-
+    private final RecipeDao recipeDao;
+    private final RecipeService recipeService;
     public RecipeController(RecipeDao recipeDao, RecipeService recipeService) {
         this.recipeDao = recipeDao;
         this.recipeService = recipeService;
     }
-
     @GetMapping("/recipes")
-    public List<Recipe> getRecipes(){               //retrieving all recipes from "main" library
-
-        return recipeDao.getListOfRecipes();        //calling recipeDao
-
+    public List<Recipe> getRecipes() {
+        return recipeDao.getListOfRecipes();
     }
-
     @GetMapping("/recipes/{recipeId}")
-    public Recipe getRecipeById(@PathVariable int recipeId){    //retrieving recipe tags by recipeId
-
-        return recipeService.getRecipe(recipeId);           //calling the recipe service
-
+    public Recipe getRecipeById(@PathVariable int recipeId) {
+        return recipeService.getRecipe(recipeId);
     }
     @PreAuthorize("isAuthenticated()")
     @ResponseStatus(HttpStatus.CREATED)
@@ -42,33 +33,20 @@ public class  RecipeController {
     public Integer createRecipe(@RequestBody Recipe recipe, Principal principal) {
         return recipeService.createRecipe(recipe, principal);
     }
-
     @GetMapping("/featured")
-    public List<Recipe> getFeaturedRecipes(@PathVariable int recipeId){     //retrieving featured recipes
-
-        return recipeDao.getFeaturedRecipesByRecipeId(recipeId);            //calling recipeDao
-
+    public List<Recipe> getFeaturedRecipes() {
+        return recipeDao.getFeaturedRecipesByRecipeId();
     }
-
     @GetMapping("/import")
-    public Recipe getImportedRecipe(@RequestParam String url){              //retrieving imported recipe
-
-        return recipeService.importRecipe(url);                             //calling the recipe service
-
+    public Recipe getImportedRecipe(@RequestParam String url) {
+        return recipeService.importRecipe(url);
     }
-
     @GetMapping("/keywords")
-    public List<Recipe> getRecipesByKeywords(@RequestParam String keywords){        //retrieving list of recipes
-
+    public List<Recipe> getRecipesByKeywords(@RequestParam String keywords) {
         return recipeDao.getRecipesByKeyWords(keywords);
-
     }
-
     @GetMapping("/ingredients")
-    public List<Recipe> getRecipesByIngredient(@RequestParam String ingredient){
-
-        return recipeService.getRecipesByIngredient(ingredient);            //calling the recipe service
-
+    public List<Recipe> getRecipesByIngredient(@RequestParam String ingredient) {
+        return recipeService.getRecipesByIngredient(ingredient);
     }
-
 }

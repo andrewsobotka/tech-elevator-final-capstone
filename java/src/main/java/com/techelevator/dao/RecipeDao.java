@@ -13,7 +13,7 @@ public interface RecipeDao {
 
     Recipe getRecipeByRecipeId(int recipe_id);
 
-    List<Recipe> getFeaturedRecipesByRecipeId(int recipe_id);
+    List<Recipe> getFeaturedRecipesByRecipeId();
 
     List<Recipe> getRecipesByKeyWords(String keywords);
 
