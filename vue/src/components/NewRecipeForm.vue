@@ -34,7 +34,6 @@
         <button class="ingredients-btn">
           <a v-on:click="newRecipe.ingredients.push('')">Add Ingredient</a>
         </button>
-
         <br />
 
         <ul>
@@ -120,14 +119,15 @@
           v-for="(tag, index) in $store.state.listOfTags"
           v-bind:key="index"
         >
+        
           <input
             type="checkbox"
             id="tag"
-            v-bind:value="tag"
-            v-bind:name="tag"
+            v-bind:value="tag.tag"
+            v-bind:name="tag.tag"
             v-model="newRecipe.tags"
           />
-          <label for="tagLabel">{{ tag }}</label>
+        <label for="tag">{{ tag.tag }}</label>
         </div>
       </div>
 

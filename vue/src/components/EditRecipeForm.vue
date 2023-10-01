@@ -1,5 +1,7 @@
 <template>
   <div class="container">
+
+    {{selectCheckBox}}
     <form id="addNewRecipe" v-on:submit.prevent="createNewRecipe">
       <div>
         <h3>Edit Recipe</h3>
@@ -127,7 +129,7 @@
             v-bind:name="tag"
             v-model="editRecipe.tags"
           />
-          <label for="tagLabel">{{ tag }}</label>
+          <label for="tagLabel">{{ tag.tag }}</label>
         </div>
       </div>
 
