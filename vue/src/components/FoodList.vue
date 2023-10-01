@@ -11,7 +11,7 @@
                 <input id= "check" type="checkbox" v-bind:key="index" v-bind:value="index" v-on:click="isChecked()"/>
                 {{item}}
                 
-                <div id = "line"><br></div>
+                <div id = "line" v-if="index != $store.state.groceryList.length-1"><br></div>
                 
             </li>
             

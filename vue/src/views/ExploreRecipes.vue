@@ -3,9 +3,10 @@
     <h3>Explore Recipes</h3>
     <div class="borderbox"></div>
     <div id = "search">
-       <input type="text" placeholder="Search by keyword..." id = "searchbox">
-       <button id="search-button">Search</button>
+       <input type="text" placeholder="Search by keyword..." id = "searchbox" v-model="search"/>
+       <router-link v-bind:to="{ name: 'search', params:{keyword:search}}"><button id="search-button" v-on:click="setKeyword">Search</button></router-link>
       </div>
+      
       <div id="tags-filter">
         <button>Tags</button>
       </div>
@@ -15,6 +16,11 @@
         v-bind:key="recipe.recipeId"
         v-bind:recipe="recipe"
       />
+      <!-- <RecipeCard
+        v-for="recipe in results"
+        v-bind:key="recipe.recipeId"
+        v-bind:recipe="recipe"
+      /> -->
     </div>
   </div>
 </template>
@@ -25,12 +31,29 @@ import APIService from "../services/APIService.js";
 
 export default {
   name: "RecipeList",
+  data(){
+    return{
+      results:[],
+      search:'',
+    }
+  },
   components: { RecipeCard },
   created() {
     APIService.getRecipes().then((response) => {
       this.$store.commit("SET_RECIPES", response.data);
-    });
+          });
   },
+  methods:{
+    setKeyword(){
+      this.$store.commit("SET_KEYWORD", this.search);
+    }
+    
+   
+  },
+  computed:{
+    
+    
+  }
 };
 </script>
 

@@ -3,9 +3,9 @@
     <div id="top">
 
       <!-- Added Font Awesome Icon-->
-      <i class="fa-solid fa-leaf" style="font-size: 1.5em;color: green;"></i>
+      <!-- <i class="fa-solid fa-leaf" style="font-size: 1.5em;color: green;"></i> -->
       
-      <h2 id="welcome">Welcome{{$store.state.token != ''? ", " + $store.state.user.username : "to Sage"}}!</h2>
+      <h2 id="welcome">Welcome{{$store.state.token != ''? ", " + $store.state.user.username : " to Sage"}}!</h2>
       </div>
       <div >
         <div class="buttons"> 

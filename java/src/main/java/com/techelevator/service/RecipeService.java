@@ -8,6 +8,7 @@ import com.techelevator.model.Tag;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.security.Principal;
 import java.util.List;
 @Service
 public class RecipeService {
@@ -57,7 +58,13 @@ public class RecipeService {
         return recipes;
     }
 
+<<<<<<< HEAD
 
+=======
+    public Integer createRecipe(Recipe recipe, Principal principal) {
+        return recipeDao.createRecipe(recipe, principal);
+    }
+>>>>>>> bc60f87e77c324969b937eac362c1875f5bbcc07
 
 //TODO: CREATE A SERVICE FOR RETRIEVING A RECIPE BY STEPS
 
