@@ -131,4 +131,9 @@ export default{
     deleteStep(step){
         return axios.delete(`/steps/${step.stepId}`);
     },
+
+    //keywords
+    getRecipesByKeyword(searchedWord){
+        return axios.get(`/keywords?keywords=${searchedWord}`)
+    }
 }

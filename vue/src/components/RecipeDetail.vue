@@ -110,14 +110,9 @@ export default {
       this.$store.commit("SET_RECIPE", response.data);
     });
   },
-<<<<<<< HEAD
   computed:{
     recipe(){
       
-=======
-  computed: {
-    recipe() {
->>>>>>> ece28b7da0214e5aa50844fc72bba1d40842b20c
       return this.$store.state.recipe;
     },
   },

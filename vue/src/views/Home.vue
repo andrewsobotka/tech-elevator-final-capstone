@@ -40,7 +40,8 @@ export default {
     APIService.getRecipes().then(response => {
       this.$store.commit('SET_RECIPES', response.data)
     })
-  }
+  },
+  
 };
 </script>
 
