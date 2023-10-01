@@ -11,6 +11,7 @@
           name="recipeName"
           v-model="newRecipe.recipeName"
           placeholder="ie: Apple Crumble"
+          v-on:change="keyword"
         />
       </div>
       <br />
@@ -147,10 +148,12 @@ export default {
       currentValue: 0,
       indexOfSteps: [],
       indexOfIngredients: [],
+      wordArray:[],
       newRecipe: {
         ingredients: [""],
         steps: [""],
         tags: [],
+        keywords:[]
       },
     };
   },
@@ -178,8 +181,15 @@ export default {
 
       this.indexOfSteps = [];
     },
+    keyword(){
+      this.newRecipe.keywords = this.newRecipe.recipeName.split(" ")
+      return this.newRecipe.keywords;
+    }
+    
   },
-  computed: {},
+  computed: {
+    
+  },
 };
 </script>
 

@@ -1,7 +1,5 @@
 <template>
   <div class="container">
-
-    {{selectCheckBox}}
     <form id="addNewRecipe" v-on:submit.prevent="createNewRecipe">
       <div>
         <h3>Edit Recipe</h3>
@@ -13,6 +11,7 @@
           name="recipeName"
           v-model="editRecipe.recipeName"
           placeholder="ie: Apple Crumble"
+          v-on:change="keyword"
         />
       </div>
       <br />
@@ -180,6 +179,10 @@ export default {
       this.editRecipe.steps = newArray;
 
       this.indexOfSteps = [];
+    },
+    keyword(){
+      this.editRecipe.keywords = this.editRecipe.recipeName.split(" ")
+      return this.editRecipe.keywords;
     }
   },
   computed: {
