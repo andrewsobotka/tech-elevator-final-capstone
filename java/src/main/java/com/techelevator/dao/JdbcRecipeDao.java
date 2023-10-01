@@ -58,7 +58,6 @@ public class JdbcRecipeDao implements RecipeDao {
     }
 
     @Override
-<<<<<<< HEAD
     public Recipe createNewRecipe(Recipe recipe) {
 
         Recipe newRecipe = null;
@@ -89,11 +88,8 @@ public class JdbcRecipeDao implements RecipeDao {
     }
 
     @Override
-    public List<Recipe> getFeaturedRecipesByRecipeId(int recipe_id) {           //Display Top3-Featured Recipes
-
-=======
     public List<Recipe> getFeaturedRecipesByRecipeId() {           //Display Top3-Featured Recipes
->>>>>>> bc60f87e77c324969b937eac362c1875f5bbcc07
+
         List<Recipe> recipes = new ArrayList<>();
         String sql = "SELECT * FROM recipes WHERE is_featured = true;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);

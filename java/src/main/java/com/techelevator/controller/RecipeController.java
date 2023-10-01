@@ -7,10 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-<<<<<<< HEAD
-import javax.validation.Valid;
-=======
->>>>>>> bc60f87e77c324969b937eac362c1875f5bbcc07
 import java.security.Principal;
 import java.util.List;
 
@@ -27,7 +23,7 @@ public class  RecipeController {
     public List<Recipe> getRecipes() {
         return recipeDao.getListOfRecipes();
     }
-<<<<<<< HEAD
+
 //    @PreAuthorize("isAuthenticated()")
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/recipes")
@@ -39,12 +35,6 @@ public class  RecipeController {
     }
 
     @GetMapping("/recipes/{recipeId}")
-    public Recipe getRecipeById(@PathVariable int recipeId){    //retrieving recipe by recipeId
-
-        return recipeService.getRecipe(recipeId);           //calling the recipe service
-
-=======
-    @GetMapping("/recipes/{recipeId}")
     public Recipe getRecipeById(@PathVariable int recipeId) {
         return recipeService.getRecipe(recipeId);
     }
@@ -53,47 +43,25 @@ public class  RecipeController {
     @PostMapping("/recipes")
     public Integer createRecipe(@RequestBody Recipe recipe, Principal principal) {
         return recipeService.createRecipe(recipe, principal);
->>>>>>> bc60f87e77c324969b937eac362c1875f5bbcc07
     }
+
     @GetMapping("/featured")
-<<<<<<< HEAD
-    public List<Recipe> getFeaturedRecipes(@PathVariable int recipeId){     //retrieving featured recipes by recipeId
-
-        return recipeDao.getFeaturedRecipesByRecipeId(recipeId);            //calling recipeDao
-
-    }
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
-=======
     public List<Recipe> getFeaturedRecipes() {
         return recipeDao.getFeaturedRecipesByRecipeId();
     }
->>>>>>> bc60f87e77c324969b937eac362c1875f5bbcc07
+
     @GetMapping("/import")
     public Recipe getImportedRecipe(@RequestParam String url) {
         return recipeService.importRecipe(url);
     }
     @GetMapping("/keywords")
-<<<<<<< HEAD
     public List<Recipe> getRecipesByKeywords(@RequestParam String keywords){        //retrieving list of recipes by keywords
 
-=======
-    public List<Recipe> getRecipesByKeywords(@RequestParam String keywords) {
->>>>>>> bc60f87e77c324969b937eac362c1875f5bbcc07
+
         return recipeDao.getRecipesByKeyWords(keywords);
     }
     @GetMapping("/ingredients")
-<<<<<<< HEAD
-    public List<Recipe> getRecipesByIngredient(@RequestParam String ingredient){        //retrieving list of recipes by ingredient
-
-        return recipeService.getRecipesByIngredient(ingredient);            //calling the recipe service
-
-    }
-
-
-
-=======
     public List<Recipe> getRecipesByIngredient(@RequestParam String ingredient) {
         return recipeService.getRecipesByIngredient(ingredient);
     }
->>>>>>> bc60f87e77c324969b937eac362c1875f5bbcc07
 }
