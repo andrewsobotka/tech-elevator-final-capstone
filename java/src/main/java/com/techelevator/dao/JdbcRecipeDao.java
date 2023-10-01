@@ -1,9 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.exception.DaoException;
-import com.techelevator.model.Ingredient;
 import com.techelevator.model.Recipe;
-import com.techelevator.model.Tag;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -25,7 +23,7 @@ public class JdbcRecipeDao implements RecipeDao {
     @Override
     public List<Recipe> getListOfRecipes() {                //Displayed on Explore Recipes page (whole "library" of recipes)
         List<Recipe> recipes = new ArrayList<>();
-        String sql = "select * from recipes";
+        String sql = "select * from recipes;";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {
