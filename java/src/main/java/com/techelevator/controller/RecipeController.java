@@ -23,17 +23,6 @@ public class  RecipeController {
     public List<Recipe> getRecipes() {
         return recipeDao.getListOfRecipes();
     }
-
-//    @PreAuthorize("isAuthenticated()")
-    @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping("/recipes")
-    public Recipe createNewRecipe(@RequestBody Recipe recipe){
-//TODO: NEED TO GET THE LOGGED IN USER'S ID...USING USER_ID = 1 FOR NOW..........
-
-        return recipeDao.createNewRecipe(recipe);
-
-    }
-
     @GetMapping("/recipes/{recipeId}")
     public Recipe getRecipeById(@PathVariable int recipeId) {
         return recipeService.getRecipe(recipeId);
@@ -44,20 +33,16 @@ public class  RecipeController {
     public Integer createRecipe(@RequestBody Recipe recipe, Principal principal) {
         return recipeService.createRecipe(recipe, principal);
     }
-
     @GetMapping("/featured")
     public List<Recipe> getFeaturedRecipes() {
         return recipeDao.getFeaturedRecipesByRecipeId();
     }
-
     @GetMapping("/import")
     public Recipe getImportedRecipe(@RequestParam String url) {
         return recipeService.importRecipe(url);
     }
     @GetMapping("/keywords")
     public List<Recipe> getRecipesByKeywords(@RequestParam String keywords){        //retrieving list of recipes by keywords
-
-
         return recipeDao.getRecipesByKeyWords(keywords);
     }
     @GetMapping("/ingredients")
