@@ -1,9 +1,15 @@
 <template>
   <div class="search">
-    <h1>Search</h1>
-    <p>Search results for "{{ $store.state.keyword }}"</p>
-    <p>Showing {{$store.state.filteredList.length}} {{$store.state.filteredList.length == 1 ? 'Result' : 'Results'}}</p>
-    <div v-if="$store.state.keyword !=''">
+    <div id="title">
+    <h2>Searching for recipes...</h2>
+    </div>
+    <div id= "search-box">
+     <input type="text" placeholder="Search by keyword..." id = "searchbox" v-model="search"/>
+    <router-link v-bind:to="{ name: 'search', params:{keyword:search}}"><button id="search-button" v-on:click="setKeyword">Search</button></router-link>
+    </div>
+    <p>Search results for "{{ $store.state.keyword }}" | Showing {{$store.state.filteredList.length}} {{$store.state.filteredList.length == 1 ? 'result' : 'results'}}</p>
+    <p></p>
+    <div v-if="$store.state.keyword !=''" id="recipe-card-container">
       <RecipeCard
         v-for="recipe in $store.state.filteredList"
         v-bind:key="recipe.recipeId"
@@ -22,13 +28,16 @@ export default {
   components: { RecipeCard },
   data() {
     return {
-      // search:""
+      search:"",
       results: [],
       resultNumber: 0,
     };
   },
   created() {
     let searchWord = this.$store.state.keyword;
+    APIService.getRecipes().then((response) => {
+      this.$store.commit("SET_RECIPES", response.data);
+          });
     APIService.getRecipesByKeyword(searchWord).then((response) => {
       this.$store.commit("SET_FILTERED", response.data);
       this.results = this.$store.state.filteredList;
@@ -36,14 +45,54 @@ export default {
     });
   },
 
-  methods: {},
+  methods: {
+    setKeyword(){
+      this.$store.commit("SET_KEYWORD", this.search);
+    }
+  },
   computed: {
     numberOfResults() {
       return this.resultsNumber;
     },
+    
   },
 };
 </script>
 
 <style scoped>
+
+h2{
+  text-align: center;
+  background: transparent;
+}
+.search{
+  text-align: center;
+}
+.search-box{
+  display: flex;
+  justify-content: center;
+}
+
+#searchbox{
+  width: 40rem;
+  height: 2rem;
+}
+
+#title{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  background-color:transparent ;
+}
+
+#recipe-card-container{
+  display: flex;
+  justify-content: center;
+  text-align: left;
+}
+
+p{
+  font-family: "Montserrat";
+  font-style: italic;
+}
 </style>

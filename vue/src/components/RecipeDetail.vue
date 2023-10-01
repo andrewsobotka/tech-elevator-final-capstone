@@ -70,14 +70,9 @@ export default {
       this.$store.commit("SET_RECIPE", response.data);
     });
   },
-<<<<<<< HEAD
   computed:{
     recipe(){
       
-=======
-  computed: {
-    recipe() {
->>>>>>> 78cf15241aba00140d9d17fbb094bd4b7059aff2
       return this.$store.state.recipe;
     },
   },
@@ -203,4 +198,4 @@ max-width: 30rem;
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(111, 187, 130);
 }
-</style>
+</style>  
