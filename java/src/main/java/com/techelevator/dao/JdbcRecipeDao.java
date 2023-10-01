@@ -103,7 +103,7 @@ public class JdbcRecipeDao implements RecipeDao {
     }
 
     @Override
-    public Integer createRecipe(Recipe recipe, Principal principal) {
+    public Integer createRecipe(Recipe recipe, Principal principal) {           //principal works now!!! :)
         // Get the User ID by Username
         String sql_user_id = "SELECT user_id FROM users " +
                              "WHERE username = ?;";
