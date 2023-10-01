@@ -4,12 +4,14 @@ import com.techelevator.exception.DaoException;
 import com.techelevator.model.Ingredient;
 import com.techelevator.model.Recipe;
 import com.techelevator.model.Tag;
+import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,16 +59,11 @@ public class JdbcRecipeDao implements RecipeDao {
     }
 
     @Override
-<<<<<<< HEAD
-    public List<Recipe> getFeaturedRecipesByRecipeId(int recipe_id) {           //Display Top3-Featured Recipes
-
-=======
     public List<Recipe> getFeaturedRecipesByRecipeId() {           //Display Top3-Featured Recipes
->>>>>>> ec5d030a93e7c4b41fde621b0d87ebd39d2eceec
         List<Recipe> recipes = new ArrayList<>();
         String sql = "select * from recipes where recipe_id = ? ";
 
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, recipe_id);
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {
             Recipe recipe = mapRowToRecipe(results);
             recipes.add(recipe);
@@ -110,8 +107,6 @@ public class JdbcRecipeDao implements RecipeDao {
         return recipes;
     }
 
-<<<<<<< HEAD
-=======
     @Override
     public Integer createRecipe(Recipe recipe, Principal principal) {
         // Get the User ID by Username
@@ -131,7 +126,6 @@ public class JdbcRecipeDao implements RecipeDao {
         return recipeId;
     }
 
->>>>>>> ec5d030a93e7c4b41fde621b0d87ebd39d2eceec
     private Recipe mapRowToRecipe(SqlRowSet rs) {
         Recipe recipe = new Recipe();
         recipe.setRecipeId(rs.getInt("recipe_id"));
