@@ -3,8 +3,11 @@ package com.techelevator.controller;
 import com.techelevator.dao.RecipeDao;
 import com.techelevator.model.Recipe;
 import com.techelevator.service.RecipeService;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -32,6 +35,12 @@ public class  RecipeController {
 
         return recipeService.getRecipe(recipeId);           //calling the recipe service
 
+    }
+    @PreAuthorize("isAuthenticated()")
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping("/recipes")
+    public Integer createRecipe(@RequestBody Recipe recipe, Principal principal) {
+        return recipeService.createRecipe(recipe, principal);
     }
 
     @GetMapping("/featured")

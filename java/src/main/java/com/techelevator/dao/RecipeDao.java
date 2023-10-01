@@ -4,6 +4,7 @@ import com.techelevator.model.Recipe;
 import com.techelevator.model.Tag;
 import com.techelevator.model.User;
 
+import java.security.Principal;
 import java.util.List;
 
 public interface RecipeDao {
@@ -18,5 +19,5 @@ public interface RecipeDao {
 
     List<Recipe> getRecipesByIngredient(String ingredient);
 
-
+    Integer createRecipe(Recipe recipe, Principal principal);
 }

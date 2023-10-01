@@ -65,7 +65,6 @@ public class JdbcTagDao implements TagDao {
     // Create a new tag
     @Override
     public Integer createTag(Tag tag) {
-        Tag newTag = null;
         String sql = "INSERT INTO tags (tag)" +
                      "VALUES (?) " +
                      "RETURNING tag_id;";
