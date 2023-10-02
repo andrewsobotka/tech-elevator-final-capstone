@@ -26,7 +26,7 @@
       </div>
       <br />
       <div class="field">
-        <label for="description">Description: </label>
+        <label for="description">Description: </label><br/>
         <textarea name="description" v-model="newRecipe.description" />
       </div>
 
@@ -34,7 +34,7 @@
         <label for="image">Add a URL for an Image:</label><br>
         <input
           id="url"
-          type="text"
+          type="text" class="imageUrl"
           name="image"
           v-model="newRecipe.imgUrl"
           placeholder="www.image.com"
@@ -240,8 +240,9 @@ export default {
   flex-direction: column;
   width: 100%;
   cursor: pointer;
-  min-width: 30rem;
+  min-width: 36rem;
   overflow-x: hidden;
+  padding: 0 5rem;
 }
 div a {
   color: #333;
@@ -249,7 +250,7 @@ div a {
 
 textarea {
   position: relative;
-  min-width: 28rem;
+  min-width: 33rem;
   height: 10rem;
   background-color: #d9e9fa;
   border: none;
@@ -257,7 +258,7 @@ textarea {
   font-size: 1rem;
   letter-spacing: 1.5px;
   color: rgba(14, 0, 0, 0.623);
-  margin: 10px 0;
+  margin: 20px 0;
 }
 
 input::placeholder {
@@ -271,6 +272,15 @@ input[name="recipeName"] {
   width: 93%;
 }
 
+.url-section{
+margin: auto;
+}
+
+.imageUrl{
+  width: 90%;
+  margin-top: 0.7rem;
+}
+
 .ingredientList li {
   list-style-type: none;
 }
@@ -280,10 +290,7 @@ input[name="servingSize"] {
   margin-left: 1rem;
 }
 
-.addSteps-btn {
-  position: relative;
-  left: 15%;
-}
+
 
 .stepsLabel {
   margin-left: 1rem;
@@ -296,22 +303,29 @@ input[name="servingSize"] {
 }
 
 .ingredients-btn {
-  margin-left: 20%;
+  margin-left: 50%;
   background: rgb(228, 243, 187);
   border-radius: 0;
   position: relative;
 }
 
 .steps-btn {
-  margin-left: 60px;
-  transition: ease 0.5s;
+  margin-left: 40%;
+  background: rgb(228, 243, 187);
+  border-radius: 0;
+  position: relative;
+  
+}
+.addSteps-btn {
+  position: relative;
+  left: 11%;
 }
 
 .ingredients-check-group {
   display: flex;
   margin-bottom: 1rem;
   position: relative;
-  width: 30rem;
+  width: 36rem;
   left: -2.5rem;
 
 }
@@ -324,9 +338,9 @@ input[name="servingSize"] {
 }
 .steps-input {
  position: relative;
-  width: 40rem;
+  width: 30rem;
+   margin-right: 1rem;
   
-  margin-right: 1rem;
 }
 
 .delete-btn {
@@ -359,6 +373,7 @@ input[name="servingSize"] {
 .submitDiv{
   display: flex;
   justify-content: center;
+  margin-bottom:3rem;
 }
 
 .submitDiv button {
@@ -387,13 +402,12 @@ input[name="servingSize"] {
   text-align: center;
 }
 
+button:hover{
+ background-color: rgb(168, 196, 162);
+}
 li{
     font-family: "Montserrat";
     text-justify: top;
-}
-
-#url{
-    width: 20rem;
 }
 
 

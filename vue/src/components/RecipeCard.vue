@@ -25,7 +25,7 @@
         </div>
 
         <div class="servings">
-          Serving Size: {{ recipe.servingSize }} 
+          Serving Size: {{ recipe.servingSize }}
           <!-- | Total Time:
           {{ recipe.servingSize }} -->
         </div>
@@ -50,7 +50,7 @@ export default {
 
 <style scoped>
 .cardBody {
-  will-change: transform, opacity;
+  /* will-change: transform, opacity; */
 
   filter: saturate(1);
   transition: all ease-in-out 2s;
@@ -62,7 +62,6 @@ export default {
   object-fit: cover;
   border-radius: 6px;
   margin: 1rem 2rem;
-  
 }
 
 .name-img-container {
@@ -86,7 +85,7 @@ export default {
   width: 20rem;
   height: 8rem;
   object-fit: contain;
-  background: #fff0e4e0;
+  background: #fffdfbe0;
   overflow: hidden;
 }
 .title-servings-combo a {
@@ -125,5 +124,4 @@ h3 {
   right: 3%;
   top: 80%;
 }
-
 </style>
