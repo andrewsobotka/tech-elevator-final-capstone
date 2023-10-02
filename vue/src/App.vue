@@ -62,8 +62,6 @@ z-index: 1;
   margin:0px;
   background-color: rgba(205, 218, 201, 0.253);
 
-
- 
 }
 
 

@@ -65,7 +65,9 @@ h3 {
   position: relative;
   gap: 0.3rem;
   justify-content: center;
+  overflow:hidden;
 }
+
 .borderbox {
   width: 50%;
   position: relative;

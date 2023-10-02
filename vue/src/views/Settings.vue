@@ -114,6 +114,7 @@ h2 {
   color: rgb(109, 108, 108);
   padding: 0.5rem;
   margin-bottom: 1rem;
+  width: 105%;
 }
 
 h3 {
@@ -155,5 +156,18 @@ h4 {
 
   justify-content: center;
   text-align: center;
+}
+
+@media only screen and (max-width: 900px) {
+  .settings{
+    display:flex;
+    flex-direction: column;
+  }
+ 
+
+  .account-container {
+ left: 0px;
+    justify-content: center;
+  }
 }
 </style>
