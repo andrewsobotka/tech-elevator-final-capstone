@@ -30,10 +30,14 @@ export default {};
   padding-top: 15rem;
 } */
 
+.blank{
+  
+}
+
 footer {
   background: #cddfbc;
   padding: 1rem;
-
+  position: relative;
   background-size: 115%;
   /* background-size: 350%; */
   background-repeat: no-repeat;
