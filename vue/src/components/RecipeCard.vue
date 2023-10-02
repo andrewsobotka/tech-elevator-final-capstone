@@ -25,14 +25,9 @@
         </div>
 
         <div class="servings">
-<<<<<<< HEAD
-         Serving size: {{ recipe.servingSize }} | Creator Name:
-      {{ recipe.creatorId }}
-=======
           Serving Size: {{ recipe.servingSize }} 
           <!-- | Total Time:
           {{ recipe.servingSize }} -->
->>>>>>> 3c0791462bfeebb8ee36b1d8f7c274f8ffcb13f1
         </div>
       </div>
     </div>

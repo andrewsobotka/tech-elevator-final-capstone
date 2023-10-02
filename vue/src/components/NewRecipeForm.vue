@@ -27,10 +27,6 @@
       </div>
       <br />
       <div class="field">
-<<<<<<< HEAD
-        <label for="description">Description: </label><br/>
-        <textarea name="description" v-model="newRecipe.recipeDescription" />
-=======
         <label for="description">Description: </label>
         <textarea name="description" v-model="newRecipe.description" />
       </div>
@@ -44,7 +40,6 @@
           v-model="newRecipe.imgUrl"
           placeholder="www.image.com"
         />
->>>>>>> 3c0791462bfeebb8ee36b1d8f7c274f8ffcb13f1
       </div>
 
       <div class="ingredientList">
