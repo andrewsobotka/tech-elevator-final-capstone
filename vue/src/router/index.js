@@ -138,7 +138,7 @@ const router = new Router({
     },
     {
       path: "/my-meals",
-      name: "meals",
+      name: "my-meals",
       component: Meals,
       meta: {
         requiresAuth: true
