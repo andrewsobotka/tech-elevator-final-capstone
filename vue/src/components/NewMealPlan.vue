@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <form id="addNewRecipe" v-on:submit.prevent="createNewRecipe">
+    <form id="addNewMealPlan" v-on:submit.prevent="createMealPlan">
       <div>
         <h3>Add A New Meal Plan</h3>
 
@@ -10,9 +10,8 @@
         <input
           type="text"
           name="mealListName"
-          v-model="newRecipe.recipeName"
+          v-model="newMeal.recipeName"
           placeholder="ie: Monday's Plan"
-          v-on:change="keywords"
         />
       </div>
       
@@ -29,14 +28,14 @@
           id="url"
           type="text"
           name="image"
-          v-model="newRecipe.imgUrl"
+          v-model="newMeal.imgUrl"
           placeholder="www.image.com"
         />
       </div>
 
 
 
-      <label for="tags">Tags:</label>
+      <!-- <label for="tags">Tags:</label>
       <div class="tagsList">
         <div
           class="field"
@@ -53,7 +52,7 @@
           />
         <label for="tag">{{ tag.tag }}</label>
         </div>
-      </div>
+      </div> -->
 
       <div class="submitDiv">
         <button type="submit" value="Submit New Recipe" class="submit-btn">
@@ -68,20 +67,17 @@
 // import APIService from '../services/APIService';
 export default {
      name: "MealForm",
-  components: { 
-
-   },
   data() {
     return {
-    };
+      newMeal:{},
+    
+    }
   },
   methods: {
     createMealPlan() {
     
   },
-  computed: {
-    
-  },
+
 },
 };
 </script>

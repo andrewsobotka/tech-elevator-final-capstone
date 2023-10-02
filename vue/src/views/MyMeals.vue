@@ -8,7 +8,7 @@
       </button>
     </div>
 
-    <div class="form-container">
+    <div class="form-container" v-if="showForm">
          <NewMealPlan/>
 
     </div>
