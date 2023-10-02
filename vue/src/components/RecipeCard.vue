@@ -25,8 +25,9 @@
         </div>
 
         <div class="servings">
-          Serving Size: {{ recipe.servingSize }} | Total Time:
-          {{ recipe.servingSize }}
+          Serving Size: {{ recipe.servingSize }} 
+          <!-- | Total Time:
+          {{ recipe.servingSize }} -->
         </div>
       </div>
     </div>

@@ -61,7 +61,7 @@ public class JdbcRecipeDao implements RecipeDao {
     @Override
     public List<Recipe> getFeaturedRecipesByRecipeId() {           //Display Top3-Featured Recipes
         List<Recipe> recipes = new ArrayList<>();
-        String sql = "select * from recipes where recipe_id = ? ";
+        String sql = "select * from recipes where is_featured = true ";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {
