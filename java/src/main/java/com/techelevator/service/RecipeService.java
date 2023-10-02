@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 @Service
 public class RecipeService {
@@ -56,11 +57,31 @@ public class RecipeService {
         List<Recipe> recipes = recipeDao.getRecipesByIngredient(ingredient);
         return recipes;
     }
-    public Integer createRecipe(Recipe recipe, Principal principal) {
-        return recipeDao.createRecipe(recipe, principal);
+    public Integer createRecipe(Recipe recipe, Principal principal) {       //more inputs to account for steps/ingredients/etc?
+        int recipeId = recipeDao.createRecipe(recipe, principal);
+
+        //add new rows to tags table for this new recipe
+        if(recipe.getTags() != null) {
+            for (Tag tag : recipe.getTags()) {
+                int tagId = tagDao.createTagForRecipe(tag, recipeId);
+            }
+        }
+        //add new rows to ing table for this new recipe
+        if(recipe.getIngredients() != null) {
+            for (Ingredient ingredient : recipe.getIngredients()) {
+                int ingredientId = ingredientDao.createIngredientForRecipe(ingredient, recipeId);
+            }
+        }
+
+        //add new rows to steps table for this new recipe
+        if(recipe.getSteps() != null) {
+            for(Step step: recipe.getSteps()) {
+                int stepId = stepDao.createStepForRecipe(step, recipeId);
+            }
+        }
+
+        return recipeId;
+
     }
-
-//TODO: CREATE A SERVICE FOR RETRIEVING A RECIPE BY STEPS
-
 
 }

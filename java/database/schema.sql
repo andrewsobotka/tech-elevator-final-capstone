@@ -95,14 +95,14 @@ CREATE TABLE steps_recipes (
     step_id int NOT NULL,
     recipe_id int NOT NULL
 );
-ALTER TABLE steps_recipes
-    ADD CONSTRAINT "fk_step_id"
-    FOREIGN KEY (step_id)
-    REFERENCES steps (step_id);
-ALTER TABLE steps_recipes
-    ADD CONSTRAINT "fk_steps_recipe_id"
-    FOREIGN KEY (recipe_id)
-    REFERENCES recipes (recipe_id);
+-- ALTER TABLE steps_recipes
+--     ADD CONSTRAINT "fk_step_id"
+--     FOREIGN KEY (step_id)
+--     REFERENCES steps (step_id);
+-- ALTER TABLE steps_recipes
+--     ADD CONSTRAINT "fk_steps_recipe_id"
+--     FOREIGN KEY (recipe_id)
+--     REFERENCES recipes (recipe_id);
 
 -- Joining ingredients on recipes
 DROP TABLE IF EXISTS ingredients_recipes CASCADE;
@@ -110,14 +110,14 @@ CREATE TABLE ingredients_recipes (
    ingredient_id int NOT NULL,
    recipe_id int NOT NULL
 );
-ALTER TABLE ingredients_recipes
-    ADD CONSTRAINT "fk_ingredient_id"
-    FOREIGN KEY (ingredient_id)
-    REFERENCES ingredients (ingredient_id);
-ALTER TABLE ingredients_recipes
-    ADD CONSTRAINT "fk_ingredients_recipe_id"
-    FOREIGN KEY (recipe_id)
-    REFERENCES recipes (recipe_id);
+-- ALTER TABLE ingredients_recipes
+--     ADD CONSTRAINT "fk_ingredient_id"
+--     FOREIGN KEY (ingredient_id)
+--     REFERENCES ingredients (ingredient_id);
+-- ALTER TABLE ingredients_recipes
+--     ADD CONSTRAINT "fk_ingredients_recipe_id"
+--     FOREIGN KEY (recipe_id)
+--     REFERENCES recipes (recipe_id);
 
 -- Joining meals on recipes
 DROP TABLE IF EXISTS meals_recipes CASCADE;
@@ -154,6 +154,7 @@ DROP TABLE IF EXISTS users_ingredients CASCADE;
 CREATE TABLE users_ingredients (
     user_id int NOT NULL,
     ingredient_id int NOT NULL,
+    recipe_id int NOT NULL,
     is_completed boolean
 );
 ALTER TABLE users_ingredients
@@ -164,5 +165,9 @@ ALTER TABLE users_ingredients
     ADD CONSTRAINT "fk_ingredients_user_id"
     FOREIGN KEY (ingredient_id)
     REFERENCES ingredients (ingredient_id);
+ALTER TABLE users_ingredients
+    ADD CONSTRAINT "fk_user_ingredients_recipes_id"
+    FOREIGN KEY (recipe_id)
+    REFERENCES recipes (recipe_id);
 
 COMMIT TRANSACTION;

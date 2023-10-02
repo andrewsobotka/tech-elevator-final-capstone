@@ -10,5 +10,8 @@ public interface IngredientDao {
 
     List<Ingredient> getListOfIngredientsByRecipeId(int recipe_id);
 
+    Integer createIngredient(Ingredient ingredient);
+
+    Integer createIngredientForRecipe(Ingredient ingredient, int recipe_id);
 
 }
