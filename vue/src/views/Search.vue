@@ -8,17 +8,15 @@
     <router-link v-bind:to="{ name: 'search', params:{keyword:search}}"><button id="search-button"  v-on:click="setKeyword">Search</button></router-link>
     </div> -->
     <div id="explore">
-    <button id="explore-button" ><router-link  v-bind:to="{name:'explore-recipes'}">Back to Explore Recipes</router-link></button>
+    <router-link  v-bind:to="{name:'explore-recipes'}"><button id="explore-button" >Back to Explore Recipes</button></router-link>
     </div>
-    <p>Search results for "{{ $store.state.keyword }}" | Showing {{$store.state.filteredList.length}} {{$store.state.filteredList.length == 1 ? 'result' : 'results'}}</p>
-    <p></p>
+    <p>Search results for "{{ $store.state.keyword }}" | Showing {{$store.state.keyword =="" ? 0 : $store.state.filteredList.length}} {{$store.state.filteredList.length == 1 ? 'result' : 'results'}}</p>
     <div v-if="$store.state.keyword !=''" id="recipe-card-container">
       <RecipeCard
         v-for="recipe in $store.state.filteredList"
         v-bind:key="recipe.recipeId"
         v-bind:recipe="recipe"
       />
-      
     </div>
   </div>
 </template>

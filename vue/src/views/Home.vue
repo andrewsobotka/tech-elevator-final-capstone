@@ -9,9 +9,9 @@
       </div>
       <div >
         <div class="buttons"> 
-      <button id="login"  v-if="$store.state.token == ''"><router-link  v-bind:to="{name:'login'}" >Login</router-link></button>
+      <router-link  v-bind:to="{name:'login'}" ><button id="login"  v-if="$store.state.token == ''">Login</button></router-link>
     
-      <button id="explore-button" ><router-link  v-bind:to="{name:'explore-recipes'}" >Explore Recipes</router-link></button>
+      <router-link  v-bind:to="{name:'explore-recipes'}" ><button id="explore-button" >Explore Recipes</button></router-link>
   </div>
 </div>
   <div id="recipeCardContainer">
@@ -151,6 +151,11 @@ input{
 #explore{
   display: flex;
   justify-content: center;
+}
+
+#login,
+#explore-button{
+  color: #fff;
 }
 
 
