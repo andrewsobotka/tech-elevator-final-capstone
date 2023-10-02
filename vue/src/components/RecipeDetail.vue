@@ -24,7 +24,7 @@
             v-bind:key="index"
             class="ingredient"
           >
-            • {{ ingredient.ingredient }}
+            • {{ ingredients.ingredient }}
           </li>
         </ul>
       </div>

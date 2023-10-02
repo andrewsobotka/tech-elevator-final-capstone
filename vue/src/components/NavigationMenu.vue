@@ -2,21 +2,15 @@
   <div>
     <div class="navigationmenu">
       <div class="headerbar">
-        <div class="logo">         
-
+        <div class="logo">
           <div class="logo-img">
-            <img src="https://i.imgur.com/q1E063E.png" alt="">
-             </div>
-          <router-link v-bind:to="{ name: 'home' }">
-            Sage
-            </router-link>
+            <img src="https://i.imgur.com/q1E063E.png" alt="" />
+          </div>
+          <router-link v-bind:to="{ name: 'home' }"> Sage </router-link>
         </div>
 
         <div class="navbar">
-        
-
-          <NavDropDown class="menu"/>
-
+          <NavDropDown class="menu" />
 
           <!-- <router-link
             v-bind:to="{ name: 'logout' }"
@@ -27,8 +21,6 @@
         </div>
       </div>
     </div>
-
-
   </div>
 </template>
 
@@ -37,20 +29,18 @@ import NavDropDown from "./NavDropDown.vue";
 
 export default {
   components: {
-     NavDropDown
-      },
+    NavDropDown,
+  },
 };
 </script>
 
 <style scoped>
-*{
-  
+* {
 }
-.logo-img img{
+.logo-img img {
   width: 4rem;
-  height: 3.5rem;
-  margin: .1rem;
-
+  height: 4rem;
+  /* margin: .1rem; */
 }
 .navigationmenu {
   width: 100%;
@@ -59,28 +49,33 @@ export default {
   cursor: pointer;
   position: Fixed;
   z-index: 99;
-  border-bottom: 2px solid rgba(56, 68, 58, 0.39);
+  /* border-bottom: 2px solid rgba(56, 68, 58, 0.39); */
 }
 
-.menu{
+.menu {
   position: relative;
   left: -50px;
 }
 
 .headerbar {
   top: 0px;
-  padding: 1.3rem;
-  background: #d0d3d0;
-  /* background-image: url("https://img.freepik.com/free-photo/spring-floral-border-background-green-with-leaf-watercolor-illustration_53876-126807.jpg?w=1060&t=st=1695934598~exp=1695935198~hmac=2af1dcbab7220b3737772d365afc7af0c3c54a5950c0fc42c9b587f252ed49ab"); */
+  padding: 1rem;
+  background: #c7e2c0;
+  /* background-image: url('https://media.istockphoto.com/id/499618110/photo/sage.jpg?s=2048x2048&w=is&k=20&c=DCUuPnDMWSqq6vJWs3Wu8mueUz6aG2FWxKNhBZoSnzA='); */
 
-  background-image: url("https://img.freepik.com/free-photo/grainy-ground-view-shot-bokeh-style_53876-104709.jpg?w=1060&t=st=1695935109~exp=1695935709~hmac=2a9ad39d790f8f22e59dde61f2706a4f020c4ff9ace2307d693a7cb6703bb88d");
-  background-size: cover;
+  background-image: url("https://images.unsplash.com/photo-1524222717473-730000096953?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80");
+  background-position: 100% 37%;
+  background-size: 125%;
+  /* background-image: url('https://images.unsplash.com/photo-1586288415925-d7affaf2d1f0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80'); */
+
+  /* background-size: cover; */
   background-repeat: no-repeat;
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: #333;
   font-family: "Montserrat";
+  /* border-bottom: 10px #0b3b0b6e solid; */
   z-index: 3;
 }
 
@@ -91,9 +86,9 @@ a {
 
 .headerbar a {
   margin: 0.4rem;
-    font-family: 'Montserrat';
-font-size: 1rem;
-font-weight: 200;
+  font-family: "Montserrat";
+  font-size: 1rem;
+  font-weight: 200;
   color: #fff;
 }
 
@@ -116,19 +111,22 @@ font-weight: 200;
   font-size: 1rem;
 }
 
-.logo{
+.logo {
   display: flex;
   align-items: center;
   justify-content: center;
+   position: relative;
+    left: 30px;
 }
 .logo a {
   text-decoration: none;
-font-family: 'Young Serif', serif;
+  font-family: "Young Serif", serif;
   font-size: 3rem;
   letter-spacing: 1px;
-  color: rgb(15, 92, 21);
+  color: rgb(30, 98, 39);
   transition: all 0.5s ease;
-  -webkit-text-stroke:1.5px rgba(255, 255, 255, 0.432);
+  padding: 0 10px;
+  -webkit-text-stroke: 1px rgba(2, 39, 10, 0.733);
 }
 .logo a:hover {
   letter-spacing: 3px;

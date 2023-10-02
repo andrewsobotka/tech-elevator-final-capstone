@@ -240,6 +240,8 @@ export default {
   flex-direction: column;
   width: 100%;
   cursor: pointer;
+  min-width: 30rem;
+  overflow-x: hidden;
 }
 div a {
   color: #333;
@@ -247,7 +249,7 @@ div a {
 
 textarea {
   position: relative;
-  width: 20rem;
+  min-width: 28rem;
   height: 10rem;
   background-color: #d9e9fa;
   border: none;
@@ -266,7 +268,7 @@ input::placeholder {
 
 input[name="recipeName"] {
   margin-top: 0.7rem;
-  width: 95%;
+  width: 93%;
 }
 
 .ingredientList li {
@@ -309,21 +311,23 @@ input[name="servingSize"] {
   display: flex;
   margin-bottom: 1rem;
   position: relative;
+  width: 30rem;
   left: -2.5rem;
-  justify-content: left;
+
 }
 
 .ingredients-input{
-    position: relative;
-  width: 20rem;
-  margin-left: 1rem;
+  position: relative;
+  width: 30rem;
+  max-width: 400%;
+  margin-right: 1rem;
 }
 .steps-input {
-  position: relative;
-  width: 20rem;
-  margin-left: 3rem;
+ position: relative;
+  width: 40rem;
+  
+  margin-right: 1rem;
 }
-
 
 .delete-btn {
   background: rgb(206, 74, 74);

@@ -55,6 +55,7 @@ export default {
 .navigation-menu {
   display: inline-block;
   position: relative;
+  
 }
 
 .overlay {
@@ -62,23 +63,21 @@ export default {
   width: 0;
   position: fixed;
   z-index: 1;
-
   top: 0;
 }
 
 .overlay-content {
   position: relative;
-  top: 80px;
+  top: 88px;
   width: 100%;
   text-align: center;
-  margin-top: 30px;
+  margin-top: 5px;
 }
 
 ul {
   list-style-type: none;
   padding: 0;
- 
-  left: -1rem;
+  left: 0.2rem;
 
 border-radius: 3px;
   filter: blur(30%);
@@ -93,10 +92,12 @@ ul a {
   text-decoration: none;
 }
 button {
-  border-radius: 0;
-  border: 0.4px solid rgb(255, 255, 255);
-  padding: 0.6rem 3rem;
+  border-radius: 3px;
+  border: 0.4px solid rgba(255, 255, 255, 0.486);
+  padding: 0.6rem 4rem;
   transition: ease 0.8s;
+  font-family: 'Montserrat', sans-serif;
+
   background-color: rgb(43, 143, 39);
 }
 button:hover {
