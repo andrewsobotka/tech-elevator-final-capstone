@@ -6,13 +6,13 @@
       <button v-on:click="showForm = !showForm">
         {{ showForm ? "Hide Form" : "Add a New Meal Plan" }}
       </button>
-         <NewMealPlan/>
     </div>
 
-    <div class="mealCards">
+    <div class="form-container">
          <NewMealPlan/>
 
-         
+    </div>
+    <div class="mealCards">
       <MealPlanCard />
       <MealPlanCard />
       <MealPlanCard />
@@ -75,5 +75,10 @@ h3 {
 
 .cardsContainer {
   position: relative;
+}
+
+.form-container{
+  display: flex;
+  justify-content: center;
 }
 </style>
