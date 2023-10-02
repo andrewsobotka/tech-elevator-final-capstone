@@ -3,6 +3,7 @@
     <form id="addNewRecipe" v-on:submit.prevent="createNewRecipe">
       <div>
         <h3>Add New Recipe</h3>
+        {{newRecipe.keywords}}
       </div>
       <div class="field">
         <label for="recipeName">Title: </label>
@@ -11,7 +12,7 @@
           name="recipeName"
           v-model="newRecipe.recipeName"
           placeholder="ie: Apple Crumble"
-          v-on:change="keyword"
+          v-on:change="keywords"
         />
       </div>
       <br />
@@ -26,8 +27,24 @@
       </div>
       <br />
       <div class="field">
-        <label for="description">Description: </label>
+<<<<<<< HEAD
+        <label for="description">Description: </label><br/>
         <textarea name="description" v-model="newRecipe.recipeDescription" />
+=======
+        <label for="description">Description: </label>
+        <textarea name="description" v-model="newRecipe.description" />
+      </div>
+
+      <div id="url-section">
+        <label for="image">Add a URL for an Image:</label><br>
+        <input
+          id="url"
+          type="text"
+          name="image"
+          v-model="newRecipe.imgUrl"
+          placeholder="www.image.com"
+        />
+>>>>>>> 3c0791462bfeebb8ee36b1d8f7c274f8ffcb13f1
       </div>
 
       <div class="ingredientList">
@@ -142,6 +159,7 @@
 </template>
 
 <script>
+import APIService from '../services/APIService';
 export default {
   data() {
     return {
@@ -150,15 +168,29 @@ export default {
       indexOfIngredients: [],
       wordArray:[],
       newRecipe: {
-        ingredients: [""],
-        steps: [""],
-        tags: [],
-        keywords:[]
+        // ingredients: [""],
+        // steps: [""],
+        // tags: [],
       },
     };
   },
   methods: {
-    createNewRecipe() {},
+    createNewRecipe() {
+      APIService.addRecipe(this.newRecipe)
+        .then(response => {
+          this.$store.commit('ADD_RECIPES', response.data)
+          this.$router.push(`/recipes/${response.data}`);
+          })
+        .catch(
+        (error) => {
+          if(error.response) {
+              window.alert('Bad Request');
+          } else if(error.request) {
+              window.alert('Could not reach service');
+          }
+        }
+      );
+    },
     deleteIngredients() {
       let newArray = [];
       for (let i = 0; i < this.newRecipe.ingredients.length; i++) {
@@ -181,8 +213,12 @@ export default {
 
       this.indexOfSteps = [];
     },
-    keyword(){
-      this.newRecipe.keywords = this.newRecipe.recipeName.split(" ")
+    keywords(){
+      let keywordArray = this.newRecipe.recipeName.split(" ");
+
+      keywordArray.foreach((word)=>{
+        this.newRecipe.keywords= this.newRecipe.keywords + word + ", ";
+      })
       return this.newRecipe.keywords;
     }
     
@@ -200,6 +236,8 @@ export default {
   flex-direction: column;
   width: 100%;
   cursor: pointer;
+  min-width: 30rem;
+  overflow-x: hidden;
 }
 div a {
   color: #333;
@@ -207,7 +245,7 @@ div a {
 
 textarea {
   position: relative;
-  width: 20rem;
+  min-width: 28rem;
   height: 10rem;
   background-color: #d9e9fa;
   border: none;
@@ -226,7 +264,7 @@ input::placeholder {
 
 input[name="recipeName"] {
   margin-top: 0.7rem;
-  width: 95%;
+  width: 93%;
 }
 
 .ingredientList li {
@@ -269,21 +307,23 @@ input[name="servingSize"] {
   display: flex;
   margin-bottom: 1rem;
   position: relative;
+  width: 30rem;
   left: -2.5rem;
-  justify-content: left;
+
 }
 
 .ingredients-input{
-    position: relative;
-  width: 20rem;
-  margin-left: 1rem;
+  position: relative;
+  width: 30rem;
+  max-width: 400%;
+  margin-right: 1rem;
 }
 .steps-input {
-  position: relative;
-  width: 20rem;
-  margin-left: 3rem;
+ position: relative;
+  width: 40rem;
+  
+  margin-right: 1rem;
 }
-
 
 .delete-btn {
   background: rgb(206, 74, 74);
@@ -347,5 +387,10 @@ li{
     font-family: "Montserrat";
     text-justify: top;
 }
+
+#url{
+    width: 20rem;
+}
+
 
 </style>

@@ -127,10 +127,11 @@ h2 {
   height: auto;
   margin: 1rem 2rem;
   padding: 2rem 3rem 2rem 2rem;
-  width: 30%;
+  width: 50%;
   display: flex;
   justify-content: center;
   text-align: center;
+  margin-top: 3rem;
 }
 
 .registerDiv a {
@@ -155,6 +156,7 @@ h2 {
 p a {
   color: #333;
   font-family: "Montserrat";
+  text-decoration: none;
 }
 
 #bottom {

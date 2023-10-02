@@ -2,6 +2,7 @@ package com.techelevator.dao;
 
 import com.techelevator.exception.DaoException;
 import com.techelevator.model.Meal;
+import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -9,6 +10,7 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Component;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,11 +54,34 @@ public class JdbcMealDao implements MealDao {
         return meal;
     }
 
+    @Override
+    public List<Meal> getListOfMyMeals(Principal principal) {
+        List<Meal> meals = new ArrayList<>();
+        Integer userId;
+        String sql_user_id = "SELECT user_id FROM users " +
+                             "WHERE username = ?;";
+        String sql_meals = "SELECT meals.meal_id, meals.meal_name, meals.meal_date FROM meals " +
+                            "LEFT JOIN users_meals on meals.meal_id = users_meals.meal_id " +
+                            "LEFT JOIN users on users_meals.user_id = users.user_id " +
+                            "WHERE users.user_id = ?;";
+        try {
+            userId = jdbcTemplate.queryForObject(sql_user_id, Integer.class, principal.getName());
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql_meals, userId);
+            while (results.next()) {
+                Meal meal = mapRowToMeal(results);
+                meals.add(meal);
+            }
+        } catch (DataAccessException e){
+            throw new DataAccessException(e.toString()) {};
+        }
+        return meals;
+    }
+
     private Meal mapRowToMeal(SqlRowSet rs) {
         Meal meal = new Meal();
-        meal.setMeal_id(rs.getInt("meal_id"));
-        meal.setMeal(rs.getString("meal_name"));
-        meal.setDate(rs.getDate("male_date"));
+        meal.setMealId(rs.getInt("meal_id"));
+        meal.setMealName(rs.getString("meal_name"));
+        meal.setMealDate(rs.getDate("meal_date"));
         return meal;
     }
 

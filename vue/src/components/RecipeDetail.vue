@@ -24,7 +24,7 @@
             v-bind:key="index"
             class="ingredient"
           >
-            • {{ ingredient.ingredient }}
+            • {{ ingredients.ingredient }}
           </li>
         </ul>
       </div>
@@ -70,9 +70,14 @@ export default {
       this.$store.commit("SET_RECIPE", response.data);
     });
   },
+<<<<<<< HEAD
+  computed: {
+    recipe() {
+=======
   computed:{
     recipe(){
       
+>>>>>>> 3c0791462bfeebb8ee36b1d8f7c274f8ffcb13f1
       return this.$store.state.recipe;
     },
   },

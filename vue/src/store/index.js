@@ -31,6 +31,7 @@ export default new Vuex.Store({
     ],
     filteredList:[],
     groceryList:["1 carton of milk", "1 carton of eggs", "1 block of parmesan cheese", "5 oranges" ],
+    featuredList:[],
     recipe:{},
     keyword:"",
     recipes:[
@@ -101,6 +102,12 @@ export default new Vuex.Store({
     },
     SET_KEYWORD(state, search){
       state.keyword = search;
+    },
+    ADD_RECIPE(state, recipe){
+      state.recipes.push(recipe);
+    },
+    SET_FEATURED(state, recipes){
+      state.featuredList = recipes;
     }
   }
 })

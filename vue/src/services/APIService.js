@@ -135,5 +135,10 @@ export default{
     //keywords
     getRecipesByKeyword(searchedWord){
         return axios.get(`/keywords?keywords=${searchedWord}`)
+    },
+
+    //featured
+    getRecipesByFeatured(){
+        return axios.get('/featured')
     }
 }
