@@ -1,9 +1,6 @@
 package com.techelevator.service;
 
-import com.techelevator.dao.IngredientDao;
-import com.techelevator.dao.RecipeDao;
-import com.techelevator.dao.StepDao;
-import com.techelevator.dao.TagDao;
+import com.techelevator.dao.*;
 import com.techelevator.model.Ingredient;
 import com.techelevator.model.Recipe;
 import com.techelevator.model.Step;
@@ -11,6 +8,7 @@ import com.techelevator.model.Tag;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.security.Principal;
 import java.util.List;
 @Service
 public class RecipeService {
@@ -25,13 +23,15 @@ public class RecipeService {
     private TagDao tagDao;
 
     private StepDao stepDao;
+    private UserDao userDao;
 
-    public RecipeService(RecipeDao recipeDao, RecipeImportService recipeImportService, TagDao tagDao, IngredientDao ingredientDao, StepDao stepDao) {
+    public RecipeService(RecipeDao recipeDao, RecipeImportService recipeImportService, TagDao tagDao, IngredientDao ingredientDao, StepDao stepDao, UserDao userDao) {
         this.recipeDao = recipeDao;
         this.recipeImportService = recipeImportService;
         this.tagDao = tagDao;
         this.ingredientDao = ingredientDao;
         this.stepDao = stepDao;
+        this.userDao = userDao;
     }
 
     public Recipe importRecipe(String url) {
@@ -41,21 +41,23 @@ public class RecipeService {
     public Recipe getRecipe(int recipe_id) {
         Recipe recipe = recipeDao.getRecipeByRecipeId(recipe_id);       //get recipe by recipeId
 
-        List<Tag> tags = tagDao.getTagsByRecipeId(recipe_id);        //then get their tags now...
+        List<Tag> tags = tagDao.getTagsByRecipeId(recipe_id);        //then get that recipe's tags now...
         recipe.setTags(tags);
 
-        List<Ingredient> ingredients = ingredientDao.getListOfIngredientsByRecipeId(recipe_id);
+        List<Ingredient> ingredients = ingredientDao.getListOfIngredientsByRecipeId(recipe_id);     //then get that recipe's ingredients now..
         recipe.setIngredients(ingredients);
 
-        List<Step> steps = stepDao.getListOfStepsByRecipeId(recipe_id);
+        List<Step> steps = stepDao.getListOfStepsByRecipeId(recipe_id);     //then get that recipe's steps now...
         recipe.setSteps(steps);
 
         return recipe;
     }
-
     public List<Recipe> getRecipesByIngredient (String ingredient) {
         List<Recipe> recipes = recipeDao.getRecipesByIngredient(ingredient);
         return recipes;
+    }
+    public Integer createRecipe(Recipe recipe, Principal principal) {
+        return recipeDao.createRecipe(recipe, principal);
     }
 
 //TODO: CREATE A SERVICE FOR RETRIEVING A RECIPE BY STEPS

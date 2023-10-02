@@ -3,9 +3,9 @@
     <div id="top">
 
       <!-- Added Font Awesome Icon-->
-      <i class="fa-solid fa-leaf" style="font-size: 1.5em;color: green;"></i>
+      <!-- <i class="fa-solid fa-leaf" style="font-size: 1.5em;color: green;"></i> -->
       
-      <h2 id="welcome">Welcome{{$store.state.token != ''? ", " + $store.state.user.username : "to Sage"}}!</h2>
+      <h2 id="welcome">Welcome{{$store.state.token != ''? ", " + $store.state.user.username : " to Sage"}}!</h2>
       </div>
       <div >
         <div class="buttons"> 
@@ -16,7 +16,7 @@
 </div>
   <div id="recipeCardContainer">
     <RecipeCard
-      v-for="recipe in $store.state.recipes"
+      v-for="recipe in $store.state.featuredList"
       v-bind:key="recipe.recipeId"
       v-bind:recipe ="recipe"
      /> 
@@ -37,9 +37,19 @@ export default {
     }
   },
   created(){
-    APIService.getRecipes().then(response => {
-      this.$store.commit('SET_RECIPES', response.data)
-    })
+    // APIService.getRecipes().then(response => {
+    //   this.$store.commit('SET_RECIPES', response.data)
+    // })
+    APIService.getRecipesByFeatured().then(response=>{
+      this.$store.commit('SET_FEATURED', response.data)
+    }
+    )
+  },
+  computed:{
+     recipe(){
+      
+      return this.$store.state.featuredList;
+    },
   }
 };
 </script>
@@ -53,6 +63,9 @@ export default {
   margin:auto;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+  width: 100vw;
 
 }
 
@@ -107,6 +120,35 @@ button:hover{
 }
 
 #recipeCardContainer{
+  display: flex;
+  justify-content: center;
+}
+
+#title{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  background-color:transparent ;
+}
+
+#recipe-card-container{
+  display: flex;
+  justify-content: center;
+  text-align: left;
+}
+
+p{
+  font-family: "Montserrat";
+  font-style: italic;
+}
+
+input{
+  background: #fff;
+  border: 1px #333 solid;
+  margin-right: 1rem;
+}
+
+#explore{
   display: flex;
   justify-content: center;
 }

@@ -1,7 +1,9 @@
 package com.techelevator.model;
 
-public class Step {
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
+public class Step {
+    @JsonIgnore
     private int step_id;
 
     private int rank;

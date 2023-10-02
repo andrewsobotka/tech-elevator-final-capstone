@@ -54,7 +54,7 @@ CREATE TABLE meals (
 DROP TABLE IF EXISTS tags CASCADE;
 CREATE TABLE tags (
     tag_id SERIAL,
-    tag text DEFAULT 'tag' NOT NULL,
+    tag text NOT NULL UNIQUE ,
     CONSTRAINT PK_meals_Tag PRIMARY KEY (tag_id)
 );
 

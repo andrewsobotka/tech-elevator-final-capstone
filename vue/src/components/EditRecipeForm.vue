@@ -11,6 +11,7 @@
           name="recipeName"
           v-model="editRecipe.recipeName"
           placeholder="ie: Apple Crumble"
+          v-on:change="keyword"
         />
       </div>
       <br />
@@ -127,7 +128,7 @@
             v-bind:name="tag"
             v-model="editRecipe.tags"
           />
-          <label for="tagLabel">{{ tag }}</label>
+          <label for="tagLabel">{{ tag.tag }}</label>
         </div>
       </div>
 
@@ -178,6 +179,10 @@ export default {
       this.editRecipe.steps = newArray;
 
       this.indexOfSteps = [];
+    },
+    keyword(){
+      this.editRecipe.keywords = this.editRecipe.recipeName.split(" ")
+      return this.editRecipe.keywords;
     }
   },
   computed: {

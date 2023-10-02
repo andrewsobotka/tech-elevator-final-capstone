@@ -21,16 +21,19 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     listOfTags: [
-      "breakfast",
-      "lunch",
-      "dinner",
-      "vegan",
-      "dairy-free",
-      "keto",
-      "vegetarian",
+      { tag: "breakfast", tagId: 6},
+      { tag: "dinner", tagId: 2},
+      { tag: "vegan", tagId: 3},
+      { tag: "dairy-free", tagId: 4},
+      { tag: "keto", tagId: 5},
+      { tag: "lunch", tagId: 7},
+      { tag: "vegetarian", tagId: 1},
     ],
+    filteredList:[],
     groceryList:["1 carton of milk", "1 carton of eggs", "1 block of parmesan cheese", "5 oranges" ],
+    featuredList:[],
     recipe:{},
+    keyword:"",
     recipes:[
       // {
       //   recipeId:1,
@@ -93,6 +96,18 @@ export default new Vuex.Store({
     },
     SET_RECIPE(state, recipe){
       state.recipe=recipe;
+    },
+    SET_FILTERED(state, recipes){
+        state.filteredList = recipes;
+    },
+    SET_KEYWORD(state, search){
+      state.keyword = search;
+    },
+    ADD_RECIPE(state, recipe){
+      state.recipes.push(recipe);
+    },
+    SET_FEATURED(state, recipes){
+      state.featuredList = recipes;
     }
   }
 })

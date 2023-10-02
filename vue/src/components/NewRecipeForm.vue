@@ -3,6 +3,7 @@
     <form id="addNewRecipe" v-on:submit.prevent="createNewRecipe">
       <div>
         <h3>Add New Recipe</h3>
+        {{newRecipe.keywords}}
       </div>
       <div class="field">
         <label for="recipeName">Title: </label>
@@ -11,6 +12,7 @@
           name="recipeName"
           v-model="newRecipe.recipeName"
           placeholder="ie: Apple Crumble"
+          v-on:change="keywords"
         />
       </div>
       <br />
@@ -25,8 +27,24 @@
       </div>
       <br />
       <div class="field">
+<<<<<<< HEAD
         <label for="description">Description: </label><br/>
         <textarea name="description" v-model="newRecipe.recipeDescription" />
+=======
+        <label for="description">Description: </label>
+        <textarea name="description" v-model="newRecipe.description" />
+      </div>
+
+      <div id="url-section">
+        <label for="image">Add a URL for an Image:</label><br>
+        <input
+          id="url"
+          type="text"
+          name="image"
+          v-model="newRecipe.imgUrl"
+          placeholder="www.image.com"
+        />
+>>>>>>> 3c0791462bfeebb8ee36b1d8f7c274f8ffcb13f1
       </div>
 
       <div class="ingredientList">
@@ -34,7 +52,6 @@
         <button class="ingredients-btn">
           <a v-on:click="newRecipe.ingredients.push('')">Add Ingredient</a>
         </button>
-
         <br />
 
         <ul>
@@ -120,14 +137,15 @@
           v-for="(tag, index) in $store.state.listOfTags"
           v-bind:key="index"
         >
+        
           <input
             type="checkbox"
             id="tag"
-            v-bind:value="tag"
-            v-bind:name="tag"
+            v-bind:value="tag.tag"
+            v-bind:name="tag.tag"
             v-model="newRecipe.tags"
           />
-          <label for="tagLabel">{{ tag }}</label>
+        <label for="tag">{{ tag.tag }}</label>
         </div>
       </div>
 
@@ -141,21 +159,38 @@
 </template>
 
 <script>
+import APIService from '../services/APIService';
 export default {
   data() {
     return {
       currentValue: 0,
       indexOfSteps: [],
       indexOfIngredients: [],
+      wordArray:[],
       newRecipe: {
-        ingredients: [""],
-        steps: [""],
-        tags: [],
+        // ingredients: [""],
+        // steps: [""],
+        // tags: [],
       },
     };
   },
   methods: {
-    createNewRecipe() {},
+    createNewRecipe() {
+      APIService.addRecipe(this.newRecipe)
+        .then(response => {
+          this.$store.commit('ADD_RECIPES', response.data)
+          this.$router.push(`/recipes/${response.data}`);
+          })
+        .catch(
+        (error) => {
+          if(error.response) {
+              window.alert('Bad Request');
+          } else if(error.request) {
+              window.alert('Could not reach service');
+          }
+        }
+      );
+    },
     deleteIngredients() {
       let newArray = [];
       for (let i = 0; i < this.newRecipe.ingredients.length; i++) {
@@ -178,8 +213,19 @@ export default {
 
       this.indexOfSteps = [];
     },
+    keywords(){
+      let keywordArray = this.newRecipe.recipeName.split(" ");
+
+      keywordArray.foreach((word)=>{
+        this.newRecipe.keywords= this.newRecipe.keywords + word + ", ";
+      })
+      return this.newRecipe.keywords;
+    }
+    
   },
-  computed: {},
+  computed: {
+    
+  },
 };
 </script>
 
@@ -341,5 +387,10 @@ li{
     font-family: "Montserrat";
     text-justify: top;
 }
+
+#url{
+    width: 20rem;
+}
+
 
 </style>

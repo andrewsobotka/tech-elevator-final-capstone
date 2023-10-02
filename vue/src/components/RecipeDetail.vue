@@ -19,15 +19,6 @@
       <div class="ingredients">
         <!-- where ID = XYZ v-for Data.Ingredients -->
         <ul>
-
-          <li class="ingredient">• 13 seashells</li>
-          <li class="ingredient">• 2 friends</li>
-          <li class="ingredient">• 1/4 tbs green tea</li>
-          <li class="ingredient">• 13 small rocks</li>
-          <li class="ingredient">• 1lb sugar</li>
-          <li class="ingredient">• 2 turtles</li>
-          <li class="ingredient">• 1/4 tbs green tea</li>
-
           <li
             v-for="(ingredient, index) in recipe.ingredients"
             v-bind:key="index"
@@ -39,7 +30,6 @@
       </div>
 
       <div class="recipeImage">
-
         <img :src="recipe.imgUrl" />
       </div>
     </div>
@@ -60,38 +50,8 @@
           {{ step.instruction }}
 
         </li>
-
-
-
-        <li class="steps">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore,
-          dolores!
-        </li>
-        <li class="steps">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex iusto,
-          magnam aut iste amet rerum.
-        </li>
-        <li class="steps">Lorem, ipsum dolor. Lorem ipsum dolor sit amet.</li>
-        <li class="steps">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed optio
-          enim velit accusantium quo, magnam neque aut tempore omnis amet
-          necessitatibus provident, maxime dicta? Eos aliquid provident, iste
-          quos quam corrupti harum ducimus temporibus? Quam perferendis nobis
-          architecto nulla! Quis, quisquam totam cupiditate quos quae nobis eius
-          eos provident voluptatum, fugit dignissimos delectus dolorum quam
-          itaque aperiam distinctio culpa perferendis?
-        </li>
-
-        <li class="steps">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur,
-          provident quasi asperiores laborum odit ducimus quod explicabo aliquid
-          eaque, recusandae, corporis quibusdam sequi incidunt ex?
-        </li>
-
-
-
       </ol>
-      <router-link v-bind:to="{name:'edit-recipe' ,params:{ id: recipe.recipeId }}"><button>Edit Recipe</button></router-link>
+      <router-link v-bind:to="{name:'edit-recipe' ,params:{ id: recipe.recipeId }}" v-if="$store.state.user.id === recipe.creatorId || $store.state.user.authorities[0].name == 'ROLE_ADMIN'"><button>Edit Recipe</button></router-link>
     </div>
   </div>
 </template>
@@ -110,8 +70,14 @@ export default {
       this.$store.commit("SET_RECIPE", response.data);
     });
   },
+<<<<<<< HEAD
   computed: {
     recipe() {
+=======
+  computed:{
+    recipe(){
+      
+>>>>>>> 3c0791462bfeebb8ee36b1d8f7c274f8ffcb13f1
       return this.$store.state.recipe;
     },
   },
@@ -237,4 +203,4 @@ max-width: 30rem;
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(111, 187, 130);
 }
-</style>
+</style>  
