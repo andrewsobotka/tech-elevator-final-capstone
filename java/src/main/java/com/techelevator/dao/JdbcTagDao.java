@@ -112,7 +112,7 @@ public class JdbcTagDao implements TagDao {
             } else {                                                //if this tag is already in the database...
                 tagId = existingTag.getTagId();
             }
-            jdbcTemplate.update(sql2, recipe_id, tagId);
+            jdbcTemplate.update(sql2, tagId, recipe_id);
 
         } catch (DataAccessException e){
             throw new DataAccessException(e.toString()) {};

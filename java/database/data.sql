@@ -37,9 +37,9 @@ INSERT INTO ingredients (ingredient) VALUES ('1 tomato');
 INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (1, 1);
 
 -- Adding Cheese, Milk, and Tomato to the "user" 'Grocery List'
-INSERT INTO users_ingredients (user_id, ingredient_id, is_completed) VALUES (1, 1, false);
-INSERT INTO users_ingredients (user_id, ingredient_id, is_completed) VALUES (1, 2, true);
-INSERT INTO users_ingredients (user_id, ingredient_id, is_completed) VALUES (1, 3, false);
+INSERT INTO users_ingredients (user_id, ingredient_id, recipe_id, is_completed) VALUES (1, 1, 1, false);
+INSERT INTO users_ingredients (user_id, ingredient_id, recipe_id, is_completed) VALUES (1, 2, 1, true);
+INSERT INTO users_ingredients (user_id, ingredient_id, recipe_id, is_completed) VALUES (1, 3, 1, false);
 
 -- Adding 3 Steps to Pizza
 INSERT INTO steps (rank, instruction) VALUES (1, 'Preheat Oven to 400 Degrees');
