@@ -8,7 +8,7 @@
         </div>
         <div class="links">
           <a href="/settings" class="footerlink"> Settings </a>
-          <a href="#form" class="footerlink"> Contact Us </a>
+          <a href="#form" class="footerlink"> Contact Sage </a>
           <a href="" class="footerlink"> Hire Us </a>
         </div>
 
