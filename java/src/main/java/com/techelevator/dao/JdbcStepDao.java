@@ -1,9 +1,7 @@
 package com.techelevator.dao;
 
-import com.techelevator.model.Ingredient;
-import com.techelevator.model.Meal;
-import com.techelevator.model.Recipe;
-import com.techelevator.model.Step;
+import com.techelevator.model.*;
+import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -52,6 +50,43 @@ public class JdbcStepDao implements StepDao{
         }
 
         return steps;
+    }
+
+    //Create a new step
+    @Override
+    public Integer createStep(Step step) {
+
+        String sql = "INSERT INTO steps (rank, instruction)" +
+                "VALUES (?,?) " +
+                "RETURNING step_id;";
+        Integer stepId;
+        try {
+            stepId = jdbcTemplate.queryForObject(sql, Integer.class, step.getRank(), step.getInstruction());
+        } catch (DataAccessException e){
+            throw new DataAccessException(e.toString()) {};
+        }
+        return stepId;
+    }
+
+    // Create a new tag for a new recipe
+    @Override
+    public Integer createStepForRecipe(Step step, int recipe_id) {
+        String sql = "INSERT INTO steps (rank, instruction)" +
+                "VALUES (?, ?) " +
+                "RETURNING step_id;";
+
+        String sql2 = "INSERT INTO steps_recipes (step_id, recipe_id)" +
+                "VALUES (?, ?) ";
+
+        Integer stepId;
+
+        try {
+                stepId = jdbcTemplate.queryForObject(sql, Integer.class, step.getRank(), step.getInstruction());
+
+        } catch (DataAccessException e){
+            throw new DataAccessException(e.toString()) {};
+        }
+        return stepId;
     }
 
     private Step mapRowToStep(SqlRowSet rs) {
