@@ -2,7 +2,7 @@
 <div id="container">
   <div id="login" class="login-body">
     <form @submit.prevent="login" class = "loginDiv">
-      <h2 >Please Sign In</h2><br/>
+      <h2 id="title" >Please Sign In</h2><br/>
       <div id= "alert" role="alert" v-if="invalidCredentials">
         Invalid username and password!
       </div>
@@ -88,7 +88,7 @@ export default {
   font-family: "DM Sans", sans-serif;
   text-align: center;
   padding: 1rem 3rem;
-  width: 40%;
+  width: 50%
 }
 
 .loginDiv a {
@@ -98,6 +98,10 @@ export default {
 
 #sign-up a {
   color: #333;
+  font-family: "Montserrat";
+}
+
+#sign-up{
   font-family: "Montserrat";
 }
 
@@ -118,6 +122,11 @@ h2{
   text-decoration:none;
   border-bottom: none;
   background: transparent;
+}
+
+#title{
+  text-align: center;
+  width:100%;
 }
 
 </style>
