@@ -121,6 +121,20 @@ public class JdbcRecipeDao implements RecipeDao {
         return recipeId;
     }
 
+    @Override
+    public int deleteRecipeByCreatorId(int creator_id){
+        int numberOfRows = 0;
+        String sql = "DELETE FROM recipes WHERE creator_id = ?";
+        try {
+            numberOfRows = jdbcTemplate.update(sql, creator_id);
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data integrity violation", e);
+        }
+        return numberOfRows;
+    }
+
     private Recipe mapRowToRecipe(SqlRowSet rs) {
         Recipe recipe = new Recipe();
         recipe.setRecipeId(rs.getInt("recipe_id"));

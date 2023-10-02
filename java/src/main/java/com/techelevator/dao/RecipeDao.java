@@ -20,4 +20,6 @@ public interface RecipeDao {
     List<Recipe> getRecipesByIngredient(String ingredient);
 
     Integer createRecipe(Recipe recipe, Principal principal);
+
+    int deleteRecipeByCreatorId(int creator_id);
 }

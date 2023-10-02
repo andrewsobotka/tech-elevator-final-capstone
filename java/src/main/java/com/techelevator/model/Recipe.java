@@ -1,11 +1,12 @@
 package com.techelevator.model;
 
+import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 public class Recipe {
-
     private int recipeId;
     private int creatorId;
+    @NotBlank
     private String recipeName;
     private String description;
     private double servingSize;
