@@ -61,6 +61,7 @@ export default {
 <style>
 .body{
     background: white;
+    padding-bottom: 3rem;
 }
 
 #grocery {

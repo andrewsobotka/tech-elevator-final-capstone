@@ -50,6 +50,7 @@ font-family: 'Montserrat', sans-serif;
   text-align: left;
   text-decoration: none;
   /* mix-blend-mode: difference; */
+  
 }
 
 .sageInc{
@@ -93,12 +94,23 @@ padding-bottom: 30px;
 .links {
     justify-content: space-between;
   color: rgb(231, 231, 208);
-    
+
     margin-right: -30px;
 }
 
 .links img {
   width: 10rem;
   height: 10rem;
+}
+
+@media only screen and (max-width: 980px) {
+  footer {
+   background-size: 300%;
+  /* background-size: 350%; */
+  background-repeat: no-repeat;
+  background-position: 40% 73%;
+  background-image: url('https://images.unsplash.com/photo-1503810473512-f64b56827964?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80');
+  transition: ease 1s;
+  }
 }
 </style>

@@ -61,21 +61,16 @@ export default {
   top: 0px;
   padding: 1rem;
   background: #c7e2c0;
-  /* background-image: url('https://media.istockphoto.com/id/499618110/photo/sage.jpg?s=2048x2048&w=is&k=20&c=DCUuPnDMWSqq6vJWs3Wu8mueUz6aG2FWxKNhBZoSnzA='); */
 
   background-image: url("https://images.unsplash.com/photo-1524222717473-730000096953?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80");
   background-position: 100% 37%;
   background-size: 125%;
-  /* background-image: url('https://images.unsplash.com/photo-1586288415925-d7affaf2d1f0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80'); */
-
-  /* background-size: cover; */
   background-repeat: no-repeat;
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: #333;
   font-family: "Montserrat";
-  /* border-bottom: 10px #0b3b0b6e solid; */
   z-index: 3;
 }
 
@@ -117,20 +112,33 @@ a {
   justify-content: center;
    position: relative;
     left: 30px;
+    
 }
 .logo a {
   text-decoration: none;
   font-family: "Young Serif", serif;
   font-size: 3rem;
   letter-spacing: 1px;
-  color: rgb(30, 98, 39);
+  color: rgb(40, 112, 49);
   transition: all 0.5s ease;
   padding: 0 10px;
-  -webkit-text-stroke: 1px rgba(2, 39, 10, 0.733);
+  -webkit-text-stroke: 1px rgba(103, 182, 120, 0.863);
+  mix-blend-mode: invert;
 }
 .logo a:hover {
   letter-spacing: 3px;
   color: #fbfbfb;
   -webkit-text-stroke: 1.2px #c5b39e77;
+}
+
+@media only screen and (max-width: 980px) {
+  .headerbar {
+   background-size: 200%;
+  /* background-size: 350%; */
+  background-repeat: no-repeat;
+  background-position: 50% 35%;
+  background-image: url("https://images.unsplash.com/photo-1524222717473-730000096953?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80");
+  transition: ease 1s;
+  }
 }
 </style>

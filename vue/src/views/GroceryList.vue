@@ -14,6 +14,9 @@ export default {
 </script>
 
 <style scoped>
+.grocery{
+
+}
 h3 {
   text-align: center;
   text-decoration: none;
