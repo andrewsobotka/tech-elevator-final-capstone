@@ -3,7 +3,7 @@
     <div class="name-img-container">
       
          <!-- Use the <favorite> component to toggle favorited state -->
-        <FavoriteIcon :favorited="recipe.favorited" @togglefav="toggleFavorite" class="favorite"/>
+        <FavoriteIcon :favorited="recipe.favorited" @toggle-favorites="toggleFavorites" class="favorite"/>
 
       <router-link
         v-bind:to="{ name: 'recipe', params: { id: recipe.recipeId } }"
@@ -52,6 +52,13 @@ export default {
         this.$router.push("/login");
       }
     },
+    
+    toggleFavorites() {
+            this.favorite=!this.favorite;
+    },
+    toggleColor() {
+      this.is_fav = !this.is_fav;
+    },
   },
 };
 </script>
@@ -74,6 +81,7 @@ export default {
 
 .name-img-container {
   position: relative;
+ 
 }
 
 

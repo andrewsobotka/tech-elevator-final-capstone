@@ -1,33 +1,36 @@
 <template>
-    <button class="btn btn-sm btn-primary" v-on:click="togglefav" >
-      
-      <i v-bind:class="[is_fav ?  'fa-heart' : 'fa-heart-o', 'fa']" aria-hidden="true"></i>
-      
-      </button>
-    <!-- <button class="btn btn-sm btn-primary" v-on:click="togglefav" ><i v-bind:class="[is_fav ?  'fa-bookmark' : 'fa-bookmark-o', 'fa']" aria-hidden="true"></i></button> -->
+  <button @click="$emit('toggle-favorites', recipe.id)"
 
-
-
+   class="btn btn-sm btn-primary">
+    <i
+      :class="[favorite ? 'fa-heart favorite' : 'fa-heart-o', 'fa']"
+      aria-hidden="true"
+      @click="toggleColor"
+    ></i>
+  </button>
 </template>
 
 <script>
 export default {
+  date(){
+    return {
+      favorite:false
+    };
+  },
   props: {
-    favorited: Boolean,
+    
   },
-  methods: {
-    toggleFavorite() {
-      this.$emit("togglefav", !this.favorited);
-    },
-  },
+emits: ['toggle-favorites'],
+
 };
 </script>
+
 <style scoped>
-.fa-heart{
- font-size: 3rem;
+.fa-heart {
+  font-size: 3rem;
 }
 
-.favorite{
+.fa {
   color: red;
 }
 </style>
