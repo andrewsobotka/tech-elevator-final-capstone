@@ -81,7 +81,7 @@ public class JdbcTagDao implements TagDao {
     // Create a new tag
     @Override
     public Integer createTag(Tag tag) {
-        String sql = "INSERT INTO tags (tag)" +
+        String sql = "INSERT INTO tags (tag) " +
                 "VALUES (?) " +
                 "RETURNING tag_id;";
         Integer tagId;
@@ -96,11 +96,11 @@ public class JdbcTagDao implements TagDao {
     // Create a new tag for a new recipe
     @Override
     public Integer createTagForRecipe(Tag tag, int recipe_id) {
-        String sql = "INSERT INTO tags (tag)" +
+        String sql = "INSERT INTO tags (tag) " +
                      "VALUES (?) " +
                      "RETURNING tag_id;";
 
-        String sql2 = "INSERT INTO recipes_tags (tag_id, recipe_id)" +
+        String sql2 = "INSERT INTO recipes_tags (tag_id, recipe_id) " +
                 "VALUES (?, ?) ";
 
         Integer tagId;

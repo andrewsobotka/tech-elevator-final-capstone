@@ -56,7 +56,7 @@ public class JdbcStepDao implements StepDao{
     @Override
     public Integer createStep(Step step) {
 
-        String sql = "INSERT INTO steps (rank, instruction)" +
+        String sql = "INSERT INTO steps (rank, instruction) " +
                 "VALUES (?,?) " +
                 "RETURNING step_id;";
         Integer stepId;
@@ -71,11 +71,11 @@ public class JdbcStepDao implements StepDao{
     // Create a new tag for a new recipe
     @Override
     public Integer createStepForRecipe(Step step, int recipe_id) {
-        String sql = "INSERT INTO steps (rank, instruction)" +
+        String sql = "INSERT INTO steps (rank, instruction) " +
                 "VALUES (?, ?) " +
                 "RETURNING step_id;";
 
-        String sql2 = "INSERT INTO steps_recipes (step_id, recipe_id)" +
+        String sql2 = "INSERT INTO steps_recipes (step_id, recipe_id) " +
                 "VALUES (?, ?) ";
 
         Integer stepId;

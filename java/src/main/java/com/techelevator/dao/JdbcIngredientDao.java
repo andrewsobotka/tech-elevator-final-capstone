@@ -74,8 +74,8 @@ public class JdbcIngredientDao implements IngredientDao{
     @Override
     public Integer createIngredient(Ingredient ingredient) {
 
-        String sql = "INSERT INTO ingredients (ingredient)" +
-                "VALUES (?)" +
+        String sql = "INSERT INTO ingredients (ingredient) " +
+                "VALUES (?) " +
                 "RETURNING ingredient_id;";
 
         Integer ingredientId;
@@ -90,11 +90,11 @@ public class JdbcIngredientDao implements IngredientDao{
 
     @Override
     public Integer createIngredientForRecipe(Ingredient ingredient, int recipe_id) {
-        String sql = "INSERT INTO ingredients ()" +
+        String sql = "INSERT INTO ingredients (ingredient) " +
                 "VALUES (?) " +
                 "RETURNING ingredient_id;";
 
-        String sql2 = "INSERT INTO ingredients_recipes (ingredient_id, recipe_id)" +
+        String sql2 = "INSERT INTO ingredients_recipes (ingredient_id, recipe_id) " +
                 "VALUES (?, ?) ";
 
         Integer ingredientId;

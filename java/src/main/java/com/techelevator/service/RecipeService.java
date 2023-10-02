@@ -67,13 +67,17 @@ public class RecipeService {
             }
         }
         //add new rows to ing table for this new recipe
-        for(Ingredient ingredient: recipe.getIngredients()){
-            int ingredientId = ingredientDao.createIngredientForRecipe(ingredient, recipeId);
+        if(recipe.getIngredients() != null) {
+            for (Ingredient ingredient : recipe.getIngredients()) {
+                int ingredientId = ingredientDao.createIngredientForRecipe(ingredient, recipeId);
+            }
         }
 
         //add new rows to steps table for this new recipe
-        for(Step step: recipe.getSteps()){
-            int stepId = stepDao.createStepForRecipe(step, recipeId);
+        if(recipe.getSteps() != null) {
+            for(Step step: recipe.getSteps()) {
+                int stepId = stepDao.createStepForRecipe(step, recipeId);
+            }
         }
 
         return recipeId;
