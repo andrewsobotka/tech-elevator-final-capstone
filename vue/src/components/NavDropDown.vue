@@ -77,7 +77,7 @@ export default {
 ul {
   list-style-type: none;
   padding: 0;
-  left: 0.2rem;
+  left: 0.1rem;
 
 border-radius: 3px;
   filter: blur(30%);

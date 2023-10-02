@@ -49,7 +49,7 @@ font-family: 'Montserrat', sans-serif;
   margin: 15px;
   text-align: left;
   text-decoration: none;
-  mix-blend-mode: difference;
+  /* mix-blend-mode: difference; */
 }
 
 .sageInc{
