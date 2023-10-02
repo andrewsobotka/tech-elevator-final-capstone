@@ -26,13 +26,14 @@ export default {};
 </script>
 
 <style scoped>
-.blank {
+/* .blank {
   padding-top: 15rem;
-}
+} */
 
 footer {
   background: #cddfbc;
   padding: 1rem;
+
   background-size: 115%;
   /* background-size: 350%; */
   background-repeat: no-repeat;

@@ -9,10 +9,12 @@
     </div>
 
     <div class="form-container">
-         <NewMealPlan/>
+    
 
     </div>
     <div class="mealCards">
+
+           <NewMealPlan/>
       <MealPlanCard />
       <MealPlanCard />
       <MealPlanCard />
