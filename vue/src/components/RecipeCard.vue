@@ -1,10 +1,15 @@
 <template>
   <div class="cardBody">
     <div class="name-img-container">
+      
+         <!-- Use the <favorite> component to toggle favorited state -->
+        <FavoriteIcon :favorited="recipe.favorited" @togglefav="toggleFavorite" class="favorite"/>
+
       <router-link
         v-bind:to="{ name: 'recipe', params: { id: recipe.recipeId } }"
         ><img :src="recipe.imgUrl" class="image-fit"
       /></router-link>
+      
       <div class="title-servings-combo">
         <h3>
           <router-link
@@ -25,7 +30,7 @@
         </div>
 
         <div class="servings">
-          Serving Size: {{ recipe.servingSize }}
+          Serving Size: {{ recipe.servingSize }} 
           <!-- | Total Time:
           {{ recipe.servingSize }} -->
         </div>
@@ -35,9 +40,12 @@
 </template>
 
 <script>
+import FavoriteIcon from './FavoriteIcon.vue';
 export default {
+
   name: "recipeCard",
   props: { recipe: Object },
+  components: {FavoriteIcon},
   methods: {
     pleaseLogin() {
       if (this.$store.state.token === "") {
@@ -68,8 +76,23 @@ export default {
   position: relative;
 }
 
+
+.favorite{
+  border:none;
+  padding: 6px 6px;
+position: fixed;
+transform: scale(1.2);
+color: rgb(255, 255, 255);
+right: 10%;
+background: rgba(255, 255, 255, 0.568); 
+
+transition: .3s ease;
+}
+
+.favorite:hover{
+  transform: scale(1.6);
+}
 .name-img-container:hover {
-  will-change: transform, opacity;
   -webkit-transform: scale(1.1);
   -moz-transform: scale(1.1);
   transform: scale(1.1);

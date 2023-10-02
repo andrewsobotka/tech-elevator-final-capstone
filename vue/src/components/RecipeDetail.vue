@@ -52,6 +52,7 @@
         </li>
       </ol>
       <router-link v-bind:to="{name:'edit-recipe' ,params:{ id: recipe.recipeId }}" v-if="$store.state.user.id === recipe.creatorId || $store.state.user.authorities[0].name == 'ROLE_ADMIN'"><button>Edit Recipe</button></router-link>
+      <button class="delete-btn">Delete Recipe</button>
     </div>
   </div>
 </template>
@@ -64,6 +65,24 @@ export default {
 
   methods: {
     addToLibrary() {},
+    deleteRecipe(){
+      let choice = confirm("Are you sure that you want to delete this?");
+        if (choice === true){
+          APIService.deleteRecipe(this.$route.params.id).then(
+            (response) =>{
+              console.log(response);
+              this.$router.push('/recipes')
+            }
+          ).catch(
+            (error) => {
+          if(error.response) {
+              window.alert('Bad Request');
+          } else if(error.request) {
+              window.alert('Could not reach service');
+          }
+          })  
+      }
+    }
   },
   created() {
     APIService.getRecipe(this.$route.params.id).then((response) => {
@@ -123,9 +142,6 @@ h3 {
   padding: 0rem 0.5rem;
   font-family: "DM Sans", sans-serif;
   font-weight: 300;
-
-}
-p {
 }
 
 .ingredients {
@@ -197,5 +213,13 @@ max-width: 30rem;
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(111, 187, 130);
+}
+
+.delete-btn a {
+  color: #fff;
+}
+
+.delete-btn:hover {
+  background: #7a2217;
 }
 </style>  

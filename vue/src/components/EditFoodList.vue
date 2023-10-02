@@ -34,12 +34,13 @@
     <br />
     <div id="button-container-2">
       <div id="button-container">
-        <button class="delete-btn" v-on:click="deleteItems">
-          Delete Items
-        </button>
         <button class="add-btn" v-on:click="$store.state.groceryList.push('')">
           Add Item
         </button>
+        <button class="delete-btn" v-on:click="deleteItems">
+          Delete Items
+        </button>
+        
       </div>
     </div>
 
@@ -83,7 +84,7 @@ export default {
 #grocery {
   display: block;
   align-items: center;
-  margin-left: 0px;
+  margin: auto;
   background: #fff;
 }
 
@@ -125,15 +126,14 @@ div #line {
 #button-container {
   display: flex;
   justify-content: center;
-  align-content: center;
   margin-top: 0px;
   width: 35rem;
-  align-content: top;
+
 }
 
-#button-container-2 {
-  display: flex;
-  justify-content: center;
+
+button{
+  margin: 0px 10px;
 }
 
 #list-title {
@@ -145,6 +145,8 @@ div #line {
 #list-container {
   display: flex;
   justify-content: center;
+position: relative;
+left: 30px;  
 }
 .add-btn{
   margin-top:0px;
@@ -154,9 +156,14 @@ div #line {
   margin-top: 0px;
   background: rgb(206, 74, 74);
   color: #fff;
-  font-size: 0.8rem;
+  font-size: 1rem;
   transition: ease 0.5s;
 }
+
+.delete-btn:hover{
+background: rgb(122, 20, 20);
+}
+
 
 #save {
   display: flex;

@@ -14,7 +14,10 @@
       <router-link  v-bind:to="{name:'explore-recipes'}" ><button id="explore-button" >Explore Recipes</button></router-link>
   </div>
 </div>
+    <h3>Featured Recipes</h3>
+    
   <div id="recipeCardContainer">
+
     <RecipeCard
       v-for="recipe in $store.state.featuredList"
       v-bind:key="recipe.recipeId"
@@ -87,8 +90,7 @@ export default {
   color: #fff;
   opacity: 30%;
   width: 100vw;
-  padding-top: 4%;
-  padding-bottom: 4%;
+  padding: 2% 0%;
   margin-bottom: 2rem;
 } 
 
@@ -158,6 +160,9 @@ input{
   color: #fff;
 }
 
+h3{
+  text-align: center;
+}
 
 
 
