@@ -8,7 +8,12 @@
       </div>
       
       <div id="tags-filter" >
-        <router-link v-bind:to="{ name: 'filter-by-tag', params:{id:tag.tagId}}" v-for="tag in $store.state.tags" v-bind:key="tag.tagId" v-bind:value="tag.tag" ><button v-on:click="setCurrentTag(tag.tagId, tag.tag)">{{tag.tag}}</button></router-link>
+        <router-link v-bind:to="{ name: 'filter-by-tag',
+                 params:{id:tag.tagId}}" 
+                 v-for="tag in $store.state.tags"
+                  v-bind:key="tag.tagId" v-bind:value="tag.tag" >
+
+          <button v-on:click="setCurrentTag(tag.tagId, tag.tag)">{{tag.tag}}</button></router-link>
       </div>
     <div class="cardsContainer">
       <RecipeCard
