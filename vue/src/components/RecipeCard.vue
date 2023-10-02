@@ -25,8 +25,8 @@
         </div>
 
         <div class="servings">
-          Serving Size: {{ recipe.servingSize }} | Total Time:
-          {{ recipe.servingSize }}
+         Serving size: {{ recipe.servingSize }} | Creator Name:
+      {{ recipe.creatorId }}
         </div>
       </div>
     </div>
