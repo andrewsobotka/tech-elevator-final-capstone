@@ -49,4 +49,11 @@ public class  RecipeController {
     public List<Recipe> getRecipesByIngredient(@RequestParam String ingredient) {
         return recipeService.getRecipesByIngredient(ingredient);
     }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @RequestMapping(path ="/recipes/{id}", method = RequestMethod.DELETE)
+    public void delete (@PathVariable int creatorId){
+        recipeDao.deleteRecipeByCreatorId(creatorId);
+    }
+
 }
