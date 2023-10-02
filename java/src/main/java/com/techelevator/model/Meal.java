@@ -1,44 +1,53 @@
 package com.techelevator.model;
 
 import java.util.Date;
+import java.util.List;
 
 public class Meal {
+    private int mealId;
+    private String mealName;
+    private Date mealDate;
+    private List<Recipe> mealRecipes;
 
-    private int meal_id;
-
-    private String meal;
-
-    private Date date;
-
-    public Meal() { }
-
-    public Meal(int meal_id, String meal, Date date) {
-        this.meal_id = meal_id;
-        this.meal = meal;
-        this.date = date;
+    public Meal() {
     }
 
-    public int getMeal_id() {
-        return meal_id;
+    public Meal(int mealId, String mealName, Date mealDate, List<Recipe> mealRecipes) {
+        this.mealId = mealId;
+        this.mealName = mealName;
+        this.mealDate = mealDate;
+        this.mealRecipes = mealRecipes;
     }
 
-    public void setMeal_id(int meal_id) {
-        this.meal_id = meal_id;
+    public int getMealId() {
+        return mealId;
     }
 
-    public String getMeal() {
-        return meal;
+    public void setMealId(int mealId) {
+        this.mealId = mealId;
     }
 
-    public void setMeal(String meal) {
-        this.meal = meal;
+    public String getMealName() {
+        return mealName;
     }
 
-    public Date getDate() {
-        return date;
+    public void setMealName(String mealName) {
+        this.mealName = mealName;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public Date getMealDate() {
+        return mealDate;
+    }
+
+    public void setMealDate(Date mealDate) {
+        this.mealDate = mealDate;
+    }
+
+    public List<Recipe> getMealRecipes() {
+        return mealRecipes;
+    }
+
+    public void setMealRecipes(List<Recipe> mealRecipes) {
+        this.mealRecipes = mealRecipes;
     }
 }

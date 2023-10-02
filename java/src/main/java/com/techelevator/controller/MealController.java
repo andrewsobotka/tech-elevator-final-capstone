@@ -3,11 +3,13 @@ package com.techelevator.controller;
 import com.techelevator.dao.MealDao;
 import com.techelevator.model.Meal;
 import com.techelevator.service.MealService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -20,6 +22,7 @@ public class MealController {
         this.mealDao = mealDao;
         this.mealService = mealService;
     }
+
     @GetMapping("/meals")
     public List<Meal> getMeals(){
         return mealDao.getListOfMeals();
@@ -29,4 +32,11 @@ public class MealController {
     public Meal getMealById(@PathVariable int mealId){
         return mealDao.getMealByMealId(mealId);
     }
+
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping("/meals/my-meals")
+    public List<Meal> getMyMeals(Principal principal) {
+        return mealService.getAllMyMealsByUserId(principal);
+    }
+
 }
