@@ -3,10 +3,9 @@
     <div class="blank"></div>
     <footer>
       <div class="footerlinks-container">
-        <div class="links">
-
-<img src="https://i.imgur.com/q1E063E.png" alt="">
-<h3>Sage</h3>
+        <div class="logo">
+          <!-- <img src="https://i.imgur.com/q1E063E.png" alt=""> -->
+          <h3>Sage</h3>
         </div>
         <div class="links">
           <a href="/settings" class="footerlink"> Settings </a>
@@ -14,19 +13,11 @@
           <a href="" class="footerlink"> Hire Us </a>
         </div>
 
-          <div class="links">
-          <a href="#settings" class="footerlink"> Settings </a>
-          <a href="#form" class="footerlink"> Contact Us </a>
-          <a href="" class="footerlink"> Hire Us </a>
-        </div>
+        <div class="links">
+      2023 ® Sage, Inc.
 
-      <div class="links">
-          <a href="#settings" class="footerlink"> Settings </a>
-          <a href="#form" class="footerlink"> Contact Us </a>
-          <a href="" class="footerlink"> Hire Us </a>
         </div>
       </div>
-      2023 ® Sage, Inc.
     </footer>
   </div>
 </template>
@@ -36,25 +27,25 @@ export default {};
 </script>
 
 <style scoped>
-.blank{
-    padding-top: 15rem;
+.blank {
+  padding-top: 15rem;
 }
 
 footer {
-  background: rgba(58, 38, 21, 0.705);
-  padding-bottom: 3rem;
-  color: rgb(207, 207, 207);
+  background: rgba(119, 113, 77, 0.452);
+  padding-bottom: 0rem;
 }
 
 footer a {
-  color: rgb(207, 207, 207);
+  color: rgb(55, 75, 23);
   font-size: 1.3rem;
   font-family: "Averia Serif Libre", cursive;
-  margin: 3px;
+  margin: 15px;
   text-align: left;
+  text-decoration: none;
 }
 
-footer a:hover{
+footer a:hover {
   color: rgb(145, 194, 113);
   transform: scale(1.03);
 }
@@ -72,23 +63,21 @@ div {
   display: flex;
   align-items: center;
 
-  justify-content:space-evenly;
+  justify-content: space-around;
   margin-bottom: 1rem;
   margin: auto;
   position: relative;
-
+  padding-right: 2rem;
 }
 
+.logo{
+  justify-content: start;
+}
 .links {
-
-  display: flex;
-  flex-direction: column;
-  display: flex;
-  justify-content: space-evenly;
-  margin: 2rem 0rem 1rem 3rem;
+    justify-content: space-between;
 }
 
-.links img{
+.links img {
   width: 10rem;
   height: 10rem;
 }

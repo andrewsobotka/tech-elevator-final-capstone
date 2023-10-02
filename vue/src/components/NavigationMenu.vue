@@ -48,8 +48,8 @@ export default {
 }
 .logo-img img{
   width: 4rem;
-  height: 3.5rem;
-  margin: .1rem;
+  height: 4rem;
+  /* margin: .1rem; */
 
 }
 .navigationmenu {
@@ -59,7 +59,7 @@ export default {
   cursor: pointer;
   position: Fixed;
   z-index: 99;
-  border-bottom: 2px solid rgba(56, 68, 58, 0.39);
+  /* border-bottom: 2px solid rgba(56, 68, 58, 0.39); */
 }
 
 .menu{
@@ -69,11 +69,9 @@ export default {
 
 .headerbar {
   top: 0px;
-  padding: 1.3rem;
-  background: #d0d3d0;
-  /* background-image: url("https://img.freepik.com/free-photo/spring-floral-border-background-green-with-leaf-watercolor-illustration_53876-126807.jpg?w=1060&t=st=1695934598~exp=1695935198~hmac=2af1dcbab7220b3737772d365afc7af0c3c54a5950c0fc42c9b587f252ed49ab"); */
+  padding: .5rem;
+  background: #f5ebcd80;
 
-  background-image: url("https://img.freepik.com/free-photo/grainy-ground-view-shot-bokeh-style_53876-104709.jpg?w=1060&t=st=1695935109~exp=1695935709~hmac=2a9ad39d790f8f22e59dde61f2706a4f020c4ff9ace2307d693a7cb6703bb88d");
   background-size: cover;
   background-repeat: no-repeat;
   display: flex;
@@ -81,6 +79,7 @@ export default {
   align-items: center;
   color: #333;
   font-family: "Montserrat";
+  border-top: 10px #0b3b0b solid;
   z-index: 3;
 }
 
@@ -128,7 +127,7 @@ font-family: 'Young Serif', serif;
   letter-spacing: 1px;
   color: rgb(15, 92, 21);
   transition: all 0.5s ease;
-  -webkit-text-stroke:1.5px rgba(255, 255, 255, 0.432);
+  /* -webkit-text-stroke:1.5px rgba(255, 255, 255, 0.432); */
 }
 .logo a:hover {
   letter-spacing: 3px;
