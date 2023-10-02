@@ -5,7 +5,6 @@
       <div class="footerlinks-container">
         <div class="logo">
           <!-- <img src="https://i.imgur.com/q1E063E.png" alt=""> -->
-          <h3>Sage</h3>
         </div>
         <div class="links">
           <a href="/settings" class="footerlink"> Settings </a>
@@ -13,7 +12,7 @@
           <a href="" class="footerlink"> Hire Us </a>
         </div>
 
-        <div class="links">
+        <div class="links sageInc">
       2023 ® Sage, Inc.
 
         </div>
@@ -32,22 +31,38 @@ export default {};
 }
 
 footer {
-  background: rgba(119, 113, 77, 0.452);
-  padding-bottom: 0rem;
+  background: #cddfbc;
+  padding: 1rem;
+  background-size: 115%;
+  /* background-size: 350%; */
+  background-repeat: no-repeat;
+  background-position: 0% 73%;
+  background-image: url('https://images.unsplash.com/photo-1503810473512-f64b56827964?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80');
+  /* border-top: rgba(51, 51, 51, 0.466) solid  1px; */
 }
 
 footer a {
-  color: rgb(55, 75, 23);
+  color: rgb(255, 255, 255);
   font-size: 1.3rem;
-  font-family: "Averia Serif Libre", cursive;
+font-family: 'Montserrat', sans-serif;
+
   margin: 15px;
   text-align: left;
   text-decoration: none;
+  mix-blend-mode: difference;
 }
 
+.sageInc{
+  /* color: #333; */
+    color: rgb(255, 255, 255);
+
+}
 footer a:hover {
-  color: rgb(145, 194, 113);
-  transform: scale(1.03);
+  color: rgba(231, 253, 255, 0.89);
+  font-weight: bold;
+
+  /* transform: scale(2.35); */
+  
 }
 
 div {
@@ -62,9 +77,11 @@ div {
 .footerlinks-container {
   display: flex;
   align-items: center;
-
+  flex-direction: column;
   justify-content: space-around;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
+line-height: 1px;
+padding-bottom: 30px;
   margin: auto;
   position: relative;
   padding-right: 2rem;
@@ -75,6 +92,9 @@ div {
 }
 .links {
     justify-content: space-between;
+  color: rgb(231, 231, 208);
+    
+    margin-right: -30px;
 }
 
 .links img {
