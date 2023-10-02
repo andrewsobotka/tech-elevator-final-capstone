@@ -8,8 +8,11 @@
       </div>
       
       <div id="tags-filter" >
-        <button v-for="tag in $store.state.tags" v-bind:key="tag.tagId" v-bind:value="tag.tag" v-on:click="setCurrentTag(tag.tagId)">{{tag.tag}}</button>
+        <router-link v-bind:to="{ name: 'filter-by-tag', params:{id:tag.tagId}}" v-for="tag in $store.state.tags" v-bind:key="tag.tagId" v-bind:value="tag.tag" ><button v-on:click="setCurrentTag(tag.tagId, tag.tag)">{{tag.tag}}</button></router-link> 
       </div>
+      <div id="tags-filter">
+        <p>Showing all recipes that are {{ $store.state.selectedTag}} | Showing {{$store.state.filteredList === [] ? "0" : $store.state.filteredList.length}}  {{$store.state.filteredList.length == 1 ? 'result' : 'results'}}</p>      
+    </div>
     <div class="cardsContainer">
       <RecipeCard
         v-for="recipe in $store.state.filteredList"
@@ -50,13 +53,17 @@ export default {
 
     
   },
-  methods:{
+ methods:{
     setKeyword(){
       this.$store.commit("SET_KEYWORD", this.search);
     },
-    setCurrentTag(tag){
+    setCurrentTag(tagId, tag){
       this.tagId = tag;
-      this.$store.commit("SET_TAG", tag )
+      this.$store.commit("SET_SELECTED_TAG",tag)
+      this.$store.commit("SET_SELECTED_TAG_ID", tagId)
+    },
+    filterByTag(results){
+      this.$store.commit("SET_FILTERED", results)
     }
     
    
@@ -124,5 +131,10 @@ input{
 #tags-filter button{
   margin: .5rem;
   margin-top: 1.5rem;
+}
+
+p{
+  font-family: "Montserrat";
+  font-style: italic;
 }
 </style>

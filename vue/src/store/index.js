@@ -31,6 +31,7 @@ export default new Vuex.Store({
     // ],
     tags:[],
     selectedTagId:0,
+    selectedTag:"",
     filteredList:[],
     groceryList:["1 carton of milk", "1 carton of eggs", "1 block of parmesan cheese", "5 oranges" ],
     featuredList:[],
@@ -116,6 +117,9 @@ export default new Vuex.Store({
     },
     SET_SELECTED_TAG_ID(state,tagId){
       state.selectedTagId = tagId;
+    },
+    SET_SELECTED_TAG(state,tag){
+      state.selectedTag = tag;
     },
   }
 })

@@ -8,7 +8,7 @@
       </div>
       
       <div id="tags-filter" >
-        <router-link v-bind:to="{ name: 'filter-by-tag', params:{id:tag.tagId}}" v-for="tag in $store.state.tags" v-bind:key="tag.tagId" v-bind:value="tag.tag" ><button v-on:click="setCurrentTag(tag.tagId)">{{tag.tag}}</button></router-link>
+        <router-link v-bind:to="{ name: 'filter-by-tag', params:{id:tag.tagId}}" v-for="tag in $store.state.tags" v-bind:key="tag.tagId" v-bind:value="tag.tag" ><button v-on:click="setCurrentTag(tag.tagId, tag.tag)">{{tag.tag}}</button></router-link>
       </div>
     <div class="cardsContainer">
       <RecipeCard
@@ -55,9 +55,10 @@ export default {
     setKeyword(){
       this.$store.commit("SET_KEYWORD", this.search);
     },
-    setCurrentTag(tag){
+    setCurrentTag(tagId, tag){
       this.tagId = tag;
-      this.$store.commit("SET_SELECTED_TAG_ID", tag)
+      this.$store.commit("SET_SELECTED_TAG",tag)
+      this.$store.commit("SET_SELECTED_TAG_ID", tagId)
     },
     filterByTag(results){
       this.$store.commit("SET_FILTERED", results)
