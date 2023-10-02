@@ -3,7 +3,6 @@
     <form id="addNewRecipe" v-on:submit.prevent="createNewRecipe">
       <div>
         <h3>Add New Recipe</h3>
-        {{newRecipe.keywords}}
       </div>
       <div class="field">
         <label for="recipeName">Title: </label>
@@ -45,7 +44,7 @@
       <div class="ingredientList">
         <label for="ingredient">Ingredients:</label>
         <button class="ingredients-btn">
-          <a v-on:click="newRecipe.ingredients.push('')">Add Ingredient</a>
+          <a v-on:click="newRecipe.ingredients.push({ ingredient_id: 0, ingredient: '' })">Add Ingredient</a>
         </button>
         <br />
 
@@ -63,8 +62,9 @@
                 name="Ingredient"
                 class="ingredients-input"
                 placeholder="ie. Apples"
-                v-model="newRecipe.ingredients[index]"
-                @keyup.enter="newRecipe.ingredients.push('')"
+                v-model="newRecipe.ingredients[index].ingredient"
+                @keyup.enter="newRecipe.ingredients.push({ ingredient_id: 0, ingredient: '' })"
+                v-on:change="keywords"
               />
 
               <input
@@ -91,7 +91,7 @@
           <ol>
           <label for="ingredient" class="stepsLabel">Steps:</label>
           <button class="ingredients-btn addSteps-btn">
-            <a v-on:click="newRecipe.steps.push('')">Add Step</a>
+            <a v-on:click="newRecipe.steps.push({ step_id: 0, rank: 0, insturction:''})">Add Step</a>
           </button>
           <br />
           <br />
@@ -104,7 +104,7 @@
                 class="steps-input"
                 placeholder="ie: Gather Ingredients..."
                 v-model="newRecipe.steps[index]"
-                @keyup.enter="newRecipe.steps.push('')"
+                @keyup.enter="newRecipe.steps.push({ step_id: 0, rank: 0, instruction:''})"
               />
               <input
                 type="checkbox"
@@ -129,7 +129,7 @@
       <div class="tagsList">
         <div
           class="field"
-          v-for="(tag, index) in $store.state.listOfTags"
+          v-for="(tag, index) in $store.state.tags"
           v-bind:key="index"
         >
         
@@ -162,10 +162,12 @@ export default {
       indexOfSteps: [],
       indexOfIngredients: [],
       wordArray:[],
+      ingredientsArray:[],
       newRecipe: {
-        // ingredients: [""],
-        // steps: [""],
-        // tags: [],
+        ingredients: [{ ingredient_id: 0, ingredient:'' }],
+        steps: [""],
+        tags: [],
+        keywords:'',
       },
     };
   },
@@ -209,18 +211,25 @@ export default {
       this.indexOfSteps = [];
     },
     keywords(){
-      let keywordArray = this.newRecipe.recipeName.split(" ");
+      this.wordArray=this.newRecipe.recipeName.split(" ");
+      this.newRecipe.ingredients.forEach((ingredient)=>
+      this.ingredientsArray = ingredient.ingredient)
 
-      keywordArray.foreach((word)=>{
-        this.newRecipe.keywords= this.newRecipe.keywords + word + ", ";
-      })
-      return this.newRecipe.keywords;
+       this.newRecipe.keywords =  this.wordArray.toString() +"," + this.ingredientsArray;
     }
+    
     
   },
   computed: {
     
+    
   },
+  created(){
+    APIService.getTags().then(response=>{
+      this.$store.commit('SET_TAGS', response.data)
+    }
+    )
+  }
 };
 </script>
 

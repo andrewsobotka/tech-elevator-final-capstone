@@ -14,6 +14,7 @@ import MyRecipes from '../views/MyRecipes.vue'
 import Meals from '../views/MyMeals.vue'
 import EditRecipe from '../views/EditRecipe.vue'
 import EditGroceryList from '../views/EditGroceryList.vue'
+import FilterByTag from '../views/FilterByTags.vue'
 
 Vue.use(Router)
 
@@ -118,6 +119,15 @@ const router = new Router({
         requiresAuth: false
       }
     },
+    {
+      path: "/filtered/:id",
+      name: "filter-by-tag",
+      component: FilterByTag,
+      meta: {
+        requiresAuth: false
+      }
+    },
+
     {
       path: "/settings",
       name: "settings",

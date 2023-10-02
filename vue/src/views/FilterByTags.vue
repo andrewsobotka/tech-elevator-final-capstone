@@ -8,11 +8,11 @@
       </div>
       
       <div id="tags-filter" >
-        <router-link v-bind:to="{ name: 'filter-by-tag', params:{id:tag.tagId}}" v-for="tag in $store.state.tags" v-bind:key="tag.tagId" v-bind:value="tag.tag" ><button v-on:click="setCurrentTag(tag.tagId)">{{tag.tag}}</button></router-link>
+        <button v-for="tag in $store.state.tags" v-bind:key="tag.tagId" v-bind:value="tag.tag" v-on:click="setCurrentTag(tag.tagId)">{{tag.tag}}</button>
       </div>
     <div class="cardsContainer">
       <RecipeCard
-        v-for="recipe in $store.state.recipes"
+        v-for="recipe in $store.state.filteredList"
         v-bind:key="recipe.recipeId"
         v-bind:recipe="recipe"
       />
@@ -40,16 +40,15 @@ export default {
   },
   components: { RecipeCard },
   created() {
-    APIService.getRecipes().then((response) => {
-      this.$store.commit("SET_RECIPES", response.data);
-          });
-    APIService.getTags().then(response=>{
+
+    APIService.getTags().then((response)=>{
       this.$store.commit('SET_TAGS', response.data)
-    }
-    );
-      APIService.getRecipes().then(response => {
-      this.$store.commit('SET_RECIPES', response.data)
     });
+    APIService.getRecipeByTagId(this.$store.state.selectedTagId).then((response) =>{
+        this.$store.commit('SET_FILTERED', response.data)
+    });
+
+    
   },
   methods:{
     setKeyword(){
@@ -57,10 +56,7 @@ export default {
     },
     setCurrentTag(tag){
       this.tagId = tag;
-      this.$store.commit("SET_SELECTED_TAG_ID", tag)
-    },
-    filterByTag(results){
-      this.$store.commit("SET_FILTERED", results)
+      this.$store.commit("SET_TAG", tag )
     }
     
    

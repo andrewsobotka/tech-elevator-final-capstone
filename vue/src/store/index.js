@@ -20,15 +20,17 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
-    listOfTags: [
-      { tag: "breakfast", tagId: 6},
-      { tag: "dinner", tagId: 2},
-      { tag: "vegan", tagId: 3},
-      { tag: "dairy-free", tagId: 4},
-      { tag: "keto", tagId: 5},
-      { tag: "lunch", tagId: 7},
-      { tag: "vegetarian", tagId: 1},
-    ],
+    // listOfTags: [
+    //   { tag: "breakfast", tagId: 6},
+    //   { tag: "dinner", tagId: 2},
+    //   { tag: "vegan", tagId: 3},
+    //   { tag: "dairy-free", tagId: 4},
+    //   { tag: "keto", tagId: 5},
+    //   { tag: "lunch", tagId: 7},
+    //   { tag: "vegetarian", tagId: 1},
+    // ],
+    tags:[],
+    selectedTagId:0,
     filteredList:[],
     groceryList:["1 carton of milk", "1 carton of eggs", "1 block of parmesan cheese", "5 oranges" ],
     featuredList:[],
@@ -108,6 +110,12 @@ export default new Vuex.Store({
     },
     SET_FEATURED(state, recipes){
       state.featuredList = recipes;
-    }
+    },
+    SET_TAGS(state, tag){
+      state.tags = tag;
+    },
+    SET_SELECTED_TAG_ID(state,tagId){
+      state.selectedTagId = tagId;
+    },
   }
 })

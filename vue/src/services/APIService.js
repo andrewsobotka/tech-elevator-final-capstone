@@ -44,6 +44,12 @@ export default{
         return axios.delete(`/tags/${tag.tagId}`);
     },
 
+
+    //needtofix the endpoint
+    getRecipeByTagId(tagId){
+        return axios.get(`/tags/${tagId}`)
+    },
+
     //users
 
     getUsers(){

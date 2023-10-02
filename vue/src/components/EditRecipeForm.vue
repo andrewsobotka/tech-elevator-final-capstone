@@ -11,7 +11,7 @@
           name="recipeName"
           v-model="editRecipe.recipeName"
           placeholder="ie: Apple Crumble"
-          v-on:change="keyword"
+          v-on:change="keywords"
         />
       </div>
       <br />
@@ -118,7 +118,7 @@
       <div class="tagsList">
         <div
           class="field"
-          v-for="(tag, index) in $store.state.listOfTags"
+          v-for="(tag, index) in $store.state.tags"
           v-bind:key="index"
         >
           <input
@@ -180,9 +180,12 @@ export default {
 
       this.indexOfSteps = [];
     },
-    keyword(){
-      this.editRecipe.keywords = this.editRecipe.recipeName.split(" ")
-      return this.editRecipe.keywords;
+    keywords(){
+      this.wordArray=this.editRecipe.recipeName.split(" ");
+      this.editRecipe.ingredients.forEach((ingredient)=>
+      this.ingredientsArray = ingredient.ingredient)
+
+       this.editRecipe.keywords =  this.wordArray.toString() +"," + this.ingredientsArray;
     }
   },
   computed: {
@@ -194,6 +197,9 @@ export default {
     APIService.getRecipe(this.$route.params.id).then((response) => {
       this.$store.commit("SET_RECIPE", response.data);
       this.editRecipe = this.$store.state.recipe;
+    });
+    APIService.getTags().then(response=>{
+      this.$store.commit('SET_TAGS', response.data)
     });
     
   }
