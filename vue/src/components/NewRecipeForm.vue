@@ -241,8 +241,13 @@ export default {
   width: 100%;
   cursor: pointer;
   min-width: 36rem;
+  min-height: 75rem;
   overflow-x: hidden;
   padding: 0 5rem;
+}
+
+h3{
+  margin-bottom: 1rem;
 }
 div a {
   color: #333;
