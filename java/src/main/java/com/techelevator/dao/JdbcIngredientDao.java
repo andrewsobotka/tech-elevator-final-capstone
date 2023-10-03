@@ -95,7 +95,7 @@ public class JdbcIngredientDao implements IngredientDao{
                 "RETURNING ingredient_id;";
 
         String sql2 = "INSERT INTO ingredients_recipes (ingredient_id, recipe_id) " +
-                "VALUES (?, ?) ";
+                "VALUES (?, ?);";
 
         Integer ingredientId;
         Ingredient existingIngredient = getIngredientByIngredientName(ingredient.getIngredient());            //variable to check if ing is in database already..
