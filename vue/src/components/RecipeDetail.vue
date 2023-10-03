@@ -1,13 +1,18 @@
 <template>
   <div class="container">
-    <h2>
-      {{ recipe.recipeName }}
-    </h2>
+    <div class="header-favorite-group">
+      <FavoriteIcon
+        :recipe="recipe"
+        @toggle-favorites="toggleFavorites"
+        :class="{ favorite: recipe.favorite, notFavorite: !recipe.favorite }"
+      />
+      <h2>
+        {{ recipe.recipeName  }}
+      </h2> 
+      
+     
 
-        <FavoriteIcon :recipe="recipe" 
-         @toggle-favorites="toggleFavorites" :class="{favorite:recipe.favorite, notFavorite: !recipe.favorite}"/>
-
-
+    </div>
     <section class="servings">
       Serving size: {{ recipe.servingSize }} | Creator Name:
       {{ recipe.creatorId }}
@@ -15,7 +20,7 @@
 
     <section class="description">
       <p>
-        {{ recipe.description }}
+        {{recipe.description }}
       </p>
     </section>
     <h2>Ingredients</h2>
@@ -52,10 +57,16 @@
         >
           Step {{ step.rank }}:
           {{ step.instruction }}
-
         </li>
       </ol>
-      <router-link v-bind:to="{name:'edit-recipe' ,params:{ id: recipe.recipeId }}" v-if="$store.state.user.id === recipe.creatorId || $store.state.user.authorities[0].name == 'ROLE_ADMIN'"><button>Edit Recipe</button></router-link>
+      <router-link
+        v-bind:to="{ name: 'edit-recipe', params: { id: recipe.recipeId } }"
+        v-if="
+          $store.state.user.id === recipe.creatorId ||
+          $store.state.user.authorities[0].name == 'ROLE_ADMIN'
+        "
+        ><button>Edit Recipe</button></router-link
+      >
       <button class="delete-btn">Delete Recipe</button>
     </div>
   </div>
@@ -64,50 +75,46 @@
 
 <script>
 import APIService from "../services/APIService.js";
-import FavoriteIcon from './FavoriteIcon.vue';
+import FavoriteIcon from "./FavoriteIcon.vue";
 
 export default {
   name: "recipeDetail",
-  props: ['recipe'],
-  components:{
-    FavoriteIcon
+  props: ["recipe"],
+  components: {
+    FavoriteIcon,
   },
   methods: {
     addToLibrary() {},
-    deleteRecipe(){
+    deleteRecipe() {
       let choice = confirm("Are you sure that you want to delete this?");
-        if (choice === true){
-          APIService.deleteRecipe(this.$route.params.id).then(
-            (response) =>{
-              console.log(response);
-              this.$router.push('/recipes')
+      if (choice === true) {
+        APIService.deleteRecipe(this.$route.params.id)
+          .then((response) => {
+            console.log(response);
+            this.$router.push("/recipes");
+          })
+          .catch((error) => {
+            if (error.response) {
+              window.alert("Bad Request");
+            } else if (error.request) {
+              window.alert("Could not reach service");
             }
-          ).catch(
-            (error) => {
-          if(error.response) {
-              window.alert('Bad Request');
-          } else if(error.request) {
-              window.alert('Could not reach service');
-          }
-          })  
+          });
       }
     },
-       toggleFavorites() {
-            this.$store.commit('FLIP_FAVORITE', this.recipe);
-            
+    toggleFavorites() {
+      this.$store.commit("FLIP_FAVORITE", this.recipe);
     },
-
   },
   created() {
     // APIService.getRecipe(this.$route.params.id).then((response) => {
     //   this.$store.commit("SET_RECIPE", response.data);
     // });
   },
-  computed:{
+  computed: {
     // recipe(){
-      
-      // return this.$store.state.recipe;
-      // this.
+    // return this.$store.state.recipe;
+    // this.
     // },
   },
 };
@@ -152,12 +159,46 @@ h3 {
   margin-top: 3px;
 }
 
+.favorite {
+ border: none;
+  padding: 6px;
+  position: relative;
+  top: -10px;
+  right: -10px;
+  background: transparent;
+  font-size: 2rem;
+  transition: 0.3s ease;
+  
+  margin: 0;
+  z-index: 39;
+  
+}
+
+
+.notFavorite {
+ border: none;
+  padding: 6px;
+  position: relative;
+  top: -10px;
+  right: -10px;
+  background: transparent;
+  font-size: 2rem;
+  transition: 0.3s ease;
+  margin: 0;
+   z-index: 39;
+}
+
+.header-favorite-group {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+}
+
 .description {
   text-align: justify;
   padding: 0rem 0.5rem;
   font-family: "DM Sans", sans-serif;
   font-weight: 300;
-
 }
 
 .ingredients {
@@ -177,7 +218,7 @@ h3 {
   padding-top: 10px;
   object-fit: cover;
   max-height: 30rem;
-max-width: 30rem;
+  max-width: 30rem;
 }
 
 .steps-btn {
