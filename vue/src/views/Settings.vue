@@ -2,7 +2,7 @@
   <div class="settings">
     <h3>My Account</h3>
     <div class="borderbox"></div>
-
+    <div id = "box-container">
     <div class="account-container">
       <!-- user icon and stats -->
 
@@ -19,7 +19,7 @@
             <h3>
               <p>Hello {{ $store.state.user.username }}!</p>
             </h3>
-            <p>you have x saved recipes</p>
+            <p>You have {{$store.state.favoritedLibrary.length}} saved recipes</p>
           </div>
         </div>
       </div>
@@ -36,6 +36,7 @@
           <a href="" class="settings-link">Delete Recipes</a>
         </div>
       </div>
+    </div>
     </div>
   </div>
 </template>
@@ -56,9 +57,8 @@ export default {};
   font-size: 1rem;
   font-family: "montserrat";
   height: 40vh;
-  max-width: 950px;
   position: relative;
-  left: 21%;
+  width: 50rem;
 
 }
 
@@ -115,7 +115,7 @@ h2 {
   color: rgb(109, 108, 108);
   padding: 0.5rem;
   margin-bottom: 1rem;
-  width: 105%;
+  width: 95%;
 }
 
 h3 {
@@ -159,6 +159,17 @@ h4 {
   text-align: center;
 }
 
+.settings.applayer{
+    display:flex;
+    flex-direction: column;
+    justify-content: center ;
+  }
+
+  #box-container{
+    display: flex;
+    justify-content: center;
+  }
+
 @media only screen and (max-width: 900px) {
   .settings{
     display:flex;
@@ -167,7 +178,7 @@ h4 {
  
 
   .account-container {
- left: 0px;
+    left: 0px;
     justify-content: center;
   }
 }
