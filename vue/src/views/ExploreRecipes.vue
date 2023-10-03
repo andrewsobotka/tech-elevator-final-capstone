@@ -4,7 +4,8 @@
     <div class="borderbox"></div>
     <div id = "search">
        <input type="text" placeholder="Search by keyword..." id = "searchbox" v-model="search"/>
-       <router-link v-bind:to="{ name: 'search', params:{keyword:search}}"><button id="search-button" v-on:click="setKeyword">Search</button></router-link>
+       <router-link v-bind:to="{ name: 'search', params:{keyword:search}}">
+         <button id="search-button" v-on:click="setKeyword">Search</button></router-link>
       </div>
       
       <div id="tags-filter" >

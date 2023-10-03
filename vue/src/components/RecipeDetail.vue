@@ -4,6 +4,10 @@
       {{ recipe.recipeName }}
     </h2>
 
+        <FavoriteIcon :recipe="recipe" 
+         @toggle-favorites="toggleFavorites" :class="{favorite:recipe.favorite, notFavorite: !recipe.favorite}"/>
+
+
     <section class="servings">
       Serving size: {{ recipe.servingSize }} | Creator Name:
       {{ recipe.creatorId }}
@@ -60,9 +64,14 @@
 
 <script>
 import APIService from "../services/APIService.js";
+import FavoriteIcon from './FavoriteIcon.vue';
+
 export default {
   name: "recipeDetail",
   props: ['recipe'],
+  components:{
+    FavoriteIcon
+  },
   methods: {
     addToLibrary() {},
     deleteRecipe(){
@@ -82,7 +91,12 @@ export default {
           }
           })  
       }
-    }
+    },
+       toggleFavorites() {
+            this.$store.commit('FLIP_FAVORITE', this.recipe);
+            
+    },
+
   },
   created() {
     // APIService.getRecipe(this.$route.params.id).then((response) => {
