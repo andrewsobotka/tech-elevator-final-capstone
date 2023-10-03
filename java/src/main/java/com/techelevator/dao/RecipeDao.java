@@ -19,7 +19,7 @@ public interface RecipeDao {
 
     List<Recipe> getRecipesByIngredient(String ingredient);
 
-    Integer createRecipe(Recipe recipe, Principal principal);
+    Integer createRecipe(Recipe recipe, int userId);
 
-    int deleteRecipeByCreatorId(int creator_id);
+    int deleteRecipeByRecipeId(int recipe_id);
 }

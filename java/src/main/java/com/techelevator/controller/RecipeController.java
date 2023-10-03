@@ -52,8 +52,10 @@ public class  RecipeController {
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @RequestMapping(path ="/recipes/{id}", method = RequestMethod.DELETE)
-    public void delete (@PathVariable int creatorId){
-        recipeDao.deleteRecipeByCreatorId(creatorId);
+    public void delete (@PathVariable int recipeId){
+        recipeDao.deleteRecipeByRecipeId(recipeId);
     }
+
+
 
 }

@@ -1,5 +1,6 @@
 package com.techelevator.dao;
 
+import com.techelevator.exception.DaoException;
 import com.techelevator.model.*;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -87,6 +88,20 @@ public class JdbcStepDao implements StepDao{
             throw new DataAccessException(e.toString()) {};
         }
         return stepId;
+    }
+
+    @Override
+    public int deleteStepByStepId(int step_id){
+        int numberOfRows = 0;
+        String sql = "DELETE FROM steps WHERE step_id = ?";
+        try {
+            numberOfRows = jdbcTemplate.update(sql, step_id);
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data integrity violation", e);
+        }
+        return numberOfRows;
     }
 
     private Step mapRowToStep(SqlRowSet rs) {

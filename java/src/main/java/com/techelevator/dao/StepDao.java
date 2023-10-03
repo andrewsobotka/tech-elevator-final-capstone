@@ -14,5 +14,6 @@ public interface StepDao {
 
     Integer createStepForRecipe(Step step, int recipe_id);
 
+    int deleteStepByStepId(int step_id);
 
 }

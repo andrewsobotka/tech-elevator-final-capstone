@@ -114,6 +114,19 @@ public class JdbcIngredientDao implements IngredientDao{
         return ingredientId;
     }
 
+    @Override
+    public int deleteIngredientByIngredientId(int ingredient_id){
+        int numberOfRows = 0;
+        String sql = "DELETE FROM ingredients WHERE ingredient_id = ?";
+        try {
+            numberOfRows = jdbcTemplate.update(sql, ingredient_id);
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data integrity violation", e);
+        }
+        return numberOfRows;
+    }
 
     private Ingredient mapRowToIngredient(SqlRowSet rs) {
         Ingredient ingredient = new Ingredient();
