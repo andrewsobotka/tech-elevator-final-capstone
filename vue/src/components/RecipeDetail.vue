@@ -28,7 +28,7 @@
             v-bind:key="index"
             class="ingredient"
           >
-            • {{ ingredients.ingredient }}
+            • {{ ingredient.ingredient }}
           </li>
         </ul>
       </div>
@@ -157,6 +157,7 @@ h3 {
   padding: 0rem 0.5rem;
   font-family: "DM Sans", sans-serif;
   font-weight: 300;
+
 }
 
 .ingredients {

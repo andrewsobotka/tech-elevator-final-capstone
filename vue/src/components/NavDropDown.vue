@@ -6,9 +6,9 @@
     </button>
 
     <div class="overlay">
-      <ul v-if="isDropdownOpen" class="overlay-content">
-        <li v-for="page in pages" :key="page.name">
-          <router-link :to="{ name: page.name }" @click="closeDropdown">
+      <ul v-if="isDropdownOpen" class="overlay-content" >
+        <li v-for="page in pages" :key="page.name" >
+          <router-link :to="{ name: page.name }" @click="closeDropdown" v-if="$route.path != `/${name}`">
             {{ page.label }}
           </router-link>
         </li>

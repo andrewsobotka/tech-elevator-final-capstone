@@ -40,8 +40,8 @@ export default{
        return axios.put(`/tags/${tag.tagId}`, tag);
     },
 
-    deleteTag(tag){
-        return axios.delete(`/tags/${tag.tagId}`);
+    deleteTag(tagId){
+        return axios.delete(`/tags/${tagId}`);
     },
 
 
@@ -145,6 +145,6 @@ export default{
 
     //featured
     getRecipesByFeatured(){
-        return axios.get('/featured')
+        return axios.get('/featured')   
     }
 }

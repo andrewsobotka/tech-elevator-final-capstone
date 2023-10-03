@@ -16,8 +16,17 @@ export default {
 
     };
   },
+<<<<<<< HEAD
   props: {    recipe: Object
 
+=======
+  methods:{
+    toggleColor(){
+      
+    }
+  },
+  props: {
+>>>>>>> 2c13b9e3136569c6040ab010d264e449cce353ad
     
   },
 emits: ['toggle-favorites'],

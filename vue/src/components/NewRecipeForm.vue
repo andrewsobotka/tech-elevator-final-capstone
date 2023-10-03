@@ -129,8 +129,8 @@
       <div class="tagsList">
         <div
           class="field"
-          v-for="(tag, index) in $store.state.tags"
-          v-bind:key="index"
+          v-for="tag in $store.state.tags"
+          v-bind:key="tag.tagId"
         >
         
           <input

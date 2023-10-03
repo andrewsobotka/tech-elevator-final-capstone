@@ -16,6 +16,8 @@ import Meals from '../views/MyMeals.vue'
 import EditRecipe from '../views/EditRecipe.vue'
 import EditGroceryList from '../views/EditGroceryList.vue'
 import FilterByTag from '../views/FilterByTags.vue'
+import Tags from "../views/EditTags.vue"
+
 
 Vue.use(Router)
 
@@ -145,6 +147,14 @@ const router = new Router({
         requiresAuth: true
       }
     },
+    {
+      path: "/tags",
+      name: "tags",
+      component: Tags,
+      meta: {
+        requiresAuth: true
+      }
+    }
     // {
     //   path: "/hire-us",
     //   name: "hire-us",

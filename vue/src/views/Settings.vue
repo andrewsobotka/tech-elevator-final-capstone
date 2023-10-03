@@ -30,7 +30,8 @@
 
         <br />
         <div class="settingsLinks">
-          <a href="" class="settings-link">Update Tags</a>
+          <router-link v-bind:to="{ name: 'tags' }"
+              v-if="$store.state.user.authorities[0].name == 'ROLE_ADMIN'" class="settings-link">Update Tags</router-link>
           <a href="" class="settings-link">Edit Saved Recipes</a>
           <a href="" class="settings-link">Delete Recipes</a>
         </div>
