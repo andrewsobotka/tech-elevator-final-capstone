@@ -84,24 +84,28 @@ body {
   /* scrollbar properties */
   ::-webkit-scrollbar {
     width: 10px;
-    scroll-padding-right: 3rem;
+
   }
   
   /* Track */
   ::-webkit-scrollbar-track {
-    background: rgb(224, 222, 207);
+    background: rgb(224, 222, 207); 
+
   }
   
   /* Handle */
   ::-webkit-scrollbar-thumb {
     background: #304b39e7;
-    border-radius: 5px;
-    scroll-padding-right: auto;
+    border-radius: 0px;
+    scroll-padding-right: -33px;
+
+
   }
   
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
     background: #6fbb82;
+    
   }
   
 
@@ -189,4 +193,24 @@ input{
   display: flex;
   justify-content: center;
   padding-bottom: .5rem;
+}
+
+/* favorites */
+.fa-bookmark {
+
+  
+}
+
+.favorite {
+  color: rgb(255, 174, 0);
+  transition: .3s ease;
+
+
+  /* background:transparent;
+  border:none; */
+}
+
+.notFavorite{
+  border:none;
+  color: rgb(0, 0, 0);
 }

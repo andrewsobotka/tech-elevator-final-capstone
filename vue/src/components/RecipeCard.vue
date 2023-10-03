@@ -8,8 +8,10 @@
 
       <router-link
         v-bind:to="{ name: 'recipe', params: { id: recipe.recipeId } }"
-        ><img :src="recipe.imgUrl" class="image-fit"
-      /></router-link>
+        >
+        <img :src="recipe.imgUrl" class="image-fit"
+      />
+      </router-link>
       
       <div class="title-servings-combo">
         <h3>
@@ -84,18 +86,29 @@ export default {
 }
 
 .notFavorite {
+border:none;
 
+  padding: 6px 4px;
+position: fixed;
+transform: scale(1.6);
+right: 10%;
+top: 1%;
+background: rgb(236, 236, 236); 
+backdrop-filter: opacity(.5);
+
+transition: .3s ease;
 }
 
 
 .favorite{
-  border:none;
-  padding: 6px 6px;
+border:none;
+  padding: 6px 4px;
 position: fixed;
-transform: scale(1.2);
-color: rgb(105, 40, 40);
+transform: scale(1.6);
 right: 10%;
-background: rgba(255, 255, 255, 0.568); 
+top: 1%;
+background: rgb(236, 236, 236); 
+backdrop-filter: opacity(.5);
 
 transition: .3s ease;
 }
@@ -103,6 +116,8 @@ transition: .3s ease;
 .favorite:hover{
   transform: scale(1.6);
 }
+
+
 .name-img-container:hover {
   -webkit-transform: scale(1.1);
   -moz-transform: scale(1.1);

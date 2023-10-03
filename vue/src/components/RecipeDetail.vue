@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+<<<<<<< HEAD
 
     {{currentRecipe}}
     <h2>
@@ -9,7 +10,21 @@
         <FavoriteIcon :recipe="recipe" 
          @toggle-favorites="toggleFavorites" :class="{favorite:recipe.favorite, notFavorite: !recipe.favorite}"/>
 
+=======
+    <div class="header-favorite-group">
+      <FavoriteIcon
+        :recipe="recipe"
+        @toggle-favorites="toggleFavorites"
+        :class="{ favorite: recipe.favorite, notFavorite: !recipe.favorite }"
+      />
+      <h2>
+        {{ recipe.recipeName  }}
+      </h2> 
+      
+     
+>>>>>>> 62be09d806cf3c64b0768015b1a30e038316b4aa
 
+    </div>
     <section class="servings">
       Serving size: {{ currentRecipe.servingSize }} | Creator Name:
       {{ currentRecipe.creatorId }}
@@ -17,7 +32,11 @@
 
     <section class="description">
       <p>
+<<<<<<< HEAD
         {{ currentRecipe.description }}
+=======
+        {{recipe.description }}
+>>>>>>> 62be09d806cf3c64b0768015b1a30e038316b4aa
       </p>
     </section>
     <h2>Ingredients</h2>
@@ -54,10 +73,20 @@
         >
           Step {{ step.rank }}:
           {{ step.instruction }}
-
         </li>
       </ol>
+<<<<<<< HEAD
       <router-link v-bind:to="{name:'edit-recipe' ,params:{ id: currentRecipe.recipeId }}" v-if="$store.state.user.id === currentRecipe.creatorId || $store.state.user.authorities[0].name == 'ROLE_ADMIN'"><button>Edit Recipe</button></router-link>
+=======
+      <router-link
+        v-bind:to="{ name: 'edit-recipe', params: { id: recipe.recipeId } }"
+        v-if="
+          $store.state.user.id === recipe.creatorId ||
+          $store.state.user.authorities[0].name == 'ROLE_ADMIN'
+        "
+        ><button>Edit Recipe</button></router-link
+      >
+>>>>>>> 62be09d806cf3c64b0768015b1a30e038316b4aa
       <button class="delete-btn">Delete Recipe</button>
     </div>
   </div>
@@ -66,6 +95,7 @@
 
 <script>
 import APIService from "../services/APIService.js";
+<<<<<<< HEAD
 // import FavoriteIcon from './FavoriteIcon.vue';
 
 export default {
@@ -73,42 +103,56 @@ export default {
   props: ['recipe'],
   components:{
     // FavoriteIcon
+=======
+import FavoriteIcon from "./FavoriteIcon.vue";
+
+export default {
+  name: "recipeDetail",
+  props: ["recipe"],
+  components: {
+    FavoriteIcon,
+>>>>>>> 62be09d806cf3c64b0768015b1a30e038316b4aa
   },
   methods: {
     addToLibrary() {},
-    deleteRecipe(){
+    deleteRecipe() {
       let choice = confirm("Are you sure that you want to delete this?");
-        if (choice === true){
-          APIService.deleteRecipe(this.$route.params.id).then(
-            (response) =>{
-              console.log(response);
-              this.$router.push('/recipes')
+      if (choice === true) {
+        APIService.deleteRecipe(this.$route.params.id)
+          .then((response) => {
+            console.log(response);
+            this.$router.push("/recipes");
+          })
+          .catch((error) => {
+            if (error.response) {
+              window.alert("Bad Request");
+            } else if (error.request) {
+              window.alert("Could not reach service");
             }
-          ).catch(
-            (error) => {
-          if(error.response) {
-              window.alert('Bad Request');
-          } else if(error.request) {
-              window.alert('Could not reach service');
-          }
-          })  
+          });
       }
     },
-       toggleFavorites() {
-            this.$store.commit('FLIP_FAVORITE', this.recipe);
-            
+    toggleFavorites() {
+      this.$store.commit("FLIP_FAVORITE", this.recipe);
     },
-
   },
   created() {
     APIService.getRecipe(this.$route.params.id).then((response) => {
       this.$store.commit("SET_RECIPE", response.data);
     });
   },
+<<<<<<< HEAD
   computed:{
     currentRecipe(){
       return this.$store.state.recipe;
     },
+=======
+  computed: {
+    // recipe(){
+    // return this.$store.state.recipe;
+    // this.
+    // },
+>>>>>>> 62be09d806cf3c64b0768015b1a30e038316b4aa
   },
 };
 </script>
@@ -152,12 +196,46 @@ h3 {
   margin-top: 3px;
 }
 
+.favorite {
+ border: none;
+  padding: 6px;
+  position: relative;
+  top: -10px;
+  right: -10px;
+  background: transparent;
+  font-size: 2rem;
+  transition: 0.3s ease;
+  
+  margin: 0;
+  z-index: 39;
+  
+}
+
+
+.notFavorite {
+ border: none;
+  padding: 6px;
+  position: relative;
+  top: -10px;
+  right: -10px;
+  background: transparent;
+  font-size: 2rem;
+  transition: 0.3s ease;
+  margin: 0;
+   z-index: 39;
+}
+
+.header-favorite-group {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+}
+
 .description {
   text-align: justify;
   padding: 0rem 0.5rem;
   font-family: "DM Sans", sans-serif;
   font-weight: 300;
-
 }
 
 .ingredients {
@@ -177,7 +255,7 @@ h3 {
   padding-top: 10px;
   object-fit: cover;
   max-height: 30rem;
-max-width: 30rem;
+  max-width: 30rem;
 }
 
 .steps-btn {
