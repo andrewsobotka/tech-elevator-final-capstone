@@ -10,9 +10,9 @@ INSERT INTO users (username,password_hash,role) VALUES ('jackie','$2a$08$UkVvwpU
 INSERT INTO users (username,password_hash,role) VALUES ('andrew','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
 
 -- Create 3 Default Recipes
-INSERT INTO recipes (creator_id, recipe_name, image_url, description, serving_size, keywords) VALUES ((SELECT user_id FROM users WHERE username = 'user' LIMIT 1), 'Cheese Pizza', 'https://images.unsplash.com/photo-1639744210916-74793fdd9a88?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1336&q=80', E'Cheese, Sauce, and Crust. It\'s always good. Make it.', 10, 'pizza, cheese');
-INSERT INTO recipes (creator_id, recipe_name, image_url, description, serving_size, keywords) VALUES ((SELECT user_id FROM users WHERE username = 'admin' LIMIT 1), 'Sourdough Bread', 'https://images.unsplash.com/photo-1620921586333-b7566c34550a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1335&q=80', E'It\'s not actually sour, but it is bread.', 6, 'bread, sourdough');
-INSERT INTO recipes (creator_id, recipe_name, image_url, description, serving_size, keywords) VALUES ((SELECT user_id FROM users WHERE username = 'user' LIMIT 1), 'Spaghetti', 'https://images.unsplash.com/photo-1627286400579-027de47e9e73?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80', 'Delicious red tomato sauce and amazing spaghetti.', 2, 'spaghetti, meatballs, italian');
+INSERT INTO recipes (creator_id, recipe_name, image_url, description, serving_size, keywords, is_featured, is_published) VALUES ((SELECT user_id FROM users WHERE username = 'user' LIMIT 1), 'Cheese Pizza', 'https://images.unsplash.com/photo-1639744210916-74793fdd9a88?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1336&q=80', E'Gooey, cheesy goodness on a crispy crust. Perfect quick family meal.', 10, 'pizza, cheese', true, true);
+INSERT INTO recipes (creator_id, recipe_name, image_url, description, serving_size, keywords, is_featured, is_published) VALUES ((SELECT user_id FROM users WHERE username = 'admin' LIMIT 1), 'Sourdough Bread', 'https://images.unsplash.com/photo-1620921586333-b7566c34550a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1335&q=80', E'Sourdough bread is a delicious and nutritious bread that is made with a fermented starter.', 6, 'bread, sourdough', true, true);
+INSERT INTO recipes (creator_id, recipe_name, image_url, description, serving_size, keywords, is_featured, is_published) VALUES ((SELECT user_id FROM users WHERE username = 'user' LIMIT 1), 'Spaghetti', 'https://images.unsplash.com/photo-1627286400579-027de47e9e73?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80', 'Delicious red tomato sauce and amazing spaghetti.', 2, 'spaghetti, meatballs, italian', true, true);
 
 -- Create 5 Different Tags
 INSERT INTO tags (tag) VALUES ('vegetarian');
@@ -50,5 +50,8 @@ INSERT INTO steps (rank, instruction) VALUES (3, E'Don\'t eat the raw dough.');
 INSERT INTO steps_recipes (step_id, recipe_id) VALUES (1,1);
 INSERT INTO steps_recipes (step_id, recipe_id) VALUES (2,1);
 INSERT INTO steps_recipes (step_id, recipe_id) VALUES (3,1);
+
+-- Add Recipe 2 to "user" Favorites
+INSERT INTO users_recipes (user_id, recipe_id) VALUES (1,2);
 
 COMMIT TRANSACTION;
