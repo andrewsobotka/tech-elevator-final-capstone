@@ -14,4 +14,6 @@ public interface IngredientDao {
 
     Integer createIngredientForRecipe(Ingredient ingredient, int recipe_id);
 
+    int deleteIngredientByIngredientId(int ingredient_id);
+
 }

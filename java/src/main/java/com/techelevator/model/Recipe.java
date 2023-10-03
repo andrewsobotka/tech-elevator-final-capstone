@@ -21,7 +21,7 @@ public class Recipe {
 
     public Recipe() { }                                     //Required for mapRowToRecipe in jdbcRecipeDao to work
 
-    public Recipe(int recipeId, int creatorId, String recipeName, String description, Double servingSize, String keywords, List<Ingredient> ingredients, List<Step> steps, String imgUrl, boolean isPublished, boolean isFeatured, List<Tag> tags) {
+    public Recipe(int recipeId, int creatorId, String recipeName, String description, Double servingSize, String keywords, List<Ingredient> ingredients, List<Step> steps, String imgUrl, boolean isPublished, boolean isFeatured, List<Tag> tags, boolean favorite) {
         this.recipeId = recipeId;
         this.creatorId = creatorId;
         this.recipeName = recipeName;
@@ -34,6 +34,7 @@ public class Recipe {
         this.isPublished = isPublished;
         this.isFeatured = isFeatured;
         this.tags = tags;
+        this.favorite = favorite;
     }
 
     public int getRecipeId() {

@@ -37,6 +37,7 @@ export default new Vuex.Store({
     featuredList:[],
     recipe:{},
     keyword:"",
+    favoritedLibrary:[],
     recipes:[
       // {
       //   recipeId:1,

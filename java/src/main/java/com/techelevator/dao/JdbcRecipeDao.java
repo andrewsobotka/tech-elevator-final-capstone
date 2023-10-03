@@ -108,17 +108,17 @@ public class JdbcRecipeDao implements RecipeDao {
     }
 
     @Override
-    public Integer createRecipe(Recipe recipe, Principal principal) {
-        // Get the User ID by Username
-        String sql_user_id = "SELECT user_id FROM users " +
-                "WHERE username = ?;";
+    public Integer createRecipe(Recipe recipe, int userId) {
+//        // Get the User ID by Username
+//        String sql_user_id = "SELECT user_id FROM users " +
+//                "WHERE username = ?;";                                          //different method
         // Create New Recipe
         String sql_create_recipe = "INSERT INTO recipes (creator_id, recipe_name, image_url, description, serving_size, keywords, is_published, is_featured) " +
                 "VALUES (?,?,?,?,?,?,?,?) " +
                 "RETURNING recipe_id;";
-        Integer recipeId, userId = 0;
+        Integer recipeId = 0;
         try {
-            userId = jdbcTemplate.queryForObject(sql_user_id, Integer.class, principal.getName());
+//            userId = jdbcTemplate.queryForObject(sql_user_id, Integer.class, principal.getName());
             recipeId = jdbcTemplate.queryForObject(sql_create_recipe, Integer.class, userId, recipe.getRecipeName(), recipe.getImgUrl(), recipe.getDescription(), recipe.getServingSize(), recipe.getKeywords(), recipe.isPublished(), recipe.isFeatured());
         } catch (DataAccessException e){
             throw new DataAccessException(e.toString()) {};
@@ -127,11 +127,11 @@ public class JdbcRecipeDao implements RecipeDao {
     }
 
     @Override
-    public int deleteRecipeByCreatorId(int creator_id){                         //delete by creatorId or recipeId?
+    public int deleteRecipeByRecipeId(int recipe_id){                         //delete by recipeId
         int numberOfRows = 0;
-        String sql = "DELETE FROM recipes WHERE creator_id = ?";
+        String sql = "DELETE FROM recipes WHERE recipe_id = ?";
         try {
-            numberOfRows = jdbcTemplate.update(sql, creator_id);
+            numberOfRows = jdbcTemplate.update(sql, recipe_id);
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
         } catch (DataIntegrityViolationException e) {

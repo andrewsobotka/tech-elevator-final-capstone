@@ -39,6 +39,11 @@ public class RecipeService {
         return recipeImportService.importFromUrl(url);
     }
 
+    public List<Recipe> getRecipesByIngredient (String ingredient) {
+        List<Recipe> recipes = recipeDao.getRecipesByIngredient(ingredient);
+        return recipes;
+    }
+
     public Recipe getRecipe(int recipe_id) {
         Recipe recipe = recipeDao.getRecipeByRecipeId(recipe_id);       //get recipe by recipeId
 
@@ -53,12 +58,11 @@ public class RecipeService {
 
         return recipe;
     }
-    public List<Recipe> getRecipesByIngredient (String ingredient) {
-        List<Recipe> recipes = recipeDao.getRecipesByIngredient(ingredient);
-        return recipes;
-    }
+
     public Integer createRecipe(Recipe recipe, Principal principal) {       //more inputs to account for steps/ingredients/etc?
-        int recipeId = recipeDao.createRecipe(recipe, principal);
+        int userId = userDao.findIdByUsername(principal.getName());
+
+        int recipeId = recipeDao.createRecipe(recipe, userId);
 
         //add new rows to tags table for this new recipe
         if(recipe.getTags() != null) {
@@ -83,5 +87,7 @@ public class RecipeService {
         return recipeId;
 
     }
+
+
 
 }
