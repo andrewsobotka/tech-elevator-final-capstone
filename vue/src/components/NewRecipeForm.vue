@@ -44,7 +44,7 @@
       <div class="ingredientList">
         <label for="ingredient">Ingredients:</label>
         <button class="ingredients-btn">
-          <a v-on:click="newRecipe.ingredients.push({ ingredient_id: 0, ingredient: '' })">Add Ingredient</a>
+          <a v-on:click.prevent="newRecipe.ingredients.push({ ingredient_id: 0, ingredient: '' })">Add Ingredient</a>
         </button>
         <br />
 
@@ -82,7 +82,7 @@
 
         <div class="deleteDiv">
           <button class="delete-btn">
-            <a v-on:click="deleteIngredients">Delete Selected Ingredients</a>
+            <a v-on:click.prevent="deleteIngredients">Delete Selected Ingredients</a>
           </button>
    
       </div>
@@ -91,7 +91,7 @@
           <ol>
           <label for="ingredient" class="stepsLabel">Steps:</label>
           <button class="ingredients-btn addSteps-btn">
-            <a v-on:click="newRecipe.steps.push({ step_id: 0, rank: 0, insturction:''})">Add Step</a>
+            <a v-on:click.prevent="newRecipe.steps.push({ step_id: 0, rank: 0, instruction:''})">Add Step</a>
           </button>
           <br />
           <br />
@@ -103,7 +103,7 @@
                 type="text"
                 class="steps-input"
                 placeholder="ie: Gather Ingredients..."
-                v-model="newRecipe.steps[index]"
+                v-model="newRecipe.steps[index].instruction"
                 @keyup.enter="newRecipe.steps.push({ step_id: 0, rank: 0, instruction:''})"
               />
               <input
@@ -165,8 +165,8 @@ export default {
       ingredientsArray:[],
       newRecipe: {
         ingredients: [{ ingredient_id: 0, ingredient:'' }],
-        steps: [""],
-        tags: [],
+        steps: [{step_id:0, rank:0, instruction:""}],
+        tags: [{tag:"", tagId:0}],
         keywords:'',
       },
     };

@@ -4,7 +4,7 @@
     <div class="borderbox"></div>
     <div id = "search">
        <input type="text" placeholder="Search by keyword..." id = "searchbox" v-model="search"/>
-       <router-link v-bind:to="{ name: 'search', params:{keyword:search}}">
+       <router-link v-bind:to="{ name: 'search', queryParams:{keyword:search}}">
          <button id="search-button" v-on:click="setKeyword">Search</button></router-link>
       </div>
       

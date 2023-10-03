@@ -1,7 +1,9 @@
 <template>
   <div class="container">
+
+    {{currentRecipe}}
     <h2>
-      {{ recipe.recipeName }}
+      {{ currentRecipe.recipeName }}
     </h2>
 
         <FavoriteIcon :recipe="recipe" 
@@ -9,13 +11,13 @@
 
 
     <section class="servings">
-      Serving size: {{ recipe.servingSize }} | Creator Name:
-      {{ recipe.creatorId }}
+      Serving size: {{ currentRecipe.servingSize }} | Creator Name:
+      {{ currentRecipe.creatorId }}
     </section>
 
     <section class="description">
       <p>
-        {{ recipe.description }}
+        {{ currentRecipe.description }}
       </p>
     </section>
     <h2>Ingredients</h2>
@@ -24,7 +26,7 @@
         <!-- where ID = XYZ v-for Data.Ingredients -->
         <ul>
           <li
-            v-for="(ingredient, index) in recipe.ingredients"
+            v-for="(ingredient, index) in currentRecipe.ingredients"
             v-bind:key="index"
             class="ingredient"
           >
@@ -34,7 +36,7 @@
       </div>
 
       <div class="recipeImage">
-        <img :src="recipe.imgUrl" />
+        <img :src="currentRecipe.imgUrl" />
       </div>
     </div>
 
@@ -47,7 +49,7 @@
       <ol>
         <li
           class="steps"
-          v-for="(step, index) in recipe.steps"
+          v-for="(step, index) in currentRecipe.steps"
           v-bind:key="index"
         >
           Step {{ step.rank }}:
@@ -55,7 +57,7 @@
 
         </li>
       </ol>
-      <router-link v-bind:to="{name:'edit-recipe' ,params:{ id: recipe.recipeId }}" v-if="$store.state.user.id === recipe.creatorId || $store.state.user.authorities[0].name == 'ROLE_ADMIN'"><button>Edit Recipe</button></router-link>
+      <router-link v-bind:to="{name:'edit-recipe' ,params:{ id: currentRecipe.recipeId }}" v-if="$store.state.user.id === currentRecipe.creatorId || $store.state.user.authorities[0].name == 'ROLE_ADMIN'"><button>Edit Recipe</button></router-link>
       <button class="delete-btn">Delete Recipe</button>
     </div>
   </div>
@@ -64,13 +66,13 @@
 
 <script>
 import APIService from "../services/APIService.js";
-import FavoriteIcon from './FavoriteIcon.vue';
+// import FavoriteIcon from './FavoriteIcon.vue';
 
 export default {
   name: "recipeDetail",
   props: ['recipe'],
   components:{
-    FavoriteIcon
+    // FavoriteIcon
   },
   methods: {
     addToLibrary() {},
@@ -99,16 +101,14 @@ export default {
 
   },
   created() {
-    // APIService.getRecipe(this.$route.params.id).then((response) => {
-    //   this.$store.commit("SET_RECIPE", response.data);
-    // });
+    APIService.getRecipe(this.$route.params.id).then((response) => {
+      this.$store.commit("SET_RECIPE", response.data);
+    });
   },
   computed:{
-    // recipe(){
-      
-      // return this.$store.state.recipe;
-      // this.
-    // },
+    currentRecipe(){
+      return this.$store.state.recipe;
+    },
   },
 };
 </script>

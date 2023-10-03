@@ -33,7 +33,7 @@
       <div class="ingredientList">
         <label for="ingredient">Ingredients:</label>
         <button class="ingredients-btn">
-          <a v-on:click="editRecipe.ingredients.push('')">Add Ingredient</a>
+          <a v-on:click.prevent="editRecipe.ingredients.push('')">Add Ingredient</a>
         </button>
 
         <br />
@@ -53,7 +53,7 @@
                 class="ingredients-input"
                 placeholder="ie. Apples"
                 v-model="ingredient.ingredient"
-                @keyup.enter="ingredient.ingredient.push('')"
+                @keyup.enter="ingredient.ingredient.prevent.push('')"
               />
 
               <input
@@ -80,7 +80,7 @@
           <ol>
           <label for="ingredient" class="stepsLabel">Steps:</label>
           <button class="ingredients-btn addSteps-btn">
-            <a v-on:click="editRecipe.steps.push('')">Add Step</a>
+            <a v-on:click="editRecipe.steps.prevent.push('')">Add Step</a>
           </button>
           <br />
           <br />
@@ -93,7 +93,7 @@
                 class="steps-input"
                 placeholder="ie: Gather Ingredients..."
                 v-model="step.instruction"
-                @keyup.enter="editRecipe.steps.push('')"
+                @keyup.enter="editRecipe.steps.prevent.push('')"
               />
               <input
                 type="checkbox"
@@ -151,7 +151,7 @@ export default {
       indexOfIngredients: [],
       editRecipe: {
         ingredients: [],
-        steps: [],
+        steps: [{step_id:0, rank:0, instruction:""}],
         tags: [],
       },
     };
