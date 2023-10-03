@@ -127,7 +127,7 @@ public class JdbcRecipeDao implements RecipeDao {
     }
 
     @Override
-    public int deleteRecipeByCreatorId(int creator_id){
+    public int deleteRecipeByCreatorId(int creator_id){                         //delete by creatorId or recipeId?
         int numberOfRows = 0;
         String sql = "DELETE FROM recipes WHERE creator_id = ?";
         try {
