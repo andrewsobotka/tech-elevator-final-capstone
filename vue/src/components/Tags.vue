@@ -6,9 +6,10 @@
       </div>
     <div class="body2">
         
-        <form v-on:submit.prevent="addNewTag()">
+        <form id="add-tag" v-on:submit.prevent="addNewTag()">
           <label for="add"></label>
           <input
+            id = "add-input"
             type="text"
             name="add"
             v-model="newTag.tag"
@@ -20,6 +21,9 @@
 
     <div class="tagsList">
     <div id ="tag-container">
+        <div id = "inner-container">
+       <label ><b>Select a tag to edit/delete: </b></label>
+
       <div
         class="field"
         v-for="tag in $store.state.tags"
@@ -35,7 +39,8 @@
           v-model="selectedTagId"
         />
         
-        <label v-bind:for="tag.tag">{{ tag.tag }}</label> 
+        <label v-bind:for="tag.tag">{{ tag.tag }}</label>
+      </div> 
         </div><br>
       </div>
       </div>
@@ -188,12 +193,15 @@ h2{
     justify-content: center;
     align-content: center;
     width: 100%;
+    height: 3rem;
 }
 
 button{
     margin-top:0px;
     margin-bottom: 0px;
-    height: 2.5rem;
+    height: auto;
+    text-align: center;
+    text-justify: center;
 }
 
 #edit-btn{
@@ -203,5 +211,24 @@ button{
     display: flex;
     justify-content: left;
     text-align: left;
+}
+
+#tag-container{
+    margin:1rem;
+    display: flex;
+    justify-content: center;
+}
+
+#add-tag{
+    margin-top: 1rem;
+}
+
+#add-tag input{
+    width: 10rem;
+}
+
+#add-input{
+    width: 10rem;
+    margin-bottom: 1rem;
 }
 </style>
