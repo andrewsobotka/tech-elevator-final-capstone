@@ -1,6 +1,6 @@
 <template>
   <div>
-      <Tags/>
+      <Tags v-if="$store.state.user.authorities[0].name == 'ROLE_ADMIN'"/>
   </div>
 </template>
 
