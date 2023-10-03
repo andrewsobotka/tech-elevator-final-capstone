@@ -73,7 +73,7 @@ public class JdbcStepDao implements StepDao{
     @Override
     public Integer createStepForRecipe(Step step, int recipe_id) {
         String sql = "INSERT INTO steps (rank, instruction) " +
-                "VALUES (?, ?) " +
+                "VALUES (?,?) " +
                 "RETURNING step_id;";
 
         String sql2 = "INSERT INTO steps_recipes (step_id, recipe_id) " +
@@ -83,7 +83,7 @@ public class JdbcStepDao implements StepDao{
 
         try {
                 stepId = jdbcTemplate.queryForObject(sql, Integer.class, step.getRank(), step.getInstruction());
-
+                jdbcTemplate.update(sql2, stepId, recipe_id);
         } catch (DataAccessException e){
             throw new DataAccessException(e.toString()) {};
         }
