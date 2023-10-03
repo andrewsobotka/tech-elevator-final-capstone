@@ -145,6 +145,6 @@ export default{
 
     //featured
     getRecipesByFeatured(){
-        return axios.get('/featured')
+        return axios.get('/featured')   
     }
 }

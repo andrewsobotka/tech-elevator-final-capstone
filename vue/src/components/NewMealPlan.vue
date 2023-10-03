@@ -6,10 +6,10 @@
 
       </div>
       <div class="field">
-        <label for="recipeName">Title: </label>
+        <label for="recipeName">Title: </label><br/>
         <input
           type="text"
-          name="mealListName"
+          name="mealListName" 
           v-model="newMeal.recipeName"
           placeholder="ie: Monday's Plan"
         />
@@ -56,7 +56,7 @@
 
       <div class="submitDiv">
         <button type="submit" value="Submit New Recipe" class="submit-btn">
-          Submit New Recipe
+          Create Meal Plan
         </button>
       </div>
     </form>
@@ -83,7 +83,7 @@ export default {
 </script>
 
 <style scoped>
-.container {
+.container {justify-content: center;
   max-width: 21rem;
   display: flex;
   flex-direction: column;
@@ -110,18 +110,25 @@ textarea {
   padding: .6rem;
 }
 
+input{
+      width: 28rem;
+      margin-top: 10px;
+
+}
 input::placeholder {
   font-family: "Montserrat", sans-serif;
   padding: 6px;
   color: rgba(119, 119, 119, 0.623);
 }
 
-input[name="recipeName"] {
+.title{
   margin-top: 0.7rem;
-  width: 93%;
+    width: 23rem;
 }
 
-
+h3{
+  padding-bottom: 1rem;
+}
 .field ul li {
   list-style-type: none;
 }
@@ -144,7 +151,7 @@ input[name="recipeName"] {
   color: rgb(39, 2, 2);
   font-family: "Montserrat", sans-serif;
   font-weight: bold;
-
+  margin-top: 4rem;
   transition: ease 0.5s;
 }
 .submit-btn:hover {
@@ -170,7 +177,8 @@ li{
 }
 
 #url{
-    width: 25rem;
+  margin-top: 10px;
+    width: 28rem;
 }
 
 
