@@ -2,6 +2,7 @@
   <div class="container">
     <form id="addNewRecipe" v-on:submit.prevent="createNewRecipe">
       <div>
+      {{newRecipe}}
         <h3>Add New Recipe</h3>
       </div>
       <div class="field">
@@ -104,7 +105,7 @@
                 class="steps-input"
                 placeholder="ie: Gather Ingredients..."
                 v-model="newRecipe.steps[index].instruction"
-                @keyup.enter="newRecipe.steps.push({ step_id: 0, rank: 0, instruction:''})"
+                @keyup.enter="newRecipe.steps.push({ step_id: 0, rank: 0,instruction:''})"
               />
               <input
                 type="checkbox"
@@ -136,20 +137,21 @@
           <input
             type="checkbox"
             id="tag"
-            v-bind:value="tag.tag"
+            v-bind:value="tag.tagId"
             v-bind:name="tag.tag"
-            v-model="newRecipe.tags"
+            v-model="listOfTagIds"
           />
         <label for="tag">{{ tag.tag }}</label>
         </div>
       </div>
 
       <div class="submitDiv">
-        <button type="submit" value="Submit New Recipe" class="submit-btn">
+        <button type="submit" value="Submit New Recipe" class="submit-btn" v-on:click="submitButtonMethods">
           Submit New Recipe
         </button>
       </div>
     </form>
+
   </div>
 </template>
 
@@ -158,15 +160,17 @@ import APIService from '../services/APIService';
 export default {
   data() {
     return {
+      test: "",
       currentValue: 0,
       indexOfSteps: [],
       indexOfIngredients: [],
       wordArray:[],
       ingredientsArray:[],
+      listOfTagIds:[],
       newRecipe: {
         ingredients: [{ ingredient_id: 0, ingredient:'' }],
         steps: [{step_id:0, rank:0, instruction:""}],
-        tags: [{tag:"", tagId:0}],
+        tags: [],
         keywords:'',
       },
     };
@@ -216,12 +220,37 @@ export default {
       this.ingredientsArray = ingredient.ingredient)
 
        this.newRecipe.keywords =  this.wordArray.toString() +"," + this.ingredientsArray;
+    }, 
+    createTagObjectsArray(){
+      // this.listOfTagIds.forEach((tagId)=>{APIService.getTag(tagId).then((response)=>{
+      //     this.newRecipe.tags.push(response.data);
+      //   })
+      //   }
+
+
+        for(let i = 0; i < this.listOfTagIds.length; i++){
+          APIService.getTag(this.listOfTagIds[i]).then(response => {
+            this.listOfTags = response.data;
+            this.newRecipe.tags.push(response.data);
+          })
+        }
+      
+    },
+    changeRankNumber(){
+      for(let i = 0; i < this.newRecipe.steps.length; i++){
+        this.newRecipe.steps[i].rank = i+1;
+      }
+    },
+    submitButtonMethods(){
+      this.changeRankNumber();
+      this.createTagObjectsArray();
+
     }
     
     
   },
   computed: {
-    
+
     
   },
   created(){

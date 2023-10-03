@@ -146,6 +146,7 @@ import APIService from "../services/APIService.js";
 export default {
   data() {
     return {
+      listOfTags:[],
       currentValue: 0,
       indexOfSteps: [],
       indexOfIngredients: [],
