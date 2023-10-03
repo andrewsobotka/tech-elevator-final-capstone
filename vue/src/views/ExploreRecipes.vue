@@ -93,7 +93,6 @@ h3 {
   position: relative;
   left: 25%;
 }
-
 .cardsContainer {
   margin: 2rem;
   position: relative;
@@ -102,6 +101,7 @@ h3 {
   gap: 0.3rem;
   justify-content: center;
 }
+
 
 input{
   background: #fff;

@@ -9,6 +9,8 @@ public interface TagDao {
 
     List<Tag> getAllTags();
 
+    Integer createTagForRecipe(Tag tag, int recipe_id);
+
     Integer createTag(Tag tag);
 
     boolean updateTag(Integer tagId, Tag tag);

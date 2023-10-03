@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
+// import HireUs from '../views/HireUs.vue'
 import store from '../store/index'
 import ExploreRecipes from '../views/ExploreRecipes.vue'
 import RecipeDisplay from '../views/RecipeDisplay.vue'
@@ -146,6 +147,7 @@ const router = new Router({
         requiresAuth: true
       }
     },
+<<<<<<< HEAD
     {
       path: "/tags",
       name: "tags",
@@ -154,6 +156,16 @@ const router = new Router({
         requiresAuth: true
       }
     }
+=======
+    // {
+    //   path: "/hire-us",
+    //   name: "hire-us",
+    //   component: HireUs,
+    //   meta: {
+    //     requiresAuth: true
+    //   }
+    // }
+>>>>>>> 97cd9917f9b67922a9a322de4a6e8a3bf9ba05b0
   ]
 })
 

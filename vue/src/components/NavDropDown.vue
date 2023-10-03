@@ -68,7 +68,7 @@ export default {
 
 .overlay-content {
   position: relative;
-  top: 88px;
+  top: 103px;
   width: 100%;
   text-align: center;
   margin-top: 5px;
@@ -77,7 +77,7 @@ export default {
 ul {
   list-style-type: none;
   padding: 0;
-  left: 0.1rem;
+  left: .8rem;
 
 border-radius: 3px;
   filter: blur(30%);
