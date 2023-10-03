@@ -107,11 +107,7 @@ public class JdbcTagDao implements TagDao {
         Tag existingTag = getTagByTagName(tag.getTag());            //variable to check if tag is in database already..
 
         try {
-            if(existingTag == null){                                //if this tag doesn't exist in the database...
-                tagId = jdbcTemplate.queryForObject(sql, Integer.class, tag.getTag());
-            } else {                                                //if this tag is already in the database...
-                tagId = existingTag.getTagId();
-            }
+            tagId = jdbcTemplate.queryForObject(sql, Integer.class, tag.getTag());
             jdbcTemplate.update(sql2, tagId, recipe_id);
 
         } catch (DataAccessException e){
