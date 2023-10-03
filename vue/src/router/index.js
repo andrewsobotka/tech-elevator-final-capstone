@@ -16,7 +16,7 @@ import Meals from '../views/MyMeals.vue'
 import EditRecipe from '../views/EditRecipe.vue'
 import EditGroceryList from '../views/EditGroceryList.vue'
 import FilterByTag from '../views/FilterByTags.vue'
-import Tags from "../views/Tags.vue"
+import Tags from "../views/EditTags.vue"
 
 
 Vue.use(Router)
@@ -147,7 +147,6 @@ const router = new Router({
         requiresAuth: true
       }
     },
-<<<<<<< HEAD
     {
       path: "/tags",
       name: "tags",
@@ -156,7 +155,6 @@ const router = new Router({
         requiresAuth: true
       }
     }
-=======
     // {
     //   path: "/hire-us",
     //   name: "hire-us",
@@ -165,7 +163,6 @@ const router = new Router({
     //     requiresAuth: true
     //   }
     // }
->>>>>>> 97cd9917f9b67922a9a322de4a6e8a3bf9ba05b0
   ]
 })
 
