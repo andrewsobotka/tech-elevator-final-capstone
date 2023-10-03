@@ -42,7 +42,7 @@ public class JdbcRecipeDao implements RecipeDao {
     public Recipe getRecipeByRecipeId(int recipe_id) {
 
         Recipe recipe = null;
-        String sql = "SELECT * from recipes where recipe_id = ? ;";
+        String sql = "SELECT * from recipes where recipe_id = ?;";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, recipe_id);
             if (results.next()) {
@@ -61,7 +61,7 @@ public class JdbcRecipeDao implements RecipeDao {
     @Override
     public List<Recipe> getFeaturedRecipesByRecipeId() {           //Display Top3-Featured Recipes
         List<Recipe> recipes = new ArrayList<>();
-        String sql = "select * from recipes where is_featured = true ";
+        String sql = "select * from recipes where is_featured = true";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {

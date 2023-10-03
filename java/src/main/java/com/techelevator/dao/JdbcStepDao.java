@@ -76,7 +76,7 @@ public class JdbcStepDao implements StepDao{
                 "RETURNING step_id;";
 
         String sql2 = "INSERT INTO steps_recipes (step_id, recipe_id) " +
-                "VALUES (?, ?) ";
+                "VALUES (?, ?);";
 
         Integer stepId;
 
