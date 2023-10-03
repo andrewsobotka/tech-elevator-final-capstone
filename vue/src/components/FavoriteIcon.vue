@@ -17,6 +17,11 @@ export default {
       favorite:false
     };
   },
+  methods:{
+    toggleColor(){
+      
+    }
+  },
   props: {
     
   },

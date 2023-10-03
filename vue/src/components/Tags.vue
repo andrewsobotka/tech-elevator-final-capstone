@@ -19,12 +19,14 @@
         </form>
 
     <div class="tagsList">
+    <div id ="tag-container">
       <div
         class="field"
         v-for="tag in $store.state.tags"
         v-bind:key="tag.tagId"
         v-bind:value="tag.tagId"
       >
+      <div>
         <input
           type="radio"
           class="tag"
@@ -32,18 +34,23 @@
           v-bind:name="tag.tag"
           v-model="selectedTagId"
         />
-        <label v-bind:for="tag.tag">{{ tag.tag }}</label>
+        
+        <label v-bind:for="tag.tag">{{ tag.tag }}</label> 
+        </div><br>
       </div>
+      </div>
+      <div class="buttons">
       <button class="delete-btn" v-on:click="deleteTag">Delete Tag</button>
-      <button v-on:click="getTagById">Edit Tag</button>
+      <button id = "edit-btn" v-on:click="getTagById">Edit Tag</button>
+      </div>
       
       </div>
       <form v-on:submit.prevent="editTag()" v-if="tagToUpdate.tag != ''">
-          <label for="add">Add Tag</label>
+          <label for="edit">Edit tag: </label>
 
           <input
             type="text"
-            name="add"
+            name="edit"
             v-model="tagToUpdate.tag"
             placeholder="ie: vegan"
           />
@@ -141,7 +148,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 
 .body {
   position: relative;
@@ -165,7 +172,6 @@ h2{
 
 .tagsList{
     text-align: left;
-    width: 50%;
 }
 
 #title{
@@ -177,4 +183,25 @@ h2{
     width:20rem;
 }
 
+.buttons{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    width: 100%;
+}
+
+button{
+    margin-top:0px;
+    margin-bottom: 0px;
+    height: 2.5rem;
+}
+
+#edit-btn{
+    margin-top:0px;
+}
+.field{
+    display: flex;
+    justify-content: left;
+    text-align: left;
+}
 </style>
