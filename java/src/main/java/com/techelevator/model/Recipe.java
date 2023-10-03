@@ -16,6 +16,7 @@ public class Recipe {
     private String imgUrl;
     private boolean isPublished;
     private boolean isFeatured;
+    private boolean favorite;
     private List<Tag> tags;
 
     public Recipe() { }                                     //Required for mapRowToRecipe in jdbcRecipeDao to work
@@ -121,6 +122,14 @@ public class Recipe {
 
     public void setFeatured(boolean featured) {
         isFeatured = featured;
+    }
+
+    public boolean isFavorite() {
+        return favorite;
+    }
+
+    public void setFavorite(boolean favorite) {
+        this.favorite = favorite;
     }
 
     public List<Tag> getTags() {

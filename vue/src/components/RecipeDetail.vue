@@ -62,7 +62,7 @@
 import APIService from "../services/APIService.js";
 export default {
   name: "recipeDetail",
-
+  props: ['recipe'],
   methods: {
     addToLibrary() {},
     deleteRecipe(){
@@ -85,15 +85,16 @@ export default {
     }
   },
   created() {
-    APIService.getRecipe(this.$route.params.id).then((response) => {
-      this.$store.commit("SET_RECIPE", response.data);
-    });
+    // APIService.getRecipe(this.$route.params.id).then((response) => {
+    //   this.$store.commit("SET_RECIPE", response.data);
+    // });
   },
   computed:{
-    recipe(){
+    // recipe(){
       
-      return this.$store.state.recipe;
-    },
+      // return this.$store.state.recipe;
+      // this.
+    // },
   },
 };
 </script>

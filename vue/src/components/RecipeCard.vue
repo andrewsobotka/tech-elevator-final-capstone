@@ -3,7 +3,8 @@
     <div class="name-img-container">
       
          <!-- Use the <favorite> component to toggle favorited state -->
-        <FavoriteIcon :favorited="recipe.favorited" @toggle-favorites="toggleFavorites" class="favorite"/>
+        <FavoriteIcon :recipe="recipe" 
+         @toggle-favorites="toggleFavorites" :class="{favorite:recipe.favorite, notFavorite: !recipe.favorite}"/>
 
       <router-link
         v-bind:to="{ name: 'recipe', params: { id: recipe.recipeId } }"
@@ -54,11 +55,9 @@ export default {
     },
     
     toggleFavorites() {
-            this.favorite=!this.favorite;
+            this.$store.commit('FLIP_FAVORITE', this.recipe);
     },
-    toggleColor() {
-      this.is_fav = !this.is_fav;
-    },
+
   },
 };
 </script>
@@ -84,13 +83,17 @@ export default {
  
 }
 
+.notFavorite {
+
+}
+
 
 .favorite{
   border:none;
   padding: 6px 6px;
 position: fixed;
 transform: scale(1.2);
-color: rgb(255, 255, 255);
+color: rgb(105, 40, 40);
 right: 10%;
 background: rgba(255, 255, 255, 0.568); 
 

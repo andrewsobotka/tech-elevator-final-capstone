@@ -1,11 +1,10 @@
 <template>
-  <button @click="$emit('toggle-favorites', recipe.id)"
+  <button @click="$emit('toggle-favorites', recipe.recipeId)"
 
    class="btn btn-sm btn-primary">
     <i
-      :class="[favorite ? 'fa-heart favorite' : 'fa-heart-o', 'fa']"
+      :class="[recipe.favorite ? 'fa-heart favorite' : 'fa-heart-o', 'fa']"
       aria-hidden="true"
-      @click="toggleColor"
     ></i>
   </button>
 </template>
@@ -14,14 +13,15 @@
 export default {
   date(){
     return {
-      favorite:false
+
     };
   },
-  props: {
+  props: {    recipe: Object
+
     
   },
 emits: ['toggle-favorites'],
-
+methods:{}
 };
 </script>
 
@@ -30,7 +30,7 @@ emits: ['toggle-favorites'],
   font-size: 3rem;
 }
 
-.fa {
+.favorite {
   color: red;
 }
 </style>

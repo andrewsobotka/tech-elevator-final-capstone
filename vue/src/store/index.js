@@ -112,6 +112,9 @@ export default new Vuex.Store({
     SET_FEATURED(state, recipes){
       state.featuredList = recipes;
     },
+    FLIP_FAVORITE(state, recipe){
+      recipe.favorite = !recipe.favorite
+    },
     SET_TAGS(state, tag){
       state.tags = tag;
     },
