@@ -1,16 +1,5 @@
 <template>
   <div class="container">
-<<<<<<< HEAD
-
-    {{currentRecipe}}
-    <h2>
-      {{ currentRecipe.recipeName }}
-    </h2>
-
-        <FavoriteIcon :recipe="recipe" 
-         @toggle-favorites="toggleFavorites" :class="{favorite:recipe.favorite, notFavorite: !recipe.favorite}"/>
-
-=======
     <div class="header-favorite-group">
       <FavoriteIcon
         :recipe="recipe"
@@ -22,7 +11,6 @@
       </h2> 
       
      
->>>>>>> 62be09d806cf3c64b0768015b1a30e038316b4aa
 
     </div>
     <section class="servings">
@@ -32,11 +20,7 @@
 
     <section class="description">
       <p>
-<<<<<<< HEAD
         {{ currentRecipe.description }}
-=======
-        {{recipe.description }}
->>>>>>> 62be09d806cf3c64b0768015b1a30e038316b4aa
       </p>
     </section>
     <h2>Ingredients</h2>
@@ -75,9 +59,6 @@
           {{ step.instruction }}
         </li>
       </ol>
-<<<<<<< HEAD
-      <router-link v-bind:to="{name:'edit-recipe' ,params:{ id: currentRecipe.recipeId }}" v-if="$store.state.user.id === currentRecipe.creatorId || $store.state.user.authorities[0].name == 'ROLE_ADMIN'"><button>Edit Recipe</button></router-link>
-=======
       <router-link
         v-bind:to="{ name: 'edit-recipe', params: { id: recipe.recipeId } }"
         v-if="
@@ -86,7 +67,6 @@
         "
         ><button>Edit Recipe</button></router-link
       >
->>>>>>> 62be09d806cf3c64b0768015b1a30e038316b4aa
       <button class="delete-btn">Delete Recipe</button>
     </div>
   </div>
@@ -95,15 +75,6 @@
 
 <script>
 import APIService from "../services/APIService.js";
-<<<<<<< HEAD
-// import FavoriteIcon from './FavoriteIcon.vue';
-
-export default {
-  name: "recipeDetail",
-  props: ['recipe'],
-  components:{
-    // FavoriteIcon
-=======
 import FavoriteIcon from "./FavoriteIcon.vue";
 
 export default {
@@ -111,7 +82,6 @@ export default {
   props: ["recipe"],
   components: {
     FavoriteIcon,
->>>>>>> 62be09d806cf3c64b0768015b1a30e038316b4aa
   },
   methods: {
     addToLibrary() {},
@@ -141,18 +111,10 @@ export default {
       this.$store.commit("SET_RECIPE", response.data);
     });
   },
-<<<<<<< HEAD
   computed:{
     currentRecipe(){
       return this.$store.state.recipe;
     },
-=======
-  computed: {
-    // recipe(){
-    // return this.$store.state.recipe;
-    // this.
-    // },
->>>>>>> 62be09d806cf3c64b0768015b1a30e038316b4aa
   },
 };
 </script>

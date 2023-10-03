@@ -43,8 +43,8 @@
 
       <div class="ingredientList">
         <label for="ingredient">Ingredients:</label>
-        <button class="ingredients-btn">
-          <a v-on:click.prevent="newRecipe.ingredients.push({ ingredient_id: 0, ingredient: '' })">Add Ingredient</a>
+        <button class="ingredients-btn" v-on:click.prevent="newRecipe.ingredients.push({ ingredient_id: 0, ingredient: '' })">
+          <a>Add Ingredient</a>
         </button>
         <br />
 
@@ -81,8 +81,8 @@
 
 
         <div class="deleteDiv">
-          <button class="delete-btn">
-            <a v-on:click.prevent="deleteIngredients">Delete Selected Ingredients</a>
+          <button class="delete-btn" v-on:click.prevent="deleteIngredients">
+            <a>Delete Selected Ingredients</a>
           </button>
    
       </div>
@@ -90,8 +90,8 @@
       <div class="stepsList">
           <ol>
           <label for="ingredient" class="stepsLabel">Steps:</label>
-          <button class="ingredients-btn addSteps-btn">
-            <a v-on:click.prevent="newRecipe.steps.push({ step_id: 0, rank: 0, instruction:''})">Add Step</a>
+          <button class="ingredients-btn addSteps-btn" v-on:click.prevent="newRecipe.steps.push({ step_id: 0, rank: 0, instruction:''})">
+            <a>Add Step</a>
           </button>
           <br />
           <br />
@@ -118,8 +118,8 @@
 
 
           <div class="deleteDiv">
-            <button class="delete-btn">
-              <a v-on:click="deleteSteps">Delete Selected Steps</a>
+            <button class="delete-btn" v-on:click="deleteSteps">
+              <a>Delete Selected Steps</a>
             </button>
         
     
