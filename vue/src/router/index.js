@@ -15,6 +15,8 @@ import Meals from '../views/MyMeals.vue'
 import EditRecipe from '../views/EditRecipe.vue'
 import EditGroceryList from '../views/EditGroceryList.vue'
 import FilterByTag from '../views/FilterByTags.vue'
+import Tags from "../views/Tags.vue"
+
 
 Vue.use(Router)
 
@@ -140,6 +142,14 @@ const router = new Router({
       path: "/my-meals",
       name: "my-meals",
       component: Meals,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/tags",
+      name: "tags",
+      component: Tags,
       meta: {
         requiresAuth: true
       }
