@@ -59,6 +59,28 @@ public class JdbcRecipeDao implements RecipeDao {
     }
 
     @Override
+    public Recipe getRecipeByTagId(int tag_id) {
+
+        Recipe recipe = null;
+        String sql = "SELECT * from recipes " +
+                "join recipes_tags on recipes.recipe_id = recipes_tags.recipe_id " +
+                "where tag_id = ?;";
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, tag_id);
+            if (results.next()) {
+                recipe = mapRowToRecipe(results);
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data integrity violation", e);
+        }
+
+        return recipe;
+
+    }
+
+    @Override
     public List<Recipe> getFeaturedRecipesByRecipeId() {           //Display Top3-Featured Recipes
         List<Recipe> recipes = new ArrayList<>();
         String sql = "select * from recipes where is_featured = true";

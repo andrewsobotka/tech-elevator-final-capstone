@@ -37,6 +37,12 @@ public class  RecipeController {
     public Integer createRecipe(@RequestBody Recipe recipe, Principal principal) {
         return recipeService.createRecipe(recipe, principal);
     }
+
+    @GetMapping("/recipes/tags/{tagId}")
+    public Recipe getRecipeByTagId(@PathVariable int tagId){
+        return recipeService.getRecipeByTagId(tagId);
+    }
+
     @GetMapping("/featured")
     public List<Recipe> getFeaturedRecipes() {
         return recipeDao.getFeaturedRecipesByRecipeId();

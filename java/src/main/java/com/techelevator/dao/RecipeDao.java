@@ -24,4 +24,5 @@ public interface RecipeDao {
     int deleteRecipeByRecipeId(int recipe_id);
 
     String getCreatorUsernameByRecipeId(int recipeId);
+    Recipe getRecipeByTagId(int tag_id);
 }

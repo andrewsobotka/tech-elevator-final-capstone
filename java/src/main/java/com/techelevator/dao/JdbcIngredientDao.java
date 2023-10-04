@@ -2,6 +2,7 @@ package com.techelevator.dao;
 
 import com.techelevator.exception.DaoException;
 import com.techelevator.model.Ingredient;
+import com.techelevator.model.Recipe;
 import com.techelevator.model.Tag;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -53,6 +54,24 @@ public class JdbcIngredientDao implements IngredientDao{
         }
 
         return ingredients;
+    }
+
+    @Override
+    public List<Ingredient> getListOfIngredientByTagId(int tag_id) {
+        List<Ingredient> ingredients = new ArrayList<>();
+
+        String sql = "SELECT * from ingredients " +
+                "join ingredients_recipes on ingredients.ingredient_id = ingredients_recipes.ingredient_id " +
+                "join recipes_tags on ingredients_recipes.recipe_id = recipes_tags.recipe_id " +
+                "where tag_id = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, tag_id);
+        while (results.next()) {
+            Ingredient ingredient = mapRowToIngredient(results);
+            ingredients.add(ingredient);
+        }
+
+        return ingredients;
+
     }
 
     private Ingredient getIngredientByIngredientName(String ingredientName) {                   //helper method LOCAL so private

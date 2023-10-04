@@ -10,6 +10,8 @@ public interface StepDao {
 
     List<Step> getListOfStepsByRecipeId(int recipe_id);
 
+    List<Step> getStepsByTagId(int tag_id);
+
     Integer createStep(Step step);
 
     Integer createStepForRecipe(Step step, int recipe_id);

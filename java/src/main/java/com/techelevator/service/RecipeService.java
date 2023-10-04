@@ -59,6 +59,20 @@ public class RecipeService {
         return recipe;
     }
 
+    public Recipe getRecipeByTagId(int tagId) {
+        Recipe recipe = recipeDao.getRecipeByTagId(tagId);
+
+        Tag tag = tagDao.getTagByTagId(tagId);
+
+        List<Ingredient> ingredients = ingredientDao.getListOfIngredientByTagId(tagId);
+        recipe.setIngredients(ingredients);
+
+        List<Step> steps = stepDao.getStepsByTagId(tagId);
+        recipe.setSteps(steps);
+
+        return recipe;
+    }
+
     public Integer createRecipe(Recipe recipe, Principal principal) {       //more inputs to account for steps/ingredients/etc?
         int userId = userDao.findIdByUsername(principal.getName());
 
