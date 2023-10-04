@@ -24,5 +24,5 @@ public interface RecipeDao {
     int deleteRecipeByRecipeId(int recipe_id);
 
     String getCreatorUsernameByRecipeId(int recipeId);
-    Recipe getRecipeByTagId(int tag_id);
+    List<Recipe> getListOfRecipeByTagId(int tag_id);
 }

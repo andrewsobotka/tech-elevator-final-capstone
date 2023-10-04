@@ -59,18 +59,18 @@ public class RecipeService {
         return recipe;
     }
 
-    public Recipe getRecipeByTagId(int tagId) {
-        Recipe recipe = recipeDao.getRecipeByTagId(tagId);
+    public List<Recipe> getRecipesByTagId(int tagId) {
+        List<Recipe> recipes = recipeDao.getListOfRecipeByTagId(tagId);
 
-        Tag tag = tagDao.getTagByTagId(tagId);
+//        Tag tag = tagDao.getTagByTagId(tagId);
+//
+//        List<Ingredient> ingredients = ingredientDao.getListOfIngredientByTagId(tagId);
+//        recipe.setIngredients(ingredients);
+//
+//        List<Step> steps = stepDao.getStepsByTagId(tagId);
+//        recipe.setSteps(steps);
 
-        List<Ingredient> ingredients = ingredientDao.getListOfIngredientByTagId(tagId);
-        recipe.setIngredients(ingredients);
-
-        List<Step> steps = stepDao.getStepsByTagId(tagId);
-        recipe.setSteps(steps);
-
-        return recipe;
+        return recipes;
     }
 
     public Integer createRecipe(Recipe recipe, Principal principal) {       //more inputs to account for steps/ingredients/etc?
