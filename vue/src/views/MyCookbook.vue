@@ -29,6 +29,13 @@
  </div>
  <div id ="favoritedRecipes">
    <h2>My Bookmarked Recipes <i class="fa-solid fa-bookmark"></i><br>    </h2>
+   <div class = "recipesList">
+     <RecipeCard
+      v-for="recipe in $store.state.favoritedLibrary"
+      v-bind:key="recipe.recipeId"
+      v-bind:recipe ="recipe"
+     /> 
+   </div>
  </div>
  </div>
 </template>

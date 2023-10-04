@@ -33,7 +33,7 @@ export default new Vuex.Store({
     selectedTagId:0,
     selectedTag:"",
     filteredList:[],
-    groceryList:["1 carton of milk", "1 carton of eggs", "1 block of parmesan cheese", "5 oranges" ],
+    groceryList:[{item:"1 carton of milk", recipeName:"Mac and Cheese"}, {item:"1 carton of eggs", recipeName: "Omelet"},{item: "1 block of parmesan cheese", recipeName: "Spaghetti" } ],
     featuredList:[],
     recipe:{},
     keyword:"",
@@ -115,6 +115,7 @@ export default new Vuex.Store({
     },
     FLIP_FAVORITE(state, recipe){
       recipe.favorite = !recipe.favorite
+      state.favoritedLibrary.push(recipe);
     },
     SET_TAGS(state, tag){
       state.tags = tag;
@@ -127,6 +128,10 @@ export default new Vuex.Store({
     },
     SET_FEATURED_RECIPE(state, recipe){
       recipe.isFeatured = !recipe.isFeatured;
+    },
+    ADD_TO_LIBRARY(state, recipe, ingredient){
+      state.groceryList.item = ingredient.ingredient;
+      state.groceryList.recipeName = recipe.recipeName;
     }
   }
 })
