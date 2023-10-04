@@ -56,14 +56,8 @@ export default {
         return axios.delete(`/tags/${tagId}`);
     },
 
-
-    //needtofix the endpoint
-    getRecipeByTagId(tagId) {
-        return axios.get(`/tags/${tagId}`)
-    },
-
-    getRecipesByTags(tag){
-        return axios.get(`/recipes/${tag}`)
+    getRecipesByTagId(tagId) {
+        return axios.get(`recipes/tags/${tagId}`)
     },
 
 
