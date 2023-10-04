@@ -8,7 +8,7 @@
       <div>
 
        
-        <h3>Edit Recipe</h3>
+        <h3>Edit Recipe</h3>  
       </div>
       <div class="field">
         <label for="recipeName">Title: </label>
@@ -236,13 +236,16 @@ div a {
 }
 
 .backButton{
-  position: fixed;
-  left: 45rem;
-  top: 10rem;
+  position: relative;
+ left: 45%;
+  /* top: 10rem; */
+  /* padding: 30rem; */
   font-size: 1rem;
 }
 
+button{
 
+}
 textarea {
   position: relative;
   min-width: 33rem;

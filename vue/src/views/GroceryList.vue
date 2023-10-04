@@ -27,5 +27,7 @@ h3 {
   position: relative;
   left: 25%;
 }
-
+.grocery{
+  padding-bottom: 2.9rem;
+}
 </style>
