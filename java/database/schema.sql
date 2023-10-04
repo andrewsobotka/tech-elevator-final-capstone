@@ -17,7 +17,7 @@ DROP TABLE IF EXISTS recipes CASCADE;
 CREATE TABLE recipes (
     recipe_id SERIAL,
     creator_id int,
-    recipe_name varchar (63) NOT NULL UNIQUE,
+    recipe_name varchar (63) NOT NULL,
     image_url text,
     description text,
     serving_size double precision,
@@ -37,7 +37,7 @@ CREATE TABLE ingredients (
 DROP TABLE IF EXISTS steps CASCADE;
 CREATE TABLE steps (
     step_id SERIAL,
-    rank int NOT NULL,
+    rank int,
     instruction text,
     CONSTRAINT PK_steps PRIMARY KEY (step_id)
 );
@@ -53,7 +53,7 @@ CREATE TABLE meals (
 DROP TABLE IF EXISTS tags CASCADE;
 CREATE TABLE tags (
     tag_id SERIAL,
-    tag text NOT NULL UNIQUE ,
+    tag text,
     CONSTRAINT PK_meals_Tag PRIMARY KEY (tag_id)
 );
 
@@ -64,14 +64,14 @@ CREATE TABLE users_recipes (
     user_id int NOT NULL,
     recipe_id int NOT NULL
 );
-ALTER TABLE users_recipes
-    ADD CONSTRAINT "fk_user_id"
-    FOREIGN KEY (user_id)
-    REFERENCES users (user_id);
-ALTER TABLE users_recipes
-    ADD CONSTRAINT "fk_recipe_id"
-    FOREIGN KEY (recipe_id)
-    REFERENCES recipes (recipe_id);
+-- ALTER TABLE users_recipes
+--     ADD CONSTRAINT "fk_user_id"
+--     FOREIGN KEY (user_id)
+--     REFERENCES users (user_id);
+-- ALTER TABLE users_recipes
+--     ADD CONSTRAINT "fk_recipe_id"
+--     FOREIGN KEY (recipe_id)
+--     REFERENCES recipes (recipe_id);
 
 -- Joining users on recipes
 DROP TABLE IF EXISTS recipes_tags CASCADE;
@@ -79,14 +79,14 @@ CREATE TABLE recipes_tags (
     tag_id int NOT NULL,
     recipe_id int NOT NULL
 );
-ALTER TABLE recipes_tags
-    ADD CONSTRAINT "fk_tags_recipes_id"
-    FOREIGN KEY (tag_id)
-    REFERENCES tags (tag_id);
-ALTER TABLE recipes_tags
-    ADD CONSTRAINT "fk_recipes_tags_id"
-    FOREIGN KEY (recipe_id)
-    REFERENCES recipes (recipe_id);
+-- ALTER TABLE recipes_tags
+--     ADD CONSTRAINT "fk_tags_recipes_id"
+--     FOREIGN KEY (tag_id)
+--     REFERENCES tags (tag_id);
+-- ALTER TABLE recipes_tags
+--     ADD CONSTRAINT "fk_recipes_tags_id"
+--     FOREIGN KEY (recipe_id)
+--     REFERENCES recipes (recipe_id);
 
 -- Joining steps on recipes
 DROP TABLE IF EXISTS steps_recipes CASCADE;
@@ -124,14 +124,14 @@ CREATE TABLE meals_recipes (
     meal_id int NOT NULL,
     recipe_id int NOT NULL
 );
-ALTER TABLE meals_recipes
-    ADD CONSTRAINT "fk_meals_id"
-    FOREIGN KEY (meal_id)
-    REFERENCES meals (meal_id);
-ALTER TABLE meals_recipes
-    ADD CONSTRAINT "fk_meals_recipes_id"
-    FOREIGN KEY (recipe_id)
-    REFERENCES recipes (recipe_id);
+-- ALTER TABLE meals_recipes
+--     ADD CONSTRAINT "fk_meals_id"
+--     FOREIGN KEY (meal_id)
+--     REFERENCES meals (meal_id);
+-- ALTER TABLE meals_recipes
+--     ADD CONSTRAINT "fk_meals_recipes_id"
+--     FOREIGN KEY (recipe_id)
+--     REFERENCES recipes (recipe_id);
 
 -- Joining users on recipes
 DROP TABLE IF EXISTS users_meals CASCADE;
@@ -139,14 +139,14 @@ CREATE TABLE users_meals (
     user_id int NOT NULL,
     meal_id int NOT NULL
 );
-ALTER TABLE users_meals
-    ADD CONSTRAINT "fk_user_meals_id"
-    FOREIGN KEY (user_id)
-    REFERENCES users (user_id);
-ALTER TABLE users_meals
-    ADD CONSTRAINT "fk_meals_user_id"
-    FOREIGN KEY (meal_id)
-    REFERENCES meals (meal_id);
+-- ALTER TABLE users_meals
+--     ADD CONSTRAINT "fk_user_meals_id"
+--     FOREIGN KEY (user_id)
+--     REFERENCES users (user_id);
+-- ALTER TABLE users_meals
+--     ADD CONSTRAINT "fk_meals_user_id"
+--     FOREIGN KEY (meal_id)
+--     REFERENCES meals (meal_id);
 
 -- Joining users on recipes
 DROP TABLE IF EXISTS users_ingredients CASCADE;
@@ -156,17 +156,17 @@ CREATE TABLE users_ingredients (
     recipe_id int NOT NULL,
     is_completed boolean
 );
-ALTER TABLE users_ingredients
-    ADD CONSTRAINT "fk_user_ingredients_id"
-    FOREIGN KEY (user_id)
-    REFERENCES users (user_id);
-ALTER TABLE users_ingredients
-    ADD CONSTRAINT "fk_ingredients_user_id"
-    FOREIGN KEY (ingredient_id)
-    REFERENCES ingredients (ingredient_id);
-ALTER TABLE users_ingredients
-    ADD CONSTRAINT "fk_user_ingredients_recipes_id"
-    FOREIGN KEY (recipe_id)
-    REFERENCES recipes (recipe_id);
+-- ALTER TABLE users_ingredients
+--     ADD CONSTRAINT "fk_user_ingredients_id"
+--     FOREIGN KEY (user_id)
+--     REFERENCES users (user_id);
+-- ALTER TABLE users_ingredients
+--     ADD CONSTRAINT "fk_ingredients_user_id"
+--     FOREIGN KEY (ingredient_id)
+--     REFERENCES ingredients (ingredient_id);
+-- ALTER TABLE users_ingredients
+--     ADD CONSTRAINT "fk_user_ingredients_recipes_id"
+--     FOREIGN KEY (recipe_id)
+--     REFERENCES recipes (recipe_id);
 
 COMMIT TRANSACTION;
