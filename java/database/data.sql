@@ -13,7 +13,7 @@ INSERT INTO users (username, password_hash, role) VALUES ('andrew','$2a$08$UkVvw
 
 -- Create 3 Default Recipes
 INSERT INTO recipes (creator_id, recipe_name, image_url, description, serving_size, keywords, is_featured, is_published)
-VALUES ((SELECT user_id FROM users WHERE username = 'user'), 'Cheese Pizza', 'https://images.unsplash.com/photo-1639744210916-74793fdd9a88?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1336&q=80', E'Gooey, cheesy goodness on a crispy crust. Perfect quick family meal.', 10, 'pizza, cheese', true, true);
+VALUES ((SELECT user_id FROM users WHERE username = 'user'), 'Cheese Pizza', 'https://images.unsplash.com/photo-1639744210916-74793fdd9a88?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1336&q=80', E'Gooey, cheesy goodness on a crispy crust. Perfect quick family meal.', 10, 'pizza, marinara, dinner, cheese', true, true);
 
 -- Create 5 Different Tags
 INSERT INTO tags (tag) VALUES ('vegetarian');
@@ -84,7 +84,7 @@ INSERT INTO users_recipes (user_id, recipe_id) VALUES (1,2);
 
 -- Insert Hummus Recipe
 INSERT INTO recipes (creator_id, recipe_name, image_url, description, serving_size, keywords, is_featured, is_published)
-VALUES ((SELECT user_id FROM users WHERE username = 'user'), 'Hummus', 'https://www.inspiredtaste.net/wp-content/uploads/2019/03/How-to-Make-Homemade-Hummus-1200.jpg', 'Creamy and delicious hummus dip.', 6, 'hummus, dip, appetizer', false, true);
+VALUES ((SELECT user_id FROM users WHERE username = 'user'), 'Hummus', 'https://www.inspiredtaste.net/wp-content/uploads/2019/03/How-to-Make-Homemade-Hummus-1200.jpg', 'Creamy and delicious hummus dip.', 6, 'hummus, dip, vegan, mediterranean, greek, chickpea, snacks, dips, appetizer', false, true);
 
 -- Insert Ingredients for Hummus Recipe
 INSERT INTO ingredients (ingredient) VALUES ('2 cans (30 oz) of chickpeas, drained and rinsed');
@@ -149,7 +149,7 @@ VALUES (
 
 -- Insert Lemon Sorbet Recipe
 INSERT INTO recipes (creator_id, recipe_name, image_url, description, serving_size, keywords, is_featured, is_published)
-VALUES ((SELECT user_id FROM users WHERE username = 'user'), 'Lemon Sorbet', 'https://i1.wp.com/lmld.org/wp-content/uploads/2022/07/Lemon-Sorbet-6.jpg', 'Refreshing and tangy lemon sorbet.', 4, 'lemon, sorbet, dessert', true, true);
+VALUES ((SELECT user_id FROM users WHERE username = 'user'), 'Lemon Sorbet', 'https://i1.wp.com/lmld.org/wp-content/uploads/2022/07/Lemon-Sorbet-6.jpg', 'Refreshing and tangy lemon sorbet.', 4, 'lemon, sorbet, dessert, vegan, summer, sorbet, ice cream, sorbets', true, true);
 
 -- Insert Ingredients for Lemon Sorbet Recipe
 INSERT INTO ingredients (ingredient) VALUES ('2 cups (480ml) of fresh lemon juice');
@@ -205,7 +205,7 @@ VALUES (
 
 
 INSERT INTO recipes (creator_id, recipe_name, image_url, description, serving_size, keywords, is_featured, is_published)
-VALUES ((SELECT user_id FROM users WHERE username = 'coyo'), 'Pumpkin Pie', 'https://www.lemonblossoms.com/wp-content/uploads/2020/09/Pumpkin-Pie-S3.jpg', 'A classic pumpkin pie with a flaky crust.', 8, 'pumpkin, pie, dessert', true, true);
+VALUES ((SELECT user_id FROM users WHERE username = 'coyo'), 'Pumpkin Pie', 'https://www.lemonblossoms.com/wp-content/uploads/2020/09/Pumpkin-Pie-S3.jpg', 'A classic pumpkin pie with a flaky crust.', 8, 'pumpkin, pumpkin spice, desserts, pies, dessert, fall recipes, autumn, fall recipe', true, true);
 
 -- Insert Ingredients for Pumpkin Pie Recipe
 INSERT INTO ingredients (ingredient_id, ingredient) VALUES (20, '1 1/2 cups (360g) canned pumpkin puree');
@@ -265,7 +265,7 @@ VALUES (
 
 -- Insert Pumpkin Spiced Latte Recipe
 INSERT INTO recipes (creator_id, recipe_name, image_url, description, serving_size, keywords, is_featured, is_published)
-VALUES ((SELECT user_id FROM users WHERE username = 'coyo'), 'Pumpkin Spiced Latte', 'https://www.inspiredtaste.net/wp-content/uploads/2011/11/Pumpkin-Spice-Latte-Recipe-1200.jpg', 'A warm and comforting pumpkin spiced latte.', 1, 'coffee, pumpkin, pumpkin spice, latte', true, true);
+VALUES ((SELECT user_id FROM users WHERE username = 'coyo'), 'Pumpkin Spiced Latte', 'https://www.inspiredtaste.net/wp-content/uploads/2011/11/Pumpkin-Spice-Latte-Recipe-1200.jpg', 'A warm and comforting pumpkin spiced latte.', 1, 'coffee, pumpkin, pumpkin spice, latte, fall recipes, fall, breakfast', true, true);
 
 
 
@@ -346,7 +346,7 @@ VALUES (
   'https://www.fifteenspatulas.com/wp-content/uploads/2011/09/French-Fries-Recipe.jpg', -- Replace with the URL of the image
   'Delicious crispy french fries.',
   2, -- Adjust the serving size as needed
-  'french fries, potatoes, snack', -- Keywords
+  'french fries, potatoes, snack, snacks, french, potato, vegan, salty', -- Keywords
   false, -- is_featured (if applicable)
   true -- is_published
 );
@@ -390,6 +390,30 @@ VALUES
 
 
 
+INSERT INTO recipes_tags (tag_id, recipe_id)
+VALUES (
+  (SELECT tag_id FROM tags WHERE tag = 'vegetarian'),
+ (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Fries'));
+
+INSERT INTO recipes_tags (tag_id, recipe_id)
+VALUES (
+  (SELECT tag_id FROM tags WHERE tag = 'gluten-free'),
+ (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Fries')
+ );
+
+
+INSERT INTO recipes_tags (tag_id, recipe_id)
+VALUES (
+  (SELECT tag_id FROM tags WHERE tag = 'dairy-free'),
+ (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Fries')
+ );
+
+
+INSERT INTO recipes_tags (tag_id, recipe_id)
+VALUES (
+  (SELECT tag_id FROM tags WHERE tag = 'pescetarian'),
+ (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Fries')
+ );
 
 -- Insert Spaghetti Recipe
 INSERT INTO recipes (creator_id, recipe_name, image_url, description, serving_size, keywords, is_featured, is_published)
@@ -436,6 +460,224 @@ INSERT INTO steps_recipes (step_id, recipe_id) VALUES (40, (SELECT recipe_id FRO
 INSERT INTO steps_recipes (step_id, recipe_id) VALUES (41, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Spaghetti'));
 INSERT INTO steps_recipes (step_id, recipe_id) VALUES (42, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Spaghetti'));
 INSERT INTO steps_recipes (step_id, recipe_id) VALUES (43, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Spaghetti'));
+
+
+
+
+-- Insert Baked Salmon Recipe
+INSERT INTO recipes (creator_id, recipe_name, image_url, description, serving_size, keywords, is_featured, is_published)
+VALUES ((SELECT user_id FROM users WHERE username = 'andrew'), 'Baked Salmon', 'https://www.wholesomeyum.com/wp-content/uploads/2021/10/wholesomeyum-Baked-Salmon-Recipe-How-To-Cook-Salmon-In-The-Oven-1.jpg', 'A delicious and healthy baked salmon recipe.', 4, 'salmon, seafood, fish, healthy', false, true);
+
+-- Insert Ingredients for Baked Salmon Recipe
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (48, '4 salmon fillets');
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (49, '2 tablespoons (30ml) olive oil');
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (50, '2 cloves garlic, minced');
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (51, '1 lemon, sliced');
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (52, '1 teaspoon (2g) dried oregano');
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (53, 'Salt and pepper to taste');
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (54, 'Fresh parsley, chopped, for garnish (optional)');
+
+-- Link Ingredients to Baked Salmon Recipe
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (48, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Baked Salmon'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (49, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Baked Salmon'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (50, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Baked Salmon'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (51, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Baked Salmon'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (52, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Baked Salmon'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (53, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Baked Salmon'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (54, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Baked Salmon'));
+
+-- Insert Steps for Baked Salmon Recipe
+INSERT INTO steps (step_id, rank, instruction) VALUES (44, 1, 'Preheat your oven to 375°F (190°C).');
+INSERT INTO steps (step_id, rank, instruction) VALUES (45, 2, 'Place the salmon fillets on a baking sheet lined with parchment paper or foil.');
+INSERT INTO steps (step_id, rank, instruction) VALUES (46, 3, 'In a small bowl, mix the olive oil, minced garlic, and dried oregano.');
+INSERT INTO steps (step_id, rank, instruction) VALUES (47, 4, 'Brush the olive oil mixture over the salmon fillets.');
+INSERT INTO steps (step_id, rank, instruction) VALUES (48, 5, 'Season the salmon with salt and pepper to taste.');
+INSERT INTO steps (step_id, rank, instruction) VALUES (49, 6, 'Place lemon slices on top of each salmon fillet.');
+INSERT INTO steps (step_id, rank, instruction) VALUES (50, 7, 'Bake in the preheated oven for 15-20 minutes or until the salmon flakes easily with a fork.');
+INSERT INTO steps (step_id, rank, instruction) VALUES (51, 8, 'Garnish with fresh parsley if desired.');
+
+-- Link Steps to Baked Salmon Recipe
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (44, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Baked Salmon'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (45, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Baked Salmon'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (46, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Baked Salmon'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (47, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Baked Salmon'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (48, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Baked Salmon'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (49, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Baked Salmon'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (50, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Baked Salmon'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (51, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Baked Salmon'));
+
+
+INSERT INTO recipes_tags (tag_id, recipe_id)
+VALUES (
+  (SELECT tag_id FROM tags WHERE tag = 'pescetarian'),
+ (SELECT recipe_id FROM recipes WHERE recipe_name = 'Baked Salmon')
+ );
+
+VALUES (
+  (SELECT tag_id FROM tags WHERE tag = 'dairy-free'),
+ (SELECT recipe_id FROM recipes WHERE recipe_name = 'Baked Salmon')
+ );
+
+VALUES (
+  (SELECT tag_id FROM tags WHERE tag = 'kosher'),
+ (SELECT recipe_id FROM recipes WHERE recipe_name = 'Baked Salmon')
+ );
+
+ VALUES (
+  (SELECT tag_id FROM tags WHERE tag = 'renal-diet'),
+ (SELECT recipe_id FROM recipes WHERE recipe_name = 'Baked Salmon')
+ );
+
+
+
+
+
+-- Insert Ratatouille Recipe
+INSERT INTO recipes (creator_id, recipe_name, image_url, description, serving_size, keywords, is_featured, is_published)
+VALUES ((SELECT user_id FROM users WHERE username = 'andrew'), 'Ratatouille', 'https://cookieandkate.com/images/2019/09/best-ratatouille-recipe-1-1.jpg', 'A classic French vegetable stew bursting with flavors.', 4, 'ratatouille, French cuisine, vegetables, tomato, french, vegan, vegetarian, vegetables, summer, zucchini, marinara', false, true);
+
+-- Insert Ingredients for Ratatouille Recipe
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (55, '1 large eggplant, diced');
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (56, '2 zucchinis, diced');
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (57, '2 red bell peppers, diced');
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (58, '1 large onion, chopped');
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (59, '4 cloves garlic, minced');
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (60, '2 cups (480ml) tomato sauce');
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (61, '1 teaspoon (2g) dried thyme');
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (62, '1 teaspoon (2g) dried basil');
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (63, 'Salt and pepper to taste');
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (64, 'Fresh basil leaves, for garnish (optional)');
+
+-- Link Ingredients to Ratatouille Recipe
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (55, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ratatouille'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (56, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ratatouille'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (57, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ratatouille'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (58, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ratatouille'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (59, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ratatouille'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (60, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ratatouille'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (61, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ratatouille'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (62, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ratatouille'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (63, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ratatouille'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (64, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ratatouille'));
+
+-- Insert Steps for Ratatouille Recipe
+INSERT INTO steps (step_id, rank, instruction) VALUES (52, 1, 'Heat olive oil in a large pot or Dutch oven over medium heat.');
+INSERT INTO steps (step_id, rank, instruction) VALUES (53, 2, 'Add the chopped onion and garlic, and sauté until they become translucent.');
+INSERT INTO steps (step_id, rank, instruction) VALUES (54, 3, 'Add the diced eggplant, zucchinis, and red bell peppers to the pot.');
+INSERT INTO steps (step_id, rank, instruction) VALUES (55, 4, 'Season with dried thyme, dried basil, salt, and pepper. Cook for about 10 minutes, stirring occasionally.');
+INSERT INTO steps (step_id, rank, instruction) VALUES (56, 5, 'Pour in the tomato sauce and stir to combine. Reduce the heat to low, cover, and simmer for 20-30 minutes, or until the vegetables are tender.');
+INSERT INTO steps (step_id, rank, instruction) VALUES (57, 6, 'Taste and adjust the seasoning if needed.');
+INSERT INTO steps (step_id, rank, instruction) VALUES (58, 7, 'Serve the Ratatouille hot, garnished with fresh basil leaves if desired.');
+
+-- Link Steps to Ratatouille Recipe
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (52, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ratatouille'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (53, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ratatouille'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (54, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ratatouille'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (55, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ratatouille'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (56, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ratatouille'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (57, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ratatouille'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (58, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ratatouille'));
+
+
+
+
+-- Insert Mac and Cheese Recipe
+INSERT INTO recipes (creator_id, recipe_name, image_url, description, serving_size, keywords, is_featured, is_published)
+VALUES ((SELECT user_id FROM users WHERE username = 'jackie'), 'Mac and Cheese', 'https://ohsweetbasil.com/wp-content/uploads/southern-macaroni-and-cheese-recipe-6-scaled.jpg', 'Creamy and delicious macaroni and cheese.', 4, 'mac and cheese, cheese, macaroni, pasta, comfort food', false, true);
+
+-- Insert Ingredients for Mac and Cheese Recipe
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (65, '2 cups (200g) elbow macaroni');
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (66, '1/4 cup (60g) butter');
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (67, '1/4 cup (30g) all-purpose flour');
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (68, '2 cups (480ml) milk');
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (69, '2 cups (200g) shredded cheddar cheese');
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (70, 'Salt and pepper to taste');
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (71, '1/4 cup (25g) grated Parmesan cheese (optional)');
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (72, '1/4 cup (25g) bread crumbs (optional)');
+
+-- Link Ingredients to Mac and Cheese Recipe
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (65, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Mac and Cheese'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (66, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Mac and Cheese'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (67, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Mac and Cheese'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (68, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Mac and Cheese'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (69, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Mac and Cheese'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (70, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Mac and Cheese'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (71, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Mac and Cheese'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (72, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Mac and Cheese'));
+
+-- Insert Steps for Mac and Cheese Recipe
+INSERT INTO steps (step_id, rank, instruction) VALUES (59, 1, 'Cook the elbow macaroni according to the package instructions. Drain and set aside.');
+INSERT INTO steps (step_id, rank, instruction) VALUES (60, 2, 'In a large pot, melt the butter over medium heat.');
+INSERT INTO steps (step_id, rank, instruction) VALUES (61, 3, 'Stir in the all-purpose flour and cook for about 2 minutes, stirring constantly.');
+INSERT INTO steps (step_id, rank, instruction) VALUES (62, 4, 'Gradually whisk in the milk and cook until the mixture thickens, stirring constantly.');
+INSERT INTO steps (step_id, rank, instruction) VALUES (63, 5, 'Stir in the shredded cheddar cheese until smooth and creamy.');
+INSERT INTO steps (step_id, rank, instruction) VALUES (64, 6, 'Add the cooked macaroni to the cheese sauce and stir until well combined. Season with salt and pepper to taste.');
+INSERT INTO steps (step_id, rank, instruction) VALUES (65, 7, 'If desired, top with grated Parmesan cheese and bread crumbs for a crunchy topping.');
+INSERT INTO steps (step_id, rank, instruction) VALUES (66, 8, 'Serve the Mac and Cheese hot and enjoy!');
+
+-- Link Steps to Mac and Cheese Recipe
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (59, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Mac and Cheese'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (60, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Mac and Cheese'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (61, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Mac and Cheese'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (62, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Mac and Cheese'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (63, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Mac and Cheese'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (64, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Mac and Cheese'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (65, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Mac and Cheese'));
+
+
+
+-- Insert Ramen Recipe by User "coyo"
+INSERT INTO recipes (creator_id, recipe_name, image_url, description, serving_size, keywords, is_featured, is_published)
+VALUES ((SELECT user_id FROM users WHERE username = 'coyo'), 'Ramen', 'https://thecozycook.com/wp-content/uploads/2023/02/Homemade-Ramen-f.jpg', 'A delicious and comforting bowl of homemade ramen.', 2, 'ramen, noodles, fall, winter, japanese, soup', false, true);
+
+-- Insert Ingredients for Ramen Recipe
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (73, '2 packs of ramen noodles');
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (74, '4 cups (960ml) chicken or vegetable broth');
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (75, '2 cloves garlic, minced');
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (76, '1 tablespoon (15ml) soy sauce');
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (77, '1 teaspoon (5g) sesame oil');
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (78, '2 boiled eggs, halved');
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (79, 'Sliced green onions, for garnish');
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (80, 'Sliced seaweed, for garnish');
+
+-- Link Ingredients to Ramen Recipe
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (73, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ramen'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (74, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ramen'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (75, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ramen'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (76, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ramen'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (77, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ramen'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (78, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ramen'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (79, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ramen'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (80, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ramen'));
+
+-- Insert Steps for Ramen Recipe
+INSERT INTO steps (step_id, rank, instruction) VALUES (67, 1, 'Boil the ramen noodles according to the package instructions. Drain and set aside.');
+INSERT INTO steps (step_id, rank, instruction) VALUES (68, 2, 'In a large pot, heat the chicken or vegetable broth over medium heat.');
+INSERT INTO steps (step_id, rank, instruction) VALUES (69, 3, 'Add minced garlic, soy sauce, and sesame oil to the broth. Stir well.');
+INSERT INTO steps (step_id, rank, instruction) VALUES (70, 4, 'Divide the cooked ramen noodles into serving bowls.');
+INSERT INTO steps (step_id, rank, instruction) VALUES (71, 5, 'Pour the hot broth over the noodles in each bowl.');
+INSERT INTO steps (step_id, rank, instruction) VALUES (72, 6, 'Top each bowl with a boiled egg, sliced green onions, and sliced seaweed.');
+INSERT INTO steps (step_id, rank, instruction) VALUES (73, 7, 'Serve the homemade Ramen hot and enjoy!');
+
+-- Link Steps to Ramen Recipe
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (67, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ramen'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (68, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ramen'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (69, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ramen'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (70, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ramen'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (71, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ramen'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (72, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ramen'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (73, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ramen'));
+
+
+ VALUES (
+  (SELECT tag_id FROM tags WHERE tag = 'vegetarian'),
+ (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ramen')
+ );
+
+ VALUES (
+  (SELECT tag_id FROM tags WHERE tag = 'dairy-free'),
+ (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ramen')
+ );
 
 
 

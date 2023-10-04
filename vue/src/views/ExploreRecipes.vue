@@ -87,7 +87,9 @@ export default {
 
 }
 
-
+#explore{
+  width: 100vw;
+}
 h3 {
   text-align: center;
   text-decoration: none;
