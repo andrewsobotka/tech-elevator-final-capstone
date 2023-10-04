@@ -140,6 +140,19 @@ public class JdbcRecipeDao implements RecipeDao {
         return numberOfRows;
     }
 
+    @Override
+    public String getCreatorUsernameByRecipeId(int recipeId) {
+        String sql = "SELECT username FROM users " +
+                     "JOIN recipes ON users.user_id = recipes.creator_id " +
+                     "WHERE recipe_id = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, recipeId);
+        if (results.next()) {
+            return results.getString("username");
+        } else {
+            return null;
+        }
+    }
+
     private Recipe mapRowToRecipe(SqlRowSet rs) {
         Recipe recipe = new Recipe();
         recipe.setRecipeId(rs.getInt("recipe_id"));
