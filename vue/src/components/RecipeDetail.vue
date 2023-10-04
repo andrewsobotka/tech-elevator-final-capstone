@@ -58,9 +58,9 @@
           v-for="(step, index) in currentRecipe.steps"
           v-bind:key="index"
         >
-          Step {{ step.rank }}:
+         <b> Step {{ step.rank }}:</b>
           {{ step.instruction }}
-        </li>
+        </li> 
       </ol>
       <div class="button-container">
       <router-link
@@ -252,7 +252,7 @@ h3 {
 }
 
 .ingredients li:nth-child(even){
-  color: rgb(32, 156, 15);
+  color: rgb(28, 124, 15);
 }
 
 
@@ -271,6 +271,10 @@ h3 {
   max-width: 30rem;
 }
 
+.steps{
+  margin: 11px 0;
+  border-bottom: #999 1px solid;
+}
 .steps-btn {
   font-family: "Montserrat", sans-serif;
   background: rgb(57, 82, 76);
