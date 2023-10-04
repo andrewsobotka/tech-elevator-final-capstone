@@ -34,19 +34,6 @@
               />
               </div>
               <br />
-<<<<<<< HEAD
-              <div>
-              <div
-                id="line"
-                v-if="index != 
-                $store.state.groceryList.length - 1"
-              >
-              </div>
-                <br />
-              </div>
-=======
-
->>>>>>> f3d176352a620297788b599d5aee9db7c742728c
             </li>
           </ul>
         </form>
