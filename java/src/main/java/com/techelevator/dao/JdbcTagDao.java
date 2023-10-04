@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.exception.DaoException;
+import com.techelevator.model.Ingredient;
 import com.techelevator.model.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -110,18 +111,15 @@ public class JdbcTagDao implements TagDao {
     }
 
     @Override
-    public Integer createRecipesTagsRowForNewRecipe(Tag tag, int recipe_id) {               //new method
+    public Integer createRecipesTagsRowForNewRecipe(Tag tag, int recipe_id) {
 
         String sql = "INSERT INTO recipes_tags (tag_id, recipe_id) " +
                 "VALUES (?,?);";
 
         int existingTagId = getTagIdByTag(tag.getTag());                        //get the tagId of the user selected tag
 
-        try {
-            jdbcTemplate.queryForObject(sql, Integer.class, existingTagId, recipe_id);
-        } catch (DataAccessException e){
-            throw new DataAccessException(e.toString()) {};
-        }
+        jdbcTemplate.update(sql, existingTagId, recipe_id);
+
         return existingTagId;
     }
 
