@@ -1,5 +1,6 @@
 <template>
   <div class="search">
+
     <div id="title">
     <h2>Searching for recipes...</h2>
     </div>
@@ -14,14 +15,7 @@
 
     <p>Search results for "{{ $store.state.keyword }}" | Showing {{$store.state.keyword =="" ? 0 : $store.state.filteredList.length}} {{$store.state.filteredList.length == 1 ? 'result' : 'results'}}</p>
   
-  
-    <!-- <div v-if="$store.state.keyword !=''" id="recipe-card-container">
-      <RecipeCard
-        v-for="recipe in $store.state.filteredList"
-        v-bind:key="recipe.recipeId"
-        v-bind:recipe="recipe"
-      />
-    </div> -->
+
 
     <div v-if="$store.state.keyword !== '' && $store.state.filteredList.length > 0" id="recipe-card-container">
   <RecipeCard
@@ -50,15 +44,23 @@ export default {
     };
   },
   created() {
-    let searchWord = this.$store.state.keyword;
-    // APIService.getRecipes().then((response) => {
-    //   this.$store.commit("SET_RECIPES", response.data);
-    //       });
-    APIService.getRecipesByKeyword(searchWord).then((response) => {
-      this.$store.commit("SET_FILTERED", response.data);
-      this.results = this.$store.state.filteredList;
-      this.resultsNumber = this.$store.state.filteredList.length;
-    });
+    // let searchWord = this.$store.state.keyword;
+    APIService.getRecipes().then((response) => {
+      this.$store.commit("SET_RECIPES", response.data);
+          });
+
+    // APIService.getRecipesByKeyword(searchWord).then((response) => {
+    //   this.$store.commit("SET_FILTERED", response.data);
+    //   this.results = this.$store.state.filteredList;
+    //   this.resultsNumber = this.$store.state.filteredList.length;
+    // });
+    APIService.getRecipesByTagId(this.$route.params.id)
+        .then((response)=>{
+           this.$store.commit("SET_FILTERED", response.data);
+
+        }
+           
+        );
 
  
   },
@@ -69,6 +71,7 @@ export default {
       
     }
   },
+  
   computed: {
     numberOfResults() {
       return this.resultsNumber;

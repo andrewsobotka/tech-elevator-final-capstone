@@ -53,22 +53,22 @@ export default {
       this.$store.commit('SET_TAGS', response.data)
     }
     );
-      APIService.getRecipes().then(response => {
-      this.$store.commit('SET_RECIPES', response.data)
-    });
+    APIService.getRecipesByTagId(this.$store.state.selectedTagId)
+        .then((response)=>
+            this.$store.commit("SET_FILTERED", response.data)
+        );
   },
-  methods:{
+ methods:{
     setKeyword(){
       this.$store.commit("SET_KEYWORD", this.search);
     },
     setCurrentTag(tagId, tag){
-      this.tagId = tag;
       this.$store.commit("SET_SELECTED_TAG",tag)
       this.$store.commit("SET_SELECTED_TAG_ID", tagId)
     },
-    filterByTag(results){
-      this.$store.commit("SET_FILTERED", results)
-    }
+    // filterByTag(){
+    //   this.$store.commit("SET_FILTERED", results)
+    // }
     
    
   },

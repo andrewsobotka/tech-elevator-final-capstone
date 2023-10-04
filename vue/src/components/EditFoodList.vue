@@ -34,11 +34,13 @@
               />
               </div>
               <br />
-
+              <div>
               <div
                 id="line"
-                v-if="index != $store.state.groceryList.length - 1"
+                v-if="index != 
+                $store.state.groceryList.length - 1"
               >
+              </div>
                 <br />
               </div>
             </li>
@@ -226,9 +228,16 @@ background: rgb(241, 193, 89);
 }
 p{
   width:1rem;
+  font-family: "Montserrat";
 }
 
 #rowContainer{
   display: flex;
 }
+
+#line{
+  color: black;
+}
+
+
 </style>
