@@ -45,4 +45,5 @@ export default {
   border: 2px #fff solid;
   border-radius: 200;
 }
+
 </style>

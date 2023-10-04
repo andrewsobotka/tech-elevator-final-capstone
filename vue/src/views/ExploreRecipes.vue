@@ -95,10 +95,10 @@ h3 {
   left: 25%;
 }
 .cardsContainer {
-  margin: 2rem;
-  position: relative;
+  margin-top: 3rem;
   display: flex;
   flex-wrap: wrap;
+  position: relative;
   gap: 0.3rem;
   justify-content: center;
 }

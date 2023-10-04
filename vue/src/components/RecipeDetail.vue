@@ -46,7 +46,7 @@
       </div>
     </div>
 
-    <router-link :to="{name:'steps', params: { id: recipe.recipeId , rank:1}}"><button class="steps-btn">
+    <router-link :to="{name:'steps', params: { id: recipe.recipeId , rank:1}}"  target="_blank"><button class="steps-btn">
       Click Here to Follow the Instructions Step by Step
     </button></router-link>
 
@@ -68,7 +68,7 @@
         v-if="
           $store.state.user.id === recipe.creatorId ||
           $store.state.user.authorities[0].name == 'ROLE_ADMIN'
-        "
+        " 
         ><button>Edit Recipe</button></router-link
       >
       <button class="delete-btn">Delete Recipe</button>

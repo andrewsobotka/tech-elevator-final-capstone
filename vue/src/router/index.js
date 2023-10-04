@@ -4,7 +4,7 @@ import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
-// import HireUs from '../views/HireUs.vue'
+import HireUs from '../views/HireUs.vue'
 import store from '../store/index'
 import ExploreRecipes from '../views/ExploreRecipes.vue'
 import RecipeDisplay from '../views/RecipeDisplay.vue'
@@ -165,14 +165,14 @@ const router = new Router({
       }
     },
 
-    // {
-    //   path: "/hire-us",
-    //   name: "hire-us",
-    //   component: HireUs,
-    //   meta: {
-    //     requiresAuth: true
-    //   }
-    // }
+    {
+      path: "/hire-us",
+      name: "hire-us",
+      component: HireUs,
+      meta: {
+        requiresAuth: true
+      }
+    }
   ]
 });
 

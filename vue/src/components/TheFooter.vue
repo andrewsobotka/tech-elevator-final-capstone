@@ -9,7 +9,7 @@
         <div class="links">
           <a href="/settings" class="footerlink"> Settings </a>
           <a href="#form" class="footerlink"> Contact Sage </a>
-          <a href="" class="footerlink"> Hire Us </a>
+<router-link :to="{ name: 'HireUs'}">Hire Us</router-link>
         </div>
 
         <div class="links sageInc">
