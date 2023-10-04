@@ -4,6 +4,7 @@
       
          <!-- Use the <favorite> component to toggle favorited state -->
         <FavoriteIcon :recipe="recipe" v-bind:value="recipe"
+        
          @toggle-favorites="toggleFavorites" :class="{favorite:recipe.favorite, notFavorite: !recipe.favorite}" />
 
       <router-link

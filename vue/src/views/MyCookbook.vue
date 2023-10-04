@@ -4,6 +4,7 @@
     <h3>My Cookbook<br>    </h3>
     
 
+
 <div class="borderbox"></div>
 <div class="form-btn">
    <button v-on:click="showForm=!showForm" >{{showForm? "Hide Form" : "Add Recipe"}}</button>
@@ -17,7 +18,7 @@
  
   
   
-<h2> Created Recipes<br>    </h2>
+<h2 id="createdRecipes"> Created Recipes</h2>
 
     <div class="recipesList">
      <RecipeCard
@@ -28,7 +29,7 @@
     </div>
  </div>
  <div id ="favoritedRecipes">
-   <h2>My Bookmarked Recipes <i class="fa-solid fa-bookmark"></i><br>    </h2>
+   <h2 id="bookmaredRecipes" >My Bookmarked Recipes <i class="fa-solid fa-bookmark"></i><br>    </h2>
    <div class = "recipesList">
      <RecipeCard
       v-for="recipe in $store.state.favoritedLibrary"

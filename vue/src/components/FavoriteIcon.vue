@@ -1,6 +1,5 @@
 <template>
   <button @click="$emit('toggle-favorites', recipe.recipeId)"
-
    class="btn btn-sm btn-primary">
     <i
       :class="[recipe.favorite ? 'fa-bookmark favorite' : 'fa-bookmark-o', 'fa']"

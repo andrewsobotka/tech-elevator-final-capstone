@@ -170,7 +170,7 @@ const router = new Router({
       name: "hire-us",
       component: HireUs,
       meta: {
-        requiresAuth: true
+        requiresAuth: false
       }
     }
   ]

@@ -59,7 +59,6 @@ export default {
 
 .footer{
 position: relative;
-bottom:0;
-
+padding-top: 10rem;
 }
 </style>
