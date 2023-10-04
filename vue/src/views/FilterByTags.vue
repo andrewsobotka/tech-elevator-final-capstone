@@ -41,17 +41,17 @@
       </p>
     </div>
     <div class="cardsContainer">
-      <!-- <RecipeCard
+      <RecipeCard
         v-for="recipe in $store.state.filteredList"
         :key="recipe.recipeId"
         :recipe="recipe"
-      /> -->
+      />
     </div>
   </div>
 </template>
 
 <script>
-// import RecipeCard from "../components/RecipeCard.vue";
+import RecipeCard from "../components/RecipeCard.vue";
 import APIService from "../services/APIService.js";
 
 export default {
@@ -63,7 +63,7 @@ export default {
       tagId: 0,
     };
   },
-  // components: { RecipeCard },
+  components: { RecipeCard },
   created() {
 
     // APIService.getRecipes().then((response) => {

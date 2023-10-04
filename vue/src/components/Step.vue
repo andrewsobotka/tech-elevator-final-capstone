@@ -122,4 +122,7 @@ h2{
   color: #fff;
 }
 
+p{
+  font-size: 1.7rem;
+}
 </style>
