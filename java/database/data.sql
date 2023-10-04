@@ -1059,7 +1059,7 @@ INSERT INTO steps_recipes (step_id, recipe_id) VALUES (807, (SELECT recipe_id FR
 
 -- Insert Sugar Cookies Recipe
 INSERT INTO recipes (creator_id, recipe_name, image_url, description, serving_size, keywords, is_featured, is_published)
-VALUES ((SELECT user_id FROM users WHERE username = 'sefanit'), 'Sugar Cookies', 'https://tatertotsandjello.com/wp-content/uploads/2020/10/IMG_0351-1.jpg', 'Classic sugar cookies with a hint of vanilla, perfect for decorating with icing or sprinkles.', 24, 'sugar cookies, dessert, baking', true, true);
+VALUES ((SELECT user_id FROM users WHERE username = 'sefanit'), 'Sugar Cookies', 'https://tatertotsandjello.com/wp-content/uploads/2020/10/IMG_0351-1.jpg', 'Classic sugar cookies with a hint of vanilla, perfect for decorating with icing or sprinkles.', 24, 'sugar cookie, sweets, halloween, cookies, dessert, baking', true, true);
 
 -- Insert Ingredients for Sugar Cookies Recipe
 INSERT INTO ingredients (ingredient_id, ingredient) VALUES (900, '2 3/4 cups (345g) all-purpose flour');
