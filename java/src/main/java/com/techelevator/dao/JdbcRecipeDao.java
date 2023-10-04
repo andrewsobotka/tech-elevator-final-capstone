@@ -66,7 +66,7 @@ public class JdbcRecipeDao implements RecipeDao {
         String sql = "SELECT * from recipes " +
                 "join recipes_tags on recipes.recipe_id = recipes_tags.recipe_id " +
                 "join tags on recipes_tags.tag_id = tags.tag_id " +
-                "where tag_id = ?;";
+                "where tags.tag_id = ?;";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, tag_id);
         while (results.next()) {
