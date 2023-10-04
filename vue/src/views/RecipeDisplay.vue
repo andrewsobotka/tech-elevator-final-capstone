@@ -6,6 +6,7 @@
 
 <script>
 import RecipeDetails from "../components/RecipeDetail.vue"
+// import APIService from "./services/APIService.js";
 export default {
     components:{RecipeDetails},
     computed:{
@@ -17,8 +18,10 @@ export default {
         }
     },
      created(){
-    
-  }
+        // APIService.getRecipes().then((response) => {
+        //     this.$store.commit("SET_RECIPES", response.data);
+        //   });
+     }
 
 
 }

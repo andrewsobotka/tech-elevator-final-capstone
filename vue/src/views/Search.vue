@@ -4,10 +4,10 @@
     <div id="title">
     <h2>Searching for recipes...</h2>
     </div>
-    <div id= "search-box">
+    <!-- <div id= "search-box">
      <input type="text" placeholder="Search by keyword..." id = "searchbox" v-model="search"/>
     <router-link v-bind:to="{ name: 'search', queryParams:{keyword:search}}"><button id="search-button"  v-on:click="setKeyword">Search</button></router-link>
-    </div>
+    </div> -->
     <div id="explore">
     <router-link  v-bind:to="{name:'explore-recipes'}">
       <button id="explore-button" >Back to Explore Recipes</button></router-link>
@@ -44,23 +44,23 @@ export default {
     };
   },
   created() {
-    // let searchWord = this.$store.state.keyword;
+    let searchWord = this.$store.state.keyword;
     APIService.getRecipes().then((response) => {
       this.$store.commit("SET_RECIPES", response.data);
           });
 
-    // APIService.getRecipesByKeyword(searchWord).then((response) => {
-    //   this.$store.commit("SET_FILTERED", response.data);
-    //   this.results = this.$store.state.filteredList;
-    //   this.resultsNumber = this.$store.state.filteredList.length;
-    // });
-    APIService.getRecipesByTagId(this.$route.params.id)
-        .then((response)=>{
-           this.$store.commit("SET_FILTERED", response.data);
+    APIService.getRecipesByKeyword(searchWord).then((response) => {
+      this.$store.commit("SET_FILTERED", response.data);
+      this.results = this.$store.state.filteredList;
+      this.resultsNumber = this.$store.state.filteredList.length;
+    });
+    // APIService.getRecipesByTagId(this.$route.params.id)
+    //     .then((response)=>{
+    //        this.$store.commit("SET_FILTERED", response.)data;
 
-        }
+    //     }
            
-        );
+    //     );
 
  
   },

@@ -15,11 +15,6 @@ INSERT INTO users (username, password_hash, role) VALUES ('andrew','$2a$08$UkVvw
 INSERT INTO recipes (creator_id, recipe_name, image_url, description, serving_size, keywords, is_featured, is_published)
 VALUES ((SELECT user_id FROM users WHERE username = 'user'), 'Cheese Pizza', 'https://images.unsplash.com/photo-1639744210916-74793fdd9a88?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1336&q=80', E'Gooey, cheesy goodness on a crispy crust. Perfect quick family meal.', 10, 'pizza, cheese', true, true);
 
-INSERT INTO recipes (creator_id, recipe_name, image_url, description, serving_size, keywords, is_featured, is_published)
-VALUES ((SELECT user_id FROM users WHERE username = 'admin'), 'Sourdough Bread', 'https://images.unsplash.com/photo-1620921586333-b7566c34550a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1335&q=80', E'Sourdough bread is a delicious and nutritious bread that is made with a fermented starter.', 6, 'bread, sourdough', false, true);
-INSERT INTO recipes (creator_id, recipe_name, image_url, description, serving_size, keywords, is_featured, is_published)
-VALUES ((SELECT user_id FROM users WHERE username = 'user'), 'Spaghetti', 'https://images.unsplash.com/photo-1627286400579-027de47e9e73?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80', 'Delicious red tomato sauce and amazing spaghetti.', 2, 'spaghetti, meatballs, italian', true, true);
-
 -- Create 5 Different Tags
 INSERT INTO tags (tag) VALUES ('vegetarian');
 INSERT INTO tags (tag) VALUES ('pescetarian');
@@ -123,13 +118,38 @@ INSERT INTO steps_recipes (step_id, recipe_id) VALUES (8, (SELECT recipe_id FROM
 INSERT INTO steps_recipes (step_id, recipe_id) VALUES (9, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Hummus'));
 INSERT INTO steps_recipes (step_id, recipe_id) VALUES (10, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Hummus'));
 
+INSERT INTO recipes_tags (tag_id, recipe_id)
+VALUES (
+  (SELECT tag_id FROM tags WHERE tag = 'vegan'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Hummus')
+);
+
+
+INSERT INTO recipes_tags (tag_id, recipe_id)
+VALUES (
+  (SELECT tag_id FROM tags WHERE tag = 'pescetarian'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Hummus')
+);
+
+
+
+INSERT INTO recipes_tags (tag_id, recipe_id)
+VALUES (
+  (SELECT tag_id FROM tags WHERE tag = 'vegetarian'),
+ (SELECT recipe_id FROM recipes WHERE recipe_name = 'Hummus'));
+
+INSERT INTO recipes_tags (tag_id, recipe_id)
+VALUES (
+  (SELECT tag_id FROM tags WHERE tag = 'gluten-free'),
+ (SELECT recipe_id FROM recipes WHERE recipe_name = 'Hummus')
+ );
 
 -- Start a Transaction for Lemon Sorbet Recipe
 
 
 -- Insert Lemon Sorbet Recipe
 INSERT INTO recipes (creator_id, recipe_name, image_url, description, serving_size, keywords, is_featured, is_published)
-VALUES ((SELECT user_id FROM users WHERE username = 'user'), 'Lemon Sorbet', 'https://www.mybakingaddiction.com/wp-content/uploads/2009/06/close-up-lemon-sorbet-hero.jpg', 'Refreshing and tangy lemon sorbet.', 4, 'lemon, sorbet, dessert', true, true);
+VALUES ((SELECT user_id FROM users WHERE username = 'user'), 'Lemon Sorbet', 'https://i1.wp.com/lmld.org/wp-content/uploads/2022/07/Lemon-Sorbet-6.jpg', 'Refreshing and tangy lemon sorbet.', 4, 'lemon, sorbet, dessert', true, true);
 
 -- Insert Ingredients for Lemon Sorbet Recipe
 INSERT INTO ingredients (ingredient) VALUES ('2 cups (480ml) of fresh lemon juice');
@@ -155,7 +175,267 @@ INSERT INTO steps_recipes (step_id, recipe_id) VALUES (13, (SELECT recipe_id FRO
 INSERT INTO steps_recipes (step_id, recipe_id) VALUES (14, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Lemon Sorbet'));
 INSERT INTO steps_recipes (step_id, recipe_id) VALUES (15, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Lemon Sorbet'));
 
+
+INSERT INTO recipes_tags (tag_id, recipe_id)
+VALUES (
+  (SELECT tag_id FROM tags WHERE tag = 'vegetarian'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Lemon Sorbet')
+);
+
+-- Link "vegan" tag to "Pumpkin Spiced Latte" recipe
+INSERT INTO recipes_tags (tag_id, recipe_id)
+VALUES (
+  (SELECT tag_id FROM tags WHERE tag = 'vegan'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Lemon Sorbet')
+);
+
+-- Link "vegan" tag to "Pumpkin Spiced Latte" recipe
+INSERT INTO recipes_tags (tag_id, recipe_id)
+VALUES (
+  (SELECT tag_id FROM tags WHERE tag = 'gluten-free'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Lemon Sorbet')
+);
+-- Link "vegan" tag to "Pumpkin Spiced Latte" recipe
+INSERT INTO recipes_tags (tag_id, recipe_id)
+VALUES (
+  (SELECT tag_id FROM tags WHERE tag = 'dairy-free'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Lemon Sorbet')
+);
 -- Commit the Transaction for Lemon Sorbet Recipe
+
+
+INSERT INTO recipes (creator_id, recipe_name, image_url, description, serving_size, keywords, is_featured, is_published)
+VALUES ((SELECT user_id FROM users WHERE username = 'coyo'), 'Pumpkin Pie', 'https://www.lemonblossoms.com/wp-content/uploads/2020/09/Pumpkin-Pie-S3.jpg', 'A classic pumpkin pie with a flaky crust.', 8, 'pumpkin, pie, dessert', true, true);
+
+-- Insert Ingredients for Pumpkin Pie Recipe
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (20, '1 1/2 cups (360g) canned pumpkin puree');
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (21, '1/2 cup (100g) granulated sugar');
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (22, '1 teaspoon (2g) ground cinnamon');
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (23, '1/2 teaspoon (1g) ground ginger');
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (24, '1/4 teaspoon (0.5g) ground nutmeg');
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (25, '1/4 teaspoon (0.5g) ground cloves');
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (26, '2 large eggs');
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (27, '1 9-inch (23cm) unbaked pie crust');
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (28, '1 cup (240ml) evaporated milk');
+
+-- Link Ingredients to Pumpkin Pie Recipe
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (20, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Pie'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (21, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Pie'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (22, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Pie'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (23, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Pie'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (24, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Pie'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (25, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Pie'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (26, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Pie'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (27, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Pie'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (28, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Pie'));
+
+-- Insert Steps for Pumpkin Pie Recipe
+INSERT INTO steps (step_id, rank, instruction) VALUES (16, 1, 'Preheat your oven to 425°F (220°C).');
+INSERT INTO steps (step_id, rank, instruction) VALUES (17, 2, 'In a large mixing bowl, combine the pumpkin puree, granulated sugar, ground cinnamon, ground ginger, ground nutmeg, and ground cloves.');
+INSERT INTO steps (step_id, rank, instruction) VALUES (18, 3, 'In a separate bowl, beat the eggs and add them to the pumpkin mixture. Mix well.');
+INSERT INTO steps (step_id, rank, instruction) VALUES (19, 4, 'Gradually add the evaporated milk and mix until the filling is smooth.');
+INSERT INTO steps (step_id, rank, instruction) VALUES (20, 5, 'Pour the pumpkin filling into the unbaked pie crust.');
+INSERT INTO steps (step_id, rank, instruction) VALUES (21, 6, 'Bake in the preheated oven for 15 minutes, then reduce the oven temperature to 350°F (175°C) and continue baking for 40-50 minutes or until a knife inserted near the center comes out clean.');
+INSERT INTO steps (step_id, rank, instruction) VALUES (22, 7, 'Allow the pie to cool completely before serving.');
+INSERT INTO steps (step_id, rank, instruction) VALUES (23, 8, 'Serve with whipped cream or vanilla ice cream.');
+
+-- Link Steps to Pumpkin Pie Recipe
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (16, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Pie'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (17, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Pie'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (18, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Pie'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (19, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Pie'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (20, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Pie'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (21, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Pie'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (22, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Pie'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (23, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Pie'));
+
+INSERT INTO recipes_tags (tag_id, recipe_id)
+VALUES (
+  (SELECT tag_id FROM tags WHERE tag = 'vegetarian'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Pie')
+);
+INSERT INTO recipes_tags (tag_id, recipe_id)
+VALUES (
+  (SELECT tag_id FROM tags WHERE tag = 'vegan'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Pie')
+);
+
+
+
+
+-- Insert Pumpkin Spiced Latte Recipe
+INSERT INTO recipes (creator_id, recipe_name, image_url, description, serving_size, keywords, is_featured, is_published)
+VALUES ((SELECT user_id FROM users WHERE username = 'coyo'), 'Pumpkin Spiced Latte', 'https://www.inspiredtaste.net/wp-content/uploads/2011/11/Pumpkin-Spice-Latte-Recipe-1200.jpg', 'A warm and comforting pumpkin spiced latte.', 1, 'coffee, pumpkin, pumpkin spice, latte', true, true);
+
+
+
+
+
+-- Insert Ingredients for Pumpkin Spiced Latte Recipe
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (29, '1 cup (240ml) brewed coffee');
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (30, '2 tablespoons (30ml) pumpkin puree');
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (31, '2 tablespoons (30ml) maple syrup');
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (32, '1/2 teaspoon (1g) pumpkin pie spice');
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (33, '1/4 cup (60ml) milk');
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (34, 'Whipped cream, for topping (optional)');
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (35, 'Ground cinnamon, for garnish (optional)');
+
+-- Link Ingredients to Pumpkin Spiced Latte Recipe
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (29, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Spiced Latte'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (30, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Spiced Latte'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (31, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Spiced Latte'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (32, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Spiced Latte'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (33, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Spiced Latte'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (34, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Spiced Latte'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (35, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Spiced Latte'));
+
+-- Insert Steps for Pumpkin Spiced Latte Recipe
+INSERT INTO steps (step_id, rank, instruction) VALUES (24, 1, 'Brew a strong cup of coffee.');
+
+INSERT INTO steps (step_id, rank, instruction) VALUES (25, 2, 'In a small saucepan, heat the pumpkin puree, maple syrup, and pumpkin pie spice over low heat, stirring until well combined.');
+
+INSERT INTO steps (step_id, rank, instruction) VALUES (26, 3, 'Add the hot brewed coffee to the pumpkin mixture and stir well.');
+
+INSERT INTO steps (step_id, rank, instruction) VALUES (27, 4, 'In a separate saucepan, heat the milk until hot but not boiling.');
+
+INSERT INTO steps (step_id, rank, instruction) VALUES (28, 5, 'Froth the hot milk using a milk frother or whisk until it becomes creamy.');
+
+INSERT INTO steps (step_id, rank, instruction) VALUES (29, 6, 'Pour the frothed milk into the coffee mixture and stir gently.');
+
+INSERT INTO steps (step_id, rank, instruction) VALUES (30, 7, 'If desired, top with whipped cream and a sprinkle of ground cinnamon.');
+
+-- Link Steps to Pumpkin Spiced Latte Recipe
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (24, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Spiced Latte'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (25, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Spiced Latte'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (26, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Spiced Latte'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (27, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Spiced Latte'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (28, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Spiced Latte'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (29, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Spiced Latte'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (30, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Spiced Latte'));
+
+
+
+
+
+INSERT INTO recipes_tags (tag_id, recipe_id)
+VALUES (
+  (SELECT tag_id FROM tags WHERE tag = 'vegetarian'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Spiced Latte')
+);
+
+-- Link "vegan" tag to "Pumpkin Spiced Latte" recipe
+INSERT INTO recipes_tags (tag_id, recipe_id)
+VALUES (
+  (SELECT tag_id FROM tags WHERE tag = 'vegan'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Spiced Latte')
+);
+
+INSERT INTO recipes_tags (tag_id, recipe_id)
+VALUES (
+  (SELECT tag_id FROM tags WHERE tag = 'gluten-free'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Spiced Latte')
+);
+
+
+
+-- Insert French Fries Recipe
+INSERT INTO recipes (creator_id, recipe_name, image_url, description, serving_size, keywords, is_featured, is_published)
+VALUES (
+  (SELECT user_id FROM users WHERE username = 'jackie'), -- Replace 'jackie' with the actual username
+  'French Fries',
+  'https://www.fifteenspatulas.com/wp-content/uploads/2011/09/French-Fries-Recipe.jpg', -- Replace with the URL of the image
+  'Delicious crispy french fries.',
+  2, -- Adjust the serving size as needed
+  'french fries, potatoes, snack', -- Keywords
+  false, -- is_featured (if applicable)
+  true -- is_published
+);
+
+-- Insert Ingredients for French Fries Recipe
+-- Replace the ingredient_id and ingredient values with your specific ingredients
+INSERT INTO ingredients (ingredient_id, ingredient)
+VALUES
+  (36, 'Potatoes'),
+  (37, 'Salt'),
+  (38, 'Oil');
+
+-- Link Ingredients to French Fries Recipe
+-- Replace recipe_id and ingredient_id values with the appropriate IDs
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id)
+VALUES
+  (36, (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Fries')),
+  (37, (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Fries')),
+  (38, (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Fries'));
+
+-- Insert Steps for French Fries Recipe
+-- Replace the step_id and instruction values with your specific steps
+INSERT INTO steps (step_id, rank, instruction)
+VALUES
+  (31, 1, 'Peel and cut the potatoes into thin strips.'),
+  (32, 2, 'Heat the oil in a deep fryer or large pan to 350°F (175°C).'),
+  (33, 3, 'Fry the potato strips in batches until golden brown, about 4-5 minutes per batch.'),
+  (34, 4, 'Remove the fries from the oil and drain on paper towels.'),
+  (35, 5, 'Sprinkle with salt to taste and serve.');
+
+-- Link Steps to French Fries Recipe
+-- Replace recipe_id and step_id values with the appropriate IDs
+INSERT INTO steps_recipes (step_id, recipe_id)
+VALUES
+  (31, (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Fries')),
+  (32, (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Fries')),
+  (33, (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Fries')),
+  (34, (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Fries')),
+  (35, (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Fries'));
+
+
+
+
+
+-- Insert Spaghetti Recipe
+INSERT INTO recipes (creator_id, recipe_name, image_url, description, serving_size, keywords, is_featured, is_published)
+VALUES ((SELECT user_id FROM users WHERE username = 'sefanit'), 'Spaghetti', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvCnZmiKSCDbCzyXO_l-4euhS0Zj3yYE11Nw&usqp=CAU', 'Classic spaghetti recipe with tomato sauce and meatballs.', 4, 'spaghetti, pasta, Italian, cheese', false, true);
+
+-- Insert Ingredients for Spaghetti Recipe
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (39, '8 oz (225g) spaghetti');
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (40, '1 cup (240ml) tomato sauce');
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (41, '1/2 lb (225g) ground beef');
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (42, '1/2 onion, finely chopped');
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (43, '1 clove garlic, minced');
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (44, '1/4 cup (60ml) red wine');
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (45, '1/4 cup (60ml) water');
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (46, '2 tablespoons (30ml) olive oil');
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (47, 'Salt and pepper to taste');
+
+-- Link Ingredients to Spaghetti Recipe
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (39, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Spaghetti'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (40, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Spaghetti'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (41, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Spaghetti'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (42, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Spaghetti'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (43, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Spaghetti'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (44, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Spaghetti'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (45, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Spaghetti'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (46, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Spaghetti'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (47, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Spaghetti'));
+
+-- Insert Steps for Spaghetti Recipe
+INSERT INTO steps (step_id, rank, instruction) VALUES (36, 1, 'Boil a large pot of salted water.');
+INSERT INTO steps (step_id, rank, instruction) VALUES (37, 2, 'Add the spaghetti to the boiling water and cook until al dente, following package instructions.');
+INSERT INTO steps (step_id, rank, instruction) VALUES (38, 3, 'In a skillet, heat the olive oil over medium heat. Add the chopped onions and minced garlic, and sauté until fragrant.');
+INSERT INTO steps (step_id, rank, instruction) VALUES (39, 4, 'Add the ground beef to the skillet and cook until browned, breaking it into small pieces with a spatula.');
+INSERT INTO steps (step_id, rank, instruction) VALUES (40, 5, 'Pour in the red wine and cook for a few minutes until it reduces.');
+INSERT INTO steps (step_id, rank, instruction) VALUES (41, 6, 'Stir in the tomato sauce and water. Simmer for about 15 minutes, allowing the flavors to meld.');
+INSERT INTO steps (step_id, rank, instruction) VALUES (42, 7, 'Season the sauce with salt and pepper to taste.');
+INSERT INTO steps (step_id, rank, instruction) VALUES (43, 8, 'Serve the cooked spaghetti with the tomato sauce and meatballs on top.');
+
+-- Link Steps to Spaghetti Recipe
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (36, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Spaghetti'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (37, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Spaghetti'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (38, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Spaghetti'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (39, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Spaghetti'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (40, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Spaghetti'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (41, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Spaghetti'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (42, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Spaghetti'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (43, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Spaghetti'));
 
 
 

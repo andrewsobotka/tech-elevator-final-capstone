@@ -16,11 +16,12 @@
 
           <button v-on:click="setCurrentTag(tag.tagId, tag.tag)">{{tag.tag}}</button></router-link>
       </div>
+      
     <div class="cardsContainer">
       <RecipeCard
         v-for="recipe in $store.state.recipes"
         v-bind:key="recipe.recipeId"
-        v-bind:recipe="recipe"
+        v-bind:recipe="recipe" class="recipeCards"
       />
       <!-- <RecipeCard
         v-for="recipe in results"
@@ -80,7 +81,11 @@ export default {
 </script>
 
 <style scoped>
+.recipeCards{
+  display: flex;
+    flex-direction: column;
 
+}
 
 
 h3 {
@@ -136,4 +141,6 @@ input{
   margin: .5rem;
   margin-top: 1.5rem;
 }
+
+
 </style>
