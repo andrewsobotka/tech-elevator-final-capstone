@@ -23,7 +23,7 @@
       <div class="Andrew smContainer">
        <img src="https://ca.slack-edge.com/T0GNFLF6D-U05AVE4NH46-00463462446a-512" alt="" />
       <h4>Andrew Sobotka</h4>
-      <p> asobotk1@gmail.com  </p>
+      <p> andrewsobotka@gmail.com </p>
       <ul>
         <li> <a href="https://www.linkedin.com/in/andrewjsobotka/">LinkedIn </a></li>
       <li><a href="https://github.com/andrewsobotka">GitHub</a></li>
