@@ -13,7 +13,7 @@ INSERT INTO users (username, password_hash, role) VALUES ('andrew','$2a$08$UkVvw
 
 -- Create 3 Default Recipes
 INSERT INTO recipes (creator_id, recipe_name, image_url, description, serving_size, keywords, is_featured, is_published)
-VALUES ((SELECT user_id FROM users WHERE username = 'user'), 'Cheese Pizza', 'https://images.unsplash.com/photo-1639744210916-74793fdd9a88?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1336&q=80', E'Gooey, cheesy goodness on a crispy crust. Perfect quick family meal.', 10, 'pizza, marinara, dinner, cheese', true, true);
+VALUES ((SELECT user_id FROM users WHERE username = 'user'), 'Cheese Pizza', 'https://i0.wp.com/prettysimplesweet.com/wp-content/uploads/2015/12/margherita_pizza.jpg?w=680&quality=89&ssl=1', E'Gooey, cheesy goodness on a crispy crust. Perfect quick family meal.', 10, 'pizza, marinara, dinner, cheese', true, true);
 
 
 -- --Links vegan to pizza
