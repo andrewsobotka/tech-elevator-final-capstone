@@ -35,19 +35,22 @@
           </ul>
         </form>
       </div>
-    </div>
+  
     <br />
-    <div id="button-container-2">
+    
       <div id="button-container">
         <button class="add-btn" v-on:click="$store.state.groceryList.push('')">
           Add Item
         </button>
          <button class="select-all-btn" @click="toggleSelectAll">{{ isAllSelected() ? 'Unselect' : 'Select All' }}</button>
 
-  
-      </div>
+          <button class="delete-btn" v-on:click="deleteItems">
+          Delete Items
+        </button>
+      </div>  
     </div>
-
+ 
+    <br />
     <div id="save">
       <router-link v-bind:to="{ name: 'grocery-list' }"
         ><button>Save Grocery List</button></router-link
@@ -109,6 +112,8 @@ export default {
   align-items: center;
   margin: auto;
   background: #fff;
+  display:flex;
+  flex-direction: column;
 }
 
 h2 {
@@ -147,11 +152,11 @@ div #line {
   margin-bottom: 2%;
 }
 
-#button-container {
+#button-container-2 {
   display: flex;
   justify-content: center;
   position: relative;
-  left: 8rem;
+  left: 18rem;
   margin-top: 0px;
   margin-bottom: 30px;
   width: 35rem;
@@ -161,11 +166,11 @@ button {
   margin: 0px 10px;
 }
 
-#button-container :nth-child(odd){
-background: rgb(96, 174, 226);
+#button-container :nth-child(1){
+background: rgb(151, 199, 112);
 }
 
-#button-container :nth-child(even){
+#button-container :nth-child(2){
 background: rgb(241, 193, 89);
 }
 
@@ -192,6 +197,13 @@ background: rgb(241, 193, 89);
 
 .delete-btn:hover {
   background: rgb(122, 20, 20);
+}
+
+.delete-btn a {
+  color: #fff;
+}
+.delete-btn{
+  background: rgb(121, 15, 15);
 }
 
 #save {

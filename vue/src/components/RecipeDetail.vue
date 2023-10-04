@@ -34,7 +34,7 @@
             @click="addToGroceryList(ingredient)"
             title="Click To Add To Your Grocery List"
           >
-            • {{ ingredient.ingredient }}  &nbsp;
+            {{ ingredient.ingredient }}  &nbsp;
           <i class="fa-solid fa-cart-shopping fa-flip-horizontal"></i>
 
           </li>
@@ -243,11 +243,20 @@ h3 {
 
 .ingredients {
   font-size: 1.2rem;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Lexend';
   overflow: none;
   flex-wrap: wrap;
-  width: 15rem;
+  width: 30rem;
+  line-height: 2.3rem;
+  color: #555
 }
+
+.ingredients li:nth-child(even){
+  color: rgb(32, 156, 15);
+}
+
+
+
 .ingredients-img-container {
   position: relative;
   display: grid;
@@ -293,10 +302,18 @@ ul li{
   padding-right: 1.3rem;
   line-height: 2.2rem;
   font-family: "Lexend", sans-serif;
+  
 }
 
+.instructions li{
+    list-style-type: none;
+
+}
+.instructions ul{
+}
 .instructions ol li:nth-child(odd) {
-  color: rgb(170, 84, 84);
+  color: rgb(58, 150, 46);
+  
 }
 ::-webkit-scrollbar {
   width: 10px;
