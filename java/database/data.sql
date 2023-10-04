@@ -13,7 +13,7 @@ INSERT INTO users (username, password_hash, role) VALUES ('andrew','$2a$08$UkVvw
 
 -- Create 3 Default Recipes
 INSERT INTO recipes (creator_id, recipe_name, image_url, description, serving_size, keywords, is_featured, is_published)
-VALUES ((SELECT user_id FROM users WHERE username = 'user'), 'Cheese Pizza', 'https://i0.wp.com/prettysimplesweet.com/wp-content/uploads/2015/12/margherita_pizza.jpg?w=680&quality=89&ssl=1', E'Gooey, cheesy goodness on a crispy crust. Perfect quick family meal.', 10, 'pizza, marinara, dinner, cheese', true, true);
+VALUES ((SELECT user_id FROM users WHERE username = 'user'), 'Cheese Pizza', 'https://i0.wp.com/prettysimplesweet.com/wp-content/uploads/2015/12/margherita_pizza.jpg?w=680&quality=89&ssl=1', E'Gooey, cheesy goodness on a crispy crust. Perfect quick family meal.', 10, 'pizza, marinara, dinner, cheese', false, true);
 
 
 -- --Links vegan to pizza
@@ -1055,6 +1055,57 @@ INSERT INTO steps_recipes (step_id, recipe_id) VALUES (805, (SELECT recipe_id FR
 INSERT INTO steps_recipes (step_id, recipe_id) VALUES (806, (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Toast'));
 INSERT INTO steps_recipes (step_id, recipe_id) VALUES (807, (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Toast'));
 
+
+
+-- Insert Sugar Cookies Recipe
+INSERT INTO recipes (creator_id, recipe_name, image_url, description, serving_size, keywords, is_featured, is_published)
+VALUES ((SELECT user_id FROM users WHERE username = 'sefanit'), 'Sugar Cookies', 'https://tatertotsandjello.com/wp-content/uploads/2020/10/IMG_0351-1.jpg', 'Classic sugar cookies with a hint of vanilla, perfect for decorating with icing or sprinkles.', 24, 'sugar cookies, dessert, baking', true, true);
+
+-- Insert Ingredients for Sugar Cookies Recipe
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (900, '2 3/4 cups (345g) all-purpose flour');
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (901, '1 teaspoon baking soda');
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (902, '1/2 teaspoon baking powder');
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (903, '1 cup (226g) unsalted butter, softened');
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (904, '1 1/2 cups (300g) granulated sugar');
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (905, '1 large egg');
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (906, '1 teaspoon vanilla extract');
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (907, '3-4 tablespoons milk');
+INSERT INTO ingredients (ingredient_id, ingredient) VALUES (908, 'Sprinkles or icing (optional)');
+
+-- Link Ingredients to Sugar Cookies Recipe
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (900, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Sugar Cookies'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (901, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Sugar Cookies'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (902, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Sugar Cookies'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (903, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Sugar Cookies'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (904, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Sugar Cookies'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (905, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Sugar Cookies'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (906, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Sugar Cookies'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (907, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Sugar Cookies'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (908, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Sugar Cookies'));
+
+-- Insert Steps for Sugar Cookies Recipe
+INSERT INTO steps (step_id, rank, instruction) VALUES (900, 1, 'In a medium-sized bowl, whisk together the flour, baking soda, and baking powder. Set aside.');
+INSERT INTO steps (step_id, rank, instruction) VALUES (901, 2, 'In a large mixing bowl, cream together the softened butter and granulated sugar until light and fluffy.');
+INSERT INTO steps (step_id, rank, instruction) VALUES (902, 3, 'Add the egg and vanilla extract to the butter-sugar mixture, and beat until well combined.');
+INSERT INTO steps (step_id, rank, instruction) VALUES (903, 4, 'Gradually add the dry ingredients to the wet ingredients, mixing until a dough forms. If the dough is too dry, add 3-4 tablespoons of milk to achieve the right consistency.');
+INSERT INTO steps (step_id, rank, instruction) VALUES (904, 5, 'Divide the dough into two equal portions, shape each into a disk, wrap them in plastic wrap, and refrigerate for at least 1 hour or until firm.');
+INSERT INTO steps (step_id, rank, instruction) VALUES (905, 6, 'Preheat your oven to 350*F (180*C) and line baking sheets with parchment paper.');
+INSERT INTO steps (step_id, rank, instruction) VALUES (906, 7, 'On a floured surface, roll out one of the dough disks to about 1/4 inch (0.6 cm) thickness. Use cookie cutters to cut out shapes, and transfer them to the prepared baking sheets.');
+INSERT INTO steps (step_id, rank, instruction) VALUES (907, 8, 'Bake in the preheated oven for 8-10 minutes or until the edges are just beginning to turn golden.');
+INSERT INTO steps (step_id, rank, instruction) VALUES (908, 9, 'Allow the cookies to cool on the baking sheets for a few minutes before transferring them to wire racks to cool completely.');
+INSERT INTO steps (step_id, rank, instruction) VALUES (909, 10, 'Once the cookies are completely cooled, you can decorate them with icing, sprinkles, or any other toppings of your choice.');
+
+-- Link Steps to Sugar Cookies Recipe
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (900, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Sugar Cookies'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (901, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Sugar Cookies'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (902, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Sugar Cookies'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (903, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Sugar Cookies'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (904, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Sugar Cookies'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (905, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Sugar Cookies'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (906, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Sugar Cookies'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (907, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Sugar Cookies'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (908, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Sugar Cookies'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (909, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Sugar Cookies'));
 
 
 COMMIT TRANSACTION;
