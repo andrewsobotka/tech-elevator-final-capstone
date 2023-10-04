@@ -44,7 +44,6 @@
 import RecipeCard from "../components/RecipeCard.vue";
 import NewRecipeForm from '../components/NewRecipeForm.vue';
 
-
 export default {
   name: "my-cookbook",
   data(){

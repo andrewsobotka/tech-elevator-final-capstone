@@ -15,6 +15,7 @@
 // import TheHeader from './components/TheHeader.vue'
 import TheFooter from "./components/TheFooter.vue";
 import NavigationMenu from "./components/NavigationMenu.vue";
+import APIService from "./services/APIService.js";
 
 export default {
   name: "app",
@@ -22,6 +23,14 @@ export default {
   components: {
     TheFooter,
     NavigationMenu,
+  },
+  created(){
+    APIService.getRecipes().then(response => {
+      this.$store.commit('SET_RECIPES', response.data)
+    })
+    APIService.getRecipesByFeatured().then(response=>{
+      this.$store.commit('SET_FEATURED', response.data)
+    })
   },
 };
 </script>
