@@ -57,7 +57,9 @@ export default {
 </script>
 
 <style scoped>
-
+.home{
+  width: 100%;
+}
 
 .container{
   background-color:transparent;
@@ -123,6 +125,7 @@ button:hover{
 #recipeCardContainer{
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 #title{
