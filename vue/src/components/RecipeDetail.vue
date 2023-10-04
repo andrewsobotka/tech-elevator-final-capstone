@@ -120,7 +120,7 @@ export default {
     // },
       addToGroceryList(ingredient) {
             if (!this.$store.state.groceryList.includes(ingredient.ingredient)) {
-                    this.$store.state.groceryList.push(ingredient.ingredient);
+                    this.$store.state.groceryList.push({item: ingredient.ingredient, recipeName: this.recipe.recipeName} );
       window.alert(`Added "${ingredient.ingredient}" to your grocery list.`);
   } else {
       window.alert(`"${ingredient.ingredient}" is already in your grocery list.`);

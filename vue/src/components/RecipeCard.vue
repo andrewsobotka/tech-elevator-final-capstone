@@ -3,8 +3,8 @@
     <div class="name-img-container">
       
          <!-- Use the <favorite> component to toggle favorited state -->
-        <FavoriteIcon :recipe="recipe" 
-         @toggle-favorites="toggleFavorites" :class="{favorite:recipe.favorite, notFavorite: !recipe.favorite}"/>
+        <FavoriteIcon :recipe="recipe" v-bind:value="recipe"
+         @toggle-favorites="toggleFavorites" :class="{favorite:recipe.favorite, notFavorite: !recipe.favorite}" />
 
       <router-link
         v-bind:to="{ name: 'recipe', params: { id: recipe.recipeId } }"
@@ -37,8 +37,14 @@
           <!-- | Total Time:
           {{ recipe.servingSize }} -->
         </div>
+        
       </div>
+      
     </div>
+    <!-- <div id = "addButton">
+             <button v-on:click="addToFavorited(recipe)" >Add to Favorites</button>
+    </div> -->
+
   </div>
 </template>
 
@@ -59,6 +65,9 @@ export default {
     toggleFavorites() {
             this.$store.commit('FLIP_FAVORITE', this.recipe);
     },
+    addToFavorited(recipe){
+      this.$store.commit('ADD_TO_LIBRARY', recipe)
+    }
 
   },
 };
@@ -172,5 +181,10 @@ h3 {
   position: absolute;
   right: 3%;
   top: 80%;
+}
+
+#addButton{
+  display: flex;
+  justify-content: center;
 }
 </style>

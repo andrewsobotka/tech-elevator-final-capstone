@@ -5,16 +5,14 @@
             <h2>My Grocery List</h2>
             </div> <br>
         <div id = "list-container">
+
         <ul>
-            
             <li v-for="(item,index) in $store.state.groceryList" v-bind:key="index" :class="isChecked()?'checked':'unchecked'">
                 <input id= "check" type="checkbox" v-bind:key="index" v-bind:value="index" v-on:click="isChecked()"/>
-                {{item}}
-                
+                <b>{{item.item}} </b> for {{item.recipeName}} 
                 <div id = "line" v-if="index != $store.state.groceryList.length-1"><br></div>
-                
             </li>
-            
+       
         </ul>
         </div>
         </div><br>
@@ -140,4 +138,14 @@ div #line {
 .checked{
     text-decoration: line-through  ;
 }
+
+div table{
+  border: black;
+  border-width: 3px;
+}
+
+#itemColumn{
+  width: 1rem;
+}
+
 </style>
