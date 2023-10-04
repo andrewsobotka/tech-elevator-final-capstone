@@ -74,7 +74,6 @@ export default new Vuex.Store({
     ]
   },
   mutations:
-  
   {
     SET_AUTH_TOKEN(state, token) {
       state.token = token;
@@ -115,7 +114,6 @@ export default new Vuex.Store({
     },
     FLIP_FAVORITE(state, recipe){
       recipe.favorite = !recipe.favorite
-      state.favoritedLibrary.push(recipe);
     },
     SET_TAGS(state, tag){
       state.tags = tag;
@@ -129,9 +127,17 @@ export default new Vuex.Store({
     SET_FEATURED_RECIPE(state, recipe){
       recipe.isFeatured = !recipe.isFeatured;
     },
-    ADD_TO_LIBRARY(state, recipe, ingredient){
-      state.groceryList.item = ingredient.ingredient;
-      state.groceryList.recipeName = recipe.recipeName;
-    }
+    ADD_TO_LIBRARY(state,recipe){
+      state.favoritedLibrary.push(recipe);
+    },
+    DELETE_FROM_LIBRARY(state, recipeId){
+        let newArray = [];
+        for (let i = 0; i < state.favoritedLibrary.length; i++) {
+          if (state.favoritedLibrary[i].recipeId != recipeId) {
+            newArray.push(state.favoritedLibrary[i]);
+          }
+        }
+        state.favoritedLibrary = newArray;
+    },
   }
 })
