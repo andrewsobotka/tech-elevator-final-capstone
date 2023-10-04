@@ -16,14 +16,12 @@
 <script>
 import APIService from "../services/APIService.js";
 import BackButton from './backButton.vue';
-import backButton from './backButton.vue';
 export default {
   name: "Steps",
   components: {BackButton},
   data() {
     return {
         recipe:Object,
-        backButton
     };
   },
   methods: {

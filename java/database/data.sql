@@ -20,7 +20,17 @@ VALUES ((SELECT user_id FROM users WHERE username = 'user'), 'Cheese Pizza', 'ht
 -- INSERT INTO recipes_tags (tag_id, recipe_id) VALUES (1,1);
 
 
-
+--INSERT INTO tags
+INSERT INTO tags (tag) VALUES ('vegetarian');
+INSERT INTO tags (tag) VALUES ('halal');
+INSERT INTO tags (tag) VALUES ('kosher');
+INSERT INTO tags (tag) VALUES ('gluten-free');
+INSERT INTO tags (tag) VALUES ('low-sodium');
+INSERT INTO tags (tag) VALUES ('paleo');
+INSERT INTO tags (tag) VALUES ('raw-food');
+INSERT INTO tags (tag) VALUES ('low-cholesterol');
+INSERT INTO tags (tag) VALUES ('renal-diet');
+INSERT INTO tags (tag) VALUES ('vegan');
 
 --Adding cheese to ingredients table
 INSERT INTO ingredients (ingredient) VALUES ('1/2 recipe homemade pizza dough');

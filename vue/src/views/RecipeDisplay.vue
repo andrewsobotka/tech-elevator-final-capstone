@@ -1,6 +1,7 @@
 <template>
   <div class="recipe-details"> 
       <recipe-details v-bind:recipe="recipeDetails"/>
+      
   </div>
 </template>
 

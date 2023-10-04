@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    
     <div class="header-favorite-group">
       <!-- <FavoriteIcon
         :recipe="recipe"
