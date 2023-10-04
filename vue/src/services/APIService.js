@@ -1,150 +1,154 @@
 import axios from "axios";
 
-export default{
+export default {
     //recipes
 
-    getRecipes(){
+    getRecipes() {
         return axios.get("/recipes")
     },
 
-    getRecipe(recipeId){
+    getRecipe(recipeId) {
         return axios.get(`/recipes/${recipeId}`)
     },
 
-    addRecipe(recipe){
+    addRecipe(recipe) {
         return axios.post('/recipes', recipe)
     },
 
-    editRecipe(recipe){
-       return axios.put(`/recipes/${recipe.recipeId}`, recipe);
+    editRecipe(recipe) {
+        return axios.put(`/recipes/${recipe.recipeId}`, recipe);
     },
 
-    deleteRecipe(recipe){
+    deleteRecipe(recipe) {
         return axios.delete(`/recipes/${recipe.recipeId}`);
     },
 
     //tags
-    getTags(){
+    getTags() {
         return axios.get("/tags")
     },
 
-    getTag(tagId){
+    getTag(tagId) {
         return axios.get(`/tags/${tagId}`)
     },
 
-    addTag(tag){
+    addTag(tag) {
         return axios.post('/tags', tag)
     },
 
-    editTag(tag){
-       return axios.put(`/tags/${tag.tagId}`, tag);
+    editTag(tag) {
+        return axios.put(`/tags/${tag.tagId}`, tag);
     },
 
-    deleteTag(tagId){
+    deleteTag(tagId) {
         return axios.delete(`/tags/${tagId}`);
     },
 
 
     //needtofix the endpoint
-    getRecipeByTagId(tagId){
+    getRecipeByTagId(tagId) {
         return axios.get(`/tags/${tagId}`)
     },
 
     //users
 
-    getUsers(){
+    getUsers() {
         return axios.get("/users")
     },
 
-    getUser(userId){
+    getUser(userId) {
         return axios.get(`/users/${userId}`)
     },
 
-    addUser(user){
+    addUser(user) {
         return axios.post('/users', user)
     },
 
-    editUser(user){
-       return axios.put(`/users/${user.userId}`, user);
+    editUser(user) {
+        return axios.put(`/users/${user.userId}`, user);
     },
 
-    deleteUser(user){
+    deleteUser(user) {
         return axios.delete(`/users/${user.userId}`);
     },
 
     //ingredients
-    
-    getIngredients(){
+
+    getIngredients() {
         return axios.get("/ingredients")
     },
 
-    getIngredient(ingredientId){
+    getIngredient(ingredientId) {
         return axios.get(`/ingredients/${ingredientId}`)
     },
 
-    addIngredient(ingredient){
+    addIngredient(ingredient) {
         return axios.post('/ingredients', ingredient)
     },
 
-    editIngredient(ingredient){
-       return axios.put(`/ingredients/${ingredient.ingredientId}`, ingredient);
+    editIngredient(ingredient) {
+        return axios.put(`/ingredients/${ingredient.ingredientId}`, ingredient);
     },
 
-    deleteIngredient(ingredient){
+    deleteIngredient(ingredient) {
         return axios.delete(`/ingredients/${ingredient.ingredientId}`);
     },
 
     //meals
-    
-    getMeals(){
+
+    getMeals() {
         return axios.get("/meals")
     },
 
-    getMeal(mealId){
+    getMeal(mealId) {
         return axios.get(`/meals/${mealId}`)
     },
 
-    addMeal(meal){
+    addMeal(meal) {
         return axios.post('/meals', meal)
     },
 
-    editMeal(meal){
-       return axios.put(`/meals/${meal.mealId}`, meal);
+    editMeal(meal) {
+        return axios.put(`/meals/${meal.mealId}`, meal);
     },
 
-    deleteMeal(meal){
+    deleteMeal(meal) {
         return axios.delete(`/meals/${meal.mealId}`);
     },
 
     //steps
 
-    getSteps(){
+    getSteps() {
         return axios.get("/steps")
     },
 
-    getStep(stepId){
+    getStep(stepId) {
         return axios.get(`/steps/${stepId}`)
     },
 
-    addStep(step){
+    addStep(step) {
         return axios.post('/steps', step)
     },
 
-    editStep(step){
-       return axios.put(`/steps/${step.stepId}`, step);
+    editStep(step) {
+        return axios.put(`/steps/${step.stepId}`, step);
     },
 
-    deleteStep(step){
+    deleteStep(step) {
         return axios.delete(`/steps/${step.stepId}`);
     },
 
     //keywords
-    getRecipesByKeyword(searchedWord){
+    getRecipesByKeyword(searchedWord) {
         return axios.get(`/keywords?keywords=${searchedWord}`)
     },
 
     //featured
-    getRecipesByFeatured(){
-        return axios.get('/featured')   
-    }
-}
+    getRecipesByFeatured() {
+        return axios.get('/featured')
+    },
+
+
+    //grocery list
+
+    };

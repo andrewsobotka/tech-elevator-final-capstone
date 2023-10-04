@@ -7,11 +7,8 @@
         :class="{ favorite: recipe.favorite, notFavorite: !recipe.favorite }"
       />
       <h2>
-        {{ recipe.recipeName  }}
-      </h2> 
-      
-     
-
+        {{ recipe.recipeName }}
+      </h2>
     </div>
     <section class="servings">
       Serving size: {{ currentRecipe.servingSize }} | Creator Name:
@@ -24,6 +21,8 @@
       </p>
     </section>
     <h2>Ingredients</h2>
+
+
     <div class="ingredients-img-container">
       <div class="ingredients">
         <!-- where ID = XYZ v-for Data.Ingredients -->
@@ -32,8 +31,12 @@
             v-for="(ingredient, index) in currentRecipe.ingredients"
             v-bind:key="index"
             class="ingredient"
+            @click="addToGroceryList(ingredient)"
+            title="Click To Add To Your Grocery List"
           >
-            • {{ ingredient.ingredient }}
+            • {{ ingredient.ingredient }}  &nbsp;
+          <i class="fa-solid fa-cart-shopping fa-flip-horizontal"></i>
+
           </li>
         </ul>
       </div>
@@ -59,6 +62,7 @@
           {{ step.instruction }}
         </li>
       </ol>
+      <div class="button-container">
       <router-link
         v-bind:to="{ name: 'edit-recipe', params: { id: recipe.recipeId } }"
         v-if="
@@ -67,7 +71,7 @@
         "
         ><button>Edit Recipe</button></router-link
       >
-      <button class="delete-btn">Delete Recipe</button>
+      <button class="delete-btn">Delete Recipe</button></div>
     </div>
   </div>
 </template>
@@ -82,6 +86,11 @@ export default {
   props: ["recipe"],
   components: {
     FavoriteIcon,
+  },
+    data() {
+    return {
+      ingredientName: '',
+    };
   },
   methods: {
     addToLibrary() {},
@@ -105,14 +114,22 @@ export default {
     toggleFavorites() {
       this.$store.commit("FLIP_FAVORITE", this.recipe);
     },
+      addToGroceryList(ingredient) {
+            if (!this.$store.state.groceryList.includes(ingredient.ingredient)) {
+                    this.$store.state.groceryList.push(ingredient.ingredient);
+      window.alert(`Added "${ingredient.ingredient}" to your grocery list.`);
+  } else {
+      window.alert(`"${ingredient.ingredient}" is already in your grocery list.`);
+    }
+      }
   },
   created() {
     APIService.getRecipe(this.$route.params.id).then((response) => {
       this.$store.commit("SET_RECIPE", response.data);
     });
   },
-  computed:{
-    currentRecipe(){
+  computed: {
+    currentRecipe() {
       return this.$store.state.recipe;
     },
   },
@@ -128,17 +145,18 @@ export default {
   border-radius: 20px;
   border: 1px #333 solid;
   padding: 1.3rem;
-  width: 70vw;
-  max-width: 60rem;
-  height: 90vh;
+  overflow-x:hidden;
+  max-width: 55rem;
+  height: 120vh;
+  max-height: 100vh;
   margin: 1rem 2rem;
-  overflow-y: scroll;
+  
   padding-bottom: 5rem;
 }
 h2 {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   width: 100%;
-
+  padding-left: 10px;
   border-bottom: 3px solid #444;
 }
 h3 {
@@ -155,11 +173,12 @@ h3 {
   font-family: "Montserrat";
   color: #555;
   font-size: 0.8em;
-  margin-top: 3px;
+  margin-top: 0px;
+  left: -35px;
 }
 
 .favorite {
- border: none;
+  border: none;
   padding: 6px;
   position: relative;
   top: -10px;
@@ -167,15 +186,13 @@ h3 {
   background: transparent;
   font-size: 2rem;
   transition: 0.3s ease;
-  
+
   margin: 0;
   z-index: 39;
-  
 }
 
-
 .notFavorite {
- border: none;
+  border: none;
   padding: 6px;
   position: relative;
   top: -10px;
@@ -184,7 +201,12 @@ h3 {
   font-size: 2rem;
   transition: 0.3s ease;
   margin: 0;
-   z-index: 39;
+  z-index: 39;
+}
+
+.fa-cart-shopping{
+  font-size: 1rem;
+  color: rgb(133, 133, 133);
 }
 
 .header-favorite-group {
@@ -201,9 +223,10 @@ h3 {
 }
 
 .ingredients {
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-family: "Montserrat", sans-serif;
   overflow: none;
+  flex-wrap: wrap;
   width: 15rem;
 }
 .ingredients-img-container {
@@ -239,10 +262,17 @@ h3 {
   transition: ease-out 0.3s;
 }
 
+.button-container{
+  display:flex;
+  justify-content: space-evenly;
+}
+ul li{
+    cursor:grab;
+}
 .instructions {
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   padding-right: 1.3rem;
-  line-height: 2rem;
+  line-height: 2.2rem;
   font-family: "Lexend", sans-serif;
 }
 
@@ -274,8 +304,10 @@ h3 {
 .delete-btn a {
   color: #fff;
 }
-
+.delete-btn{
+  background: rgb(121, 15, 15);
+}
 .delete-btn:hover {
-  background: #7a2217;
+  background: #fb4c35;
 }
 </style>  
