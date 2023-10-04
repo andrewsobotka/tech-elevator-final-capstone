@@ -16,7 +16,6 @@ public interface UserDao {
 
     int findIdByUsername(String username);
 
-
     boolean create(String username, String password, String role);
 
     List<Recipe> listOfUsersRecipes();
