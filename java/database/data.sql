@@ -153,45 +153,48 @@ INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (18, (SELECT r
 INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (19, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Lemon Sorbet'));
 
 -- Insert Steps for Lemon Sorbet Recipe
-INSERT INTO steps (step_id, rank, instruction) VALUES (11, 1, 'In a mixing bowl, combine fresh lemon juice, water, and granulated sugar.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (12, 2, 'Stir until sugar is dissolved.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (13, 3, 'Pour the mixture into an ice cream maker and churn according to the manufacture instructions until it reaches a sorbet consistency.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (14, 4, 'Transfer the sorbet to an airtight container and freeze for a few hours until firm.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (15, 5, 'Serve the lemon sorbet in chilled bowls or cones.');
+INSERT INTO steps (rank, instruction) VALUES (1, 'In a mixing bowl, combine fresh lemon juice, water, and granulated sugar.');
+INSERT INTO steps (rank, instruction) VALUES (2, 'Stir until sugar is dissolved.');
+INSERT INTO steps (rank, instruction) VALUES (3, 'Pour the mixture into an ice cream maker and churn according to the manufacturer instructions until it reaches a sorbet consistency.');
+INSERT INTO steps (rank, instruction) VALUES (4, 'Transfer the sorbet to an airtight container and freeze for a few hours until firm.');
+INSERT INTO steps (rank, instruction) VALUES (5, 'Serve the lemon sorbet in chilled bowls or cones.');
 
 -- Link Steps to Lemon Sorbet Recipe
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (11, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Lemon Sorbet'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (12, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Lemon Sorbet'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (13, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Lemon Sorbet'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (14, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Lemon Sorbet'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (15, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Lemon Sorbet'));
+-- Insert the step with the instruction 'In a mixing bowl, combine fresh lemon juice, water, and granulated sugar.'
+INSERT INTO steps_recipes (step_id, recipe_id)
+SELECT steps.step_id, recipes.recipe_id
+FROM steps
+JOIN recipes ON steps.instruction = 'In a mixing bowl, combine fresh lemon juice, water, and granulated sugar.'
+WHERE recipes.recipe_name = 'Lemon Sorbet';
 
+-- Insert the step with the instruction 'Stir until sugar is dissolved.'
+INSERT INTO steps_recipes (step_id, recipe_id)
+SELECT steps.step_id, recipes.recipe_id
+FROM steps
+JOIN recipes ON steps.instruction = 'Stir until sugar is dissolved.'
+WHERE recipes.recipe_name = 'Lemon Sorbet';
 
--- -- INSERT INTO recipes_tags (tag_id, recipe_id)
--- -- VALUES (
--- --   (SELECT tag_id FROM tags WHERE tag = 'vegetarian'),
--- --   (SELECT recipe_id FROM recipes WHERE recipe_name = 'Lemon Sorbet')
--- -- );
+-- Insert the step with the instruction 'Pour the mixture into an ice cream maker and churn according to the manufacturer instructions until it reaches a sorbet consistency.'
+INSERT INTO steps_recipes (step_id, recipe_id)
+SELECT steps.step_id, recipes.recipe_id
+FROM steps
+JOIN recipes ON steps.instruction = 'Pour the mixture into an ice cream maker and churn according to the manufacturer instructions until it reaches a sorbet consistency.'
+WHERE recipes.recipe_name = 'Lemon Sorbet';
 
--- -- -- Link "vegan" tag to "Pumpkin Spiced Latte" recipe
--- -- INSERT INTO recipes_tags (tag_id, recipe_id)
--- -- VALUES (
--- --   (SELECT tag_id FROM tags WHERE tag = 'vegan'),
--- --   (SELECT recipe_id FROM recipes WHERE recipe_name = 'Lemon Sorbet')
--- -- );
+-- Insert the step with the instruction 'Transfer the sorbet to an airtight container and freeze for a few hours until firm.'
+INSERT INTO steps_recipes (step_id, recipe_id)
+SELECT steps.step_id, recipes.recipe_id
+FROM steps
+JOIN recipes ON steps.instruction = 'Transfer the sorbet to an airtight container and freeze for a few hours until firm.'
+WHERE recipes.recipe_name = 'Lemon Sorbet';
 
--- -- Link "vegan" tag to "Pumpkin Spiced Latte" recipe
--- INSERT INTO recipes_tags (tag_id, recipe_id)
--- VALUES (
---   (SELECT tag_id FROM tags WHERE tag = 'gluten-free'),
---   (SELECT recipe_id FROM recipes WHERE recipe_name = 'Lemon Sorbet')
--- );
--- -- Link "vegan" tag to "Pumpkin Spiced Latte" recipe
--- INSERT INTO recipes_tags (tag_id, recipe_id)
--- VALUES (
---   (SELECT tag_id FROM tags WHERE tag = 'dairy-free'),
---   (SELECT recipe_id FROM recipes WHERE recipe_name = 'Lemon Sorbet')
--- );
+-- Insert the step with the instruction 'Serve the lemon sorbet in chilled bowls or cones.'
+INSERT INTO steps_recipes (step_id, recipe_id)
+SELECT steps.step_id, recipes.recipe_id
+FROM steps
+JOIN recipes ON steps.instruction = 'Serve the lemon sorbet in chilled bowls or cones.'
+WHERE recipes.recipe_name = 'Lemon Sorbet';
+
 -- -- Commit the Transaction for Lemon Sorbet Recipe
 
 
@@ -221,46 +224,70 @@ INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (27, (SELECT r
 INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (28, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Pie'));
 
 -- Insert Steps for Pumpkin Pie Recipe
-INSERT INTO steps (step_id, rank, instruction) VALUES (16, 1, 'Preheat your oven to 425*F (220*C).');
-INSERT INTO steps (step_id, rank, instruction) VALUES (17, 2, 'In a large mixing bowl, combine the pumpkin puree, granulated sugar, ground cinnamon, ground ginger, ground nutmeg, and ground cloves.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (18, 3, 'In a separate bowl, beat the eggs and add them to the pumpkin mixture. Mix well.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (19, 4, 'Gradually add the evaporated milk and mix until the filling is smooth.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (20, 5, 'Pour the pumpkin filling into the unbaked pie crust.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (21, 6, 'Bake in the preheated oven for 15 minutes, then reduce the oven temperature to 350*F (175*C) and continue baking for 40-50 minutes or until a knife inserted near the center comes out clean.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (22, 7, 'Allow the pie to cool completely before serving.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (23, 8, 'Serve with whipped cream or vanilla ice cream.');
+INSERT INTO steps (rank, instruction) VALUES (1, 'Preheat your oven to 425*F (220*C).');
+INSERT INTO steps (rank, instruction) VALUES (2, 'In a large mixing bowl, combine the pumpkin puree, granulated sugar, ground cinnamon, ground ginger, ground nutmeg, and ground cloves.');
+INSERT INTO steps (rank, instruction) VALUES (3, 'In a separate bowl, beat the eggs and add them to the pumpkin mixture. Mix well.');
+INSERT INTO steps (rank, instruction) VALUES (4, 'Gradually add the evaporated milk and mix until the filling is smooth.');
+INSERT INTO steps (rank, instruction) VALUES (5, 'Pour the pumpkin filling into the unbaked pie crust.');
+INSERT INTO steps (rank, instruction) VALUES (6, 'Bake in the preheated oven for 15 minutes, then reduce the oven temperature to 350*F (175*C) and continue baking for 40-50 minutes or until a knife inserted near the center comes out clean.');
+INSERT INTO steps (rank, instruction) VALUES (7, 'Allow the pie to cool completely before serving.');
+INSERT INTO steps (rank, instruction) VALUES (8, 'Serve with whipped cream or vanilla ice cream.');
 
 -- Link Steps to Pumpkin Pie Recipe
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (16, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Pie'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (17, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Pie'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (18, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Pie'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (19, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Pie'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (20, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Pie'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (21, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Pie'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (22, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Pie'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (23, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Pie'));
+-- Link Steps to Pumpkin Pie Recipe
+INSERT INTO steps_recipes (step_id, recipe_id)
+VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Preheat your oven to 425*F (220*C).'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Pie')
+);
 
--- INSERT INTO recipes_tags (tag_id, recipe_id)
--- VALUES (
---   (SELECT tag_id FROM tags WHERE tag = 'vegetarian'),
---   (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Pie')
--- );
--- INSERT INTO recipes_tags (tag_id, recipe_id)
--- VALUES (
---   (SELECT tag_id FROM tags WHERE tag = 'vegan'),
---   (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Pie')
--- );
+INSERT INTO steps_recipes (step_id, recipe_id)
+VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'In a large mixing bowl, combine the pumpkin puree, granulated sugar, ground cinnamon, ground ginger, ground nutmeg, and ground cloves.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Pie')
+);
 
+INSERT INTO steps_recipes (step_id, recipe_id)
+VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'In a separate bowl, beat the eggs and add them to the pumpkin mixture. Mix well.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Pie')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id)
+VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Gradually add the evaporated milk and mix until the filling is smooth.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Pie')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id)
+VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Pour the pumpkin filling into the unbaked pie crust.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Pie')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id)
+VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Bake in the preheated oven for 15 minutes, then reduce the oven temperature to 350*F (175*C) and continue baking for 40-50 minutes or until a knife inserted near the center comes out clean.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Pie')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id)
+VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Allow the pie to cool completely before serving.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Pie')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id)
+VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Serve with whipped cream or vanilla ice cream.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Pie')
+);
 
 
 
 -- Insert Pumpkin Spiced Latte Recipe
 INSERT INTO recipes (creator_id, recipe_name, image_url, description, serving_size, keywords, is_featured, is_published)
 VALUES ((SELECT user_id FROM users WHERE username = 'coyo'), 'Pumpkin Spiced Latte', 'https://www.inspiredtaste.net/wp-content/uploads/2011/11/Pumpkin-Spice-Latte-Recipe-1200.jpg', 'A warm and comforting pumpkin spiced latte.', 1, 'coffee, pumpkin, pumpkin spice, latte, fall recipes, fall, breakfast', true, true);
-
-
-
-
 
 -- Insert Ingredients for Pumpkin Spiced Latte Recipe
 INSERT INTO ingredients (ingredient_id, ingredient) VALUES (29, '1 cup (240ml) brewed coffee');
@@ -281,51 +308,62 @@ INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (34, (SELECT r
 INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (35, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Spiced Latte'));
 
 -- Insert Steps for Pumpkin Spiced Latte Recipe
-INSERT INTO steps (step_id, rank, instruction) VALUES (24, 1, 'Brew a strong cup of coffee.');
+-- Insert Steps without specifying step_id
+INSERT INTO steps (rank, instruction) VALUES (1, 'Brew a strong cup of coffee.');
 
-INSERT INTO steps (step_id, rank, instruction) VALUES (25, 2, 'In a small saucepan, heat the pumpkin puree, maple syrup, and pumpkin pie spice over low heat, stirring until well combined.');
+INSERT INTO steps (rank, instruction) VALUES (2, 'In a small saucepan, heat the pumpkin puree, maple syrup, and pumpkin pie spice over low heat, stirring until well combined.');
 
-INSERT INTO steps (step_id, rank, instruction) VALUES (26, 3, 'Add the hot brewed coffee to the pumpkin mixture and stir well.');
+INSERT INTO steps (rank, instruction) VALUES (3, 'Add the hot brewed coffee to the pumpkin mixture and stir well.');
 
-INSERT INTO steps (step_id, rank, instruction) VALUES (27, 4, 'In a separate saucepan, heat the milk until hot but not boiling.');
+INSERT INTO steps (rank, instruction) VALUES (4, 'In a separate saucepan, heat the milk until hot but not boiling.');
 
-INSERT INTO steps (step_id, rank, instruction) VALUES (28, 5, 'Froth the hot milk using a milk frother or whisk until it becomes creamy.');
+INSERT INTO steps (rank, instruction) VALUES (5, 'Froth the hot milk using a milk frother or whisk until it becomes creamy.');
 
-INSERT INTO steps (step_id, rank, instruction) VALUES (29, 6, 'Pour the frothed milk into the coffee mixture and stir gently.');
+INSERT INTO steps (rank, instruction) VALUES (6, 'Pour the frothed milk into the coffee mixture and stir gently.');
 
-INSERT INTO steps (step_id, rank, instruction) VALUES (30, 7, 'If desired, top with whipped cream and a sprinkle of ground cinnamon.');
+INSERT INTO steps (rank, instruction) VALUES (7, 'If desired, top with whipped cream and a sprinkle of ground cinnamon.');
 
--- Link Steps to Pumpkin Spiced Latte Recipe
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (24, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Spiced Latte'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (25, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Spiced Latte'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (26, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Spiced Latte'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (27, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Spiced Latte'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (28, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Spiced Latte'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (29, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Spiced Latte'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (30, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Spiced Latte'));
+-- Link Steps to Pumpkin Spiced Latte Recipe-- Link Step 1 to Pumpkin Spiced Latte Recipe
+INSERT INTO steps_recipes (step_id, recipe_id)
+SELECT step_id, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Spiced Latte')
+FROM steps
+WHERE instruction = 'Brew a strong cup of coffee.';
 
+-- Link Step 2 to Pumpkin Spiced Latte Recipe
+INSERT INTO steps_recipes (step_id, recipe_id)
+SELECT step_id, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Spiced Latte')
+FROM steps
+WHERE instruction = 'In a small saucepan, heat the pumpkin puree, maple syrup, and pumpkin pie spice over low heat, stirring until well combined.';
 
+-- Link Step 3 to Pumpkin Spiced Latte Recipe
+INSERT INTO steps_recipes (step_id, recipe_id)
+SELECT step_id, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Spiced Latte')
+FROM steps
+WHERE instruction = 'Add the hot brewed coffee to the pumpkin mixture and stir well.';
 
+-- Link Step 4 to Pumpkin Spiced Latte Recipe
+INSERT INTO steps_recipes (step_id, recipe_id)
+SELECT step_id, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Spiced Latte')
+FROM steps
+WHERE instruction = 'In a separate saucepan, heat the milk until hot but not boiling.';
 
+-- Link Step 5 to Pumpkin Spiced Latte Recipe
+INSERT INTO steps_recipes (step_id, recipe_id)
+SELECT step_id, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Spiced Latte')
+FROM steps
+WHERE instruction = 'Froth the hot milk using a milk frother or whisk until it becomes creamy.';
 
--- INSERT INTO recipes_tags (tag_id, recipe_id)
--- VALUES (
---   (SELECT tag_id FROM tags WHERE tag = 'vegetarian'),
---   (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Spiced Latte')
--- );
+-- Link Step 6 to Pumpkin Spiced Latte Recipe
+INSERT INTO steps_recipes (step_id, recipe_id)
+SELECT step_id, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Spiced Latte')
+FROM steps
+WHERE instruction = 'Pour the frothed milk into the coffee mixture and stir gently.';
 
--- -- Link "vegan" tag to "Pumpkin Spiced Latte" recipe
--- INSERT INTO recipes_tags (tag_id, recipe_id)
--- VALUES (
---   (SELECT tag_id FROM tags WHERE tag = 'vegan'),
---   (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Spiced Latte')
--- );
-
--- INSERT INTO recipes_tags (tag_id, recipe_id)
--- VALUES (
---   (SELECT tag_id FROM tags WHERE tag = 'gluten-free'),
---   (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Spiced Latte')
--- );
+-- Link Step 7 to Pumpkin Spiced Latte Recipe
+INSERT INTO steps_recipes (step_id, recipe_id)
+SELECT step_id, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Spiced Latte')
+FROM steps
+WHERE instruction = 'If desired, top with whipped cream and a sprinkle of ground cinnamon.';
 
 
 
@@ -357,28 +395,59 @@ VALUES
   (36, (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Fries')),
   (37, (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Fries')),
   (38, (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Fries'));
-
 -- Insert Steps for French Fries Recipe
--- Replace the step_id and instruction values with your specific steps
-INSERT INTO steps (step_id, rank, instruction)
-VALUES
-  (31, 1, 'Peel and cut the potatoes into thin strips.'),
-  (32, 2, 'Heat the oil in a deep fryer or large pan to 350*F (175*C).'),
-  (33, 3, 'Fry the potato strips in batches until golden brown, about 4-5 minutes per batch.'),
-  (34, 4, 'Remove the fries from the oil and drain on paper towels.'),
-  (35, 5, 'Sprinkle with salt to taste and serve.');
+
+-- Step 1
+INSERT INTO steps (rank, instruction) VALUES (1, 'Peel and cut the potatoes into thin strips.');
+
+-- Step 2
+INSERT INTO steps (rank, instruction) VALUES (2, 'Heat the oil in a deep fryer or large pan to 350*F (175*C).');
+
+-- Step 3
+INSERT INTO steps (rank, instruction) VALUES (3, 'Fry the potato strips in batches until golden brown, about 4-5 minutes per batch.');
+
+-- Step 4
+INSERT INTO steps (rank, instruction) VALUES (4, 'Remove the fries from the oil and drain on paper towels.');
+
+-- Step 5
+INSERT INTO steps (rank, instruction) VALUES (5, 'Sprinkle with salt to taste and serve.');
 
 -- Link Steps to French Fries Recipe
--- Replace recipe_id and step_id values with the appropriate IDs
+
+-- Link Step 1
 INSERT INTO steps_recipes (step_id, recipe_id)
-VALUES
-  (31, (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Fries')),
-  (32, (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Fries')),
-  (33, (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Fries')),
-  (34, (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Fries')),
-  (35, (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Fries'));
+VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Peel and cut the potatoes into thin strips.'), 
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Fries')
+);
 
+-- Link Step 2
+INSERT INTO steps_recipes (step_id, recipe_id)
+VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Heat the oil in a deep fryer or large pan to 350*F (175*C).'), 
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Fries')
+);
 
+-- Link Step 3
+INSERT INTO steps_recipes (step_id, recipe_id)
+VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Fry the potato strips in batches until golden brown, about 4-5 minutes per batch.'), 
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Fries')
+);
+
+-- Link Step 4
+INSERT INTO steps_recipes (step_id, recipe_id)
+VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Remove the fries from the oil and drain on paper towels.'), 
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Fries')
+);
+
+-- Link Step 5
+INSERT INTO steps_recipes (step_id, recipe_id)
+VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Sprinkle with salt to taste and serve.'), 
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Fries')
+);
 
 
 
@@ -409,25 +478,55 @@ INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (46, (SELECT r
 INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (47, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Spaghetti'));
 
 -- Insert Steps for Spaghetti Recipe
-INSERT INTO steps (step_id, rank, instruction) VALUES (36, 1, 'Boil a large pot of salted water.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (37, 2, 'Add the spaghetti to the boiling water and cook until al dente, following package instructions.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (38, 3, 'In a skillet, heat the olive oil over medium heat. Add the chopped onions and minced garlic, and sauté until fragrant.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (39, 4, 'Add the ground beef to the skillet and cook until browned, breaking it into small pieces with a spatula.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (40, 5, 'Pour in the red wine and cook for a few minutes until it reduces.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (41, 6, 'Stir in the tomato sauce and water. Simmer for about 15 minutes, allowing the flavors to meld.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (42, 7, 'Season the sauce with salt and pepper to taste.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (43, 8, 'Serve the cooked spaghetti with the tomato sauce and meatballs on top.');
+INSERT INTO steps (rank, instruction) VALUES (1, 'Boil a large pot of salted water.');
+INSERT INTO steps (rank, instruction) VALUES (2, 'Add the spaghetti to the boiling water and cook until al dente, following package instructions.');
+INSERT INTO steps (rank, instruction) VALUES (3, 'In a skillet, heat the olive oil over medium heat. Add the chopped onions and minced garlic, and sauté until fragrant.');
+INSERT INTO steps (rank, instruction) VALUES (4, 'Add the ground beef to the skillet and cook until browned, breaking it into small pieces with a spatula.');
+INSERT INTO steps (rank, instruction) VALUES (5, 'Pour in the red wine and cook for a few minutes until it reduces.');
+INSERT INTO steps (rank, instruction) VALUES (6, 'Stir in the tomato sauce and water. Simmer for about 15 minutes, allowing the flavors to meld.');
+INSERT INTO steps (rank, instruction) VALUES (7, 'Season the sauce with salt and pepper to taste.');
+INSERT INTO steps (rank, instruction) VALUES (8, 'Serve the cooked spaghetti with the tomato sauce and meatballs on top.');
 
 -- Link Steps to Spaghetti Recipe
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (36, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Spaghetti'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (37, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Spaghetti'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (38, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Spaghetti'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (39, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Spaghetti'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (40, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Spaghetti'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (41, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Spaghetti'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (42, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Spaghetti'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (43, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Spaghetti'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Boil a large pot of salted water.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Spaghetti')
+);
 
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Add the spaghetti to the boiling water and cook until al dente, following package instructions.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Spaghetti')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'In a skillet, heat the olive oil over medium heat. Add the chopped onions and minced garlic, and sauté until fragrant.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Spaghetti')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Add the ground beef to the skillet and cook until browned, breaking it into small pieces with a spatula.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Spaghetti')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Pour in the red wine and cook for a few minutes until it reduces.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Spaghetti')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Stir in the tomato sauce and water. Simmer for about 15 minutes, allowing the flavors to meld.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Spaghetti')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Season the sauce with salt and pepper to taste.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Spaghetti')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Serve the cooked spaghetti with the tomato sauce and meatballs on top.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Spaghetti')
+);
 
 
 
@@ -454,46 +553,55 @@ INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (53, (SELECT r
 INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (54, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Baked Salmon'));
 
 -- Insert Steps for Baked Salmon Recipe
-INSERT INTO steps (step_id, rank, instruction) VALUES (44, 1, 'Preheat your oven to 375*F (190*C).');
-INSERT INTO steps (step_id, rank, instruction) VALUES (45, 2, 'Place the salmon fillets on a baking sheet lined with parchment paper or foil.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (46, 3, 'In a small bowl, mix the olive oil, minced garlic, and dried oregano.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (47, 4, 'Brush the olive oil mixture over the salmon fillets.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (48, 5, 'Season the salmon with salt and pepper to taste.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (49, 6, 'Place lemon slices on top of each salmon fillet.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (50, 7, 'Bake in the preheated oven for 15-20 minutes or until the salmon flakes easily with a fork.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (51, 8, 'Garnish with fresh parsley if desired.');
+INSERT INTO steps (rank, instruction) VALUES (1, 'Preheat your oven to 375*F (190*C).');
+INSERT INTO steps (rank, instruction) VALUES (2, 'Place the salmon fillets on a baking sheet lined with parchment paper or foil.');
+INSERT INTO steps (rank, instruction) VALUES (3, 'In a small bowl, mix the olive oil, minced garlic, and dried oregano.');
+INSERT INTO steps (rank, instruction) VALUES (4, 'Brush the olive oil mixture over the salmon fillets.');
+INSERT INTO steps (rank, instruction) VALUES (5, 'Season the salmon with salt and pepper to taste.');
+INSERT INTO steps (rank, instruction) VALUES (6, 'Place lemon slices on top of each salmon fillet.');
+INSERT INTO steps (rank, instruction) VALUES (7, 'Bake in the preheated oven for 15-20 minutes or until the salmon flakes easily with a fork.');
+INSERT INTO steps (rank, instruction) VALUES (8, 'Garnish with fresh parsley if desired.');
 
 -- Link Steps to Baked Salmon Recipe
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (44, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Baked Salmon'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (45, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Baked Salmon'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (46, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Baked Salmon'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (47, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Baked Salmon'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (48, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Baked Salmon'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (49, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Baked Salmon'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (50, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Baked Salmon'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (51, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Baked Salmon'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Preheat your oven to 375*F (190*C).'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Baked Salmon')
+);
 
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Place the salmon fillets on a baking sheet lined with parchment paper or foil.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Baked Salmon')
+);
 
--- INSERT INTO recipes_tags (tag_id, recipe_id)
--- VALUES (
---   (SELECT tag_id FROM tags WHERE tag = 'pescetarian'),
---  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Baked Salmon')
---  );
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'In a small bowl, mix the olive oil, minced garlic, and dried oregano.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Baked Salmon')
+);
 
--- VALUES (
---   (SELECT tag_id FROM tags WHERE tag = 'dairy-free'),
---  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Baked Salmon')
---  );
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Brush the olive oil mixture over the salmon fillets.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Baked Salmon')
+);
 
--- VALUES (
---   (SELECT tag_id FROM tags WHERE tag = 'kosher'),
---  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Baked Salmon')
---  );
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Season the salmon with salt and pepper to taste.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Baked Salmon')
+);
 
---  VALUES (
---   (SELECT tag_id FROM tags WHERE tag = 'renal-diet'),
---  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Baked Salmon')
---  );
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Place lemon slices on top of each salmon fillet.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Baked Salmon')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Bake in the preheated oven for 15-20 minutes or until the salmon flakes easily with a fork.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Baked Salmon')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Garnish with fresh parsley if desired.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Baked Salmon')
+);
 
 
 
@@ -528,22 +636,49 @@ INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (63, (SELECT r
 INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (64, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ratatouille'));
 
 -- Insert Steps for Ratatouille Recipe
-INSERT INTO steps (step_id, rank, instruction) VALUES (52, 1, 'Heat olive oil in a large pot or Dutch oven over medium heat.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (53, 2, 'Add the chopped onion and garlic, and sauté until they become translucent.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (54, 3, 'Add the diced eggplant, zucchinis, and red bell peppers to the pot.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (55, 4, 'Season with dried thyme, dried basil, salt, and pepper. Cook for about 10 minutes, stirring occasionally.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (56, 5, 'Pour in the tomato sauce and stir to combine. Reduce the heat to low, cover, and simmer for 20-30 minutes, or until the vegetables are tender.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (57, 6, 'Taste and adjust the seasoning if needed.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (58, 7, 'Serve the Ratatouille hot, garnished with fresh basil leaves if desired.');
+INSERT INTO steps (rank, instruction) VALUES (1, 'Heat olive oil in a large pot or Dutch oven over medium heat.');
+INSERT INTO steps (rank, instruction) VALUES (2, 'Add the chopped onion and garlic, and sauté until they become translucent.');
+INSERT INTO steps (rank, instruction) VALUES (3, 'Add the diced eggplant, zucchinis, and red bell peppers to the pot.');
+INSERT INTO steps (rank, instruction) VALUES (4, 'Season with dried thyme, dried basil, salt, and pepper. Cook for about 10 minutes, stirring occasionally.');
+INSERT INTO steps (rank, instruction) VALUES (5, 'Pour in the tomato sauce and stir to combine. Reduce the heat to low, cover, and simmer for 20-30 minutes, or until the vegetables are tender.');
+INSERT INTO steps (rank, instruction) VALUES (6, 'Taste and adjust the seasoning if needed.');
+INSERT INTO steps (rank, instruction) VALUES (7, 'Serve the Ratatouille hot, garnished with fresh basil leaves if desired.');
 
 -- Link Steps to Ratatouille Recipe
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (52, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ratatouille'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (53, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ratatouille'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (54, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ratatouille'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (55, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ratatouille'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (56, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ratatouille'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (57, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ratatouille'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (58, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ratatouille'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Heat olive oil in a large pot or Dutch oven over medium heat.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ratatouille')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Add the chopped onion and garlic, and sauté until they become translucent.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ratatouille')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Add the diced eggplant, zucchinis, and red bell peppers to the pot.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ratatouille')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Season with dried thyme, dried basil, salt, and pepper. Cook for about 10 minutes, stirring occasionally.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ratatouille')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Pour in the tomato sauce and stir to combine. Reduce the heat to low, cover, and simmer for 20-30 minutes, or until the vegetables are tender.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ratatouille')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Taste and adjust the seasoning if needed.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ratatouille')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Serve the Ratatouille hot, garnished with fresh basil leaves if desired.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ratatouille')
+);
 
 
 
@@ -573,23 +708,55 @@ INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (71, (SELECT r
 INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (72, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Mac and Cheese'));
 
 -- Insert Steps for Mac and Cheese Recipe
-INSERT INTO steps (step_id, rank, instruction) VALUES (59, 1, 'Cook the elbow macaroni according to the package instructions. Drain and set aside.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (60, 2, 'In a large pot, melt the butter over medium heat.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (61, 3, 'Stir in the all-purpose flour and cook for about 2 minutes, stirring constantly.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (62, 4, 'Gradually whisk in the milk and cook until the mixture thickens, stirring constantly.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (63, 5, 'Stir in the shredded cheddar cheese until smooth and creamy.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (64, 6, 'Add the cooked macaroni to the cheese sauce and stir until well combined. Season with salt and pepper to taste.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (65, 7, 'If desired, top with grated Parmesan cheese and bread crumbs for a crunchy topping.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (66, 8, 'Serve the Mac and Cheese hot and enjoy!');
+INSERT INTO steps (rank, instruction) VALUES (1, 'Cook the elbow macaroni according to the package instructions. Drain and set aside.');
+INSERT INTO steps (rank, instruction) VALUES (2, 'In a large pot, melt the butter over medium heat.');
+INSERT INTO steps (rank, instruction) VALUES (3, 'Stir in the all-purpose flour and cook for about 2 minutes, stirring constantly.');
+INSERT INTO steps (rank, instruction) VALUES (4, 'Gradually whisk in the milk and cook until the mixture thickens, stirring constantly.');
+INSERT INTO steps (rank, instruction) VALUES (5, 'Stir in the shredded cheddar cheese until smooth and creamy.');
+INSERT INTO steps (rank, instruction) VALUES (6, 'Add the cooked macaroni to the cheese sauce and stir until well combined. Season with salt and pepper to taste.');
+INSERT INTO steps (rank, instruction) VALUES (7, 'If desired, top with grated Parmesan cheese and bread crumbs for a crunchy topping.');
+INSERT INTO steps (rank, instruction) VALUES (8, 'Serve the Mac and Cheese hot and enjoy!');
 
 -- Link Steps to Mac and Cheese Recipe
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (59, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Mac and Cheese'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (60, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Mac and Cheese'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (61, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Mac and Cheese'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (62, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Mac and Cheese'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (63, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Mac and Cheese'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (64, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Mac and Cheese'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (65, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Mac and Cheese'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Cook the elbow macaroni according to the package instructions. Drain and set aside.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Mac and Cheese')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'In a large pot, melt the butter over medium heat.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Mac and Cheese')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Stir in the all-purpose flour and cook for about 2 minutes, stirring constantly.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Mac and Cheese')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Gradually whisk in the milk and cook until the mixture thickens, stirring constantly.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Mac and Cheese')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Stir in the shredded cheddar cheese until smooth and creamy.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Mac and Cheese')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Add the cooked macaroni to the cheese sauce and stir until well combined. Season with salt and pepper to taste.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Mac and Cheese')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'If desired, top with grated Parmesan cheese and bread crumbs for a crunchy topping.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Mac and Cheese')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Serve the Mac and Cheese hot and enjoy!'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Mac and Cheese')
+);
 
 
 
@@ -618,33 +785,50 @@ INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (79, (SELECT r
 INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (80, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ramen'));
 
 -- Insert Steps for Ramen Recipe
-INSERT INTO steps (step_id, rank, instruction) VALUES (67, 1, 'Boil the ramen noodles according to the package instructions. Drain and set aside.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (68, 2, 'In a large pot, heat the chicken or vegetable broth over medium heat.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (69, 3, 'Add minced garlic, soy sauce, and sesame oil to the broth. Stir well.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (70, 4, 'Divide the cooked ramen noodles into serving bowls.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (71, 5, 'Pour the hot broth over the noodles in each bowl.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (72, 6, 'Top each bowl with a boiled egg, sliced green onions, and sliced seaweed.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (73, 7, 'Serve the homemade Ramen hot and enjoy!');
+INSERT INTO steps (rank, instruction) VALUES (1, 'Boil the ramen noodles according to the package instructions. Drain and set aside.');
+INSERT INTO steps (rank, instruction) VALUES (2, 'In a large pot, heat the chicken or vegetable broth over medium heat.');
+INSERT INTO steps (rank, instruction) VALUES (3, 'Add minced garlic, soy sauce, and sesame oil to the broth. Stir well.');
+INSERT INTO steps (rank, instruction) VALUES (4, 'Divide the cooked ramen noodles into serving bowls.');
+INSERT INTO steps (rank, instruction) VALUES (5, 'Pour the hot broth over the noodles in each bowl.');
+INSERT INTO steps (rank, instruction) VALUES (6, 'Top each bowl with a boiled egg, sliced green onions, and sliced seaweed.');
+INSERT INTO steps (rank, instruction) VALUES (7, 'Serve the homemade Ramen hot and enjoy!');
 
 -- Link Steps to Ramen Recipe
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (67, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ramen'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (68, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ramen'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (69, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ramen'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (70, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ramen'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (71, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ramen'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (72, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ramen'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (73, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ramen'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Boil the ramen noodles according to the package instructions. Drain and set aside.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ramen')
+);
 
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'In a large pot, heat the chicken or vegetable broth over medium heat.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ramen')
+);
 
---  VALUES (
---   (SELECT tag_id FROM tags WHERE tag = 'vegetarian'),
---  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ramen')
---  );
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Add minced garlic, soy sauce, and sesame oil to the broth. Stir well.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ramen')
+);
 
---  VALUES (
---   (SELECT tag_id FROM tags WHERE tag = 'dairy-free'),
---  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ramen')
---  );
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Divide the cooked ramen noodles into serving bowls.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ramen')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Pour the hot broth over the noodles in each bowl.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ramen')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Top each bowl with a boiled egg, sliced green onions, and sliced seaweed.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ramen')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Serve the homemade Ramen hot and enjoy!'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ramen')
+);
+
 
 
 
@@ -678,24 +862,52 @@ INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (88, (SELECT r
 INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (89, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Vegetable Stir-Fry'));
 INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (90, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Vegetable Stir-Fry'));
 INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (91, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Vegetable Stir-Fry'));
+-- Insert Steps for Vegetable Stir-Fry Recipe
 
 -- Insert Steps for Vegetable Stir-Fry Recipe
-INSERT INTO steps (step_id, rank, instruction) VALUES (74, 1, 'Heat vegetable oil in a large skillet or wok over medium-high heat.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (75, 2, 'Add minced garlic and stir-fry for 30 seconds until fragrant.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (76, 3, 'Add broccoli, red bell pepper, yellow bell pepper, carrot, zucchini, and snap peas to the skillet.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (77, 4, 'Stir-fry the vegetables for 4-5 minutes until slightly tender but still crisp.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (78, 5, 'Add soy sauce and oyster sauce. Stir well to combine and cook for an additional 2 minutes.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (79, 6, 'Season with salt and pepper to taste.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (80, 7, 'Remove from heat and transfer the vegetable stir-fry to a serving dish.');
+INSERT INTO steps (rank, instruction) VALUES (1, 'Heat vegetable oil in a large skillet or wok over medium-high heat.');
+INSERT INTO steps (rank, instruction) VALUES (2, 'Add minced garlic and stir-fry for 30 seconds until fragrant.');
+INSERT INTO steps (rank, instruction) VALUES (3, 'Add broccoli, red bell pepper, yellow bell pepper, carrot, zucchini, and snap peas to the skillet.');
+INSERT INTO steps (rank, instruction) VALUES (4, 'Stir-fry the vegetables for 4-5 minutes until slightly tender but still crisp.');
+INSERT INTO steps (rank, instruction) VALUES (5, 'Add soy sauce and oyster sauce. Stir well to combine and cook for an additional 2 minutes.');
+INSERT INTO steps (rank, instruction) VALUES (6, 'Season with salt and pepper to your preference.');
+INSERT INTO steps (rank, instruction) VALUES (7, 'Remove from heat and transfer the vegetable stir-fry to a serving dish.');
 
 -- Link Steps to Vegetable Stir-Fry Recipe
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (74, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Vegetable Stir-Fry'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (75, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Vegetable Stir-Fry'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (76, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Vegetable Stir-Fry'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (77, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Vegetable Stir-Fry'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (78, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Vegetable Stir-Fry'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (79, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Vegetable Stir-Fry'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (80, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Vegetable Stir-Fry'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Heat vegetable oil in a large skillet or wok over medium-high heat.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Vegetable Stir-Fry')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Add minced garlic and stir-fry for 30 seconds until fragrant.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Vegetable Stir-Fry')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Add broccoli, red bell pepper, yellow bell pepper, carrot, zucchini, and snap peas to the skillet.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Vegetable Stir-Fry')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Stir-fry the vegetables for 4-5 minutes until slightly tender but still crisp.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Vegetable Stir-Fry')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Add soy sauce and oyster sauce. Stir well to combine and cook for an additional 2 minutes.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Vegetable Stir-Fry')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Season with salt and pepper to your preference.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Vegetable Stir-Fry')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Remove from heat and transfer the vegetable stir-fry to a serving dish.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Vegetable Stir-Fry')
+);
 
 
 
@@ -721,27 +933,63 @@ INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (104, (SELECT 
 INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (105, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Classic Carbonara'));
 INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (106, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Classic Carbonara'));
 
--- Insert Steps for Classic Carbonara Recipe
-INSERT INTO steps (step_id, rank, instruction) VALUES (150, 1, 'Bring a large pot of salted water to a boil. Add spaghetti and cook until al dente, according to the package instructions. Drain the pasta, reserving a cup of pasta water.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (151, 2, 'While the pasta is cooking, heat a large skillet over medium heat. Add diced pancetta or guanciale and cook until crispy and golden brown. Remove from heat and place on paper towels to drain excess fat.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (152, 3, 'In a mixing bowl, whisk together eggs and grated Pecorino Romano cheese until well combined. Season with freshly ground black pepper.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (153, 4, 'In the same skillet used for the pancetta, add minced garlic and sauté for a minute until fragrant.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (154, 5, 'Return the cooked pasta to the skillet with garlic. Toss to combine and heat for a minute.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (155, 6, 'Remove the skillet from heat. Quickly pour the egg and cheese mixture over the pasta, stirring continuously to create a creamy sauce. If needed, add a little reserved pasta water to achieve desired consistency.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (156, 7, 'Add the crispy pancetta (or guanciale) to the pasta, and gently toss to combine.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (157, 8, 'Garnish with chopped fresh parsley.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (158, 9, 'Serve immediately, and enjoy your delicious homemade Carbonara!');
+
+
+INSERT INTO steps (rank, instruction) VALUES (1, 'Bring a large pot of salted water to a boil. Add spaghetti and cook until al dente, according to the package instructions. Drain the pasta, reserving a cup of pasta water.');
+INSERT INTO steps (rank, instruction) VALUES (2, 'While the pasta is cooking, heat a large skillet over medium heat. Add diced pancetta or guanciale and cook until crispy and golden brown. Remove from heat and place on paper towels to drain excess fat.');
+INSERT INTO steps (rank, instruction) VALUES (3, 'In a mixing bowl, whisk together eggs and grated Pecorino Romano cheese until well combined. Season with freshly ground black pepper.');
+INSERT INTO steps (rank, instruction) VALUES (4, 'In the same skillet used for the pancetta, add minced garlic and sauté for a minute until fragrant.');
+INSERT INTO steps (rank, instruction) VALUES (5, 'Return the cooked pasta to the skillet with garlic. Toss to combine and heat for a minute.');
+INSERT INTO steps (rank, instruction) VALUES (6, 'Remove the skillet from heat. Quickly pour the egg and cheese mixture over the pasta, stirring continuously to create a creamy sauce. If needed, add a little reserved pasta water to achieve desired consistency.');
+INSERT INTO steps (rank, instruction) VALUES (7, 'Add the crispy pancetta (or guanciale) to the pasta, and gently toss to combine.');
+INSERT INTO steps (rank, instruction) VALUES (8, 'Garnish with chopped fresh parsley.');
+INSERT INTO steps (rank, instruction) VALUES (9, 'Serve immediately, and enjoy your delicious homemade Carbonara!');
 
 -- Link Steps to Classic Carbonara Recipe
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (150, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Classic Carbonara'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (151, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Classic Carbonara'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (152, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Classic Carbonara'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (153, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Classic Carbonara'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (154, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Classic Carbonara'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (155, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Classic Carbonara'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (156, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Classic Carbonara'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (157, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Classic Carbonara'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (158, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Classic Carbonara'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Bring a large pot of salted water to a boil. Add spaghetti and cook until al dente, according to the package instructions. Drain the pasta, reserving a cup of pasta water.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Classic Carbonara')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'While the pasta is cooking, heat a large skillet over medium heat. Add diced pancetta or guanciale and cook until crispy and golden brown. Remove from heat and place on paper towels to drain excess fat.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Classic Carbonara')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'In a mixing bowl, whisk together eggs and grated Pecorino Romano cheese until well combined. Season with freshly ground black pepper.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Classic Carbonara')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'In the same skillet used for the pancetta, add minced garlic and sauté for a minute until fragrant.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Classic Carbonara')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Return the cooked pasta to the skillet with garlic. Toss to combine and heat for a minute.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Classic Carbonara')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Remove the skillet from heat. Quickly pour the egg and cheese mixture over the pasta, stirring continuously to create a creamy sauce. If needed, add a little reserved pasta water to achieve desired consistency.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Classic Carbonara')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Add the crispy pancetta (or guanciale) to the pasta, and gently toss to combine.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Classic Carbonara')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Garnish with chopped fresh parsley.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Classic Carbonara')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Serve immediately, and enjoy your delicious homemade Carbonara!'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Classic Carbonara')
+);
 
 
 
@@ -782,26 +1030,63 @@ INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (211, (SELECT 
 INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (212, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Green Lentil Soup'));
 INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (213, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Green Lentil Soup'));
 INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (214, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Green Lentil Soup'));
-
 -- Insert Steps for Green Lentil Soup Recipe
-INSERT INTO steps (step_id, rank, instruction) VALUES (300, 1, 'In a large pot, heat olive oil over medium heat. Add chopped onion, carrots, and celery. Sauté until vegetables begin to soften, about 5 minutes.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (301, 2, 'Add minced garlic, ground cumin, ground coriander, ground turmeric, and paprika. Sauté for another 2 minutes until fragrant.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (302, 3, 'Stir in the rinsed green lentils and bay leaf. Season with salt and black pepper.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (303, 4, 'Pour in the vegetable broth and bring the mixture to a boil. Reduce heat, cover, and simmer for 25-30 minutes or until lentils and vegetables are tender.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (304, 5, 'Remove the bay leaf from the soup. Taste and adjust seasoning as needed.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (305, 6, 'Using an immersion blender, partially puree the soup to create a creamy texture while leaving some chunks of vegetables and lentils.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (306, 7, 'Serve hot, garnished with fresh parsley and lemon wedges for a burst of flavor.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (307, 8, 'Enjoy your delicious homemade Green Lentil Soup!');
+INSERT INTO steps (rank, instruction) VALUES 
+(1, 'In a large pot, heat olive oil over medium heat. Add chopped onion, carrots, and celery. Sauté until vegetables begin to soften, about 5 minutes.');
+
+INSERT INTO steps (rank, instruction) VALUES 
+(2, 'Add minced garlic, ground cumin, ground coriander, ground turmeric, and paprika. Sauté for another 2 minutes until fragrant.');
+
+INSERT INTO steps (rank, instruction) VALUES 
+(3, 'Stir in the rinsed green lentils and bay leaf. Season with salt and black pepper.');
+
+INSERT INTO steps (rank, instruction) VALUES 
+(4, 'Pour in the vegetable broth and bring the mixture to a boil. Reduce heat, cover, and simmer for 25-30 minutes or until lentils and vegetables are tender.');
+
+INSERT INTO steps (rank, instruction) VALUES 
+(5, 'Remove the bay leaf from the soup. Taste and adjust seasoning as needed.');
+
+INSERT INTO steps (rank, instruction) VALUES 
+(6, 'Using an immersion blender, partially puree the soup to create a creamy texture while leaving some chunks of vegetables and lentils.');
+
+INSERT INTO steps (rank, instruction) VALUES 
+(7, 'Serve hot, garnished with fresh parsley and lemon wedges for a burst of flavor.');
+
+INSERT INTO steps (rank, instruction) VALUES 
+(8, 'Enjoy your delicious homemade Green Lentil Soup!');
 
 -- Link Steps to Green Lentil Soup Recipe
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (300, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Green Lentil Soup'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (301, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Green Lentil Soup'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (302, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Green Lentil Soup'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (303, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Green Lentil Soup'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (304, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Green Lentil Soup'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (305, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Green Lentil Soup'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (306, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Green Lentil Soup'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (307, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Green Lentil Soup'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES 
+((SELECT step_id FROM steps WHERE instruction = 'In a large pot, heat olive oil over medium heat. Add chopped onion, carrots, and celery. Sauté until vegetables begin to soften, about 5 minutes.'), 
+(SELECT recipe_id FROM recipes WHERE recipe_name = 'Green Lentil Soup'));
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES 
+((SELECT step_id FROM steps WHERE instruction = 'Add minced garlic, ground cumin, ground coriander, ground turmeric, and paprika. Sauté for another 2 minutes until fragrant.'), 
+(SELECT recipe_id FROM recipes WHERE recipe_name = 'Green Lentil Soup'));
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES 
+((SELECT step_id FROM steps WHERE instruction = 'Stir in the rinsed green lentils and bay leaf. Season with salt and black pepper.'), 
+(SELECT recipe_id FROM recipes WHERE recipe_name = 'Green Lentil Soup'));
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES 
+((SELECT step_id FROM steps WHERE instruction = 'Pour in the vegetable broth and bring the mixture to a boil. Reduce heat, cover, and simmer for 25-30 minutes or until lentils and vegetables are tender.'), 
+(SELECT recipe_id FROM recipes WHERE recipe_name = 'Green Lentil Soup'));
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES 
+((SELECT step_id FROM steps WHERE instruction = 'Remove the bay leaf from the soup. Taste and adjust seasoning as needed.'), 
+(SELECT recipe_id FROM recipes WHERE recipe_name = 'Green Lentil Soup'));
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES 
+((SELECT step_id FROM steps WHERE instruction = 'Using an immersion blender, partially puree the soup to create a creamy texture while leaving some chunks of vegetables and lentils.'), 
+(SELECT recipe_id FROM recipes WHERE recipe_name = 'Green Lentil Soup'));
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES 
+((SELECT step_id FROM steps WHERE instruction = 'Serve hot, garnished with fresh parsley and lemon wedges for a burst of flavor.'), 
+(SELECT recipe_id FROM recipes WHERE recipe_name = 'Green Lentil Soup'));
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES 
+((SELECT step_id FROM steps WHERE instruction = 'Enjoy your delicious homemade Green Lentil Soup!'), 
+(SELECT recipe_id FROM recipes WHERE recipe_name = 'Green Lentil Soup'));
 
 
 
@@ -834,38 +1119,71 @@ INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (407, (SELECT 
 INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (408, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Greek Salad Wraps'));
 INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (409, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Greek Salad Wraps'));
 INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (410, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Greek Salad Wraps'));
-
 -- Insert Steps for Greek Salad Wraps Recipe
-INSERT INTO steps (step_id, rank, instruction) VALUES (400, 1, 'In a large bowl, combine cherry tomatoes, cucumber, red onion, Kalamata olives, crumbled feta cheese, and chopped parsley.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (401, 2, 'In a small bowl, whisk together extra-virgin olive oil and red wine vinegar to make the dressing. Season with salt and black pepper.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (402, 3, 'Pour the dressing over the salad mixture and toss to coat all ingredients evenly.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (403, 4, 'Warm the whole-grain tortillas or wraps in a microwave for a few seconds or in a dry skillet.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (404, 5, 'Place half of the Greek salad mixture onto each tortilla or wrap, leaving some space at the edges.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (405, 6, 'Drizzle tzatziki sauce over the salad mixture.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (406, 7, 'Fold the sides of the tortilla in and roll it up tightly, securing the ends.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (407, 8, 'Cut each wrap in half diagonally to serve.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (408, 9, 'Enjoy your delicious and refreshing Greek Salad Wraps!');
+INSERT INTO steps (rank, instruction) VALUES 
+(1, 'In a large bowl, combine cherry tomatoes, cucumber, red onion, Kalamata olives, crumbled feta cheese, and chopped parsley.');
+
+INSERT INTO steps (rank, instruction) VALUES 
+(2, 'In a small bowl, whisk together extra-virgin olive oil and red wine vinegar to make the dressing. Season with salt and black pepper.');
+
+INSERT INTO steps (rank, instruction) VALUES 
+(3, 'Pour the dressing over the salad mixture and toss to coat all ingredients evenly.');
+
+INSERT INTO steps (rank, instruction) VALUES 
+(4, 'Warm the whole-grain tortillas or wraps in a microwave for a few seconds or in a dry skillet.');
+
+INSERT INTO steps (rank, instruction) VALUES 
+(5, 'Place half of the Greek salad mixture onto each tortilla or wrap, leaving some space at the edges.');
+
+INSERT INTO steps (rank, instruction) VALUES 
+(6, 'Drizzle tzatziki sauce over the salad mixture.');
+
+INSERT INTO steps (rank, instruction) VALUES 
+(7, 'Fold the sides of the tortilla in and roll it up tightly, securing the ends.');
+
+INSERT INTO steps (rank, instruction) VALUES 
+(8, 'Cut each wrap in half diagonally to serve.');
+
+INSERT INTO steps (rank, instruction) VALUES 
+(9, 'Enjoy your delicious and refreshing Greek Salad Wraps!');
 
 -- Link Steps to Greek Salad Wraps Recipe
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (400, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Greek Salad Wraps'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (401, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Greek Salad Wraps'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (402, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Greek Salad Wraps'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (403, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Greek Salad Wraps'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (404, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Greek Salad Wraps'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (405, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Greek Salad Wraps'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (406, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Greek Salad Wraps'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (407, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Greek Salad Wraps'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (408, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Greek Salad Wraps'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES 
+((SELECT step_id FROM steps WHERE instruction = 'In a large bowl, combine cherry tomatoes, cucumber, red onion, Kalamata olives, crumbled feta cheese, and chopped parsley.'), 
+(SELECT recipe_id FROM recipes WHERE recipe_name = 'Greek Salad Wraps'));
 
--- -- Link Tags to Greek Salad Wraps Recipe
--- INSERT INTO recipes_tags (tag_id, recipe_id)
--- VALUES ((SELECT tag_id FROM tags WHERE tag = 'vegetarian'), (SELECT recipe_id FROM recipes WHERE recipe_name = 'Greek Salad Wraps'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES 
+((SELECT step_id FROM steps WHERE instruction = 'In a small bowl, whisk together extra-virgin olive oil and red wine vinegar to make the dressing. Season with salt and black pepper.'), 
+(SELECT recipe_id FROM recipes WHERE recipe_name = 'Greek Salad Wraps'));
 
--- INSERT INTO recipes_tags (tag_id, recipe_id)
--- VALUES ((SELECT tag_id FROM tags WHERE tag = 'kosher'), (SELECT recipe_id FROM recipes WHERE recipe_name = 'Greek Salad Wraps'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES 
+((SELECT step_id FROM steps WHERE instruction = 'Pour the dressing over the salad mixture and toss to coat all ingredients evenly.'), 
+(SELECT recipe_id FROM recipes WHERE recipe_name = 'Greek Salad Wraps'));
 
--- INSERT INTO recipes_tags (tag_id, recipe_id)
--- VALUES ((SELECT tag_id FROM tags WHERE tag = 'pescetarian'), (SELECT recipe_id FROM recipes WHERE recipe_name = 'Greek Salad Wraps'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES 
+((SELECT step_id FROM steps WHERE instruction = 'Warm the whole-grain tortillas or wraps in a microwave for a few seconds or in a dry skillet.'), 
+(SELECT recipe_id FROM recipes WHERE recipe_name = 'Greek Salad Wraps'));
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES 
+((SELECT step_id FROM steps WHERE instruction = 'Place half of the Greek salad mixture onto each tortilla or wrap, leaving some space at the edges.'), 
+(SELECT recipe_id FROM recipes WHERE recipe_name = 'Greek Salad Wraps'));
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES 
+((SELECT step_id FROM steps WHERE instruction = 'Drizzle tzatziki sauce over the salad mixture.'), 
+(SELECT recipe_id FROM recipes WHERE recipe_name = 'Greek Salad Wraps'));
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES 
+((SELECT step_id FROM steps WHERE instruction = 'Fold the sides of the tortilla in and roll it up tightly, securing the ends.'), 
+(SELECT recipe_id FROM recipes WHERE recipe_name = 'Greek Salad Wraps'));
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES 
+((SELECT step_id FROM steps WHERE instruction = 'Cut each wrap in half diagonally to serve.'), 
+(SELECT recipe_id FROM recipes WHERE recipe_name = 'Greek Salad Wraps'));
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES 
+((SELECT step_id FROM steps WHERE instruction = 'Enjoy your delicious and refreshing Greek Salad Wraps!'), 
+(SELECT recipe_id FROM recipes WHERE recipe_name = 'Greek Salad Wraps'));
+
 
 
 -- Insert Vegetarian Spring Rolls Recipe
@@ -893,22 +1211,49 @@ INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (505, (SELECT 
 INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (506, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Vegetarian Spring Rolls'));
 INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (507, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Vegetarian Spring Rolls'));
 INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (508, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Vegetarian Spring Rolls'));
-
 -- Insert Steps for Vegetarian Spring Rolls Recipe
-INSERT INTO steps (step_id, rank, instruction) VALUES (500, 1, 'Fill a large bowl with warm water. Dip one rice paper wrapper into the water for a few seconds until it softens.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (501, 2, 'Lay the softened wrapper flat on a clean surface.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (502, 3, 'Place a small amount of shredded lettuce, carrots, cucumber, bean sprouts, fresh mint leaves, and fresh cilantro leaves in the center of the wrapper.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (503, 4, 'Fold the sides of the wrapper over the filling, then roll up tightly from the bottom to enclose the filling, like a burrito.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (504, 5, 'Repeat with the remaining wrappers and filling ingredients.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (505, 6, 'Serve the vegetarian spring rolls with peanut dipping sauce on the side.');
+INSERT INTO steps (rank, instruction) VALUES 
+(1, 'Fill a large bowl with warm water. Dip one rice paper wrapper into the water for a few seconds until it softens.');
+
+INSERT INTO steps (rank, instruction) VALUES 
+(2, 'Lay the softened wrapper flat on a clean surface.');
+
+INSERT INTO steps (rank, instruction) VALUES 
+(3, 'Place a small amount of shredded lettuce, carrots, cucumber, bean sprouts, fresh mint leaves, and fresh cilantro leaves in the center of the wrapper.');
+
+INSERT INTO steps (rank, instruction) VALUES 
+(4, 'Fold the sides of the wrapper over the filling, then roll up tightly from the bottom to enclose the filling, like a burrito.');
+
+INSERT INTO steps (rank, instruction) VALUES 
+(5, 'Repeat with the remaining wrappers and filling ingredients.');
+
+INSERT INTO steps (rank, instruction) VALUES 
+(6, 'Serve the vegetarian spring rolls with peanut dipping sauce on the side.');
 
 -- Link Steps to Vegetarian Spring Rolls Recipe
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (500, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Vegetarian Spring Rolls'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (501, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Vegetarian Spring Rolls'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (502, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Vegetarian Spring Rolls'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (503, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Vegetarian Spring Rolls'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (504, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Vegetarian Spring Rolls'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (505, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Vegetarian Spring Rolls'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES 
+((SELECT step_id FROM steps WHERE instruction = 'Fill a large bowl with warm water. Dip one rice paper wrapper into the water for a few seconds until it softens.'), 
+(SELECT recipe_id FROM recipes WHERE recipe_name = 'Vegetarian Spring Rolls'));
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES 
+((SELECT step_id FROM steps WHERE instruction = 'Lay the softened wrapper flat on a clean surface.'), 
+(SELECT recipe_id FROM recipes WHERE recipe_name = 'Vegetarian Spring Rolls'));
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES 
+((SELECT step_id FROM steps WHERE instruction = 'Place a small amount of shredded lettuce, carrots, cucumber, bean sprouts, fresh mint leaves, and fresh cilantro leaves in the center of the wrapper.'), 
+(SELECT recipe_id FROM recipes WHERE recipe_name = 'Vegetarian Spring Rolls'));
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES 
+((SELECT step_id FROM steps WHERE instruction = 'Fold the sides of the wrapper over the filling, then roll up tightly from the bottom to enclose the filling, like a burrito.'), 
+(SELECT recipe_id FROM recipes WHERE recipe_name = 'Vegetarian Spring Rolls'));
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES 
+((SELECT step_id FROM steps WHERE instruction = 'Repeat with the remaining wrappers and filling ingredients.'), 
+(SELECT recipe_id FROM recipes WHERE recipe_name = 'Vegetarian Spring Rolls'));
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES 
+((SELECT step_id FROM steps WHERE instruction = 'Serve the vegetarian spring rolls with peanut dipping sauce on the side.'), 
+(SELECT recipe_id FROM recipes WHERE recipe_name = 'Vegetarian Spring Rolls'));
 
 
 -- Insert Chocolate Cheesecake Recipe
@@ -938,26 +1283,62 @@ INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (607, (SELECT 
 INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (608, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Chocolate Cheesecake'));
 
 -- Insert Steps for Chocolate Cheesecake Recipe
-INSERT INTO steps (step_id, rank, instruction) VALUES (600, 1, 'Preheat your oven to 325*F (160*C).');
-INSERT INTO steps (step_id, rank, instruction) VALUES (601, 2, 'In a bowl, mix the chocolate cookie crumbs and melted butter. Press this mixture firmly into the bottom of a 9-inch (23cm) springform pan.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (602, 3, 'In a large bowl, beat the cream cheese until smooth and creamy.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (603, 4, 'Add granulated sugar and cocoa powder to the cream cheese and beat until well combined.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (604, 5, 'Add eggs one at a time, mixing well after each addition.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (605, 6, 'Stir in the heavy cream and vanilla extract.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (606, 7, 'Pour the cheesecake batter into the prepared crust.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (607, 8, 'Sprinkle chocolate chips evenly over the top.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (608, 9, 'Bake in the preheated oven for 45-50 minutes, or until the edges are set but the center is slightly jiggly.');
+INSERT INTO steps (rank, instruction) VALUES (1, 'Preheat your oven to 325*F (160*C).');
+INSERT INTO steps (rank, instruction) VALUES (2, 'In a bowl, combine the chocolate cookie crumbs and melted butter. Press this mixture firmly into the bottom of a 9-inch (23cm) springform pan.');
+INSERT INTO steps (rank, instruction) VALUES (3, 'In a large bowl, beat the cream cheese until smooth and creamy.');
+INSERT INTO steps (rank, instruction) VALUES (4, 'Add granulated sugar and cocoa powder to the cream cheese and beat until well combined.');
+INSERT INTO steps (rank, instruction) VALUES (5, 'Add eggs one at a time, mixing well after each addition.');
+INSERT INTO steps (rank, instruction) VALUES (6, 'Stir in the heavy cream and vanilla extract.');
+INSERT INTO steps (rank, instruction) VALUES (7, 'Pour the cheesecake batter into the prepared crust.');
+INSERT INTO steps (rank, instruction) VALUES (8, 'Sprinkle chocolate chips evenly over the top.');
+INSERT INTO steps (rank, instruction) VALUES (9, 'Bake in the preheated oven for 45-50 minutes, or until the edges are set but the center is slightly jiggly.');
 
 -- Link Steps to Chocolate Cheesecake Recipe
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (600, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Chocolate Cheesecake'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (601, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Chocolate Cheesecake'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (602, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Chocolate Cheesecake'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (603, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Chocolate Cheesecake'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (604, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Chocolate Cheesecake'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (605, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Chocolate Cheesecake'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (606, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Chocolate Cheesecake'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (607, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Chocolate Cheesecake'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (608, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Chocolate Cheesecake'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Preheat your oven to 325*F (160*C).'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Chocolate Cheesecake')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'In a bowl, combine the chocolate cookie crumbs and melted butter. Press this mixture firmly into the bottom of a 9-inch (23cm) springform pan.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Chocolate Cheesecake')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'In a large bowl, beat the cream cheese until smooth and creamy.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Chocolate Cheesecake')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Add granulated sugar and cocoa powder to the cream cheese and beat until well combined.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Chocolate Cheesecake')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Add eggs one at a time, mixing well after each addition.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Chocolate Cheesecake')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Stir in the heavy cream and vanilla extract.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Chocolate Cheesecake')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Pour the cheesecake batter into the prepared crust.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Chocolate Cheesecake')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Sprinkle chocolate chips evenly over the top.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Chocolate Cheesecake')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Bake in the preheated oven for 45-50 minutes, or until the edges are set but the center is slightly jiggly.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Chocolate Cheesecake')
+);
+
 
 
 
@@ -988,26 +1369,64 @@ INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (707, (SELECT 
 INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (708, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Peach Cobbler'));
 
 -- Insert Steps for Peach Cobbler Recipe
-INSERT INTO steps (step_id, rank, instruction) VALUES (700, 1, 'Preheat your oven to 350*F (175*C).');
-INSERT INTO steps (step_id, rank, instruction) VALUES (701, 2, 'In a saucepan, melt the butter over low heat.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (702, 3, 'In a mixing bowl, combine the flour, sugar, baking powder, and salt.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (703, 4, 'Stir in the milk and vanilla extract until the batter is smooth.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (704, 5, 'Pour the melted butter into a 9x13-inch (23x33cm) baking dish.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (705, 6, 'Pour the batter over the melted butter in the baking dish. Do not stir.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (706, 7, 'Distribute the sliced peaches evenly over the batter. Do not stir.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (707, 8, 'Sprinkle ground cinnamon on top if desired.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (708, 9, 'Bake for 45-50 minutes or until the cobbler is golden brown and bubbling.');
+INSERT INTO steps (rank, instruction) VALUES (1, 'Preheat your oven to 350*F (175*C).');
+INSERT INTO steps (rank, instruction) VALUES (2, 'In a saucepan, melt the butter over low heat.');
+INSERT INTO steps (rank, instruction) VALUES (3, 'In a mixing bowl, combine the flour, sugar, baking powder, and salt.');
+INSERT INTO steps (rank, instruction) VALUES (4, 'Stir in the milk and vanilla extract until the batter is smooth.');
+INSERT INTO steps (rank, instruction) VALUES (5, 'Pour the melted butter into a 9x13-inch (23x33cm) baking dish.');
+INSERT INTO steps (rank, instruction) VALUES (6, 'Pour the batter over the melted butter in the baking dish. Do not stir.');
+INSERT INTO steps (rank, instruction) VALUES (7, 'Distribute the sliced peaches evenly over the batter. Do not stir.');
+INSERT INTO steps (rank, instruction) VALUES (8, 'Sprinkle ground cinnamon on top if desired.');
+INSERT INTO steps (rank, instruction) VALUES (9, 'Bake for 45-50 minutes or until the cobbler is golden brown and bubbling.');
 
 -- Link Steps to Peach Cobbler Recipe
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (700, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Peach Cobbler'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (701, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Peach Cobbler'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (702, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Peach Cobbler'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (703, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Peach Cobbler'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (704, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Peach Cobbler'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (705, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Peach Cobbler'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (706, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Peach Cobbler'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (707, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Peach Cobbler'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (708, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Peach Cobbler'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Preheat your oven to 350*F (175*C).'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Peach Cobbler')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'In a saucepan, melt the butter over low heat.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Peach Cobbler')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'In a mixing bowl, combine the flour, sugar, baking powder, and salt.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Peach Cobbler')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Stir in the milk and vanilla extract until the batter is smooth.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Peach Cobbler')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Pour the melted butter into a 9x13-inch (23x33cm) baking dish.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Peach Cobbler')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Pour the batter over the melted butter in the baking dish. Do not stir.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Peach Cobbler')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Distribute the sliced peaches evenly over the batter. Do not stir.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Peach Cobbler')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Sprinkle ground cinnamon on top if desired.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Peach Cobbler')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Bake for 45-50 minutes or until the cobbler is golden brown and bubbling.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Peach Cobbler')
+);
+
+
+
 
 -- Insert French Toast Recipe
 INSERT INTO recipes (creator_id, recipe_name, image_url, description, serving_size, keywords, is_featured, is_published)
@@ -1034,26 +1453,57 @@ INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (805, (SELECT 
 INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (806, (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Toast'));
 INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (807, (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Toast'));
 INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (808, (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Toast'));
-
 -- Insert Steps for French Toast Recipe
-INSERT INTO steps (step_id, rank, instruction) VALUES (800, 1, 'In a shallow bowl, whisk together eggs, milk, vanilla extract, ground cinnamon (if using), and a pinch of salt.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (801, 2, 'Heat a non-stick skillet or griddle over medium-high heat and add 1 tablespoon of butter to melt.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (802, 3, 'Dip each slice of bread into the egg mixture, allowing it to soak for a few seconds on each side.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (803, 4, 'Place the dipped bread slices onto the hot skillet or griddle.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (804, 5, 'Cook until both sides are golden brown and crisp, about 3-4 minutes per side.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (805, 6, 'Remove the French toast from the skillet and keep warm.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (806, 7, 'Repeat with the remaining slices of bread, adding more butter to the skillet as needed.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (807, 8, 'Serve the French toast hot with maple syrup and fresh berries, if desired.');
+INSERT INTO steps (rank, instruction) VALUES (1, 'In a shallow bowl, whisk together eggs, milk, vanilla extract, ground cinnamon (if using), and a pinch of salt.');
+INSERT INTO steps (rank, instruction) VALUES (2, 'Heat a non-stick skillet or griddle over medium-high heat and add 1 tablespoon of butter to melt.');
+INSERT INTO steps (rank, instruction) VALUES (3, 'Dip each slice of bread into the egg mixture, allowing it to soak for a few seconds on each side.');
+INSERT INTO steps (rank, instruction) VALUES (4, 'Place the dipped bread slices onto the hot skillet or griddle.');
+INSERT INTO steps (rank, instruction) VALUES (5, 'Cook until both sides are golden brown and crisp, about 3-4 minutes per side.');
+INSERT INTO steps (rank, instruction) VALUES (6, 'Remove the French toast from the skillet and keep warm.');
+INSERT INTO steps (rank, instruction) VALUES (7, 'Repeat with the remaining slices of bread, adding more butter to the skillet as needed.');
+INSERT INTO steps (rank, instruction) VALUES (8, 'Serve the French toast hot with maple syrup and fresh berries, if desired.');
 
 -- Link Steps to French Toast Recipe
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (800, (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Toast'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (801, (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Toast'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (802, (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Toast'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (803, (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Toast'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (804, (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Toast'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (805, (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Toast'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (806, (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Toast'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (807, (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Toast'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'In a shallow bowl, whisk together eggs, milk, vanilla extract, ground cinnamon (if using), and a pinch of salt.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Toast')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Heat a non-stick skillet or griddle over medium-high heat and add 1 tablespoon of butter to melt.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Toast')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Dip each slice of bread into the egg mixture, allowing it to soak for a few seconds on each side.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Toast')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Place the dipped bread slices onto the hot skillet or griddle.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Toast')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Cook until both sides are golden brown and crisp, about 3-4 minutes per side.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Toast')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Remove the French toast from the skillet and keep warm.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Toast')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Repeat with the remaining slices of bread, adding more butter to the skillet as needed.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Toast')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Serve the French toast hot with maple syrup and fresh berries, if desired.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Toast')
+);
+
 
 
 
@@ -1082,30 +1532,68 @@ INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (905, (SELECT 
 INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (906, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Sugar Cookies'));
 INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (907, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Sugar Cookies'));
 INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (908, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Sugar Cookies'));
-
 -- Insert Steps for Sugar Cookies Recipe
-INSERT INTO steps (step_id, rank, instruction) VALUES (900, 1, 'In a medium-sized bowl, whisk together the flour, baking soda, and baking powder. Set aside.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (901, 2, 'In a large mixing bowl, cream together the softened butter and granulated sugar until light and fluffy.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (902, 3, 'Add the egg and vanilla extract to the butter-sugar mixture, and beat until well combined.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (903, 4, 'Gradually add the dry ingredients to the wet ingredients, mixing until a dough forms. If the dough is too dry, add 3-4 tablespoons of milk to achieve the right consistency.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (904, 5, 'Divide the dough into two equal portions, shape each into a disk, wrap them in plastic wrap, and refrigerate for at least 1 hour or until firm.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (905, 6, 'Preheat your oven to 350*F (180*C) and line baking sheets with parchment paper.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (906, 7, 'On a floured surface, roll out one of the dough disks to about 1/4 inch (0.6 cm) thickness. Use cookie cutters to cut out shapes, and transfer them to the prepared baking sheets.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (907, 8, 'Bake in the preheated oven for 8-10 minutes or until the edges are just beginning to turn golden.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (908, 9, 'Allow the cookies to cool on the baking sheets for a few minutes before transferring them to wire racks to cool completely.');
-INSERT INTO steps (step_id, rank, instruction) VALUES (909, 10, 'Once the cookies are completely cooled, you can decorate them with icing, sprinkles, or any other toppings of your choice.');
+INSERT INTO steps (rank, instruction) VALUES (1, 'In a medium-sized bowl, whisk together the flour, baking soda, and baking powder. Set aside.');
+INSERT INTO steps (rank, instruction) VALUES (2, 'In a large mixing bowl, cream together the softened butter and granulated sugar until light and fluffy.');
+INSERT INTO steps (rank, instruction) VALUES (3, 'Add the egg and vanilla extract to the butter-sugar mixture, and beat until well combined.');
+INSERT INTO steps (rank, instruction) VALUES (4, 'Gradually add the dry ingredients to the wet ingredients, mixing until a dough forms. If the dough is too dry, add 3-4 tablespoons of milk to achieve the right consistency.');
+INSERT INTO steps (rank, instruction) VALUES (5, 'Divide the dough into two equal portions, shape each into a disk, wrap them in plastic wrap, and refrigerate for at least 1 hour or until firm.');
+INSERT INTO steps (rank, instruction) VALUES (6, 'Preheat your oven to 350*F (180*C) and line baking sheets with parchment paper.');
+INSERT INTO steps (rank, instruction) VALUES (7, 'On a floured surface, roll out one of the dough disks to about 1/4 inch (0.6 cm) thickness. Use cookie cutters to cut out shapes, and transfer them to the prepared baking sheets.');
+INSERT INTO steps (rank, instruction) VALUES (8, 'Bake in the preheated oven for 8-10 minutes or until the edges are just beginning to turn golden.');
+INSERT INTO steps (rank, instruction) VALUES (9, 'Allow the cookies to cool on the baking sheets for a few minutes before transferring them to wire racks to cool completely.');
+INSERT INTO steps (rank, instruction) VALUES (10, 'Once the cookies are completely cooled, you can decorate them with icing, sprinkles, or any other toppings of your choice.');
 
 -- Link Steps to Sugar Cookies Recipe
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (900, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Sugar Cookies'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (901, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Sugar Cookies'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (902, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Sugar Cookies'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (903, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Sugar Cookies'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (904, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Sugar Cookies'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (905, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Sugar Cookies'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (906, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Sugar Cookies'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (907, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Sugar Cookies'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (908, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Sugar Cookies'));
-INSERT INTO steps_recipes (step_id, recipe_id) VALUES (909, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Sugar Cookies'));
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'In a medium-sized bowl, whisk together the flour, baking soda, and baking powder. Set aside.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Sugar Cookies')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'In a large mixing bowl, cream together the softened butter and granulated sugar until light and fluffy.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Sugar Cookies')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Add the egg and vanilla extract to the butter-sugar mixture, and beat until well combined.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Sugar Cookies')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Gradually add the dry ingredients to the wet ingredients, mixing until a dough forms. If the dough is too dry, add 3-4 tablespoons of milk to achieve the right consistency.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Sugar Cookies')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Divide the dough into two equal portions, shape each into a disk, wrap them in plastic wrap, and refrigerate for at least 1 hour or until firm.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Sugar Cookies')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Preheat your oven to 350*F (180*C) and line baking sheets with parchment paper.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Sugar Cookies')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'On a floured surface, roll out one of the dough disks to about 1/4 inch (0.6 cm) thickness. Use cookie cutters to cut out shapes, and transfer them to the prepared baking sheets.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Sugar Cookies')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Bake in the preheated oven for 8-10 minutes or until the edges are just beginning to turn golden.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Sugar Cookies')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Allow the cookies to cool on the baking sheets for a few minutes before transferring them to wire racks to cool completely.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Sugar Cookies')
+);
+
+INSERT INTO steps_recipes (step_id, recipe_id) VALUES (
+  (SELECT step_id FROM steps WHERE instruction = 'Once the cookies are completely cooled, you can decorate them with icing, sprinkles, or any other toppings of your choice.'),
+  (SELECT recipe_id FROM recipes WHERE recipe_name = 'Sugar Cookies')
+);
 
 
 COMMIT TRANSACTION;
