@@ -26,5 +26,7 @@ public interface RecipeDao {
     String getCreatorUsernameByRecipeId(int recipeId);
     List<Recipe> getListOfRecipeByTagId(int tag_id);
     Recipe setFeaturedRecipe(Recipe recipe);
+    Recipe unsetFeaturedRecipe(Recipe recipe);
+
 
 }

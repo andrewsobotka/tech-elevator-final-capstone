@@ -52,10 +52,22 @@ public class  RecipeController {
     }
 
     @RequestMapping(path = "/recipes/{recipeId}/featured",method = RequestMethod.PUT)
-    public Recipe update(@Valid @RequestBody Recipe recipe, @PathVariable int recipeId) {
+    public Recipe updateFeatured(@Valid @RequestBody Recipe recipe, @PathVariable int recipeId) {
         recipe.setRecipeId(recipeId);
         try {
             Recipe updatedRecipe = recipeDao.setFeaturedRecipe(recipe);
+            return updatedRecipe;
+
+        } catch (DaoException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, " Recipe not found");
+        }
+    }
+
+    @RequestMapping(path = "/recipes/{recipeId}/unfeatured",method = RequestMethod.PUT)
+    public Recipe updateUnFeatured(@Valid @RequestBody Recipe recipe, @PathVariable int recipeId) {
+        recipe.setRecipeId(recipeId);
+        try {
+            Recipe updatedRecipe = recipeDao.unsetFeaturedRecipe(recipe);
             return updatedRecipe;
 
         } catch (DaoException e) {
