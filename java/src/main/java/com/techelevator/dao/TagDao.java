@@ -11,7 +11,6 @@ public interface TagDao {
     List<Tag> getAllTags();
 
     Integer createRecipesTagsRowForNewRecipe(Tag tag, int recipe_id);
-
     Integer createTag(Tag tag);
 
     boolean updateTag(Integer tagId, Tag tag);

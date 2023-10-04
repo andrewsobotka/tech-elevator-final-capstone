@@ -58,9 +58,9 @@
           v-for="(step, index) in currentRecipe.steps"
           v-bind:key="index"
         >
-          Step {{ step.rank }}:
+         <b> Step {{ step.rank }}:</b>
           {{ step.instruction }}
-        </li>
+        </li> 
       </ol>
       <div class="button-container">
       <router-link
@@ -252,7 +252,7 @@ h3 {
 }
 
 .ingredients li:nth-child(even){
-  color: rgb(32, 156, 15);
+  color: rgb(28, 124, 15);
 }
 
 
@@ -271,6 +271,10 @@ h3 {
   max-width: 30rem;
 }
 
+.steps{
+  margin: 11px 0;
+  border-bottom: #999 1px solid;
+}
 .steps-btn {
   font-family: "Montserrat", sans-serif;
   background: rgb(57, 82, 76);
@@ -280,12 +284,14 @@ h3 {
   font-size: 1rem;
   padding: 1.4%;
   float: right;
-  margin: 0rem 0rem;
+  position: relative;
+  /* top: 30px; */
   transition: ease-in 0.4s;
 }
 
 .steps-btn:hover {
-  background: #883410;
+  background: #dd8902;
+  border: 1px solid rgb(129, 82, 10);
   /* background-image: url('https://t4.ftcdn.net/jpg/02/87/02/71/240_F_287027124_R2xwyI2l2ncGKFqy6JF3Izaue1xEWfMn.jpg'); */
   transition: ease-out 0.3s;
 }
