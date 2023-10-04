@@ -1,12 +1,15 @@
 package com.techelevator.controller;
 
 import com.techelevator.dao.RecipeDao;
+import com.techelevator.exception.DaoException;
 import com.techelevator.model.Recipe;
 import com.techelevator.service.RecipeService;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
+import javax.validation.Valid;
 import java.security.Principal;
 import java.util.List;
 
@@ -47,6 +50,19 @@ public class  RecipeController {
     public List<Recipe> getFeaturedRecipes() {
         return recipeDao.getFeaturedRecipesByRecipeId();
     }
+
+    @RequestMapping(path = "/recipes/{recipeId}/featured",method = RequestMethod.PUT)
+    public Recipe update(@Valid @RequestBody Recipe recipe, @PathVariable int recipeId) {
+        recipe.setRecipeId(recipeId);
+        try {
+            Recipe updatedRecipe = recipeDao.setFeaturedRecipe(recipe);
+            return updatedRecipe;
+
+        } catch (DaoException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, " Recipe not found");
+        }
+    }
+
     @GetMapping("/import")
     public Recipe getImportedRecipe(@RequestParam String url) {
         return recipeService.importRecipe(url);

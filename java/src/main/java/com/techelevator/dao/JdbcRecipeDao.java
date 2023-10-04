@@ -94,6 +94,29 @@ public class JdbcRecipeDao implements RecipeDao {
     }
 
     @Override
+    public Recipe setFeaturedRecipe(Recipe recipe){
+
+        Recipe updatedRecipe = null;
+
+        String sql = "UPDATE recipes " +
+                "SET is_featured = ? " +
+                "WHERE recipe_id = ?;";
+        try {
+            int rowsAffected = jdbcTemplate.update(sql, recipe.isFeatured(), recipe.getRecipeId());
+            if (rowsAffected == 0) {
+                throw new DaoException("Zero rows affected, expected at least one");
+            }
+            updatedRecipe = getRecipeByRecipeId(recipe.getRecipeId());
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data integrity violation", e);
+        }
+
+        return updatedRecipe;
+    }
+
+    @Override
     public List<Recipe> getRecipesByKeyWords(String keywords) {           //Display Recipes from user input keywords
 
         List<Recipe> recipes = new ArrayList<>();
