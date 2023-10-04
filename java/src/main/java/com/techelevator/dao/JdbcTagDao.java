@@ -37,6 +37,7 @@ public class JdbcTagDao implements TagDao {
         }
         return tags;
     }
+
     @Override
     public List<Tag> getAllTags() {
         List<Tag> tags = new ArrayList<>();

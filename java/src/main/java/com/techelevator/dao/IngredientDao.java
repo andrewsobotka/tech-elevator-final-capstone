@@ -16,4 +16,6 @@ public interface IngredientDao {
 
     int deleteIngredientByIngredientId(int ingredient_id);
 
+    List<Ingredient> getListOfIngredientByTagId(int tag_id);
+
 }

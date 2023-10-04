@@ -53,6 +53,24 @@ public class JdbcStepDao implements StepDao{
         return steps;
     }
 
+    @Override
+    public List<Step> getStepsByTagId(int tag_id) {
+        List<Step> steps = new ArrayList<>();
+
+        String sql = "SELECT * from steps " +
+                "join steps_recipes on steps.step_id = steps_recipes.step_id " +
+                "join recipes_tags on steps_recipes.recipe_id = recipes_tags.recipe_id " +
+                "where tag_id = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, tag_id);
+        while (results.next()) {
+            Step step = mapRowToStep(results);
+            steps.add(step);
+        }
+
+        return steps;
+
+    }
+
     //Create a new step
     @Override
     public Integer createStep(Step step) {

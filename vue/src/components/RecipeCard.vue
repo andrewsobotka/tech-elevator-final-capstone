@@ -4,8 +4,7 @@
       
          <!-- Use the <favorite> component to toggle favorited state -->
         <FavoriteIcon :recipe="recipe" v-bind:value="recipe"
-        
-         @toggle-favorites="toggleFavorites" :class="{favorite:recipe.favorite, notFavorite: !recipe.favorite}" />
+         @toggle-favorites="handleToggleFavorites" :class="{favorite:recipe.favorite, notFavorite: !recipe.favorite}" />
 
       <router-link
         v-bind:to="{ name: 'recipe', params: { id: recipe.recipeId } }"
@@ -66,8 +65,24 @@ export default {
     toggleFavorites() {
             this.$store.commit('FLIP_FAVORITE', this.recipe);
     },
-    addToFavorited(recipe){
-      this.$store.commit('ADD_TO_LIBRARY', recipe)
+    handleToggleFavorites() {
+      // Check the class of the FavoriteIcon component
+      if (this.recipe.favorite) {
+        // The 'favorite' class is present, perform method A
+        this.unbookmarkRecipe();
+      } else {
+        // The 'notFavorite' class is present, perform method B
+        this.bookMarkRecipe();
+      }
+      // Toggle the 'favorite' property of the recipe (assuming it's a Boolean)
+      this.toggleFavorites();
+    },
+    bookMarkRecipe(){
+      this.$store.commit('ADD_TO_LIBRARY', this.recipe);
+    },
+    unbookmarkRecipe(){
+
+      this.$store.commit('DELETE_FROM_LIBRARY', this.recipe.recipeId);
     }
 
   },
