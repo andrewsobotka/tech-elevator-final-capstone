@@ -26,7 +26,7 @@
                 type="text"
                 v-model="$store.state.groceryList[index].item"
               />
-              <p>for</p>
+              <p> &emsp;  for &emsp;  </p>
               <input
                 id="textbox"
                 type="text"
@@ -34,6 +34,7 @@
               />
               </div>
               <br />
+<<<<<<< HEAD
               <div>
               <div
                 id="line"
@@ -43,6 +44,9 @@
               </div>
                 <br />
               </div>
+=======
+
+>>>>>>> f3d176352a620297788b599d5aee9db7c742728c
             </li>
           </ul>
         </form>
@@ -143,7 +147,13 @@ li {
   font-size: 1rem;
   background: #fff;
   display: flex;
+  font-family: 'Montserrat', sans-serif;
+  border-bottom: 1px solid #333;
 
+}
+
+li :nth-last-child(1){
+  border:none;
 }
 
 ul {
@@ -155,14 +165,7 @@ ul {
   margin-right: 3%;
 }
 
-div #line {
-  width: 100%;
-  border-top: #333, 1px;
-  height: 1px;
-  background: black;
-  margin-top: 2%;
-  margin-bottom: 2%;
-}
+
 
 #button-container-2 {
   display: flex;
@@ -192,6 +195,16 @@ background: rgb(241, 193, 89);
   margin: 0px;
 }
 
+li{
+  display: flex;
+  flex-direction: column;
+
+}
+
+input[type=text] {
+  width: 100%;
+ flex-grow: 1;
+}
 #list-container {
   display: flex;
   justify-content: center;
@@ -199,6 +212,9 @@ background: rgb(241, 193, 89);
   left: 30px;
 }
 
+p{
+  margin: 0 5px;
+}
 .delete-btn {
   margin-top: 0px;
   background: rgb(206, 74, 74);

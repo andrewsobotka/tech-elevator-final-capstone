@@ -9,7 +9,7 @@
         <ul>
             <li v-for="(item,index) in $store.state.groceryList" v-bind:key="index" :class="isChecked()?'checked':'unchecked'">
                 <input id= "check" type="checkbox" v-bind:key="index" v-bind:value="index" v-on:click="isChecked()"/>
-                <b>{{item.item}} </b> for {{item.recipeName}} 
+                <b>{{item.item}}</b> for <b>{{item.recipeName}}</b> <br/>
                 <div id = "line" v-if="index != $store.state.groceryList.length-1"><br></div>
             </li>
        
@@ -84,6 +84,8 @@ li {
   font-size: 1rem;
   background: #fff;
   margin-right: 20%;
+font-family: 'Montserrat', sans-serif;
+line-height: 1.5rem;
 }
 
 ul {
