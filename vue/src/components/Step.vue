@@ -10,6 +10,7 @@
 </template>
 
 <script>
+import APIService from "../services/APIService.js";
 
 export default {
   name: "Steps",
@@ -21,7 +22,7 @@ export default {
   },
   methods: {
     nextStep(){
-        return "/recipe/" + this.$route.params.id+ "/steps/" + (Number(this.$route.params.rank) +1);
+        return "/recipes/" + this.$route.params.id+ "/steps/" + (Number(this.$route.params.rank) +1);
     }
     
     
@@ -32,6 +33,13 @@ export default {
       },
       
       
+      
+  },
+    created() {
+        APIService.getRecipe(this.$route.params.id)
+      .then((response) => {
+        this.$store.commit("SET_RECIPE", response.data);
+    });
   },
 
   

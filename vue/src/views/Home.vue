@@ -42,7 +42,7 @@ export default {
   created(){
     APIService.getRecipes().then(response => {
       this.$store.commit('SET_RECIPES', response.data)
-    })
+    });
     APIService.getRecipesByFeatured().then(response=>{
       this.$store.commit('SET_FEATURED', response.data)
     }

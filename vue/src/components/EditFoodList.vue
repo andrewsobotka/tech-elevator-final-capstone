@@ -11,7 +11,9 @@
             <li
               v-for="(item, index) in $store.state.groceryList"
               v-bind:key="index"
+              
             >
+            <div id="rowContainer">
               <input
                 id="check"
                 type="checkbox"
@@ -22,8 +24,16 @@
               <input
                 id="textbox"
                 type="text"
-                v-model="$store.state.groceryList[index]"
+                v-model="$store.state.groceryList[index].item"
               />
+              <p>for</p>
+              <input
+                id="textbox"
+                type="text"
+                v-model="$store.state.groceryList[index].recipeName"
+              />
+              </div>
+              <br />
 
               <div
                 id="line"
@@ -130,12 +140,12 @@ li {
   list-style: none;
   font-size: 1rem;
   background: #fff;
-  margin-right: 20%;
+  display: flex;
 
 }
 
 ul {
-  width: 35rem;
+  width: 40rem;
   background: #fff;
 }
 
@@ -212,6 +222,13 @@ background: rgb(241, 193, 89);
 }
 
 #textbox {
-  width: 25rem;
+  width: 8rem;
+}
+p{
+  width:1rem;
+}
+
+#rowContainer{
+  display: flex;
 }
 </style>
