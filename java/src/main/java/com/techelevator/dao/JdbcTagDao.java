@@ -69,7 +69,7 @@ public class JdbcTagDao implements TagDao {
 
     @Override
     public int getTagIdByTag(String tag) {
-        String sql = "select tag_id from tags where tag = ?;";
+        String sql = "select tag_id from tags where tag = ?";
         int tagId;
         try {
             tagId = jdbcTemplate.queryForObject(sql, Integer.class, tag);
@@ -117,7 +117,7 @@ public class JdbcTagDao implements TagDao {
         String sql = "INSERT INTO recipes_tags (tag_id, recipe_id) " +
                 "VALUES (?,?);";
 
-        int existingTagId = getTagIdByTag(tag.getTag());                        //get the tagId of the user selected tag
+        int existingTagId = getTagIdByTag(tag.getTag());
 
         jdbcTemplate.update(sql, existingTagId, recipe_id);
 

@@ -85,7 +85,6 @@ public class RecipeService {
             }
         }
 
-        //add new rows to ing table for this new recipe
         if(recipe.getIngredients() != null) {
             for (Ingredient ingredient : recipe.getIngredients()) {
                 int ingredientId = ingredientDao.createIngredientForRecipe(ingredient, recipeId);
