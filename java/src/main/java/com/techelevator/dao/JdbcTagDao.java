@@ -110,7 +110,7 @@ public class JdbcTagDao implements TagDao {
     }
 
     @Override
-    public Integer createRecipesTagsRowForNewRecipe(Tag tag, int recipe_id) {
+    public Integer createRecipesTagsRowForNewRecipe(Tag tag, int recipe_id) {               //new method
 
         String sql = "INSERT INTO recipes_tags (tag_id, recipe_id) " +
                 "VALUES (?,?);";
