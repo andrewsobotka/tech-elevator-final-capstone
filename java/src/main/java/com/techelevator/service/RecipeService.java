@@ -89,6 +89,8 @@ public class RecipeService {
 
     }
 
-
-
+    // Get the Creator Username by Recipe Id
+    public String getCreatorUsernameByRecipeId(int recipeId) {
+        return recipeDao.getCreatorUsernameByRecipeId(recipeId);
+    }
 }

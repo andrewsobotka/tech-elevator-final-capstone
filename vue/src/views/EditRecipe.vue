@@ -1,7 +1,8 @@
 <template>
   <div id="container">
       <div>
-      <EditRecipeForm/>
+      <EditRecipeForm/><br/>
+      
       </div>
   </div>
 </template>

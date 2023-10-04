@@ -1,7 +1,13 @@
 <template>
+<div class="fullpage">
+   <div class="backButton">  <backButton/>
+        </div>
   <div class="container">
     <form id="addNewRecipe" v-on:submit.prevent="createNewRecipe">
+    
       <div>
+
+       
         <h3>Edit Recipe</h3>
       </div>
       <div class="field">
@@ -139,13 +145,17 @@
       </div>
     </form>
   </div>
+  </div>
 </template>
 
 <script>
 import APIService from "../services/APIService.js";
+import backButton from './backButton.vue';
+
 export default {
   data() {
     return {
+      listOfTags:[],
       currentValue: 0,
       indexOfSteps: [],
       indexOfIngredients: [],
@@ -155,6 +165,9 @@ export default {
         tags: [],
       },
     };
+  },
+  components:{
+    backButton 
   },
   methods: {
     createNewRecipe() {},
@@ -207,18 +220,28 @@ export default {
 </script>
 <style scoped>
 .container {
-  max-width: 21rem;
+  margin-top: 2rem;
+   max-width: 21rem;
   display: flex;
   flex-direction: column;
   width: 100%;
   cursor: pointer;
   min-width: 36rem;
-  overflow-x: hidden;
+  min-height: 66rem;
+  overflow: auto;
   padding: 0 5rem;
 }
 div a {
   color: #333;
 }
+
+.backButton{
+  position: fixed;
+  left: 45rem;
+  top: 10rem;
+  font-size: 1rem;
+}
+
 
 textarea {
   position: relative;

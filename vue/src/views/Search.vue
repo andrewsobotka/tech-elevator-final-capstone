@@ -8,16 +8,31 @@
     <router-link v-bind:to="{ name: 'search', queryParams:{keyword:search}}"><button id="search-button"  v-on:click="setKeyword">Search</button></router-link>
     </div>
     <div id="explore">
-    <router-link  v-bind:to="{name:'explore-recipes'}"><button id="explore-button" >Back to Explore Recipes</button></router-link>
+    <router-link  v-bind:to="{name:'explore-recipes'}">
+      <button id="explore-button" >Back to Explore Recipes</button></router-link>
     </div>
+
     <p>Search results for "{{ $store.state.keyword }}" | Showing {{$store.state.keyword =="" ? 0 : $store.state.filteredList.length}} {{$store.state.filteredList.length == 1 ? 'result' : 'results'}}</p>
-    <div v-if="$store.state.keyword !=''" id="recipe-card-container">
+  
+  
+    <!-- <div v-if="$store.state.keyword !=''" id="recipe-card-container">
       <RecipeCard
         v-for="recipe in $store.state.filteredList"
         v-bind:key="recipe.recipeId"
         v-bind:recipe="recipe"
       />
-    </div>
+    </div> -->
+
+    <div v-if="$store.state.keyword !== '' && $store.state.filteredList.length > 0" id="recipe-card-container">
+  <RecipeCard
+    v-for="recipe in $store.state.filteredList"
+    :key="recipe.recipeId"
+    :recipe="recipe"
+  />
+</div>
+<div v-else>
+  <p>No results found.</p>
+</div>
   </div>
 </template>
 
@@ -107,5 +122,6 @@ input{
 #explore{
   display: flex;
   justify-content: center;
+  
 }
 </style>

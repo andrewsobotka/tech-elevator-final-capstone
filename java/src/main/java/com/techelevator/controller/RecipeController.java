@@ -27,6 +27,10 @@ public class  RecipeController {
     public Recipe getRecipeById(@PathVariable int recipeId) {
         return recipeService.getRecipe(recipeId);
     }
+    @GetMapping("/recipes/{recipeId}/creator")
+    public String getCreatorUsernameByRecipeId(@PathVariable int recipeId) {
+        return recipeService.getCreatorUsernameByRecipeId(recipeId);
+    }
     @PreAuthorize("isAuthenticated()")
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/recipes")

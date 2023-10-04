@@ -2,6 +2,10 @@
 GET http://localhost:9000/recipes
 Content-Type: application/json
 
+### Send GET request
+GET http://localhost:9000/recipes/1/creator
+Content-Type: application/json
+
 ### Send GET request for featured recipes
 GET http://localhost:9000/featured
 Content-Type: application/json

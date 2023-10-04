@@ -6,28 +6,33 @@
       </div>
       <br />
       <div id="list-container">
-          <form>
-        <ul>
-          <li
-            v-for="(item, index) in $store.state.groceryList"
-            v-bind:key="index"
-          >
-            <input
-              id="check"
-              type="checkbox"
+        <form>
+          <ul>
+            <li
+              v-for="(item, index) in $store.state.groceryList"
               v-bind:key="index"
-              v-bind:value="index"
-              v-model="indexOfGroceryList"
-            />
-            <input
-              id="textbox"
-              type="text"
-              v-model="$store.state.groceryList[index]"
-            />
+            >
+              <input
+                id="check"
+                type="checkbox"
+                v-bind:key="index"
+                v-bind:value="index"
+                v-model="indexOfGroceryList"
+              />
+              <input
+                id="textbox"
+                type="text"
+                v-model="$store.state.groceryList[index]"
+              />
 
-                <div id = "line" v-if="index != $store.state.groceryList.length-1"><br></div>
-          </li>
-        </ul>
+              <div
+                id="line"
+                v-if="index != $store.state.groceryList.length - 1"
+              >
+                <br />
+              </div>
+            </li>
+          </ul>
         </form>
       </div>
     </div>
@@ -37,10 +42,9 @@
         <button class="add-btn" v-on:click="$store.state.groceryList.push('')">
           Add Item
         </button>
-        <button class="delete-btn" v-on:click="deleteItems">
-          Delete Items
-        </button>
-        
+         <button class="select-all-btn" @click="toggleSelectAll">{{ isAllSelected() ? 'Unselect' : 'Select All' }}</button>
+
+  
       </div>
     </div>
 
@@ -57,6 +61,7 @@ export default {
   data() {
     return {
       indexOfGroceryList: [],
+      isSelected:[],   originalGroceryList: [],
     };
   },
   methods: {
@@ -71,12 +76,30 @@ export default {
 
       this.indexOfGroceryList = [];
     },
+   toggleSelectAll() {
+      if (this.isAllSelected()) {
+        this.indexOfGroceryList = [];
+      } else {
+        this.indexOfGroceryList = [...Array(this.$store.state.groceryList.length).keys()];
+      }
+    },
+    isAllSelected() {
+      return this.indexOfGroceryList.length === this.$store.state.groceryList.length;
+    },
+    refreshPage() {
+   
+      this.$router.push({ name: this.$route.name, params: this.$route.params });
+    },
   },
+    cancelEdit() {
+      this.isSelected = [...this.originalSelection];
+    },
+  
   computed: {},
 };
 </script>
 
-<style>
+<style scoped>
 .body {
   background: white;
 }
@@ -103,6 +126,7 @@ li {
   font-size: 1rem;
   background: #fff;
   margin-right: 20%;
+
 }
 
 ul {
@@ -126,14 +150,23 @@ div #line {
 #button-container {
   display: flex;
   justify-content: center;
+  position: relative;
+  left: 8rem;
   margin-top: 0px;
+  margin-bottom: 30px;
   width: 35rem;
-
 }
 
-
-button{
+button {
   margin: 0px 10px;
+}
+
+#button-container :nth-child(odd){
+background: rgb(96, 174, 226);
+}
+
+#button-container :nth-child(even){
+background: rgb(241, 193, 89);
 }
 
 #list-title {
@@ -145,11 +178,8 @@ button{
 #list-container {
   display: flex;
   justify-content: center;
-position: relative;
-left: 30px;  
-}
-.add-btn{
-  margin-top:0px;
+  position: relative;
+  left: 30px;
 }
 
 .delete-btn {
@@ -160,10 +190,9 @@ left: 30px;
   transition: ease 0.5s;
 }
 
-.delete-btn:hover{
-background: rgb(122, 20, 20);
+.delete-btn:hover {
+  background: rgb(122, 20, 20);
 }
-
 
 #save {
   display: flex;
