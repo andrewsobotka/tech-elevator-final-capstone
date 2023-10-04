@@ -155,6 +155,7 @@ import backButton from './backButton.vue';
 export default {
   data() {
     return {
+      listOfTags:[],
       currentValue: 0,
       indexOfSteps: [],
       indexOfIngredients: [],
