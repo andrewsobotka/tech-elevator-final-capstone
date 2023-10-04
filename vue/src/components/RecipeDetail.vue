@@ -280,12 +280,14 @@ h3 {
   font-size: 1rem;
   padding: 1.4%;
   float: right;
-  margin: 0rem 0rem;
+  position: relative;
+  /* top: 30px; */
   transition: ease-in 0.4s;
 }
 
 .steps-btn:hover {
-  background: #883410;
+  background: #dd8902;
+  border: 1px solid rgb(129, 82, 10);
   /* background-image: url('https://t4.ftcdn.net/jpg/02/87/02/71/240_F_287027124_R2xwyI2l2ncGKFqy6JF3Izaue1xEWfMn.jpg'); */
   transition: ease-out 0.3s;
 }
