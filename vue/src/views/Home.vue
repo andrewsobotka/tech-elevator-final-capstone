@@ -19,7 +19,7 @@
   <div id="recipeCardContainer">
 
     <RecipeCard
-      v-for="recipe in $store.state.featuredList"
+      v-for="recipe in $store.state.featuredList.reverse()"
       v-bind:key="recipe.recipeId"
       v-bind:recipe ="recipe"
      /> 
