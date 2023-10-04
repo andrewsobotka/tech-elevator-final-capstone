@@ -4,8 +4,7 @@
       <h2 id="title" >Step {{stepNumber}} </h2><br/>
       <p>{{$store.state.recipe.steps[ `${stepNumber-1}`].instruction}}</p>
   
-      <button class="steps-btn" v-on:click="$router.push(nextStep)">Next</button>
-    <p>{{Number(this.$route.params.rank+1)}}</p>
+      <button class="steps-btn" v-on:click="$router.push(nextStep())">Next</button>
   </div>
 </div>
 </template>
@@ -22,7 +21,7 @@ export default {
   },
   methods: {
     nextStep(){
-        return "/recipe/" + this.$route.params.id+ "/steps/" + Number(this.$route.params.rank +1);
+        return "/recipe/" + this.$route.params.id+ "/steps/" + (Number(this.$route.params.rank) +1);
     }
     
     
@@ -30,9 +29,11 @@ export default {
   computed:{
       stepNumber(){
           return this.$route.params.rank;
-      }
+      },
+      
       
   },
+
   
 };
 </script>

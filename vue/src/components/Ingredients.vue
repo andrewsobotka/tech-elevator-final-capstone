@@ -2,6 +2,19 @@
 <div id="container">
   <div id="login" class="login-body">
       <h2 id="title" >Ingredients </h2><br/>
+      <div class="ingredients">
+        <!-- where ID = XYZ v-for Data.Ingredients -->
+        <ul>
+          <li
+            v-for="(ingredient, index) in recipe.ingredients"
+            v-bind:key="index"
+            class="ingredient"
+              >
+            {{ ingredient.ingredient }}  &nbsp;
+
+          </li>
+        </ul>
+      </div>
      
   </div>
 </div>

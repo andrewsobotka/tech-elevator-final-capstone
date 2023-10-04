@@ -151,7 +151,7 @@ export default {
     currentRecipe() {
       return this.$store.state.recipe;
     },
-  },
+  },  
 };
 </script>
 
