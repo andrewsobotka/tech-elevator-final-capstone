@@ -120,12 +120,12 @@ public class JdbcIngredientDao implements IngredientDao{
         Ingredient existingIngredient = getIngredientByIngredientName(ingredient.getIngredient());            //variable to check if ing is in database already..
 
         try {
-            if(existingIngredient == null){                                //if this ing doesn't exist in the database...
+            if(existingIngredient == null){
                 ingredientId = jdbcTemplate.queryForObject(sql, Integer.class, ingredient.getIngredient());
-            } else {                                                //if this ing is already in the database...
+            } else {
                 ingredientId = existingIngredient.getIngredient_id();
             }
-            jdbcTemplate.update(sql2, recipe_id, ingredientId);
+            jdbcTemplate.update(sql2, ingredientId, recipe_id);
 
         } catch (DataAccessException e){
             throw new DataAccessException(e.toString()) {};
