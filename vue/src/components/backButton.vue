@@ -1,7 +1,7 @@
 <template>
   <div>
     
-    <button @click="goBack">Back</button>
+    <button @click="goBack"> <i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button>
   </div>
 </template>
 

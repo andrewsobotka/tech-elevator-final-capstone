@@ -3,21 +3,27 @@
   <div id="login" class="login-body">
       <h2 id="title" >Step {{stepNumber}} </h2><br/>
       <p>{{$store.state.recipe.steps[ `${stepNumber-1}`].instruction}}</p>
-  
-      <button class="steps-btn" v-on:click="$router.push(nextStep())">Next</button>
+      <div id = "buttonContainer">
+      <back-button v-if="$route.params.rank != 1"/>
+      <div id=#whiteBox v-if="$route.params.rank == 1"></div>
+      <button class="steps-btn" v-on:click="$router.push(nextStep())" v-if="Number(this.$route.params.rank) != $store.state.recipe.steps.length">Next <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+      <button class="steps-btn" v-on:click="$router.push('/recipes')" v-if="Number(this.$route.params.rank) == $store.state.recipe.steps.length">Done! <i class="fa-solid fa-check" style="color: #ffffff;"></i></button>
+      </div>
   </div>
 </div>
 </template>
 
 <script>
 import APIService from "../services/APIService.js";
-
+import BackButton from './backButton.vue';
+import backButton from './backButton.vue';
 export default {
   name: "Steps",
-  components: {},
+  components: {BackButton},
   data() {
     return {
-        recipe:Object
+        recipe:Object,
+        backButton
     };
   },
   methods: {
@@ -102,6 +108,18 @@ h2{
 #title{
   text-align: center;
   width:100%;
+}
+
+
+
+#buttonContainer{
+  display: flex;
+  justify-content: space-between;
+  align-content: right ;
+}
+
+#whiteBox{
+  color: #fff;
 }
 
 </style>

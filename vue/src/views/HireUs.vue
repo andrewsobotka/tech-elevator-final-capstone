@@ -12,7 +12,7 @@
       <h4>Jackie Lee</h4>
       <p>jlee3545@gmail.com</p>
       <ul>
-        <li> <a href="https://www.linkedin.com/in/coyolam/">LinkedIn </a></li>
+        <li> <a href="https://www.linkedin.com/in/ja-chi-jackie-lee/">LinkedIn </a></li>
       <li><a href="https://github.com/jlee3545/">GitHub</a></li>
       <li><a href="https://github.com/jlee3545/portfolio">Website</a></li>
       
@@ -39,7 +39,7 @@
       <h4>Sefanit Berihun</h4>
       <p>sefanit1719@gmail.com</p>
       <ul>
-        <li> <a href="https://www.linkedin.com/in/andrewjsobotka/">LinkedIn </a></li>
+        <li> <a href="https://www.linkedin.com/in/sefanitberihun/">LinkedIn </a></li>
       <li><a href="https://github.com/sberihun/">GitHub</a></li>
       <li><a href="https://github.com/sberihun/">Website</a></li>
       
