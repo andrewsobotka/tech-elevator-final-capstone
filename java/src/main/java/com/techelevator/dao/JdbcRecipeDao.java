@@ -59,24 +59,22 @@ public class JdbcRecipeDao implements RecipeDao {
     }
 
     @Override
-    public Recipe getRecipeByTagId(int tag_id) {
+    public List<Recipe> getListOfRecipeByTagId(int tag_id) {
 
-        Recipe recipe = null;
+        List<Recipe> recipes = new ArrayList<>();
+
         String sql = "SELECT * from recipes " +
                 "join recipes_tags on recipes.recipe_id = recipes_tags.recipe_id " +
+                "join tags on recipes_tags.tag_id = tags.tag_id " +
                 "where tag_id = ?;";
-        try {
-            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, tag_id);
-            if (results.next()) {
-                recipe = mapRowToRecipe(results);
-            }
-        } catch (CannotGetJdbcConnectionException e) {
-            throw new DaoException("Unable to connect to server or database", e);
-        } catch (DataIntegrityViolationException e) {
-            throw new DaoException("Data integrity violation", e);
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, tag_id);
+        while (results.next()) {
+            Recipe recipe = mapRowToRecipe(results);
+            recipes.add(recipe);
         }
 
-        return recipe;
+        return recipes;
 
     }
 

@@ -73,7 +73,7 @@ public class JdbcTagDao implements TagDao {
         int tagId;
         try {
             tagId = jdbcTemplate.queryForObject(sql, Integer.class, tag);
-        } catch (DataAccessException e) {
+        } catch (EmptyResultDataAccessException e) {
             throw new DataAccessException(e.toString()) {};
         }
         return tagId;
