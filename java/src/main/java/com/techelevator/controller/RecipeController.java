@@ -39,8 +39,8 @@ public class  RecipeController {
     }
 
     @GetMapping("/recipes/tags/{tagId}")
-    public List<Recipe> getRecipeByTagId(@RequestParam Integer tag_id){
-        return recipeService.getRecipesByTagId(tag_id);
+    public List<Recipe> getRecipesByTagId(@RequestParam int tagId){
+        return recipeService.getRecipesByTagId(tagId);
     }
 
     @GetMapping("/featured")
