@@ -125,5 +125,8 @@ export default new Vuex.Store({
     SET_SELECTED_TAG(state,tag){
       state.selectedTag = tag;
     },
+    SET_FEATURED_RECIPE(state, recipe){
+      recipe.isFeatured = !recipe.isFeatured;
+    }
   }
 })

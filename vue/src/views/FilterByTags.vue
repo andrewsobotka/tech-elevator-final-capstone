@@ -47,10 +47,12 @@ export default {
     APIService.getTags().then((response)=>{
       this.$store.commit('SET_TAGS', response.data)
     });
-    APIService.getRecipeByTagId(this.$store.state.selectedTagId).then((response) =>{
-        this.$store.commit('SET_FILTERED', response.data)
-    });
 
+   APIService.getRecipesByTagId(this.$router.params.id).then((response) => {
+      this.$store.commit("SET_FILTERED", response.data);
+      this.results = this.$store.state.filteredList;
+      this.resultsNumber = this.$store.state.filteredList.length;
+    });
     
   },
  methods:{
@@ -69,8 +71,9 @@ export default {
    
   },
   computed:{
-    
-    
+    listOfRecipes(){
+          return this.results;
+    }
   }
 };
 </script>

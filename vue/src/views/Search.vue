@@ -59,6 +59,8 @@ export default {
       this.results = this.$store.state.filteredList;
       this.resultsNumber = this.$store.state.filteredList.length;
     });
+
+ 
   },
 
   methods: {

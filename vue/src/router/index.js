@@ -11,12 +11,13 @@ import RecipeDisplay from '../views/RecipeDisplay.vue'
 import GroceryList from '../views/GroceryList.vue'
 import Search from '../views/Search.vue'
 import Settings from '../views/Settings.vue'
-import MyRecipes from '../views/MyRecipes.vue'
+import MyCookbook from '../views/MyCookbook.vue'
 import Meals from '../views/MyMeals.vue'
 import EditRecipe from '../views/EditRecipe.vue'
 import EditGroceryList from '../views/EditGroceryList.vue'
 import FilterByTag from '../views/FilterByTags.vue'
 import Tags from "../views/EditTags.vue"
+import Steps from "../views/Steps.vue"
 
 
 Vue.use(Router)
@@ -75,9 +76,9 @@ const router = new Router({
       }
     },
     {
-      path: "/my-recipes",
-      name: "my-recipes",
-      component: MyRecipes,
+      path: "/my-cookbook",
+      name: "my-cookbook",
+      component: MyCookbook,
       meta: {
         requiresAuth: true
       }
@@ -154,7 +155,16 @@ const router = new Router({
       meta: {
         requiresAuth: true
       }
-    }
+    },
+    {
+      path: "/recipes/:id/steps/:rank",
+      name: "steps",
+      component: Steps,
+      meta: {
+        requiresAuth: true
+      }
+    },
+
     // {
     //   path: "/hire-us",
     //   name: "hire-us",

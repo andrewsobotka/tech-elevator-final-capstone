@@ -23,6 +23,18 @@ export default {
         return axios.delete(`/recipes/${recipe.recipeId}`);
     },
 
+    getCreatorUsernameByRecipeId(recipeId){
+        return axios.get(`/recipes/${recipeId}/creator`)
+    },
+    setFeatured(recipe){
+        return axios.put(`/recipes/${recipe.recipeId}/featured`, recipe.isFeatured)
+    },
+
+    addToFavorites(recipeId){
+        return axios.post(`/recipes/${recipeId}/favorites`, this.userId)
+    },
+
+
     //tags
     getTags() {
         return axios.get("/tags")
@@ -50,6 +62,11 @@ export default {
         return axios.get(`/tags/${tagId}`)
     },
 
+    getRecipesByTags(tag){
+        return axios.get(`/recipes/${tag}`)
+    },
+
+
     //users
 
     getUsers() {
@@ -70,6 +87,10 @@ export default {
 
     deleteUser(user) {
         return axios.delete(`/users/${user.userId}`);
+    },
+
+    userPrivacy(userId){
+        return axios.get(`/users/${userId}/privacy`);
     },
 
     //ingredients
@@ -151,4 +172,8 @@ export default {
 
     //grocery list
 
+    
+    setUserToAnonymousUser(userId, privacy){
+        return axios.put(`/users/${userId}/privacy`, privacy)
+    }
     };

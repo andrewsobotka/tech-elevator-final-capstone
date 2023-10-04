@@ -1,18 +1,18 @@
 <template>
   <div class="container">
     <div class="header-favorite-group">
-      <FavoriteIcon
+      <!-- <FavoriteIcon
         :recipe="recipe"
         @toggle-favorites="toggleFavorites"
         :class="{ favorite: recipe.favorite, notFavorite: !recipe.favorite }"
-      />
+      /> -->
       <h2>
         {{ recipe.recipeName }}
       </h2>
     </div>
     <section class="servings">
       Serving size: {{ currentRecipe.servingSize }} | Creator Name:
-      {{ currentRecipe.creatorId }}
+      {{ creatorIsPrivate? "anonymous" : creatorUsername }}
     </section>
 
     <section class="description">
@@ -46,9 +46,9 @@
       </div>
     </div>
 
-    <button class="steps-btn">
+    <router-link :to="{name:'steps', params: { id: recipe.recipeId , rank:1}}"><button class="steps-btn">
       Click Here to Follow the Instructions Step by Step
-    </button>
+    </button></router-link>
 
     <div class="instructions">
       <h2>Instructions:</h2>
@@ -71,7 +71,9 @@
         "
         ><button>Edit Recipe</button></router-link
       >
-      <button class="delete-btn">Delete Recipe</button></div>
+      <button class="delete-btn">Delete Recipe</button>
+      <button id="featureButton" v-if="$store.state.user.authorities[0].name == 'ROLE_ADMIN'" >{{recipe.featured ? "Unfeature Recipe On Homepage": "Feature Recipe On Homepage"}}</button>
+      </div>
     </div>
   </div>
 </template>
@@ -79,17 +81,19 @@
 
 <script>
 import APIService from "../services/APIService.js";
-import FavoriteIcon from "./FavoriteIcon.vue";
+// import FavoriteIcon from "./FavoriteIcon.vue";
 
 export default {
   name: "recipeDetail",
   props: ["recipe"],
   components: {
-    FavoriteIcon,
+    // FavoriteIcon,
   },
     data() {
     return {
       ingredientName: '',
+      creatorUsername:"",
+      creatorIsPrivate:false
     };
   },
   methods: {
@@ -111,9 +115,9 @@ export default {
           });
       }
     },
-    toggleFavorites() {
-      this.$store.commit("FLIP_FAVORITE", this.recipe);
-    },
+    // toggleFavorites() {
+    //   this.$store.commit("FLIP_FAVORITE", this.recipe);
+    // },
       addToGroceryList(ingredient) {
             if (!this.$store.state.groceryList.includes(ingredient.ingredient)) {
                     this.$store.state.groceryList.push(ingredient.ingredient);
@@ -121,12 +125,27 @@ export default {
   } else {
       window.alert(`"${ingredient.ingredient}" is already in your grocery list.`);
     }
-      }
+      },
+    toggleFeatured(){
+      APIService.setFeatured(this.recipe.recipeId, !this.recipe.featured);
+    }
   },
   created() {
-    APIService.getRecipe(this.$route.params.id).then((response) => {
-      this.$store.commit("SET_RECIPE", response.data);
+    APIService.getRecipe(this.$route.params.id)
+      .then((response) => {
+        this.$store.commit("SET_RECIPE", response.data);
     });
+
+    APIService.getCreatorUsernameByRecipeId(this.$route.params.id)
+      .then((response)=>{
+        this.creatorUsername = response.data
+    });
+
+    APIService.userPrivacy(this.currentRecipe.creatorId)
+      .then((response)=>{
+        this.creatorIsPrivate = response.data
+      })
+
   },
   computed: {
     currentRecipe() {
@@ -309,5 +328,13 @@ ul li{
 }
 .delete-btn:hover {
   background: #fb4c35;
+}
+
+#featureButton{
+  background: goldenrod;
+}
+
+#featureButton:hover{
+  background: gold;
 }
 </style>  

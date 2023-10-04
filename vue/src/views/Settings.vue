@@ -26,7 +26,7 @@
 
       <div class="settings2change">
         <h2>settings</h2>
-        <input type="checkbox" class="checkbox" /> Make my account private
+        <input type="checkbox" class="checkbox" v-model="users.isPrivate" v-on:change="toggleAnonymous"/> Make my account private
 
         <br />
         <div class="settingsLinks">
@@ -42,7 +42,37 @@
 </template>
 
 <script>
-export default {};
+import APIService from '../services/APIService';
+export default {
+  components:{
+  },
+  data(){
+    return {
+      users:Object
+    }
+  },
+  method:{
+    toggleAnonymous(){
+      APIService.setUserToAnonymousUser(this.users.id, this.users.isPrivate).then(
+        (response)=>{
+        if(response.status === 200) {
+              location.reload();
+            }
+          }
+      ).catch(
+          (error) => {
+          if(error.response) {
+              window.alert('Bad Request');
+          } else if(error.request) {
+              window.alert('Could not reach service');
+          }
+        }
+      );
+    }
+    }
+  
+  
+};
 </script>
 
 <style scoped>

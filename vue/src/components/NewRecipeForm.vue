@@ -2,7 +2,6 @@
   <div class="container">
     <form id="addNewRecipe" v-on:submit.prevent="createNewRecipe">
       <div>
-      {{newRecipe}}
         <h3>Add New Recipe</h3>
       </div>
       <div class="field">

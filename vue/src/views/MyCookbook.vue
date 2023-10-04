@@ -1,13 +1,23 @@
 <template>
 
  <div class="cardsContainer">
-    <h3>My Recipes <br>    </h3>
+    <h3>My Cookbook<br>    </h3>
     
-<div class="borderbox"></div>
 
+<div class="borderbox"></div>
 <div class="form-btn">
-  <button v-on:click="showForm=!showForm" >{{showForm? "Hide Form" : "Add Recipe"}}</button>
- </div>
+   <button v-on:click="showForm=!showForm" >{{showForm? "Hide Form" : "Add Recipe"}}</button>
+</div>
+<div id ="form-container">
+<NewRecipeForm v-if="showForm===true"/>
+</div>
+ <div>
+<div id="createdRecipes">
+</div>
+ 
+  
+  
+<h2> Created Recipes<br>    </h2>
 
     <div class="recipesList">
      <RecipeCard
@@ -15,18 +25,21 @@
       v-bind:key="recipe.recipeId"
       v-bind:recipe ="recipe"
      /> 
-     <div>
-       <NewRecipeForm v-if="showForm===true"/>
-     </div>
- </div></div>
+    </div>
+ </div>
+ <div id ="favoritedRecipes">
+   <h2>My Bookmarked Recipes <i class="fa-solid fa-bookmark"></i><br>    </h2>
+ </div>
+ </div>
 </template>
 
 <script>
-import NewRecipeForm from '../components/NewRecipeForm.vue';
 import RecipeCard from "../components/RecipeCard.vue";
+import NewRecipeForm from '../components/NewRecipeForm.vue';
+
 
 export default {
-  name: "RecipeList",
+  name: "my-cookbook",
   data(){
     return{
       showForm:false
@@ -36,7 +49,7 @@ export default {
   computed: {
     myRecipes() {
       return this.$store.state.recipes.filter((recipe) => {
-        return recipe.creatorUsername == this.$store.state.user.username;
+        return recipe.creatorId == this.$store.state.user.id;
       });
     },
   }
@@ -72,6 +85,19 @@ justify-content: center;
   position: relative;
  left: 25%;
 
+}
+#form-container{
+  display: flex;
+  justify-content: center;
+}
+
+h2{
+  text-align:center
+}
+
+#createdRecipes{
+  margin-top: 3rem;
+  
 }
 
 
