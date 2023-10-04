@@ -73,7 +73,7 @@
         ><button>Edit Recipe</button></router-link
       >
       <button class="delete-btn">Delete Recipe</button>
-      <button id="featureButton" v-if="$store.state.user.authorities[0].name == 'ROLE_ADMIN'" >{{recipe.featured ? "Unfeature Recipe On Homepage": "Feature Recipe On Homepage"}}</button>
+      <button id="featureButton" v-if="$store.state.user.authorities[0].name == 'ROLE_ADMIN'" v-on:click="toggleFeatured()">{{recipe.featured ? "Unfeature Recipe On Homepage": "Feature Recipe On Homepage"}}</button>
       </div>
     </div>
   </div>
@@ -128,7 +128,23 @@ export default {
     }
       },
     toggleFeatured(){
-      APIService.setFeatured(this.recipe.recipeId, !this.recipe.featured);
+        this.$store.commit('SET_FEATURED_RECIPE', this.recipe);
+
+      APIService.setFeatured(this.recipe.recipeId, this.$store.state.recipe.featured)
+        .then((response)=>{
+          if(response.status === 200) {
+              this.location.reload();
+            }
+          }
+      ).catch(
+          (error) => {
+          if(error.response) {
+              window.alert('Bad Request');
+          } else if(error.request) {
+              window.alert('Could not reach service');
+          }
+        }
+      );
     }
   },
   created() {
@@ -142,10 +158,10 @@ export default {
         this.creatorUsername = response.data
     });
 
-    APIService.userPrivacy(this.currentRecipe.creatorId)
-      .then((response)=>{
-        this.creatorIsPrivate = response.data
-      })
+    // APIService.userPrivacy(this.currentRecipe.creatorId)
+    //   .then((response)=>{
+    //     this.creatorIsPrivate = response.data
+    //   })
 
   },
   computed: {

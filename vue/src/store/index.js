@@ -35,7 +35,7 @@ export default new Vuex.Store({
     filteredList:[{}],
     groceryList:[{item:"1 carton of milk", recipeName:"Mac and Cheese"}, {item:"1 carton of eggs", recipeName: "Omelet"},{item: "1 block of parmesan cheese", recipeName: "Spaghetti" } ],
     featuredList:[{}],
-    recipe:{},
+    recipe:{featured:false},
     keyword:"",
     favoritedLibrary:[],
     recipes:[
@@ -124,8 +124,12 @@ export default new Vuex.Store({
     SET_SELECTED_TAG(state,tag){
       state.selectedTag = tag;
     },
-    SET_FEATURED_RECIPE(state, recipe){
-      recipe.isFeatured = !recipe.isFeatured;
+    SET_FEATURED_RECIPE(state){
+      if(state.recipe.featured === false){
+        state.recipe.featured = true;
+      }else{
+        state.recipe.featured = false;
+      }
     },
     ADD_TO_LIBRARY(state,recipe){
       state.favoritedLibrary.push(recipe);

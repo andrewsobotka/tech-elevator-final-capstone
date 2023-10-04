@@ -37,7 +37,6 @@ export default {
       },
       
       
-      
   },
     created() {
         APIService.getRecipe(this.$route.params.id)

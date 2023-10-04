@@ -163,6 +163,8 @@ export default {
         return axios.get('/featured')
     },
 
+  
+
 
     //grocery list
 
