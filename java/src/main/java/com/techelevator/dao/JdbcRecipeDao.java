@@ -109,16 +109,12 @@ public class JdbcRecipeDao implements RecipeDao {
 
     @Override
     public Integer createRecipe(Recipe recipe, int userId) {
-//        // Get the User ID by Username
-//        String sql_user_id = "SELECT user_id FROM users " +
-//                "WHERE username = ?;";                                          //different method
-        // Create New Recipe
+
         String sql_create_recipe = "INSERT INTO recipes (creator_id, recipe_name, image_url, description, serving_size, keywords, is_published, is_featured) " +
                 "VALUES (?,?,?,?,?,?,?,?) " +
                 "RETURNING recipe_id;";
         Integer recipeId = 0;
         try {
-//            userId = jdbcTemplate.queryForObject(sql_user_id, Integer.class, principal.getName());
             recipeId = jdbcTemplate.queryForObject(sql_create_recipe, Integer.class, userId, recipe.getRecipeName(), recipe.getImgUrl(), recipe.getDescription(), recipe.getServingSize(), recipe.getKeywords(), recipe.isPublished(), recipe.isFeatured());
         } catch (DataAccessException e){
             throw new DataAccessException(e.toString()) {};

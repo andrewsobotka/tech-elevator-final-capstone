@@ -6,11 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.DuplicateKeyException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
+import javax.xml.crypto.Data;
 import java.util.ArrayList;
 import java.util.List;
 @Component
@@ -62,6 +65,19 @@ public class JdbcTagDao implements TagDao {
         return tag;
     }
 
+    @Override
+    public int getTagIdByTag(String tag) {
+        String sql = "select tag_id from tags where tag = ?;";
+        int tagId;
+        try {
+            tagId = jdbcTemplate.queryForObject(sql, Integer.class, tag);
+        } catch (DataAccessException e) {
+            throw new DataAccessException(e.toString()) {};
+        }
+        return tagId;
+    }
+
+
     private Tag getTagByTagName(String tagname) {                   //helper method local
         Tag tag = null;
         String sql = "SELECT * FROM tags WHERE tag = ?;";
@@ -93,27 +109,20 @@ public class JdbcTagDao implements TagDao {
         return tagId;
     }
 
-    // Create a new tag for a new recipe
     @Override
-    public Integer createTagForRecipe(Tag tag, int recipe_id) {
-        String sql = "INSERT INTO tags (tag) " +
-                     "VALUES (?) " +
-                     "RETURNING tag_id;";
+    public Integer createRecipesTagsRowForNewRecipe(Tag tag, int recipe_id) {
 
-        String sql2 = "INSERT INTO recipes_tags (tag_id, recipe_id) " +
-                "VALUES (?, ?) ";
+        String sql = "INSERT INTO recipes_tags (tag_id, recipe_id) " +
+                "VALUES (?,?);";
 
-        Integer tagId;
-        Tag existingTag = getTagByTagName(tag.getTag());            //variable to check if tag is in database already..
+        int existingTagId = getTagIdByTag(tag.getTag());                        //get the tagId of the user selected tag
 
         try {
-            tagId = jdbcTemplate.queryForObject(sql, Integer.class, tag.getTag());
-            jdbcTemplate.update(sql2, tagId, recipe_id);
-
+            jdbcTemplate.queryForObject(sql, Integer.class, existingTagId, recipe_id);
         } catch (DataAccessException e){
             throw new DataAccessException(e.toString()) {};
         }
-        return tagId;
+        return existingTagId;
     }
 
     // Update a tag

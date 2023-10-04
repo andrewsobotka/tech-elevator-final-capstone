@@ -64,12 +64,13 @@ public class RecipeService {
 
         int recipeId = recipeDao.createRecipe(recipe, userId);
 
-        //add new rows to tags table for this new recipe
+        //add the user selected tags and make new rows to recipes_tags table for this new recipe
         if(recipe.getTags() != null) {
             for (Tag tag : recipe.getTags()) {
-                int tagId = tagDao.createTagForRecipe(tag, recipeId);
+                int tagId = tagDao.createRecipesTagsRowForNewRecipe(tag, recipeId);
             }
         }
+
         //add new rows to ing table for this new recipe
         if(recipe.getIngredients() != null) {
             for (Ingredient ingredient : recipe.getIngredients()) {
