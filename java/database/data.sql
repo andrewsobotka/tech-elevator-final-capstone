@@ -98,10 +98,10 @@ INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (15, (SELECT r
 INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (16, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Hummus'));
 
 -- Insert Steps for Hummus Recipe
-INSERT INTO steps (rank, instruction) VALUES (7, 'In a food processor, combine the chickpeas, tahini, minced garlic, lemon juice, olive oil, and ground cumin.');
-INSERT INTO steps (rank, instruction) VALUES (8, 'Process until the mixture is smooth and creamy, adding water as needed to achieve the desired consistency.');
-INSERT INTO steps (rank, instruction) VALUES (9, 'Season with salt and pepper to taste.');
-INSERT INTO steps (rank, instruction) VALUES (10, 'Transfer the hummus to a serving bowl, drizzle with a bit of olive oil, and garnish with fresh herbs, if desired.');
+INSERT INTO steps (rank, instruction) VALUES (1, 'In a food processor, combine the chickpeas, tahini, minced garlic, lemon juice, olive oil, and ground cumin.');
+INSERT INTO steps (rank, instruction) VALUES (2, 'Process until the mixture is smooth and creamy, adding water as needed to achieve the desired consistency.');
+INSERT INTO steps (rank, instruction) VALUES (3, 'Season with salt and pepper to taste.');
+INSERT INTO steps (rank, instruction) VALUES (4, 'Transfer the hummus to a serving bowl, drizzle with a bit of olive oil, and garnish with fresh herbs, if desired.');
 
 -- Link Steps to Hummus Recipe
 INSERT INTO steps_recipes (step_id, recipe_id) VALUES (7, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Hummus'));
