@@ -24,10 +24,6 @@ export default {
     TheFooter,
     NavigationMenu,
   },
-<<<<<<< HEAD
-  
-  
-=======
   created(){
     APIService.getRecipes().then(response => {
       this.$store.commit('SET_RECIPES', response.data)
@@ -36,7 +32,6 @@ export default {
       this.$store.commit('SET_FEATURED', response.data)
     })
   },
->>>>>>> b60f2be2a3c9e865ed04fe43a0b19fe0e7934ada
 };
 </script>
 
