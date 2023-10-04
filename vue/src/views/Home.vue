@@ -45,8 +45,7 @@ export default {
     });
     APIService.getRecipesByFeatured().then(response=>{
       this.$store.commit('SET_FEATURED', response.data)
-    }
-    )
+    })
   },
   computed:{
      recipe(){

@@ -46,7 +46,6 @@ import NewRecipeForm from '../components/NewRecipeForm.vue';
 import APIService from '../services/APIService.js';
 
 
-
 export default {
   name: "my-cookbook",
   data(){
