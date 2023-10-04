@@ -1,5 +1,6 @@
 <template>
   <div class="explore">
+     {{results}}
     <h3>Explore Recipes</h3>
     <div class="borderbox"></div>
     <div id="search">
@@ -14,6 +15,7 @@
           Search
         </button></router-link
       >
+     
     </div>
 
     <div id="tags-filter">
@@ -39,17 +41,17 @@
       </p>
     </div>
     <div class="cardsContainer">
-      <RecipeCard
+      <!-- <RecipeCard
         v-for="recipe in $store.state.filteredList"
         :key="recipe.recipeId"
         :recipe="recipe"
-      />
+      /> -->
     </div>
   </div>
 </template>
 
 <script>
-import RecipeCard from "../components/RecipeCard.vue";
+// import RecipeCard from "../components/RecipeCard.vue";
 import APIService from "../services/APIService.js";
 
 export default {
@@ -61,8 +63,13 @@ export default {
       tagId: 0,
     };
   },
-  components: { RecipeCard },
+  // components: { RecipeCard },
   created() {
+
+    // APIService.getRecipes().then((response) => {
+    // this.$store.commit("SET_RECIPES", response.data);
+    // });
+
     APIService.getTags().then((response) => {
       this.$store.commit("SET_TAGS", response.data);
     });
@@ -70,8 +77,8 @@ export default {
     APIService.getRecipesByTagId(this.$store.state.selectedId).then(
       (response) => {
         this.$store.commit("SET_FILTERED", response.data);
-      }
-    );
+        this.results = response.data;
+      });
   },
   methods: {
     setKeyword() {

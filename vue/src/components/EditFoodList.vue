@@ -11,61 +11,58 @@
             <li
               v-for="(item, index) in $store.state.groceryList"
               v-bind:key="index"
-              
             >
-            <div id="rowContainer">
-              <input
-                id="check"
-                type="checkbox"
-                v-bind:key="index"
-                v-bind:value="index"
-                v-model="indexOfGroceryList"
-              />
-              <input
-                id="textbox"
-                type="text"
-                v-model="$store.state.groceryList[index].item"
-              />
-              <p> &emsp;  for &emsp;  </p>
-              <input
-                id="textbox"
-                type="text"
-                v-model="$store.state.groceryList[index].recipeName"
-              />
+              <div id="rowContainer">
+                <input
+                  id="check"
+                  type="checkbox"
+                  v-bind:key="index"
+                  v-bind:value="index"
+                  v-model="indexOfGroceryList"
+                />
+                <input
+                  id="textbox"
+                  type="text"
+                  v-model="$store.state.groceryList[index].item"
+                />
+                <p>&emsp; for &emsp;</p>
+                <input
+                  id="textbox"
+                  type="text"
+                  v-model="$store.state.groceryList[index].recipeName"
+                />
               </div>
-              <br />
-<<<<<<< HEAD
               <div>
-              <div
-                id="line"
-                v-if="index != 
-                $store.state.groceryList.length - 1"
-              >
-              </div>
+                <div
+                  id="line"
+                  v-if="index != $store.state.groceryList.length - 1"
+                >
+                  <br />
+                </div>
+
                 <br />
               </div>
-=======
-
->>>>>>> f3d176352a620297788b599d5aee9db7c742728c
             </li>
           </ul>
         </form>
       </div>
-  
-    <br />
-    
+
+      <br />
+
       <div id="button-container">
         <button class="add-btn" v-on:click="$store.state.groceryList.push('')">
           Add Item
         </button>
-         <button class="select-all-btn" @click="toggleSelectAll">{{ isAllSelected() ? 'Unselect' : 'Select All' }}</button>
+        <button class="select-all-btn" @click="toggleSelectAll">
+          {{ isAllSelected() ? "Unselect" : "Select All" }}
+        </button>
 
-          <button class="delete-btn" v-on:click="deleteItems">
+        <button class="delete-btn" v-on:click="deleteItems">
           Delete Items
         </button>
-      </div>  
+      </div>
     </div>
- 
+
     <br />
     <div id="save">
       <router-link v-bind:to="{ name: 'grocery-list' }"
@@ -80,7 +77,8 @@ export default {
   data() {
     return {
       indexOfGroceryList: [],
-      isSelected:[],   originalGroceryList: [],
+      isSelected: [],
+      originalGroceryList: [],
     };
   },
   methods: {
@@ -95,25 +93,28 @@ export default {
 
       this.indexOfGroceryList = [];
     },
-   toggleSelectAll() {
+    toggleSelectAll() {
       if (this.isAllSelected()) {
         this.indexOfGroceryList = [];
       } else {
-        this.indexOfGroceryList = [...Array(this.$store.state.groceryList.length).keys()];
+        this.indexOfGroceryList = [
+          ...Array(this.$store.state.groceryList.length).keys(),
+        ];
       }
     },
     isAllSelected() {
-      return this.indexOfGroceryList.length === this.$store.state.groceryList.length;
+      return (
+        this.indexOfGroceryList.length === this.$store.state.groceryList.length
+      );
     },
     refreshPage() {
-   
       this.$router.push({ name: this.$route.name, params: this.$route.params });
     },
   },
-    cancelEdit() {
-      this.isSelected = [...this.originalSelection];
-    },
-  
+  cancelEdit() {
+    this.isSelected = [...this.originalSelection];
+  },
+
   computed: {},
 };
 </script>
@@ -124,11 +125,12 @@ export default {
 }
 
 #grocery {
-  display: block;
+  display: flex;
+  justify-content: center;
   align-items: center;
   margin: auto;
   background: #fff;
-  display:flex;
+  display: flex;
   flex-direction: column;
 }
 
@@ -137,27 +139,28 @@ h2 {
   margin-left: 0px;
   padding: 0px;
   background: #fff;
-  width: 35rem;
   margin-bottom: 0px;
   padding-bottom: 0px;
+  width:37rem;
 }
 
 li {
   list-style: none;
   font-size: 1rem;
   background: #fff;
-  display: flex;
-  font-family: 'Montserrat', sans-serif;
-  border-bottom: 1px solid #333;
 
+  font-family: "Montserrat", sans-serif;
+  border-bottom: 1px solid #333;
+  margin-top: 2rem;
 }
 
-li :nth-last-child(1){
-  border:none;
+li :nth-last-child(1) {
+  border: none;
 }
 
 ul {
-  width: 40rem;
+  
+  width: 35rem;
   background: #fff;
 }
 
@@ -165,13 +168,10 @@ ul {
   margin-right: 3%;
 }
 
-
-
 #button-container-2 {
   display: flex;
   justify-content: center;
   position: relative;
-  left: 18rem;
   margin-top: 0px;
   margin-bottom: 30px;
   width: 35rem;
@@ -181,12 +181,12 @@ button {
   margin: 0px 10px;
 }
 
-#button-container :nth-child(1){
-background: rgb(151, 199, 112);
+#button-container :nth-child(1) {
+  background: rgb(151, 199, 112);
 }
 
-#button-container :nth-child(2){
-background: rgb(241, 193, 89);
+#button-container :nth-child(2) {
+  background: rgb(241, 193, 89);
 }
 
 #list-title {
@@ -195,15 +195,14 @@ background: rgb(241, 193, 89);
   margin: 0px;
 }
 
-li{
+li {
   display: flex;
   flex-direction: column;
-
 }
 
-input[type=text] {
+input[type="text"] {
   width: 100%;
- flex-grow: 1;
+  flex-grow: 1;
 }
 #list-container {
   display: flex;
@@ -212,7 +211,7 @@ input[type=text] {
   left: 30px;
 }
 
-p{
+p {
   margin: 0 5px;
 }
 .delete-btn {
@@ -230,7 +229,7 @@ p{
 .delete-btn a {
   color: #fff;
 }
-.delete-btn{
+.delete-btn {
   background: rgb(121, 15, 15);
 }
 
@@ -240,20 +239,20 @@ p{
 }
 
 #textbox {
-  width: 8rem;
+  width: 2rem;
 }
-p{
-  width:1rem;
+p {
+  width: 1rem;
   font-family: "Montserrat";
 }
 
-#rowContainer{
+#rowContainer {
   display: flex;
+  justify-content: center;
 }
 
-#line{
+#line {
   color: black;
 }
-
 
 </style>
