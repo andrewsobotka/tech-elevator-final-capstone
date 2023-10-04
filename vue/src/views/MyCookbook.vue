@@ -44,6 +44,7 @@
 <script>
 import RecipeCard from "../components/RecipeCard.vue";
 import NewRecipeForm from '../components/NewRecipeForm.vue';
+import APIService from '../services/APIService.js';
 
 
 export default {
@@ -60,6 +61,11 @@ export default {
         return recipe.creatorId == this.$store.state.user.id;
       });
     },
+  },
+  created(){
+    APIService.getRecipes().then(response => {
+      this.$store.commit('SET_RECIPES', response.data)
+    });
   }
 };
 </script>
