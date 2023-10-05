@@ -1,5 +1,7 @@
 package com.techelevator.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.validation.constraints.NotBlank;
 import java.util.List;
 
@@ -113,8 +115,8 @@ public class Recipe {
         return isPublished;
     }
 
-    public void setPublished(boolean published) {
-        isPublished = published;
+    public void setPublished(boolean isPublished) {
+        this.isPublished = isPublished;
     }
 
     public boolean isFeatured() {

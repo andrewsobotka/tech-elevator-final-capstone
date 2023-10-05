@@ -26,8 +26,8 @@ export default {
     getCreatorUsernameByRecipeId(recipeId){
         return axios.get(`/recipes/${recipeId}/creator`)
     },
-    setFeatured(recipe){
-        return axios.put(`/recipes/${recipe.recipeId}/featured`, recipe.isFeatured)
+    setFeatured(recipe, isFeatured){
+        return axios.put(`/recipes/${recipe.recipeId}/featured?isFeatured=${isFeatured}`, recipe)
     },
 
     addToFavorites(recipeId){

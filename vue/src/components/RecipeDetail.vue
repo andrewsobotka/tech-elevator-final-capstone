@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    {{recipe}}
     
     <div class="header-favorite-group">
       <!-- <FavoriteIcon
@@ -75,7 +76,7 @@
         ><button>Edit Recipe</button></router-link
       >
       <button class="delete-btn">Delete Recipe</button>
-      <button id="featureButton" v-if="$store.state.user.authorities[0].name == 'ROLE_ADMIN'" v-on:click="toggleFeatured()">{{recipe.featured ? "Unfeature Recipe On Homepage": "Feature Recipe On Homepage"}}</button>
+      <button id="featureButton" v-if="$store.state.user.authorities[0].name == 'ROLE_ADMIN'" v-on:click="toggleFeatured()">{{this.$store.state.recipe.featured ? "Unfeature Recipe On Homepage": "Feature Recipe On Homepage"}}</button>
       </div>
     </div>
   </div>
@@ -130,9 +131,9 @@ export default {
     }
       },
     toggleFeatured(){
-        this.$store.commit('SET_FEATURED_RECIPE', this.recipe);
+      this.$store.commit('SET_FEATURED_RECIPE');
 
-      APIService.setFeatured(this.recipe.recipeId, this.$store.state.recipe)
+      APIService.setFeatured(this.recipe, this.$store.state.recipe.featured)
         .then((response)=>{
           if(response.status === 200) {
               this.location.reload();

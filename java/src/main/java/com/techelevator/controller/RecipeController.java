@@ -55,16 +55,17 @@ public class  RecipeController {
     @PreAuthorize("isAuthenticated()")
     @RolesAllowed("admin")
     @RequestMapping(path = "/recipes/{recipeId}/featured", method = RequestMethod.PUT)
-    public Recipe setFeatured(@Valid @RequestBody Recipe recipe, Principal principal, @RequestParam boolean isFeatured, @PathVariable int recipeId) {
+    public Recipe setFeatured(@Valid @RequestBody Recipe recipe, Principal principal,  @PathVariable int recipeId, @RequestParam boolean isFeatured) {
         recipe.setRecipeId(recipeId);
         try {
-            Recipe updatedRecipe = recipeDao.setFeaturedRecipe(recipe, principal);
+            Recipe updatedRecipe = recipeDao.setFeaturedRecipe(recipe, isFeatured, principal);
             return updatedRecipe;
 
         } catch (DaoException e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, " Recipe not found");
         }
     }
+    
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(path = "/recipes/{recipeId}/favorites",method = RequestMethod.PUT)
     public Recipe setFavoriteRecipe(@Valid @RequestBody Recipe recipe, Principal principal, @RequestParam boolean favorite, @PathVariable int recipeId) {

@@ -94,7 +94,7 @@ public class JdbcRecipeDao implements RecipeDao {
     }
 
     @Override
-    public Recipe setFeaturedRecipe(Recipe recipe, Principal principal){
+    public Recipe setFeaturedRecipe(Recipe recipe, Boolean isFeatured, Principal principal){
 
         Recipe updatedRecipe = null;
 
@@ -102,7 +102,7 @@ public class JdbcRecipeDao implements RecipeDao {
                 "SET is_featured = ? " +
                 "WHERE recipe_id = ?;";
         try {
-            int rowsAffected = jdbcTemplate.update(sql, recipe.isFeatured(), recipe.getRecipeId());
+            int rowsAffected = jdbcTemplate.update(sql, isFeatured, recipe.getRecipeId());
             if (rowsAffected == 0) {
                 throw new DaoException("Zero rows affected, expected at least one");
             }

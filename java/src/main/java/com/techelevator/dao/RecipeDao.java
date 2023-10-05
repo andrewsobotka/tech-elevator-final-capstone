@@ -22,10 +22,9 @@ public interface RecipeDao {
     Integer createRecipe(Recipe recipe, int userId);
 
     int deleteRecipeByRecipeId(int recipe_id);
-
     String getCreatorUsernameByRecipeId(int recipeId);
     List<Recipe> getListOfRecipeByTagId(int tag_id);
-    Recipe setFeaturedRecipe(Recipe recipe, Principal principal);
+    Recipe setFeaturedRecipe(Recipe recipe, Boolean isFeatured, Principal principal);
     Recipe setFavoriteRecipe(Recipe recipe, Principal principal);
 
 }
