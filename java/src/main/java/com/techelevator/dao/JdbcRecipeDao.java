@@ -94,15 +94,15 @@ public class JdbcRecipeDao implements RecipeDao {
     }
 
     @Override
-    public Recipe setFeaturedRecipe(Recipe recipe){
+    public Recipe setFeaturedRecipe(Recipe recipe, Principal principal){
 
         Recipe updatedRecipe = null;
 
         String sql = "UPDATE recipes " +
-                "SET is_featured = true " +
+                "SET is_featured = ? " +
                 "WHERE recipe_id = ?;";
         try {
-            int rowsAffected = jdbcTemplate.update(sql, recipe.getRecipeId());
+            int rowsAffected = jdbcTemplate.update(sql, recipe.isFeatured(), recipe.getRecipeId());
             if (rowsAffected == 0) {
                 throw new DaoException("Zero rows affected, expected at least one");
             }
@@ -117,15 +117,15 @@ public class JdbcRecipeDao implements RecipeDao {
     }
 
     @Override
-    public Recipe unsetFeaturedRecipe(Recipe recipe){
+    public Recipe setFavoriteRecipe(Recipe recipe, Principal principal){
 
         Recipe updatedRecipe = null;
 
         String sql = "UPDATE recipes " +
-                "SET is_featured = false " +
+                "SET favorite = ? " +
                 "WHERE recipe_id = ?;";
         try {
-            int rowsAffected = jdbcTemplate.update(sql, recipe.getRecipeId());
+            int rowsAffected = jdbcTemplate.update(sql, recipe.isFavorite(), recipe.getRecipeId());
             if (rowsAffected == 0) {
                 throw new DaoException("Zero rows affected, expected at least one");
             }
