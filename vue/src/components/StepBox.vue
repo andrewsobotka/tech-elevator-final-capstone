@@ -1,40 +1,51 @@
 <template>
+<div id = "outerContainer">
 <div id="container">
   <div id="login" class="login-body">
+      <div id = "hideButton">
+      <button v-on:click="$emit('hideStep')"><i class="fa-solid fa-x"></i></button>
+      </div>
+      <!-- <button v-on:click="$store.state.stepByStep=false">X</button> -->
       <h2 id="title" >Step {{stepNumber}} </h2><br/>
       <p>{{$store.state.recipe.steps[ `${stepNumber-1}`].instruction}}</p>
       <div id = "buttonContainer">
-      <back-button v-if="$route.params.rank != 1"/>
-      <div id=#whiteBox v-if="$route.params.rank == 1"></div>
-      <button class="steps-btn" v-on:click="$router.push(nextStep())" v-if="Number(this.$route.params.rank) != $store.state.recipe.steps.length">Next <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
-      <button class="steps-btn" v-on:click="$router.push('/recipes')" v-if="Number(this.$route.params.rank) == $store.state.recipe.steps.length">Done! <i class="fa-solid fa-check" style="color: #ffffff;"></i></button>
+      <button v-if="stepNumber != 1" v-on:click="subtractOne"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button>
+      <div id=#whiteBox v-if="stepNumber == 1"></div>
+      <button class="steps-btn" v-on:click="addOne" v-if="stepNumber != $store.state.recipe.steps.length">Next <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
       </div>
   </div>
+</div>
 </div>
 </template>
 
 <script>
 import APIService from "../services/APIService.js";
-import BackButton from './backButton.vue';
 export default {
   name: "Steps",
-  components: {BackButton},
+  components: {},
   data() {
     return {
+        stepNumber:1,
         recipe:Object,
     };
   },
   methods: {
     nextStep(){
         return "/recipes/" + this.$route.params.id+ "/steps/" + (Number(this.$route.params.rank) +1);
+    },
+    addOne(){
+        this.stepNumber = this.stepNumber+1;
+    },
+    subtractOne(){
+      this.stepNumber = this.stepNumber -1;
     }
+    
     
     
   },
   computed:{
-      stepNumber(){
-          return this.$route.params.rank;
-      },
+      
+
       
       
   },
@@ -51,26 +62,26 @@ export default {
 
 <style scoped>
 
+#outerContainer{
+  display: flex;
+  justify-content: center;
+  align-content: space-around;
+
+}
 
 
 .login-body {
-  position: relative;
+  position: fixed;
   background: #fff;
   border-radius: 30px;
   border: 2px solid #333;
   width: auto;
   height: auto;
-  margin: auto;
-  margin-top: 3rem;
-  position: relative;
+  margin-top: 10rem;
   font-family: "DM Sans", sans-serif;
   text-align: center;
   padding: 1rem 3rem;
   width: 50%
-}
-
-.loginDiv a {
-  color: #333;
 }
 
 
@@ -122,4 +133,44 @@ h2{
 p{
   font-size: 1.7rem;
 }
+
+
+.popup{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  z-index: 99;
+  background-color: rgba(0,0,0,0.2);
+
+  display: flex;
+  align-items:center;
+  justify-content: center;
+
+  
+}
+.popup-inner{
+    background: #fff;
+    padding:32px;
+  }
+
+  #hideButton{
+    display: flex;
+    justify-content: left;
+  }
+
+  #hideButton
+  button{
+    background:rgb(200, 40, 0);
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: .5rem;
+  }
+
+  #outerContainer{
+    /* background:rgba(153, 153, 153, 0.246); */
+    backdrop-filter: blur(7px);
+  }
 </style>

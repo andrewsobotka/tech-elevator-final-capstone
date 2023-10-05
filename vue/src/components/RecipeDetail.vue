@@ -47,9 +47,11 @@
       </div>
     </div>
 
-    <router-link :to="{name:'steps', params: { id: recipe.recipeId , rank:1}}"  target="_blank"><button class="steps-btn">
+    <!-- <router-link :to="{name:'steps', params: { id: recipe.recipeId , rank:1}}"  target="_blank"> -->
+      <button class="steps-btn" v-on:click="$emit('showStep')">
       Click Here to Follow the Instructions Step by Step
-    </button></router-link>
+    </button>
+    <!-- </router-link> -->
 
     <div class="instructions">
       <h2>Instructions:</h2>
@@ -94,7 +96,7 @@ export default {
     return {
       ingredientName: '',
       creatorUsername:"",
-      creatorIsPrivate:false
+      creatorIsPrivate:false,
     };
   },
   methods: {
@@ -130,7 +132,7 @@ export default {
     toggleFeatured(){
         this.$store.commit('SET_FEATURED_RECIPE', this.recipe);
 
-      APIService.setFeatured(this.recipe.recipeId, this.$store.state.recipe.featured)
+      APIService.setFeatured(this.recipe.recipeId, this.$store.state.recipe)
         .then((response)=>{
           if(response.status === 200) {
               this.location.reload();
@@ -145,6 +147,10 @@ export default {
           }
         }
       );
+    },
+    stepByStep(){
+      // this.$store.commit("STEP_BY_STEP", true)
+      this.$emit('showStep')
     }
   },
   created() {
