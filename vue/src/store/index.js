@@ -143,5 +143,12 @@ export default new Vuex.Store({
         }
         state.favoritedLibrary = newArray;
     },
+    UPDATE_RECIPE(state, editedRecipe){
+      for(let i = 0; i < state.recipes.length; i++){
+        if(state.recipes[i].recipeId == editedRecipe.recipeId){
+          state.recipes[i] = editedRecipe;
+        }
+      }
+    }
   }
 })

@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <form id="addNewRecipe" v-on:submit.prevent="createNewRecipe">
+
       <div>
         <h3>Add New Recipe</h3>
       </div>
@@ -136,9 +137,9 @@
           <input
             type="checkbox"
             id="tag"
-            v-bind:value="tag.tagId"
+            v-bind:value="tag"
             v-bind:name="tag.tag"
-            v-model="listOfTagIds"
+            v-model="newRecipe.tags"
           />
         <label for="tag">{{ tag.tag }}</label>
         </div>
@@ -169,7 +170,7 @@ export default {
       newRecipe: {
         ingredients: [{ ingredient_id: 0, ingredient:'' }],
         steps: [{step_id:0, rank:0, instruction:""}],
-        tags: [],
+        tags:[],
         keywords:'',
       },
     };
@@ -179,8 +180,12 @@ export default {
       APIService.addRecipe(this.newRecipe)
         .then(response => {
           this.$store.commit('ADD_RECIPES', response.data)
-          this.$router.push(`/recipes/${response.data}`);
+          this.$router.push(`/recipes/${response.data}`)
+          }).then(()=>{
+          APIService.getRecipes().then(response => {
+          this.$store.commit('SET_RECIPES', response.data)
           })
+        })
         .catch(
         (error) => {
           if(error.response) {

@@ -106,4 +106,9 @@ public class RecipeService {
     public String getCreatorUsernameByRecipeId(int recipeId) {
         return recipeDao.getCreatorUsernameByRecipeId(recipeId);
     }
+
+    // Update the Recipe
+    public void updateRecipe(int recipeId, Recipe recipe, Principal principal) {
+        recipeDao.updateRecipe(recipeId, recipe, principal);
+    }
 }

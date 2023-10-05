@@ -6,15 +6,17 @@ import java.util.List;
 public class Meal {
     private int mealId;
     private String mealName;
+    private String mealDescription;
     private Date mealDate;
     private List<Recipe> mealRecipes;
 
     public Meal() {
     }
 
-    public Meal(int mealId, String mealName, Date mealDate, List<Recipe> mealRecipes) {
+    public Meal(int mealId, String mealName, String mealDescription, Date mealDate, List<Recipe> mealRecipes) {
         this.mealId = mealId;
         this.mealName = mealName;
+        this.mealDescription = mealDescription;
         this.mealDate = mealDate;
         this.mealRecipes = mealRecipes;
     }
@@ -33,6 +35,14 @@ public class Meal {
 
     public void setMealName(String mealName) {
         this.mealName = mealName;
+    }
+
+    public String getMealDescription() {
+        return mealDescription;
+    }
+
+    public void setMealDescription(String mealDescription) {
+        this.mealDescription = mealDescription;
     }
 
     public Date getMealDate() {

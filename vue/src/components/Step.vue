@@ -89,7 +89,7 @@ export default {
 }
 
 #alert{
-  color:red;
+  color:rgb(153, 30, 30);
   font-family: "Montserrat";
   display: flex;
   justify-content: center;

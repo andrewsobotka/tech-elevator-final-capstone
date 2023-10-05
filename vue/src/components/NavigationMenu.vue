@@ -4,9 +4,10 @@
       <div class="headerbar">
         <div class="logo">
           <div class="logo-img">
-            <img src="https://i.imgur.com/q1E063E.png" alt="" />
+           <router-link v-bind:to="{ name: 'home' }"> <img src="https://i.imgur.com/q1E063E.png" alt="" />
+            </router-link>
           </div>
-          <router-link v-bind:to="{ name: 'home' }"> Sage </router-link>
+          <router-link v-bind:to="{ name: 'home' }" class="sageTitle"> Sage </router-link>
         </div>
 
         <div class="navbar">
@@ -131,14 +132,28 @@ a {
   -webkit-text-stroke: 1.2px #c5b39e77;
 }
 
-@media only screen and (max-width: 980px) {
+@media only screen and (max-width: 680px) {
   .headerbar {
    background-size: 200%;
   /* background-size: 350%; */
   background-repeat: no-repeat;
-  background-position: 50% 35%;
+  background-position: 43% 35%;
   background-image: url("https://images.unsplash.com/photo-1524222717473-730000096953?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80");
   transition: ease 1s;
+  }
+
+  .sageTitle {
+    display:none;
+  }
+
+  .logo-img{
+    margin-left: -50px;
+  margin-top: 10px;
+  }
+
+  .menu {
+    position: relative;
+    margin-top: -50px;
   }
 }
 </style>

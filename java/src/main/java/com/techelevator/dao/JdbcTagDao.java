@@ -127,10 +127,11 @@ public class JdbcTagDao implements TagDao {
     // Update a tag
     @Override
     public boolean updateTag(Integer tagId, Tag tag) {
-        String sql = "UPDATE tags " +
-                     "SET tag = ? " +
-                     "WHERE tag_id = ? " +
-                     "RETURNING tag_id;";
+        String sql =
+                "UPDATE tags " +
+                "SET tag = ? " +
+                "WHERE tag_id = ? " +
+                "RETURNING tag_id;";
         try {
             jdbcTemplate.queryForObject(sql, Integer.class, tag.getTag(), tagId);
         } catch (DataAccessException e){

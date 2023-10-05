@@ -24,25 +24,27 @@ public class JdbcMealDao implements MealDao {
     }
 
     @Override
-    public List<Meal> getListOfMeals() {
+    public List<Meal> getListOfMeals(int userId) {
         List<Meal> meals = new ArrayList<>();
-        String sql = "SELECT * FROM meals";
-
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        String sql =
+                "SELECT * FROM meals " +
+                "JOIN users_meals ON meals.meal_id = users_meals.meal_id " +
+                "JOIN users ON users_meals.user_id = users.user_id " +
+                "WHERE users.user_id = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
         while (results.next()) {
             Meal meal = mapRowToMeal(results);
             meals.add(meal);
         }
-
         return meals;
     }
 
     @Override
-    public Meal getMealByMealId(int meal_id) {
+    public Meal getMealById(int mealId) {
         Meal meal = null;
         String sql = "SELECT * FROM meals where meal_id = ?;";
         try {
-            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, meal_id);
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, mealId);
             if (results.next()) {
                 meal = mapRowToMeal(results);
             }
@@ -55,32 +57,24 @@ public class JdbcMealDao implements MealDao {
     }
 
     @Override
-    public List<Meal> getListOfMyMeals(Principal principal) {
-        List<Meal> meals = new ArrayList<>();
-        Integer userId;
-        String sql_user_id = "SELECT user_id FROM users " +
-                             "WHERE username = ?;";
-        String sql_meals = "SELECT meals.meal_id, meals.meal_name, meals.meal_date FROM meals " +
-                            "LEFT JOIN users_meals on meals.meal_id = users_meals.meal_id " +
-                            "LEFT JOIN users on users_meals.user_id = users.user_id " +
-                            "WHERE users.user_id = ?;";
-        try {
-            userId = jdbcTemplate.queryForObject(sql_user_id, Integer.class, principal.getName());
-            SqlRowSet results = jdbcTemplate.queryForRowSet(sql_meals, userId);
-            while (results.next()) {
-                Meal meal = mapRowToMeal(results);
-                meals.add(meal);
-            }
-        } catch (DataAccessException e){
-            throw new DataAccessException(e.toString()) {};
-        }
-        return meals;
+    public int createMeal(Meal meal, int userId) {
+        return 0;
+    }
+
+    @Override
+    public int editMeal(int mealId, Meal meal, Principal principal) {
+        return 0;
+    }
+    @Override
+    public void deleteMeal(int mealId, Principal principal) {
+
     }
 
     private Meal mapRowToMeal(SqlRowSet rs) {
         Meal meal = new Meal();
         meal.setMealId(rs.getInt("meal_id"));
         meal.setMealName(rs.getString("meal_name"));
+        meal.setMealDescription(rs.getString("meal_description"));
         meal.setMealDate(rs.getDate("meal_date"));
         return meal;
     }

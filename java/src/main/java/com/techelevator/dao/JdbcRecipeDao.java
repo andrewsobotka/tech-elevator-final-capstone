@@ -94,7 +94,7 @@ public class JdbcRecipeDao implements RecipeDao {
     }
 
     @Override
-    public Recipe setFeaturedRecipe(Recipe recipe, Principal principal){
+    public Recipe setFeaturedRecipe(Recipe recipe, Boolean isFeatured, Principal principal){
 
         Recipe updatedRecipe = null;
 
@@ -102,7 +102,7 @@ public class JdbcRecipeDao implements RecipeDao {
                 "SET is_featured = ? " +
                 "WHERE recipe_id = ?;";
         try {
-            int rowsAffected = jdbcTemplate.update(sql, recipe.isFeatured(), recipe.getRecipeId());
+            int rowsAffected = jdbcTemplate.update(sql, isFeatured, recipe.getRecipeId());
             if (rowsAffected == 0) {
                 throw new DaoException("Zero rows affected, expected at least one");
             }
@@ -121,7 +121,8 @@ public class JdbcRecipeDao implements RecipeDao {
 
         Recipe updatedRecipe = null;
 
-        String sql = "UPDATE recipes " +
+        String sql =
+                "UPDATE users_recipes " +
                 "SET favorite = ? " +
                 "WHERE recipe_id = ?;";
         try {
@@ -212,6 +213,20 @@ public class JdbcRecipeDao implements RecipeDao {
             return results.getString("username");
         } else {
             return null;
+        }
+    }
+
+    @Override
+    public void updateRecipe(int recipeId, Recipe recipe, Principal principal) {
+        String sql =
+                "UPDATE recipes " +
+                "SET recipe_name = ? , image_url = ? , description = ? , serving_size = ? , keywords = ? , is_published = ? ,  is_featured = ? " +
+                "WHERE recipe_id = ? ";
+        try {
+            jdbcTemplate.update(sql, recipe.getRecipeName(), recipe.getImgUrl(), recipe.getDescription(), recipe.getServingSize(), recipe.getKeywords(), recipe.isPublished(), recipe.isFeatured(), recipeId);
+
+        } catch (DataAccessException e){
+            throw new DataAccessException("Error Updating") {};
         }
     }
 

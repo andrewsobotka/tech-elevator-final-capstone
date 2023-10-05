@@ -1,6 +1,5 @@
 <template>
-  <div class="container">
-    
+  <div class="container">    
     <div class="header-favorite-group">
       <!-- <FavoriteIcon
         :recipe="recipe"
@@ -13,7 +12,7 @@
     </div>
     <section class="servings">
       Serving size: {{ currentRecipe.servingSize }} | Creator Name:
-      {{ creatorIsPrivate? "anonymous" : creatorUsername }}
+      {{ creatorIsPrivate? "anonymous" : firstLetterUppercase }}
     </section>
 
     <section class="description">
@@ -47,9 +46,11 @@
       </div>
     </div>
 
-    <router-link :to="{name:'steps', params: { id: recipe.recipeId , rank:1}}"  target="_blank"><button class="steps-btn">
+    <!-- <router-link :to="{name:'steps', params: { id: recipe.recipeId , rank:1}}"  target="_blank"> -->
+      <button class="steps-btn" v-on:click="$emit('showStep')">
       Click Here to Follow the Instructions Step by Step
-    </button></router-link>
+    </button>
+    <!-- </router-link> -->
 
     <div class="instructions">
       <h2>Instructions:</h2>
@@ -70,10 +71,13 @@
           $store.state.user.id === recipe.creatorId ||
           $store.state.user.authorities[0].name == 'ROLE_ADMIN'
         " 
-        ><button>Edit Recipe</button></router-link
+        ><button >Edit Recipe</button></router-link
       >
-      <button class="delete-btn">Delete Recipe</button>
-      <button id="featureButton" v-if="$store.state.user.authorities[0].name == 'ROLE_ADMIN'" v-on:click="toggleFeatured()">{{recipe.featured ? "Unfeature Recipe On Homepage": "Feature Recipe On Homepage"}}</button>
+      <button class="delete-btn" v-if="
+          $store.state.user.id === recipe.creatorId ||
+          $store.state.user.authorities[0].name == 'ROLE_ADMIN'
+        " >Delete Recipe</button>
+      <button id="featureButton" v-if="$store.state.user.authorities[0].name == 'ROLE_ADMIN'" v-on:click="toggleFeatured()">{{this.$store.state.recipe.featured ? "Unfeature Recipe On Homepage": "Feature Recipe On Homepage"}}</button>
       </div>
     </div>
   </div>
@@ -94,7 +98,7 @@ export default {
     return {
       ingredientName: '',
       creatorUsername:"",
-      creatorIsPrivate:false
+      creatorIsPrivate:false,
     };
   },
   methods: {
@@ -128,9 +132,9 @@ export default {
     }
       },
     toggleFeatured(){
-        this.$store.commit('SET_FEATURED_RECIPE', this.recipe);
+      this.$store.commit('SET_FEATURED_RECIPE');
 
-      APIService.setFeatured(this.recipe.recipeId, this.$store.state.recipe.featured)
+      APIService.setFeatured(this.recipe, this.$store.state.recipe.featured)
         .then((response)=>{
           if(response.status === 200) {
               this.location.reload();
@@ -145,6 +149,10 @@ export default {
           }
         }
       );
+    },
+    stepByStep(){
+      // this.$store.commit("STEP_BY_STEP", true)
+      this.$emit('showStep')
     }
   },
   created() {
@@ -168,6 +176,11 @@ export default {
     currentRecipe() {
       return this.$store.state.recipe;
     },
+    firstLetterUppercase(){
+      let name = this.creatorUsername.substring(0,1).toUpperCase();
+      name = name + this.creatorUsername.substring(1);
+      return name;
+    }
   },  
 };
 </script>

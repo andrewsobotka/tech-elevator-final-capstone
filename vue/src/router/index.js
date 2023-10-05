@@ -17,7 +17,6 @@ import EditRecipe from '../views/EditRecipe.vue'
 import EditGroceryList from '../views/EditGroceryList.vue'
 import FilterByTag from '../views/FilterByTags.vue'
 import Tags from "../views/EditTags.vue"
-import Steps from "../views/Steps.vue"
 
 
 Vue.use(Router)
@@ -152,14 +151,6 @@ const router = new Router({
       path: "/tags",
       name: "tags",
       component: Tags,
-      meta: {
-        requiresAuth: true
-      }
-    },
-    {
-      path: "/recipes/:id/steps/:rank",
-      name: "steps",
-      component: Steps,
       meta: {
         requiresAuth: true
       }
