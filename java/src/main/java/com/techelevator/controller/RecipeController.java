@@ -55,7 +55,7 @@ public class  RecipeController {
     @PreAuthorize("isAuthenticated()")
     @RolesAllowed("admin")
     @RequestMapping(path = "/recipes/{recipeId}/featured", method = RequestMethod.PUT)
-    public Recipe setFeatured(@Valid @RequestBody Recipe recipe, Principal principal, @RequestParam boolean isFeatured, @PathVariable int recipeId) {
+    public Recipe setFeatured(@Valid @RequestBody Recipe recipe, Principal principal, @RequestParam boolean featured, @PathVariable int recipeId) {
         recipe.setRecipeId(recipeId);
         try {
             Recipe updatedRecipe = recipeDao.setFeaturedRecipe(recipe, principal);
