@@ -65,7 +65,7 @@ public class  RecipeController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, " Recipe not found");
         }
     }
-    
+
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(path = "/recipes/{recipeId}/favorites",method = RequestMethod.PUT)
     public Recipe setFavoriteRecipe(@Valid @RequestBody Recipe recipe, Principal principal, @RequestParam boolean favorite, @PathVariable int recipeId) {
