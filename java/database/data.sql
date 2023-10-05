@@ -212,15 +212,15 @@ INSERT INTO recipes (creator_id, recipe_name, image_url, description, serving_si
 VALUES ((SELECT user_id FROM users WHERE username = 'coyo'), 'Pumpkin Pie', 'https://www.lemonblossoms.com/wp-content/uploads/2020/09/Pumpkin-Pie-S3.jpg', 'A classic pumpkin pie with a flaky crust.', 8, 'pumpkin, pumpkin spice, desserts, pies, dessert, fall recipes, autumn, fall recipe', true, true);
 
 -- Insert Ingredients for Pumpkin Pie Recipe
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (20, '1 1/2 cups (360g) canned pumpkin puree');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (21, '1/2 cup (100g) granulated sugar');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (22, '1 teaspoon (2g) ground cinnamon');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (23, '1/2 teaspoon (1g) ground ginger');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (24, '1/4 teaspoon (0.5g) ground nutmeg');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (25, '1/4 teaspoon (0.5g) ground cloves');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (26, '2 large eggs');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (27, '1 9-inch (23cm) unbaked pie crust');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (28, '1 cup (240ml) evaporated milk');
+INSERT INTO ingredients (ingredient) VALUES ('1 1/2 cups (360g) canned pumpkin puree');
+INSERT INTO ingredients (ingredient) VALUES ('1/2 cup (100g) granulated sugar');
+INSERT INTO ingredients (ingredient) VALUES ('1 teaspoon (2g) ground cinnamon');
+INSERT INTO ingredients (ingredient) VALUES ('1/2 teaspoon (1g) ground ginger');
+INSERT INTO ingredients (ingredient) VALUES ('1/4 teaspoon (0.5g) ground nutmeg');
+INSERT INTO ingredients (ingredient) VALUES ('1/4 teaspoon (0.5g) ground cloves');
+INSERT INTO ingredients (ingredient) VALUES ('2 large eggs');
+INSERT INTO ingredients (ingredient) VALUES ('1 9-inch (23cm) unbaked pie crust');
+INSERT INTO ingredients (ingredient) VALUES ('1 cup (240ml) evaporated milk');
 
 -- Link Ingredients to Pumpkin Pie Recipe
 INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (20, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Pie'));
@@ -300,13 +300,13 @@ INSERT INTO recipes (creator_id, recipe_name, image_url, description, serving_si
 VALUES ((SELECT user_id FROM users WHERE username = 'coyo'), 'Pumpkin Spiced Latte', 'https://www.inspiredtaste.net/wp-content/uploads/2011/11/Pumpkin-Spice-Latte-Recipe-1200.jpg', 'A warm and comforting pumpkin spiced latte.', 1, 'coffee, pumpkin, pumpkin spice, latte, fall recipes, fall, breakfast', true, true);
 
 -- Insert Ingredients for Pumpkin Spiced Latte Recipe
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (29, '1 cup (240ml) brewed coffee');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (30, '2 tablespoons (30ml) pumpkin puree');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (31, '2 tablespoons (30ml) maple syrup');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (32, '1/2 teaspoon (1g) pumpkin pie spice');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (33, '1/4 cup (60ml) milk');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (34, 'Whipped cream, for topping (optional)');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (35, 'Ground cinnamon, for garnish (optional)');
+INSERT INTO ingredients (ingredient) VALUES ('1 cup (240ml) brewed coffee');
+INSERT INTO ingredients (ingredient) VALUES ('2 tablespoons (30ml) pumpkin puree');
+INSERT INTO ingredients (ingredient) VALUES ('2 tablespoons (30ml) maple syrup');
+INSERT INTO ingredients (ingredient) VALUES ('1/2 teaspoon (1g) pumpkin pie spice');
+INSERT INTO ingredients (ingredient) VALUES ('1/4 cup (60ml) milk');
+INSERT INTO ingredients (ingredient) VALUES ('Whipped cream, for topping (optional)');
+INSERT INTO ingredients (ingredient) VALUES ('Ground cinnamon, for garnish (optional)');
 
 -- Link Ingredients to Pumpkin Spiced Latte Recipe
 INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (29, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Pumpkin Spiced Latte'));
@@ -392,11 +392,11 @@ VALUES (
 
 -- Insert Ingredients for French Fries Recipe
 -- Replace the ingredient_id and ingredient values with your specific ingredients
-INSERT INTO ingredients (ingredient_id, ingredient)
+INSERT INTO ingredients (ingredient)
 VALUES
-  (36, 'Potatoes'),
-  (37, 'Salt'),
-  (38, 'Oil');
+  ('Potatoes'),
+  ('Salt'),
+  ('Oil');
 
 -- Link Ingredients to French Fries Recipe
 -- Replace recipe_id and ingredient_id values with the appropriate IDs
@@ -466,15 +466,15 @@ INSERT INTO recipes (creator_id, recipe_name, image_url, description, serving_si
 VALUES ((SELECT user_id FROM users WHERE username = 'sefanit'), 'Spaghetti', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvCnZmiKSCDbCzyXO_l-4euhS0Zj3yYE11Nw&usqp=CAU', 'Classic spaghetti recipe with tomato sauce and meatballs.', 4, 'spaghetti, pasta, Italian, cheese', false, true);
 
 -- Insert Ingredients for Spaghetti Recipe
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (39, '8 oz (225g) spaghetti');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (40, '1 cup (240ml) tomato sauce');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (41, '1/2 lb (225g) ground beef');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (42, '1/2 onion, finely chopped');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (43, '1 clove garlic, minced');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (44, '1/4 cup (60ml) red wine');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (45, '1/4 cup (60ml) water');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (46, '2 tablespoons (30ml) olive oil');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (47, 'Salt and pepper to taste');
+INSERT INTO ingredients (ingredient) VALUES ('8 oz (225g) spaghetti');
+INSERT INTO ingredients (ingredient) VALUES ('1 cup (240ml) tomato sauce');
+INSERT INTO ingredients (ingredient) VALUES ('1/2 lb (225g) ground beef');
+INSERT INTO ingredients (ingredient) VALUES ('1/2 onion, finely chopped');
+INSERT INTO ingredients (ingredient) VALUES ('1 clove garlic, minced');
+INSERT INTO ingredients (ingredient) VALUES ('1/4 cup (60ml) red wine');
+INSERT INTO ingredients (ingredient) VALUES ('1/4 cup (60ml) water');
+INSERT INTO ingredients (ingredient) VALUES ('2 tablespoons (30ml) olive oil');
+INSERT INTO ingredients (ingredient) VALUES ('Salt and pepper to taste');
 
 -- Link Ingredients to Spaghetti Recipe
 INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (39, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Spaghetti'));
@@ -545,13 +545,13 @@ INSERT INTO recipes (creator_id, recipe_name, image_url, description, serving_si
 VALUES ((SELECT user_id FROM users WHERE username = 'andrew'), 'Baked Salmon', 'https://www.wholesomeyum.com/wp-content/uploads/2021/10/wholesomeyum-Baked-Salmon-Recipe-How-To-Cook-Salmon-In-The-Oven-1.jpg', 'A delicious and healthy baked salmon recipe.', 4, 'salmon, seafood, fish, healthy', false, true);
 
 -- Insert Ingredients for Baked Salmon Recipe
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (48, '4 salmon fillets');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (49, '2 tablespoons (30ml) olive oil');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (50, '2 cloves garlic, minced');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (51, '1 lemon, sliced');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (52, '1 teaspoon (2g) dried oregano');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (53, 'Salt and pepper to taste');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (54, 'Fresh parsley, chopped, for garnish (optional)');
+INSERT INTO ingredients (ingredient) VALUES ('4 salmon fillets');
+INSERT INTO ingredients (ingredient) VALUES ('2 tablespoons (30ml) olive oil');
+INSERT INTO ingredients (ingredient) VALUES ('2 cloves garlic, minced');
+INSERT INTO ingredients (ingredient) VALUES ('1 lemon, sliced');
+INSERT INTO ingredients (ingredient) VALUES ('1 teaspoon (2g) dried oregano');
+INSERT INTO ingredients (ingredient) VALUES ('Salt and pepper to taste');
+INSERT INTO ingredients (ingredient) VALUES ('Fresh parsley, chopped, for garnish (optional)');
 
 -- Link Ingredients to Baked Salmon Recipe
 INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (48, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Baked Salmon'));
@@ -622,16 +622,16 @@ INSERT INTO recipes (creator_id, recipe_name, image_url, description, serving_si
 VALUES ((SELECT user_id FROM users WHERE username = 'andrew'), 'Ratatouille', 'https://cookieandkate.com/images/2019/09/best-ratatouille-recipe-1-1.jpg', 'A classic French vegetable stew bursting with flavors.', 4, 'ratatouille, French cuisine, vegetables, tomato, french, vegan, vegetarian, vegetables, summer, zucchini, marinara', false, true);
 
 -- Insert Ingredients for Ratatouille Recipe
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (55, '1 large eggplant, diced');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (56, '2 zucchinis, diced');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (57, '2 red bell peppers, diced');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (58, '1 large onion, chopped');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (59, '4 cloves garlic, minced');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (60, '2 cups (480ml) tomato sauce');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (61, '1 teaspoon (2g) dried thyme');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (62, '1 teaspoon (2g) dried basil');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (63, 'Salt and pepper to taste');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (64, 'Fresh basil leaves, for garnish (optional)');
+INSERT INTO ingredients (ingredient) VALUES ('1 large eggplant, diced');
+INSERT INTO ingredients (ingredient) VALUES ('2 zucchinis, diced');
+INSERT INTO ingredients (ingredient) VALUES ('2 red bell peppers, diced');
+INSERT INTO ingredients (ingredient) VALUES ('1 large onion, chopped');
+INSERT INTO ingredients (ingredient) VALUES ('4 cloves garlic, minced');
+INSERT INTO ingredients (ingredient) VALUES ('2 cups (480ml) tomato sauce');
+INSERT INTO ingredients (ingredient) VALUES ('1 teaspoon (2g) dried thyme');
+INSERT INTO ingredients (ingredient) VALUES ('1 teaspoon (2g) dried basil');
+INSERT INTO ingredients (ingredient) VALUES ('Salt and pepper to taste');
+INSERT INTO ingredients (ingredient) VALUES ('Fresh basil leaves, for garnish (optional)');
 
 -- Link Ingredients to Ratatouille Recipe
 INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (55, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ratatouille'));
@@ -698,14 +698,14 @@ INSERT INTO recipes (creator_id, recipe_name, image_url, description, serving_si
 VALUES ((SELECT user_id FROM users WHERE username = 'jackie'), 'Mac and Cheese', 'https://ohsweetbasil.com/wp-content/uploads/southern-macaroni-and-cheese-recipe-6-scaled.jpg', 'Creamy and delicious macaroni and cheese.', 4, 'mac and cheese, cheese, macaroni, pasta, comfort food', false, true);
 
 -- Insert Ingredients for Mac and Cheese Recipe
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (65, '2 cups (200g) elbow macaroni');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (66, '1/4 cup (60g) butter');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (67, '1/4 cup (30g) all-purpose flour');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (68, '2 cups (480ml) milk');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (69, '2 cups (200g) shredded cheddar cheese');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (70, 'Salt and pepper to taste');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (71, '1/4 cup (25g) grated Parmesan cheese (optional)');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (72, '1/4 cup (25g) bread crumbs (optional)');
+INSERT INTO ingredients (ingredient) VALUES ('2 cups (200g) elbow macaroni');
+INSERT INTO ingredients (ingredient) VALUES ('1/4 cup (60g) butter');
+INSERT INTO ingredients (ingredient) VALUES ('1/4 cup (30g) all-purpose flour');
+INSERT INTO ingredients (ingredient) VALUES ('2 cups (480ml) milk');
+INSERT INTO ingredients (ingredient) VALUES ('2 cups (200g) shredded cheddar cheese');
+INSERT INTO ingredients (ingredient) VALUES ('Salt and pepper to taste');
+INSERT INTO ingredients (ingredient) VALUES ('1/4 cup (25g) grated Parmesan cheese (optional)');
+INSERT INTO ingredients (ingredient) VALUES ('1/4 cup (25g) bread crumbs (optional)');
 
 -- Link Ingredients to Mac and Cheese Recipe
 INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (65, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Mac and Cheese'));
@@ -775,14 +775,14 @@ INSERT INTO recipes (creator_id, recipe_name, image_url, description, serving_si
 VALUES ((SELECT user_id FROM users WHERE username = 'coyo'), 'Ramen', 'https://thecozycook.com/wp-content/uploads/2023/02/Homemade-Ramen-f.jpg', 'A delicious and comforting bowl of homemade ramen.', 2, 'ramen, noodles, fall, winter, japanese, soup', true, true);
 
 -- Insert Ingredients for Ramen Recipe
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (73, '2 packs of ramen noodles');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (74, '4 cups (960ml) chicken or vegetable broth');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (75, '2 cloves garlic, minced');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (76, '1 tablespoon (15ml) soy sauce');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (77, '1 teaspoon (5g) sesame oil');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (78, '2 boiled eggs, halved');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (79, 'Sliced green onions, for garnish');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (80, 'Sliced seaweed, for garnish');
+INSERT INTO ingredients (ingredient) VALUES ('2 packs of ramen noodles');
+INSERT INTO ingredients (ingredient) VALUES ('4 cups (960ml) chicken or vegetable broth');
+INSERT INTO ingredients (ingredient) VALUES ('2 cloves garlic, minced');
+INSERT INTO ingredients (ingredient) VALUES ('1 tablespoon (15ml) soy sauce');
+INSERT INTO ingredients (ingredient) VALUES ('1 teaspoon (5g) sesame oil');
+INSERT INTO ingredients (ingredient) VALUES ('2 boiled eggs, halved');
+INSERT INTO ingredients (ingredient) VALUES ('Sliced green onions, for garnish');
+INSERT INTO ingredients (ingredient) VALUES ('Sliced seaweed, for garnish');
 
 -- Link Ingredients to Ramen Recipe
 INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (73, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Ramen'));
@@ -848,17 +848,17 @@ INSERT INTO recipes (creator_id, recipe_name, image_url, description, serving_si
 VALUES ((SELECT user_id FROM users WHERE username = 'coyo'), 'Vegetable Stir-Fry', 'https://www.wholesomeyum.com/wp-content/uploads/2020/11/wholesomeyum-how-to-stir-fry-vegetables-vegetable-stir-fry-recipe-list-15.jpg', 'A healthy and flavorful vegetable stir-fry.', 4, 'vegetables, stir-fry, healthy', false, true);
 
 -- Insert Ingredients for Vegetable Stir-Fry Recipe
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (81, '2 cups (240g) broccoli florets');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (82, '1 red bell pepper, thinly sliced');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (83, '1 yellow bell pepper, thinly sliced');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (84, '1 carrot, julienned');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (85, '1 zucchini, thinly sliced');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (86, '1 cup (150g) snap peas');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (87, '3 cloves garlic, minced');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (88, '1 tablespoon (15ml) soy sauce');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (89, '1 tablespoon (15ml) oyster sauce');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (90, '1 tablespoon (15ml) vegetable oil');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (91, 'Salt and pepper to taste');
+INSERT INTO ingredients (ingredient) VALUES ('2 cups (240g) broccoli florets');
+INSERT INTO ingredients (ingredient) VALUES ('1 red bell pepper, thinly sliced');
+INSERT INTO ingredients (ingredient) VALUES ('1 yellow bell pepper, thinly sliced');
+INSERT INTO ingredients (ingredient) VALUES ('1 carrot, julienned');
+INSERT INTO ingredients (ingredient) VALUES ('1 zucchini, thinly sliced');
+INSERT INTO ingredients (ingredient) VALUES ('1 cup (150g) snap peas');
+INSERT INTO ingredients (ingredient) VALUES ('3 cloves garlic, minced');
+INSERT INTO ingredients (ingredient) VALUES ('1 tablespoon (15ml) soy sauce');
+INSERT INTO ingredients (ingredient) VALUES ('1 tablespoon (15ml) oyster sauce');
+INSERT INTO ingredients (ingredient) VALUES ('1 tablespoon (15ml) vegetable oil');
+INSERT INTO ingredients (ingredient) VALUES ('Salt and pepper to taste');
 
 -- Link Ingredients to Vegetable Stir-Fry Recipe
 INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (81, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Vegetable Stir-Fry'));
@@ -926,22 +926,22 @@ INSERT INTO recipes (creator_id, recipe_name, image_url, description, serving_si
 VALUES ((SELECT user_id FROM users WHERE username = 'sefanit'), 'Classic Carbonara', 'https://www.simplyrecipes.com/thmb/SebeiYFLjCD0TivmMJj_HRUC7zg=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Simply-Recipes-Spaghetti-Carbonara-LEAD-6-b3880a6eb49f4158be6f13885c797ded.jpg', 'A classic Italian pasta dish featuring creamy sauce, eggs, pancetta, and cheese.', 2, 'carbonara, pasta, Italian, creamy', false, true);
 
 -- Insert Ingredients for Classic Carbonara Recipe
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (100, '8 ounces (about 225g) spaghetti');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (101, '2 large eggs');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (102, '1 cup (about 100g) grated Pecorino Romano cheese');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (103, '4 ounces (about 100g) pancetta or guanciale, diced');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (104, '2 cloves garlic, minced');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (105, 'Salt and freshly ground black pepper, to taste');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (106, 'Fresh parsley, chopped, for garnish');
+INSERT INTO ingredients (ingredient) VALUES ('8 ounces (about 225g) spaghetti');
+INSERT INTO ingredients (ingredient) VALUES ('2 large eggs');
+INSERT INTO ingredients (ingredient) VALUES ('1 cup (about 100g) grated Pecorino Romano cheese');
+INSERT INTO ingredients (ingredient) VALUES ('4 ounces (about 100g) pancetta or guanciale, diced');
+INSERT INTO ingredients (ingredient) VALUES ('2 cloves garlic, minced');
+INSERT INTO ingredients (ingredient) VALUES ('Salt and freshly ground black pepper, to taste');
+INSERT INTO ingredients (ingredient) VALUES ('Fresh parsley, chopped, for garnish');
 
 -- Link Ingredients to Classic Carbonara Recipe
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (100, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Classic Carbonara'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (101, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Classic Carbonara'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (102, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Classic Carbonara'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (103, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Classic Carbonara'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (104, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Classic Carbonara'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (105, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Classic Carbonara'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (106, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Classic Carbonara'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (92, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Classic Carbonara'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (93, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Classic Carbonara'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (94, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Classic Carbonara'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (95, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Classic Carbonara'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (96, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Classic Carbonara'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (97, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Classic Carbonara'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (98, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Classic Carbonara'));
 
 
 
@@ -1008,38 +1008,38 @@ INSERT INTO recipes (creator_id, recipe_name, image_url, description, serving_si
 VALUES ((SELECT user_id FROM users WHERE username = 'sefanit'), 'Green Lentil Soup', 'https://thishealthykitchen.com/wp-content/uploads/2020/11/lentil-split-pea-soup-4.jpg', 'A hearty and nutritious soup made with green lentils, vegetables, and flavorful spices.', 4, 'lentil soup, vegetarian, healthy', false, true);
 
 -- Insert Ingredients for Green Lentil Soup Recipe
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (200, '1 cup (200g) green lentils, rinsed and drained');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (201, '1 large onion, chopped');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (202, '2 carrots, peeled and diced');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (203, '2 celery stalks, chopped');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (204, '3 cloves garlic, minced');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (205, '1 bay leaf');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (206, '1 teaspoon ground cumin');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (207, '1/2 teaspoon ground coriander');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (208, '1/2 teaspoon ground turmeric');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (209, '1/4 teaspoon paprika');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (210, '6 cups (1.5 liters) vegetable broth');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (211, '2 tablespoons olive oil');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (212, 'Salt and black pepper, to taste');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (213, 'Fresh parsley, chopped, for garnish');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (214, 'Lemon wedges, for serving');
+INSERT INTO ingredients (ingredient) VALUES ('1 cup (200g) green lentils, rinsed and drained');
+INSERT INTO ingredients (ingredient) VALUES ('1 large onion, chopped');
+INSERT INTO ingredients (ingredient) VALUES ('2 carrots, peeled and diced');
+INSERT INTO ingredients (ingredient) VALUES ('2 celery stalks, chopped');
+INSERT INTO ingredients (ingredient) VALUES ('3 cloves garlic, minced');
+INSERT INTO ingredients (ingredient) VALUES ('1 bay leaf');
+INSERT INTO ingredients (ingredient) VALUES ('1 teaspoon ground cumin');
+INSERT INTO ingredients (ingredient) VALUES ('1/2 teaspoon ground coriander');
+INSERT INTO ingredients (ingredient) VALUES ('1/2 teaspoon ground turmeric');
+INSERT INTO ingredients (ingredient) VALUES ('1/4 teaspoon paprika');
+INSERT INTO ingredients (ingredient) VALUES ('6 cups (1.5 liters) vegetable broth');
+INSERT INTO ingredients (ingredient) VALUES ('2 tablespoons olive oil');
+INSERT INTO ingredients (ingredient) VALUES ('Salt and black pepper, to taste');
+INSERT INTO ingredients (ingredient) VALUES ('Fresh parsley, chopped, for garnish');
+INSERT INTO ingredients (ingredient) VALUES ('Lemon wedges, for serving');
 
 -- Link Ingredients to Green Lentil Soup Recipe
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (200, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Green Lentil Soup'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (201, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Green Lentil Soup'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (202, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Green Lentil Soup'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (203, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Green Lentil Soup'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (204, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Green Lentil Soup'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (205, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Green Lentil Soup'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (206, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Green Lentil Soup'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (207, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Green Lentil Soup'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (208, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Green Lentil Soup'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (209, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Green Lentil Soup'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (210, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Green Lentil Soup'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (211, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Green Lentil Soup'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (212, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Green Lentil Soup'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (213, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Green Lentil Soup'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (214, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Green Lentil Soup'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (99, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Green Lentil Soup'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (100, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Green Lentil Soup'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (101, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Green Lentil Soup'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (102, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Green Lentil Soup'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (103, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Green Lentil Soup'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (104, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Green Lentil Soup'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (105, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Green Lentil Soup'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (106, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Green Lentil Soup'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (107, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Green Lentil Soup'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (108, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Green Lentil Soup'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (109, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Green Lentil Soup'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (110, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Green Lentil Soup'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (111, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Green Lentil Soup'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (112, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Green Lentil Soup'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (113, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Green Lentil Soup'));
 -- Insert Steps for Green Lentil Soup Recipe
 INSERT INTO steps (rank, instruction) VALUES 
 (1, 'In a large pot, heat olive oil over medium heat. Add chopped onion, carrots, and celery. Sauté until vegetables begin to soften, about 5 minutes.');
@@ -1105,30 +1105,30 @@ INSERT INTO recipes (creator_id, recipe_name, image_url, description, serving_si
 VALUES ((SELECT user_id FROM users WHERE username = 'jackie'), 'Greek Salad Wraps', 'https://www.onesweetmess.com/wp-content/uploads/2014/04/Greek-Salad-Wrap.jpg', 'A fresh and healthy wrap filled with Greek salad ingredients and drizzled with tzatziki sauce.', 2, 'salad, greek, vegetarian, Greek salad, wraps, healthy', false, true);
 
 -- Insert Ingredients for Greek Salad Wraps Recipe
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (400, '2 large whole-grain tortillas or wraps');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (401, '1 cup (150g) cherry tomatoes, halved');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (402, '1/2 cucumber, diced');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (403, '1/2 red onion, thinly sliced');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (404, '1/2 cup (70g) Kalamata olives, pitted and sliced');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (405, '1/2 cup (75g) crumbled feta cheese');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (406, '1/4 cup (30g) fresh parsley, chopped');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (407, '2 tablespoons extra-virgin olive oil');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (408, '1 tablespoon red wine vinegar');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (409, 'Salt and black pepper, to taste');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (410, '1/2 cup (120g) tzatziki sauce');
+INSERT INTO ingredients (ingredient) VALUES ('2 large whole-grain tortillas or wraps');
+INSERT INTO ingredients (ingredient) VALUES ('1 cup (150g) cherry tomatoes, halved');
+INSERT INTO ingredients (ingredient) VALUES ('1/2 cucumber, diced');
+INSERT INTO ingredients (ingredient) VALUES ('1/2 red onion, thinly sliced');
+INSERT INTO ingredients (ingredient) VALUES ('1/2 cup (70g) Kalamata olives, pitted and sliced');
+INSERT INTO ingredients (ingredient) VALUES ('1/2 cup (75g) crumbled feta cheese');
+INSERT INTO ingredients (ingredient) VALUES ('1/4 cup (30g) fresh parsley, chopped');
+INSERT INTO ingredients (ingredient) VALUES ('2 tablespoons extra-virgin olive oil');
+INSERT INTO ingredients (ingredient) VALUES ('1 tablespoon red wine vinegar');
+INSERT INTO ingredients (ingredient) VALUES ('Salt and black pepper, to taste');
+INSERT INTO ingredients (ingredient) VALUES ('1/2 cup (120g) tzatziki sauce');
 
 -- Link Ingredients to Greek Salad Wraps Recipe
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (400, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Greek Salad Wraps'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (401, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Greek Salad Wraps'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (402, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Greek Salad Wraps'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (403, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Greek Salad Wraps'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (404, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Greek Salad Wraps'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (405, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Greek Salad Wraps'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (406, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Greek Salad Wraps'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (407, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Greek Salad Wraps'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (408, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Greek Salad Wraps'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (409, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Greek Salad Wraps'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (410, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Greek Salad Wraps'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (114, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Greek Salad Wraps'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (115, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Greek Salad Wraps'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (116, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Greek Salad Wraps'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (117, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Greek Salad Wraps'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (118, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Greek Salad Wraps'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (119, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Greek Salad Wraps'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (120, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Greek Salad Wraps'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (121, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Greek Salad Wraps'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (122, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Greek Salad Wraps'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (123, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Greek Salad Wraps'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (124, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Greek Salad Wraps'));
 -- Insert Steps for Greek Salad Wraps Recipe
 INSERT INTO steps (rank, instruction) VALUES 
 (1, 'In a large bowl, combine cherry tomatoes, cucumber, red onion, Kalamata olives, crumbled feta cheese, and chopped parsley.');
@@ -1201,26 +1201,26 @@ INSERT INTO recipes (creator_id, recipe_name, image_url, description, serving_si
 VALUES ((SELECT user_id FROM users WHERE username = 'coyo'), 'Vegetarian Spring Rolls', 'https://tastesbetterfromscratch.com/wp-content/uploads/2013/03/Fresh-Spring-Rolls-15.jpg', 'Fresh and crispy vegetarian spring rolls with a flavorful dipping sauce.', 4, 'spring rolls, vegetarian, appetizer, asian, chinese, vegetable, healthy', false, true);
 
 -- Insert Ingredients for Vegetarian Spring Rolls Recipe
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (500, '8 spring roll wrappers');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (501, '2 cups (200g) shredded lettuce');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (502, '1 cup (100g) shredded carrots');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (503, '1 cup (100g) cucumber, thinly sliced');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (504, '1/2 cup (50g) bean sprouts');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (505, '1/2 cup (50g) fresh mint leaves');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (506, '1/2 cup (50g) fresh cilantro leaves');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (507, '8 rice paper wrappers');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (508, 'Peanut dipping sauce, for serving');
+INSERT INTO ingredients (ingredient) VALUES ('8 spring roll wrappers');
+INSERT INTO ingredients (ingredient) VALUES ('2 cups (200g) shredded lettuce');
+INSERT INTO ingredients (ingredient) VALUES ('1 cup (100g) shredded carrots');
+INSERT INTO ingredients (ingredient) VALUES ('1 cup (100g) cucumber, thinly sliced');
+INSERT INTO ingredients (ingredient) VALUES ('1/2 cup (50g) bean sprouts');
+INSERT INTO ingredients (ingredient) VALUES ('1/2 cup (50g) fresh mint leaves');
+INSERT INTO ingredients (ingredient) VALUES ('1/2 cup (50g) fresh cilantro leaves');
+INSERT INTO ingredients (ingredient) VALUES ('8 rice paper wrappers');
+INSERT INTO ingredients (ingredient) VALUES ('Peanut dipping sauce, for serving');
 
 -- Link Ingredients to Vegetarian Spring Rolls Recipe
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (500, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Vegetarian Spring Rolls'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (501, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Vegetarian Spring Rolls'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (502, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Vegetarian Spring Rolls'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (503, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Vegetarian Spring Rolls'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (504, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Vegetarian Spring Rolls'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (505, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Vegetarian Spring Rolls'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (506, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Vegetarian Spring Rolls'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (507, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Vegetarian Spring Rolls'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (508, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Vegetarian Spring Rolls'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (125, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Vegetarian Spring Rolls'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (126, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Vegetarian Spring Rolls'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (127, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Vegetarian Spring Rolls'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (128, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Vegetarian Spring Rolls'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (129, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Vegetarian Spring Rolls'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (130, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Vegetarian Spring Rolls'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (131, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Vegetarian Spring Rolls'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (132, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Vegetarian Spring Rolls'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (133, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Vegetarian Spring Rolls'));
 -- Insert Steps for Vegetarian Spring Rolls Recipe
 INSERT INTO steps (rank, instruction) VALUES 
 (1, 'Fill a large bowl with warm water. Dip one rice paper wrapper into the water for a few seconds until it softens.');
@@ -1271,26 +1271,26 @@ INSERT INTO recipes (creator_id, recipe_name, image_url, description, serving_si
 VALUES ((SELECT user_id FROM users WHERE username = 'admin'), 'Chocolate Cheesecake', 'https://www.recipetineats.com/wp-content/uploads/2021/03/Nutella-Cheesecake_2.jpg', 'A rich and creamy chocolate cheesecake with a chocolate cookie crust.', 8, 'chocolate, cheesecake, cake, dessert', false, true);
 
 -- Insert Ingredients for Chocolate Cheesecake Recipe
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (600, '1 1/2 cups (150g) chocolate cookie crumbs');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (601, '1/4 cup (60g) unsalted butter, melted');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (602, '3 cups (675g) cream cheese, softened');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (603, '1 1/2 cups (300g) granulated sugar');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (604, '1/2 cup (60g) unsweetened cocoa powder');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (605, '4 large eggs');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (606, '1 cup (240ml) heavy cream');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (607, '1 teaspoon vanilla extract');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (608, '1/2 cup (90g) semisweet chocolate chips');
+INSERT INTO ingredients (ingredient) VALUES ('1 1/2 cups (150g) chocolate cookie crumbs');
+INSERT INTO ingredients (ingredient) VALUES ('1/4 cup (60g) unsalted butter, melted');
+INSERT INTO ingredients (ingredient) VALUES ('3 cups (675g) cream cheese, softened');
+INSERT INTO ingredients (ingredient) VALUES ('1 1/2 cups (300g) granulated sugar');
+INSERT INTO ingredients (ingredient) VALUES ('1/2 cup (60g) unsweetened cocoa powder');
+INSERT INTO ingredients (ingredient) VALUES ('4 large eggs');
+INSERT INTO ingredients (ingredient) VALUES ('1 cup (240ml) heavy cream');
+INSERT INTO ingredients (ingredient) VALUES ('1 teaspoon vanilla extract');
+INSERT INTO ingredients (ingredient) VALUES ('1/2 cup (90g) semisweet chocolate chips');
 
 -- Link Ingredients to Chocolate Cheesecake Recipe
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (600, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Chocolate Cheesecake'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (601, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Chocolate Cheesecake'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (602, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Chocolate Cheesecake'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (603, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Chocolate Cheesecake'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (604, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Chocolate Cheesecake'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (605, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Chocolate Cheesecake'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (606, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Chocolate Cheesecake'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (607, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Chocolate Cheesecake'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (608, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Chocolate Cheesecake'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (134, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Chocolate Cheesecake'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (135, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Chocolate Cheesecake'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (136, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Chocolate Cheesecake'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (137, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Chocolate Cheesecake'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (138, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Chocolate Cheesecake'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (139, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Chocolate Cheesecake'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (140, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Chocolate Cheesecake'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (141, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Chocolate Cheesecake'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (142, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Chocolate Cheesecake'));
 
 -- Insert Steps for Chocolate Cheesecake Recipe
 INSERT INTO steps (rank, instruction) VALUES (1, 'Preheat your oven to 325*F (160*C).');
@@ -1357,26 +1357,26 @@ INSERT INTO recipes (creator_id, recipe_name, image_url, description, serving_si
 VALUES ((SELECT user_id FROM users WHERE username = 'sefanit'), 'Peach Cobbler', 'https://www.the-girl-who-ate-everything.com/wp-content/uploads/2013/06/peach-cobbler-16-scaled.jpg', 'A warm and comforting peach cobbler with a buttery crust and sweet peach filling.', 6, 'peach, cobbler, pie, cake, desserts, fall, autumn, dessert', true, true);
 
 -- Insert Ingredients for Peach Cobbler Recipe
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (700, '4 cups (600g) sliced peaches (fresh or canned)');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (701, '1 cup (200g) granulated sugar');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (702, '1 cup (240ml) milk');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (703, '1/2 cup (115g) unsalted butter');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (704, '1 cup (120g) all-purpose flour');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (705, '2 teaspoons baking powder');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (706, '1/2 teaspoon salt');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (707, '1 teaspoon vanilla extract');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (708, 'Ground cinnamon, for sprinkling (optional)');
+INSERT INTO ingredients (ingredient) VALUES ('4 cups (600g) sliced peaches (fresh or canned)');
+INSERT INTO ingredients (ingredient) VALUES ('1 cup (200g) granulated sugar');
+INSERT INTO ingredients (ingredient) VALUES ('1 cup (240ml) milk');
+INSERT INTO ingredients (ingredient) VALUES ('1/2 cup (115g) unsalted butter');
+INSERT INTO ingredients (ingredient) VALUES ('1 cup (120g) all-purpose flour');
+INSERT INTO ingredients (ingredient) VALUES ('2 teaspoons baking powder');
+INSERT INTO ingredients (ingredient) VALUES ('1/2 teaspoon salt');
+INSERT INTO ingredients (ingredient) VALUES ('1 teaspoon vanilla extract');
+INSERT INTO ingredients (ingredient) VALUES ('Ground cinnamon, for sprinkling (optional)');
 
 -- Link Ingredients to Peach Cobbler Recipe
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (700, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Peach Cobbler'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (701, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Peach Cobbler'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (702, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Peach Cobbler'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (703, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Peach Cobbler'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (704, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Peach Cobbler'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (705, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Peach Cobbler'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (706, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Peach Cobbler'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (707, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Peach Cobbler'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (708, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Peach Cobbler'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (143, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Peach Cobbler'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (144, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Peach Cobbler'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (145, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Peach Cobbler'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (146, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Peach Cobbler'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (147, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Peach Cobbler'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (148, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Peach Cobbler'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (149, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Peach Cobbler'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (150, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Peach Cobbler'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (151, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Peach Cobbler'));
 
 -- Insert Steps for Peach Cobbler Recipe
 INSERT INTO steps (rank, instruction) VALUES (1, 'Preheat your oven to 350*F (175*C).');
@@ -1443,26 +1443,26 @@ INSERT INTO recipes (creator_id, recipe_name, image_url, description, serving_si
 VALUES ((SELECT user_id FROM users WHERE username = 'admin'), 'French Toast', 'https://hips.hearstapps.com/hmg-prod/images/how-to-make-french-toast-1589827448.jpg?crop=0.734xw:0.490xh;0.0897xw,0.323xh&resize=1200:*', 'Classic French toast made with thick slices of bread dipped in a sweet and custardy mixture.', 2, 'French toast, breakfast, brunch, french, bread', true, true);
 
 -- Insert Ingredients for French Toast Recipe
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (800, '4 slices of thick bread (such as brioche or challah)');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (801, '2 large eggs');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (802, '1/2 cup (120ml) milk');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (803, '1/2 teaspoon vanilla extract');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (804, '1/4 teaspoon ground cinnamon (optional)');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (805, 'Pinch of salt');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (806, '2 tablespoons (30g) unsalted butter');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (807, 'Maple syrup, for serving');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (808, 'Fresh berries, for garnish (optional)');
+INSERT INTO ingredients (ingredient) VALUES ('4 slices of thick bread (such as brioche or challah)');
+INSERT INTO ingredients (ingredient) VALUES ('2 large eggs');
+INSERT INTO ingredients (ingredient) VALUES ('1/2 cup (120ml) milk');
+INSERT INTO ingredients (ingredient) VALUES ('1/2 teaspoon vanilla extract');
+INSERT INTO ingredients (ingredient) VALUES ('1/4 teaspoon ground cinnamon (optional)');
+INSERT INTO ingredients (ingredient) VALUES ('Pinch of salt');
+INSERT INTO ingredients (ingredient) VALUES ('2 tablespoons (30g) unsalted butter');
+INSERT INTO ingredients (ingredient) VALUES ('Maple syrup, for serving');
+INSERT INTO ingredients (ingredient) VALUES ('Fresh berries, for garnish (optional)');
 
 -- Link Ingredients to French Toast Recipe
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (800, (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Toast'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (801, (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Toast'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (802, (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Toast'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (803, (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Toast'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (804, (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Toast'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (805, (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Toast'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (806, (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Toast'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (807, (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Toast'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (808, (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Toast'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (152, (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Toast'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (153, (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Toast'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (154, (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Toast'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (155, (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Toast'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (156, (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Toast'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (157, (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Toast'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (158, (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Toast'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (159, (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Toast'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (160, (SELECT recipe_id FROM recipes WHERE recipe_name = 'French Toast'));
 -- Insert Steps for French Toast Recipe
 INSERT INTO steps (rank, instruction) VALUES (1, 'In a shallow bowl, whisk together eggs, milk, vanilla extract, ground cinnamon (if using), and a pinch of salt.');
 INSERT INTO steps (rank, instruction) VALUES (2, 'Heat a non-stick skillet or griddle over medium-high heat and add 1 tablespoon of butter to melt.');
@@ -1522,26 +1522,26 @@ INSERT INTO recipes (creator_id, recipe_name, image_url, description, serving_si
 VALUES ((SELECT user_id FROM users WHERE username = 'sefanit'), 'Sugar Cookies', 'https://tatertotsandjello.com/wp-content/uploads/2020/10/IMG_0351-1.jpg', 'Classic sugar cookies with a hint of vanilla, perfect for decorating with icing or sprinkles.', 24, 'sugar cookie, sweets, halloween, cookies, dessert, baking', true, true);
 
 -- Insert Ingredients for Sugar Cookies Recipe
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (900, '2 3/4 cups (345g) all-purpose flour');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (901, '1 teaspoon baking soda');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (902, '1/2 teaspoon baking powder');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (903, '1 cup (226g) unsalted butter, softened');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (904, '1 1/2 cups (300g) granulated sugar');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (905, '1 large egg');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (906, '1 teaspoon vanilla extract');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (907, '3-4 tablespoons milk');
-INSERT INTO ingredients (ingredient_id, ingredient) VALUES (908, 'Sprinkles or icing (optional)');
+INSERT INTO ingredients (ingredient) VALUES ('2 3/4 cups (345g) all-purpose flour');
+INSERT INTO ingredients (ingredient) VALUES ('1 teaspoon baking soda');
+INSERT INTO ingredients (ingredient) VALUES ('1/2 teaspoon baking powder');
+INSERT INTO ingredients (ingredient) VALUES ('1 cup (226g) unsalted butter, softened');
+INSERT INTO ingredients (ingredient) VALUES ('1 1/2 cups (300g) granulated sugar');
+INSERT INTO ingredients (ingredient) VALUES ('1 large egg');
+INSERT INTO ingredients (ingredient) VALUES ('1 teaspoon vanilla extract');
+INSERT INTO ingredients (ingredient) VALUES ('3-4 tablespoons milk');
+INSERT INTO ingredients (ingredient) VALUES ('Sprinkles or icing (optional)');
 
 -- Link Ingredients to Sugar Cookies Recipe
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (900, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Sugar Cookies'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (901, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Sugar Cookies'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (902, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Sugar Cookies'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (903, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Sugar Cookies'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (904, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Sugar Cookies'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (905, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Sugar Cookies'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (906, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Sugar Cookies'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (907, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Sugar Cookies'));
-INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (908, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Sugar Cookies'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (161, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Sugar Cookies'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (162, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Sugar Cookies'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (163, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Sugar Cookies'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (164, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Sugar Cookies'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (165, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Sugar Cookies'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (166, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Sugar Cookies'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (167, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Sugar Cookies'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (168, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Sugar Cookies'));
+INSERT INTO ingredients_recipes (ingredient_id, recipe_id) VALUES (169, (SELECT recipe_id FROM recipes WHERE recipe_name = 'Sugar Cookies'));
 -- Insert Steps for Sugar Cookies Recipe
 INSERT INTO steps (rank, instruction) VALUES (1, 'In a medium-sized bowl, whisk together the flour, baking soda, and baking powder. Set aside.');
 INSERT INTO steps (rank, instruction) VALUES (2, 'In a large mixing bowl, cream together the softened butter and granulated sugar until light and fluffy.');
