@@ -121,4 +121,20 @@ transform: scale(1.03);
 li:last-child {
   border-bottom: solid #333 2px;
 }
+
+
+@media only screen and (max-width: 550px) {
+
+
+
+.overlay-content {
+  position: relative;
+  top: 90px;
+  width: 100%;
+  text-align: center;
+  margin-top: 5px;
+}
+
+  
+}
 </style>
