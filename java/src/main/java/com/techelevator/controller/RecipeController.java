@@ -9,6 +9,8 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.annotation.security.RolesAllowed;
+import javax.validation.Path;
 import javax.validation.Valid;
 import java.security.Principal;
 import java.util.List;
@@ -50,31 +52,31 @@ public class  RecipeController {
     public List<Recipe> getFeaturedRecipes() {
         return recipeDao.getFeaturedRecipesByRecipeId();
     }
-
-    @RequestMapping(path = "/recipes/{recipeId}/featured",method = RequestMethod.PUT)
-    public Recipe updateFeatured(@Valid @RequestBody Recipe recipe, @PathVariable int recipeId) {
+    @PreAuthorize("isAuthenticated()")
+    @RolesAllowed("admin")
+    @RequestMapping(path = "/recipes/{recipeId}/featured", method = RequestMethod.PUT)
+    public Recipe setFeatured(@Valid @RequestBody Recipe recipe, Principal principal, @RequestParam boolean isFeatured, @PathVariable int recipeId) {
         recipe.setRecipeId(recipeId);
         try {
-            Recipe updatedRecipe = recipeDao.setFeaturedRecipe(recipe);
+            Recipe updatedRecipe = recipeDao.setFeaturedRecipe(recipe, principal);
             return updatedRecipe;
 
         } catch (DaoException e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, " Recipe not found");
         }
     }
-
-    @RequestMapping(path = "/recipes/{recipeId}/unfeatured",method = RequestMethod.PUT)
-    public Recipe updateUnFeatured(@Valid @RequestBody Recipe recipe, @PathVariable int recipeId) {
+    @PreAuthorize("isAuthenticated()")
+    @RequestMapping(path = "/recipes/{recipeId}/favorites",method = RequestMethod.PUT)
+    public Recipe setFavoriteRecipe(@Valid @RequestBody Recipe recipe, Principal principal, @RequestParam boolean favorite, @PathVariable int recipeId) {
         recipe.setRecipeId(recipeId);
         try {
-            Recipe updatedRecipe = recipeDao.unsetFeaturedRecipe(recipe);
+            Recipe updatedRecipe = recipeDao.setFavoriteRecipe(recipe, principal);
             return updatedRecipe;
 
         } catch (DaoException e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, " Recipe not found");
         }
     }
-
     @GetMapping("/import")
     public Recipe getImportedRecipe(@RequestParam String url) {
         return recipeService.importRecipe(url);
