@@ -26,5 +26,5 @@ public interface RecipeDao {
     List<Recipe> getListOfRecipeByTagId(int tag_id);
     Recipe setFeaturedRecipe(Recipe recipe, Boolean isFeatured, Principal principal);
     Recipe setFavoriteRecipe(Recipe recipe, Principal principal);
-
+    void updateRecipe(int recipeId, Recipe recipe, Principal principal);
 }

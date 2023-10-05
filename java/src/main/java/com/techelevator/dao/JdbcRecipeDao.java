@@ -121,7 +121,8 @@ public class JdbcRecipeDao implements RecipeDao {
 
         Recipe updatedRecipe = null;
 
-        String sql = "UPDATE recipes " +
+        String sql =
+                "UPDATE users_recipes " +
                 "SET favorite = ? " +
                 "WHERE recipe_id = ?;";
         try {
@@ -212,6 +213,20 @@ public class JdbcRecipeDao implements RecipeDao {
             return results.getString("username");
         } else {
             return null;
+        }
+    }
+
+    @Override
+    public void updateRecipe(int recipeId, Recipe recipe, Principal principal) {
+        String sql =
+                "UPDATE recipes " +
+                "SET recipe_name = ? , image_url = ? , description = ? , serving_size = ? , keywords = ? , is_published = ? ,  is_featured = ? " +
+                "WHERE recipe_id = ? ";
+        try {
+            jdbcTemplate.update(sql, recipe.getRecipeName(), recipe.getImgUrl(), recipe.getDescription(), recipe.getServingSize(), recipe.getKeywords(), recipe.isPublished(), recipe.isFeatured(), recipeId);
+
+        } catch (DataAccessException e){
+            throw new DataAccessException("Error Updating") {};
         }
     }
 

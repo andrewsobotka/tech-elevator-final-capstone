@@ -4,10 +4,7 @@ import com.techelevator.dao.MealDao;
 import com.techelevator.model.Meal;
 import com.techelevator.service.MealService;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.List;
@@ -15,28 +12,40 @@ import java.util.List;
 @RestController
 @CrossOrigin
 public class MealController {
-    private final MealDao mealDao;
     private final MealService mealService;
 
-    public MealController(MealDao mealDao, MealService mealService) {
-        this.mealDao = mealDao;
+    public MealController(MealService mealService) {
         this.mealService = mealService;
     }
 
+    @PreAuthorize("isAuthenticated()")
     @GetMapping("/meals")
-    public List<Meal> getMeals(){
-        return mealDao.getListOfMeals();
-    }
-
-    @GetMapping("/meals/{mealId}")
-    public Meal getMealById(@PathVariable int mealId){
-        return mealDao.getMealByMealId(mealId);
+    public List<Meal> getMeals(Principal principal){
+        return mealService.getListOfMeals(principal);
     }
 
     @PreAuthorize("isAuthenticated()")
-    @GetMapping("/meals/my-meals")
-    public List<Meal> getMyMeals(Principal principal) {
-        return mealService.getAllMyMealsByUserId(principal);
+    @GetMapping("/meals/{mealId}")
+    public Meal getMealById(@PathVariable int mealId){
+        return mealService.getMealById(mealId);
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @PostMapping("/meals")
+    public int createMeal(Principal principal, @RequestBody Meal meal) {
+        return mealService.createMeal(meal, principal);
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @PutMapping("/meals/{mealId}")
+    public int editMeal(@PathVariable int mealId, @RequestBody Meal meal, Principal principal) {
+        return mealService.editMeal(mealId, meal, principal);
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @DeleteMapping("/meals/{mealId}")
+    public void deleteMeal(@PathVariable int mealId, Principal principal) {
+        mealService.deleteMeal(mealId, principal);
     }
 
 }

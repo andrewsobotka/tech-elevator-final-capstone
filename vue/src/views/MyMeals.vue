@@ -2,30 +2,23 @@
   <div class="cardsContainer">
     <h3>My Meal Plans</h3>
     <div class="borderbox"></div>
+
     <div class="form-btn">   
      <button v-on:click="showForm = !showForm">
-        
-
         {{ showForm ? "Hide Form" : "Add a New Meal Plan" }}
-     
- 
-
- </button>    
+      </button>    
     </div>
 
     <div class="form-container" v-if="showForm">
-  
          <NewMealPlan/>
-
     </div>
+
     <div class="mealCards">
-
-
-
       <MealPlanCard />
       <MealPlanCard />
       <MealPlanCard />
     </div>
+
   </div>
 </template>
 
@@ -50,8 +43,6 @@ export default {
 </script>
 
 <style scoped>
-
-
 .form-btn {
   display: flex;
   position: relative;
@@ -59,10 +50,12 @@ export default {
   margin: auto;
   margin-top: -3rem;
 }
+
 .mealCards {
   display: flex;
   justify-content: center;
 }
+
 h3 {
   text-align: center;
   text-decoration: none;
@@ -94,4 +87,5 @@ h3 {
   display: flex;
   justify-content: center;
 }
+
 </style>

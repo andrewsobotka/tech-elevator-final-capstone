@@ -4,6 +4,7 @@ import com.techelevator.dao.RecipeDao;
 import com.techelevator.exception.DaoException;
 import com.techelevator.model.Recipe;
 import com.techelevator.service.RecipeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +21,7 @@ import java.util.List;
 public class  RecipeController {
     private final RecipeDao recipeDao;
     private final RecipeService recipeService;
+    @Autowired
     public RecipeController(RecipeDao recipeDao, RecipeService recipeService) {
         this.recipeDao = recipeDao;
         this.recipeService = recipeService;
@@ -36,11 +38,19 @@ public class  RecipeController {
     public String getCreatorUsernameByRecipeId(@PathVariable int recipeId) {
         return recipeService.getCreatorUsernameByRecipeId(recipeId);
     }
+
     @PreAuthorize("isAuthenticated()")
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/recipes")
     public Integer createRecipe(@RequestBody Recipe recipe, Principal principal) {
         return recipeService.createRecipe(recipe, principal);
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @ResponseStatus(HttpStatus.OK)
+    @PutMapping("/recipes/{recipeId}")
+    public void updateRecipe(@PathVariable int recipeId, @RequestBody Recipe recipe, Principal principal) {
+        recipeService.updateRecipe(recipeId, recipe, principal);
     }
 
     @GetMapping("/recipes/tags/{tagId}")

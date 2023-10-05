@@ -109,24 +109,24 @@ export default {
         return axios.delete(`/ingredients/${ingredient.ingredientId}`);
     },
 
-    //meals
-
+    // Meals API Endpoints
+    // Get All Meals for the User
     getMeals() {
         return axios.get("/meals")
     },
-
+    // Get a Single Meal by Meal ID for User
     getMeal(mealId) {
         return axios.get(`/meals/${mealId}`)
     },
-
+    // Add a Meal for the User
     addMeal(meal) {
         return axios.post('/meals', meal)
     },
-
+    // Edit a Meal for the User
     editMeal(meal) {
         return axios.put(`/meals/${meal.mealId}`, meal);
     },
-
+    // Delete a Meal for the User
     deleteMeal(meal) {
         return axios.delete(`/meals/${meal.mealId}`);
     },

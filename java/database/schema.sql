@@ -46,6 +46,7 @@ DROP TABLE IF EXISTS meals CASCADE;
 CREATE TABLE meals (
     meal_id SERIAL,
     meal_name varchar (63),
+    meal_description text,
     meal_date date,
     CONSTRAINT PK_meals PRIMARY KEY (meal_id)
 );
@@ -124,14 +125,14 @@ CREATE TABLE meals_recipes (
     meal_id int NOT NULL,
     recipe_id int NOT NULL
 );
--- ALTER TABLE meals_recipes
---     ADD CONSTRAINT "fk_meals_id"
---     FOREIGN KEY (meal_id)
---     REFERENCES meals (meal_id);
--- ALTER TABLE meals_recipes
---     ADD CONSTRAINT "fk_meals_recipes_id"
---     FOREIGN KEY (recipe_id)
---     REFERENCES recipes (recipe_id);
+ALTER TABLE meals_recipes
+    ADD CONSTRAINT "fk_meals_recipes_to_meals_id"
+    FOREIGN KEY (meal_id)
+    REFERENCES meals (meal_id);
+ALTER TABLE meals_recipes
+    ADD CONSTRAINT "fk_recipes_meals_recipes"
+    FOREIGN KEY (recipe_id)
+    REFERENCES recipes (recipe_id);
 
 -- Joining users on recipes
 DROP TABLE IF EXISTS users_meals CASCADE;
@@ -139,14 +140,14 @@ CREATE TABLE users_meals (
     user_id int NOT NULL,
     meal_id int NOT NULL
 );
--- ALTER TABLE users_meals
---     ADD CONSTRAINT "fk_user_meals_id"
---     FOREIGN KEY (user_id)
---     REFERENCES users (user_id);
--- ALTER TABLE users_meals
---     ADD CONSTRAINT "fk_meals_user_id"
---     FOREIGN KEY (meal_id)
---     REFERENCES meals (meal_id);
+ALTER TABLE users_meals
+    ADD CONSTRAINT "fk_users_meals_to_users_id"
+    FOREIGN KEY (user_id)
+    REFERENCES users (user_id);
+ALTER TABLE users_meals
+    ADD CONSTRAINT "fk_users_meals_to_meals_id"
+    FOREIGN KEY (meal_id)
+    REFERENCES meals (meal_id);
 
 -- Joining users on recipes
 DROP TABLE IF EXISTS users_ingredients CASCADE;

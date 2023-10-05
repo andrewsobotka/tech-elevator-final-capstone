@@ -3,7 +3,7 @@
    <div class="backButton">  <backButton/>
         </div>
   <div class="container">
-    <form id="addNewRecipe" v-on:submit.prevent="createNewRecipe">
+    <form id="addNewRecipe" v-on:submit.prevent="editCurrentRecipe">
     
       <div>
 
@@ -171,6 +171,22 @@ export default {
   },
   methods: {
     createNewRecipe() {},
+    editCurrentRecipe() {
+      APIService.editRecipe(this.editRecipe)
+        .then(response => {
+          this.$store.commit('ADD_RECIPES', response.data)
+          this.$router.push(`/recipes/${response.data}`);
+          })
+        .catch(
+        (error) => {
+          if(error.response) {
+              window.alert('Bad Request');
+          } else if(error.request) {
+              window.alert('Could not reach service');
+          }
+        }
+      );
+    },
     deleteIngredients() {
       let newArray = [];
       for (let i = 0; i < this.editRecipe.ingredients.length; i++) {

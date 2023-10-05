@@ -3,7 +3,6 @@
     <form id="addNewMealPlan" v-on:submit.prevent="createMealPlan">
       <div>
         <h3>Add A New Meal Plan</h3>
-
       </div>
       <div class="field">
         <label for="recipeName">Title: </label><br/>
