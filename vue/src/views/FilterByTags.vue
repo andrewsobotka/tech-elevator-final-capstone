@@ -3,7 +3,7 @@
      {{results}}
     <h3>Explore Recipes</h3>
     <div class="borderbox"></div>
-    <div id="search">
+    <!-- <div id="search">
       <input
         type="text"
         placeholder="Search by keyword..."
@@ -16,9 +16,13 @@
         </button></router-link
       >
      
+    </div> -->
+    <div id="explore">
+      <router-link  v-bind:to="{name:'explore-recipes'}">
+      <button id="explore-button" >Back to Explore Recipes</button></router-link>
     </div>
 
-    <div id="tags-filter">
+    <!-- <div id="tags-filter">
       <router-link
         v-bind:to="{ name: 'filter-by-tag', params: { id: tag.tagId } }"
         v-for="tag in $store.state.tags"
@@ -28,7 +32,7 @@
           {{ tag.tag }}
         </button></router-link
       >
-    </div>
+    </div> -->
     <div id="tags-filter">
       <p>
         Showing all recipes that are {{ $store.state.selectedTag }} | Showing
@@ -55,48 +59,46 @@ import RecipeCard from "../components/RecipeCard.vue";
 import APIService from "../services/APIService.js";
 
 export default {
-  name: "RecipeList",
-  data() {
-    return {
-      results: [],
-      search: "",
-      tagId: 0,
-    };
+  name: "ExploreRecipes",
+  data(){
+    return{
+      results:[],
+      search:'',
+      tagId:0,
+    }
   },
   components: { RecipeCard },
   created() {
-
-    // APIService.getRecipes().then((response) => {
-    // this.$store.commit("SET_RECIPES", response.data);
-    // });
-
-    APIService.getTags().then((response) => {
-      this.$store.commit("SET_TAGS", response.data);
-    });
-
-    APIService.getRecipesByTagId(this.$store.state.selectedId).then(
-      (response) => {
-        this.$store.commit("SET_FILTERED", response.data);
-        this.results = response.data;
-      });
+    APIService.getRecipes().then((response) => {
+      this.$store.commit("SET_RECIPES", response.data);
+          });
+    APIService.getTags().then(response=>{
+      this.$store.commit('SET_TAGS', response.data)
+    }
+    );
+    APIService.getRecipesByTagId(this.$store.state.selectedTagId)
+        .then((response)=>
+            this.$store.commit("SET_FILTERED", response.data)
+        );
   },
-  methods: {
-    setKeyword() {
+ methods:{
+    setKeyword(){
       this.$store.commit("SET_KEYWORD", this.search);
     },
-    setCurrentTag(tagId, tag) {
-      this.$store.commit("SET_SELECTED_TAG", tag);
-      this.$store.commit("SET_SELECTED_TAG_ID", tagId);
+    setCurrentTag(tagId, tag){
+      this.$store.commit("SET_SELECTED_TAG",tag)
+      this.$store.commit("SET_SELECTED_TAG_ID", tagId)
     },
-    filterByTag(results) {
-      this.$store.commit("SET_FILTERED", results);
-    },
+    // filterByTag(){
+    //   this.$store.commit("SET_FILTERED", results)
+    // }
+    
+   
   },
-  computed: {
-    listOfRecipes() {
-      return this.results;
-    },
-  },
+  computed:{
+    
+    
+  }
 };
 </script>
 
@@ -157,5 +159,11 @@ input {
 p {
   font-family: "Montserrat";
   font-style: italic;
+}
+
+#explore{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
 }
 </style>
