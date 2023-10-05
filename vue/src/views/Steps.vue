@@ -1,17 +1,17 @@
 <template>
   <div>
       <div id= "container">
-      <Step @hideStep="$emit('hideStep')"/>
+      <StepBox @hideStep="$emit('hideStep')"/>
       </div>
   </div>
 </template>
 
 <script>
-import Step from '../components/StepBox.vue'
+import StepBox from "../components/StepBox.vue"
 import APIService from "../services/APIService.js";
 
 export default {
-components:{Step},
+components:{StepBox},
 created() {
     APIService.getRecipe(this.$route.params.id)
       .then((response) => {
@@ -28,7 +28,7 @@ created() {
     height: 100vh;
   }
 
-  
+
   
 
 </style>
