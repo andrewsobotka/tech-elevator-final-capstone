@@ -151,7 +151,7 @@
 
       <div class="submitDiv">
         <button type="submit" value="Submit New Recipe" class="submit-btn">
-          Submit New Recipe
+          Save Recipe
         </button>
       </div>
     </form>

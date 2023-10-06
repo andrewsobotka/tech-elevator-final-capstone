@@ -31,7 +31,19 @@ Vue.use(Router)
  */
 
 const router = new Router({
+  scrollBehavior: function (to, _from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition;
+    }
+    if (to.hash) {
+      return { el: to.hash, behavior: "smooth" };
+    } else {
+      console.log("moving to top of the page");
+      window.scrollTo(0, 0);
+    }
+ },
   mode: 'history',
+  
   base: process.env.BASE_URL,
   routes: [
     {
@@ -164,7 +176,8 @@ const router = new Router({
         requiresAuth: false
       }
     }
-  ]
+  ],
+  
 });
 
 router.beforeEach((to, from, next) => {
@@ -179,5 +192,6 @@ router.beforeEach((to, from, next) => {
     next();
   }
 });
+
 
 export default router;

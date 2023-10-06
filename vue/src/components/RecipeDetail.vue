@@ -242,7 +242,7 @@ export default {
   height: 120vh;
   max-height: 100vh;
   margin: 1rem 2rem;
-
+  overflow-y: auto;
   padding-bottom: 5rem;
 }
 h2 {

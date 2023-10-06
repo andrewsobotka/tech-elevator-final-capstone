@@ -84,6 +84,7 @@ export default {
   text-align: center;
   padding: 1rem 3rem;
   width: 50%;
+  overflow-y: auto;
 }
 
 #sign-up a {
