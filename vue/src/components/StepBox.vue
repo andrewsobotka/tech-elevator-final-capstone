@@ -69,7 +69,8 @@ export default {
 #outerContainer {
   display: flex;
   justify-content: center;
-  align-content: space-around;
+  align-content: center;
+  padding: 4rem;
 }
 
 .login-body {
@@ -79,7 +80,6 @@ export default {
   border: 2px solid #333;
   width: auto;
   height: auto;
-  margin-top: 10rem;
   font-family: "DM Sans", sans-serif;
   text-align: center;
   padding: 1rem 3rem;
@@ -87,27 +87,6 @@ export default {
   overflow-y: auto;
 }
 
-#sign-up a {
-  color: #333;
-  font-family: "Montserrat";
-}
-
-#sign-up {
-  font-family: "Montserrat";
-}
-
-#sign-up a:hover {
-  color: green;
-  font-family: "Montserrat";
-}
-
-#alert {
-  color: red;
-  font-family: "Montserrat";
-  display: flex;
-  justify-content: center;
-  padding-bottom: 0.5rem;
-}
 
 h2 {
   text-decoration: none;

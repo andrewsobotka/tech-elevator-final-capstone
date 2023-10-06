@@ -17,7 +17,7 @@ public class Recipe {
     private List<Step> steps;
     private String imgUrl;
     private boolean isPublished;
-    private boolean isFeatured;
+    private boolean isFeatured = false;
     private boolean favorite;
     private List<Tag> tags;
 
@@ -34,7 +34,7 @@ public class Recipe {
         this.steps = steps;
         this.imgUrl = imgUrl;
         this.isPublished = isPublished;
-        this.isFeatured = isFeatured;
+        this.isFeatured = false;
         this.tags = tags;
         this.favorite = favorite;
     }

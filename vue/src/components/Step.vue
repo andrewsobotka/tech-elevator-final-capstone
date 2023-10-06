@@ -61,12 +61,12 @@ export default {
   width: auto;
   height: auto;
   margin: auto;
-  margin-top: 3rem;
   position: relative;
   font-family: "DM Sans", sans-serif;
   text-align: center;
   padding: 1rem 3rem;
-  width: 50%
+  width: 50%;
+  display: flex;
 }
 
 .loginDiv a {
@@ -103,6 +103,7 @@ p{
 #container{
   display: flex;
   justify-content: center;
+  align-content: space-around;
 }
 
 @media only screen and (max-height: 700px) {

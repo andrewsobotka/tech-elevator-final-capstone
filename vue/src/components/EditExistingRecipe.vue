@@ -155,6 +155,7 @@
         <button type="submit" value="Submit New Recipe" class="submit-btn">
           Change Up This Recipe
         </button>
+        {{editRecipe}}
       </div>
     </form>
   </div>
@@ -176,6 +177,7 @@ export default {
         ingredients: [],
         steps: [{step_id:0, rank:0, instruction:""}],
         tags: [],
+        featured: false
       },
     };
   },
@@ -184,7 +186,7 @@ export default {
   },
   methods: {
      createNewRecipe() {
-      this.$store.state.recipe.creatorId = this.$store.state.user.id;
+      this.editRecipe.featured = false;
       APIService.addRecipe(this.editRecipe)
         .then(response => {
           this.$store.commit('ADD_RECIPES', response.data)
