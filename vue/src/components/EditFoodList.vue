@@ -122,6 +122,7 @@ export default {
 <style scoped>
 .body {
   background: white;
+  padding-bottom: 5rem;
 }
 
 #grocery {
@@ -136,12 +137,13 @@ export default {
 
 h2 {
   text-align: left;
-  margin-left: 0px;
+
   padding: 0px;
   background: #fff;
   margin-bottom: 0px;
   padding-bottom: 0px;
   width:37rem;
+  
 }
 
 li {
@@ -159,7 +161,8 @@ li :nth-last-child(1) {
 }
 
 ul {
-  
+position: relative;
+left:-3.5rem;
   width: 35rem;
   background: #fff;
 }
@@ -240,6 +243,7 @@ p {
 
 #textbox {
   width: 2rem;
+ 
 }
 p {
   width: 1rem;
@@ -255,4 +259,9 @@ p {
   color: black;
 }
 
+
+
+@media only screen and (max-width: 550px) {
+
+}
 </style>

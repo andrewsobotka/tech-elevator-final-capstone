@@ -34,7 +34,7 @@ export default {
         { label: "Explore Recipes", name: "explore-recipes" },
         { label: "My Cookbook", name: "my-cookbook" },
         { label: "Grocery List", name: "grocery-list" },
-        { label: "My Meals", name: "my-meals" },
+        // { label: "My Meals", name: "my-meals" },
 
         // Add more pages as needed
       ],
