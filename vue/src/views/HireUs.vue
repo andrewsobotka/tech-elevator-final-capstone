@@ -111,6 +111,9 @@ h3{
 
   margin: 10px;
 }
+.everyone{
+  font-size: 1.5rem;
+}
 .everyone img {
   height: 200px;
   width: 200px;
@@ -125,6 +128,7 @@ p{
  position: relative;
  top: -10px;
  right: -30px;
+ /* font-size: 1rem; */
  letter-spacing: .5px;
 }
 .everyone a{
@@ -133,10 +137,10 @@ text-decoration: none;
 color: #fff;
 background: rgb(155, 209, 105);
 padding: 6px;
-line-height: 2.2rem;
+line-height: 3.2rem;
 min-width: 3rem;
 border-radius: 5px;
-
+/* margin: 15px 0; */
 }
 
 
