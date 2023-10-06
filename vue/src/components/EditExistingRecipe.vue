@@ -3,14 +3,16 @@
    <div class="backButton">  <backButton/>
         </div>
   <div class="container">
-    <form id="addNewRecipe" v-on:submit.prevent="editCurrentRecipe">
+    <form id="addNewRecipe" v-on:submit.prevent="createNewRecipe">
     
       <div>
 
        
-      <h3>Edit Recipe</h3>  
+      <h3>Make This Recipe Your Own!</h3>
       </div>
       <div class="field">
+        <p id = "description"><b>Change up this recipe and make it the way you want it!</b></p>
+        <p id = "warning">Recipe Title Must Be Unique From Original</p>
         <label for="recipeName">Title: </label>
         <input
           type="text"
@@ -140,7 +142,7 @@
 
       <div class="submitDiv">
         <button type="submit" value="Submit New Recipe" class="submit-btn">
-          Edit Recipe
+          Change Up This Recipe
         </button>
       </div>
     </form>
@@ -172,7 +174,7 @@ export default {
   methods: {
      createNewRecipe() {
       this.$store.state.recipe.creatorId = this.$store.state.user.id;
-      APIService.addRecipe(this.newRecipe)
+      APIService.addRecipe(this.editRecipe)
         .then(response => {
           this.$store.commit('ADD_RECIPES', response.data)
           window.alert('You have created a new recipe!')
@@ -457,6 +459,15 @@ button:hover{
 li{
     font-family: "Montserrat";
     text-justify: top;
+}
+
+#warning{
+    font-family:"Montserrat";
+    color: red;
+}
+
+#description{
+    font-family:"Montserrat";
 }
 
 

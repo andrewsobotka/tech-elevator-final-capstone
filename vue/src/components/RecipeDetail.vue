@@ -1,18 +1,15 @@
 <template>
-  <div class="container">    
+  <div class="container">
     <div class="header-favorite-group">
-      <!-- <FavoriteIcon
-        :recipe="recipe"
-        @toggle-favorites="toggleFavorites"
-        :class="{ favorite: recipe.favorite, notFavorite: !recipe.favorite }"
-      /> -->
+         <FavoriteIcon :recipe="recipe" v-bind:value="recipe"
+         @toggle-favorites="handleToggleFavorites" :class="{favorite:recipe.favorite, notFavorite: !recipe.favorite}" />
       <h2>
         {{ recipe.recipeName }}
       </h2>
     </div>
     <section class="servings">
       Serving size: {{ currentRecipe.servingSize }} | Creator Name:
-      {{ creatorIsPrivate? "anonymous" : firstLetterUppercase }}
+      {{ creatorIsPrivate ? "anonymous" : firstLetterUppercase }}
     </section>
 
     <section class="description">
@@ -21,7 +18,6 @@
       </p>
     </section>
     <h2>Ingredients</h2>
-
 
     <div class="ingredients-img-container">
       <div class="ingredients">
@@ -34,9 +30,8 @@
             @click="addToGroceryList(ingredient)"
             title="Click To Add To Your Grocery List"
           >
-            {{ ingredient.ingredient }}  &nbsp;
-          <i class="fa-solid fa-cart-shopping fa-flip-horizontal"></i>
-
+            {{ ingredient.ingredient }} &nbsp;
+            <i class="fa-solid fa-cart-shopping fa-flip-horizontal"></i>
           </li>
         </ul>
       </div>
@@ -47,7 +42,7 @@
     </div>
 
     <!-- <router-link :to="{name:'steps', params: { id: recipe.recipeId , rank:1}}"  target="_blank"> -->
-      <button class="steps-btn" v-on:click="$emit('showStep')">
+    <button class="steps-btn" v-on:click="$emit('showStep')">
       Click Here to Follow the Instructions Step by Step
     </button>
     <!-- </router-link> -->
@@ -60,24 +55,40 @@
           v-for="(step, index) in currentRecipe.steps"
           v-bind:key="index"
         >
-         <b> Step {{ step.rank }}:</b>
+          <b> Step {{ step.rank }}:</b>
           {{ step.instruction }}
-        </li> 
+        </li>
       </ol>
       <div class="button-container">
-      <router-link
-        v-bind:to="{ name: 'edit-recipe', params: { id: recipe.recipeId } }"
-        v-if="
-          $store.state.user.id === recipe.creatorId ||
-          $store.state.user.authorities[0].name == 'ROLE_ADMIN'
-        " 
-        ><button >Edit Recipe</button></router-link
-      >
-      <button class="delete-btn" v-if="
-          $store.state.user.id === recipe.creatorId ||
-          $store.state.user.authorities[0].name == 'ROLE_ADMIN'
-        " >Delete Recipe</button>
-      <button id="featureButton" v-if="$store.state.user.authorities[0].name == 'ROLE_ADMIN'" v-on:click="toggleFeatured()">{{this.$store.state.recipe.featured ? "Unfeature Recipe On Homepage": "Feature Recipe On Homepage"}}</button>
+        <router-link
+          v-bind:to="{ name: 'edit-recipe', params: { id: recipe.recipeId } }"
+          v-if="
+            $store.state.user.id === recipe.creatorId ||
+            $store.state.user.authorities[0].name == 'ROLE_ADMIN' ||
+            isInLibrary
+          "
+          ><button>Edit Recipe</button></router-link
+        >
+        <button
+          class="delete-btn"
+          v-if="
+            $store.state.user.id === recipe.creatorId ||
+            $store.state.user.authorities[0].name == 'ROLE_ADMIN'
+          "
+        >
+          Delete Recipe
+        </button>
+        <button
+          id="featureButton"
+          v-if="$store.state.user.authorities[0].name == 'ROLE_ADMIN'"
+          v-on:click="toggleFeatured()"
+        >
+          {{
+            this.$store.state.recipe.featured
+              ? "Unfeature Recipe On Homepage"
+              : "Feature Recipe On Homepage"
+          }}
+        </button>
       </div>
     </div>
   </div>
@@ -86,19 +97,19 @@
 
 <script>
 import APIService from "../services/APIService.js";
-// import FavoriteIcon from "./FavoriteIcon.vue";
+import FavoriteIcon from "./FavoriteIcon.vue";
 
 export default {
   name: "recipeDetail",
   props: ["recipe"],
   components: {
-    // FavoriteIcon,
+    FavoriteIcon,
   },
-    data() {
+  data() {
     return {
-      ingredientName: '',
-      creatorUsername:"",
-      creatorIsPrivate:false,
+      ingredientName: "",
+      creatorUsername: "",
+      creatorIsPrivate: false,
     };
   },
   methods: {
@@ -120,68 +131,100 @@ export default {
           });
       }
     },
-    // toggleFavorites() {
-    //   this.$store.commit("FLIP_FAVORITE", this.recipe);
-    // },
-      addToGroceryList(ingredient) {
-            if (!this.$store.state.groceryList.includes(ingredient.ingredient)) {
-      this.$store.state.groceryList.push({item: ingredient.ingredient, recipeName: this.recipe.recipeName} );
-      window.alert(`Added "${ingredient.ingredient}" to your grocery list.`);
-  } else {
-      window.alert(`"${ingredient.ingredient}" is already in your grocery list.`);
-    }
-      },
-    toggleFeatured(){
-      this.$store.commit('SET_FEATURED_RECIPE');
+    toggleFavorites() {
+      this.$store.commit("FLIP_FAVORITE", this.recipe);
+    },
+    handleToggleFavorites() {
+      // Check the class of the FavoriteIcon component
+      if (this.recipe.favorite) {
+        // The 'favorite' class is present, perform method A
+        this.unbookmarkRecipe();
+      } else {
+        // The 'notFavorite' class is present, perform method B
+        this.bookMarkRecipe();
+      }
+      // Toggle the 'favorite' property of the recipe (assuming it's a Boolean)
+      this.toggleFavorites();
+    },
+    bookMarkRecipe() {
+      this.$store.commit("ADD_TO_LIBRARY", this.recipe);
+    },
+    unbookmarkRecipe() {
+      this.$store.commit("DELETE_FROM_LIBRARY", this.recipe.recipeId);
+    },
+    addToGroceryList(ingredient) {
+      if (!this.$store.state.groceryList.includes(ingredient.ingredient)) {
+        this.$store.state.groceryList.push({
+          item: ingredient.ingredient,
+          recipeName: this.recipe.recipeName,
+        });
+        window.alert(`Added "${ingredient.ingredient}" to your grocery list.`);
+      } else {
+        window.alert(
+          `"${ingredient.ingredient}" is already in your grocery list.`
+        );
+      }
+    },
+    toggleFeatured() {
+      this.$store.commit("SET_FEATURED_RECIPE");
 
       APIService.setFeatured(this.recipe, this.$store.state.recipe.featured)
-        .then((response)=>{
-          if(response.status === 200) {
-              this.location.reload();
-            }
+        .then((response) => {
+          if (response.status === 200) {
+            this.location.reload();
           }
-      ).catch(
-          (error) => {
-          if(error.response) {
-              window.alert('Bad Request');
-          } else if(error.request) {
-              window.alert('Could not reach service');
+        })
+        .catch((error) => {
+          if (error.response) {
+            window.alert("Bad Request");
+          } else if (error.request) {
+            window.alert("Could not reach service");
           }
-        }
-      );
+        });
     },
-    stepByStep(){
+    stepByStep() {
       // this.$store.commit("STEP_BY_STEP", true)
-      this.$emit('showStep')
-    }
+      this.$emit("showStep");
+    },
   },
   created() {
-    APIService.getRecipe(this.$route.params.id)
-      .then((response) => {
-        this.$store.commit("SET_RECIPE", response.data);
+    APIService.getRecipe(this.$route.params.id).then((response) => {
+      this.$store.commit("SET_RECIPE", response.data);
     });
 
-    APIService.getCreatorUsernameByRecipeId(this.$route.params.id)
-      .then((response)=>{
-        this.creatorUsername = response.data
-    });
+    APIService.getCreatorUsernameByRecipeId(this.$route.params.id).then(
+      (response) => {
+        this.creatorUsername = response.data;
+      }
+    );
 
     // APIService.userPrivacy(this.currentRecipe.creatorId)
     //   .then((response)=>{
     //     this.creatorIsPrivate = response.data
     //   })
-
   },
   computed: {
     currentRecipe() {
       return this.$store.state.recipe;
     },
-    firstLetterUppercase(){
-      let name = this.creatorUsername.substring(0,1).toUpperCase();
+    firstLetterUppercase() {
+      let name = this.creatorUsername.substring(0, 1).toUpperCase();
       name = name + this.creatorUsername.substring(1);
       return name;
-    }
-  },  
+    },
+    isInLibrary() {
+      for (let i = 0; i < this.$store.state.favoritedLibrary.length; i++) {
+        if (
+          this.$store.state.favoritedLibrary[i].recipeId ===
+            this.$store.state.recipe.recipeId &&
+          this.$store.state.user.id != this.recipe.creatorId
+        ) {
+          return true;
+        }
+      }
+      return false;
+    },
+  },
 };
 </script>
 
@@ -194,12 +237,12 @@ export default {
   border-radius: 20px;
   border: 1px #333 solid;
   padding: 1.3rem;
-  overflow-x:hidden;
+  overflow-x: hidden;
   max-width: 55rem;
   height: 120vh;
   max-height: 100vh;
   margin: 1rem 2rem;
-  
+
   padding-bottom: 5rem;
 }
 h2 {
@@ -253,7 +296,7 @@ h3 {
   z-index: 39;
 }
 
-.fa-cart-shopping{
+.fa-cart-shopping {
   font-size: 1rem;
   color: rgb(133, 133, 133);
 }
@@ -273,19 +316,17 @@ h3 {
 
 .ingredients {
   font-size: 1.1rem;
-  font-family: 'Lexend';
+  font-family: "Lexend";
   overflow: none;
   flex-wrap: wrap;
   width: 30rem;
   line-height: 2.3rem;
-  color: #555
+  color: #555;
 }
 
-.ingredients li:nth-child(even){
+.ingredients li:nth-child(even) {
   color: rgb(28, 124, 15);
 }
-
-
 
 .ingredients-img-container {
   position: relative;
@@ -301,7 +342,7 @@ h3 {
   max-width: 30rem;
 }
 
-.steps{
+.steps {
   margin: 11px 0;
   border-bottom: #999 1px solid;
 }
@@ -326,30 +367,28 @@ h3 {
   transition: ease-out 0.3s;
 }
 
-.button-container{
-  display:flex;
+.button-container {
+  display: flex;
   justify-content: space-evenly;
+  flex-wrap: wrap;
 }
-ul li{
-    cursor:grab;
+ul li {
+  cursor: grab;
 }
 .instructions {
   font-size: 1.2rem;
   padding-right: 1.3rem;
   line-height: 2.2rem;
   font-family: "Lexend", sans-serif;
-  
 }
 
-.instructions li{
-    list-style-type: none;
-
+.instructions li {
+  list-style-type: none;
 }
-.instructions ul{
+.instructions ul {
 }
 .instructions ol li:nth-child(odd) {
   color: rgb(58, 150, 46);
-  
 }
 ::-webkit-scrollbar {
   width: 10px;
@@ -376,38 +415,67 @@ ul li{
 .delete-btn a {
   color: #fff;
 }
-.delete-btn{
+.delete-btn {
   background: rgb(121, 15, 15);
 }
 .delete-btn:hover {
   background: #fb4c35;
 }
 
-#featureButton{
+#featureButton {
   background: goldenrod;
 }
 
-#featureButton:hover{
+#featureButton:hover {
   background: gold;
 }
 
-.popup{
-  position:fixed;
-  top:0;
-  left:0;
-  right:0;
-  bottom:0;
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   z-index: 99;
-  background-color: rgba(0,0,0,0.2);
+  background-color: rgba(0, 0, 0, 0.2);
 
   display: flex;
-  align-items:center;
+  align-items: center;
   justify-content: center;
-
-  
 }
-.popup-inner{
-    background: #fff;
-    padding:32px;
+.popup-inner {
+  background: #fff;
+  padding: 32px;
+}
+
+@media only screen and (max-width < 600px) {
+  .ingredients{
+    height: 20rem;
+    width: 100vw;
+    display: flex;
+    font-size: 1.1rem;
+  font-family: "Lexend";
+  overflow: none;
+  flex-wrap: wrap;
+  width: 30rem;
+  line-height: 2.3rem;
+  color: #555;
   }
+  ul{
+    height: auto;
+  }
+
+  div.ingredients-img-container {
+  display: flex;
+  height:auto;
+  align-content: center;
+  flex-wrap: wrap;
+}
+.container{
+  display: flex;
+  flex-wrap: wrap;
+  height: auto;
+}
+
+}
 </style>  

@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-    <div id="nav" class="navLayer">
+    <div id="nav" class="navLayer" >
       <NavigationMenu />
     </div>
     <router-view class="appLayer" />
-    <TheFooter class="footer"/>
+    <TheFooter class="footer" />
   </div>
 </template>
 
@@ -24,7 +24,12 @@ export default {
     TheFooter,
     NavigationMenu,
   },
-  created(){
+  methods: {
+    mobile() {
+      return this.$vuetify.breakpoint.sm;
+    },
+  },
+  created() {
     // APIService.getRecipes().then(response => {
     //   this.$store.commit('SET_RECIPES', response.data)
     // })
@@ -63,11 +68,10 @@ export default {
   background-size: repeat;
   margin: 0px;
   background-color: rgba(205, 218, 201, 0.253);
-
 }
 
-.footer{
-position: relative;
-padding-top: 10rem;
+.footer {
+  position: relative;
+  padding-top: 10rem;
 }
 </style>

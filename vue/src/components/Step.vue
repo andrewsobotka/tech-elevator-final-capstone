@@ -73,29 +73,6 @@ export default {
   color: #333;
 }
 
-
-#sign-up a {
-  color: #333;
-  font-family: "Montserrat";
-}
-
-#sign-up{
-  font-family: "Montserrat";
-}
-
-#sign-up a:hover {
-  color: green;
-  font-family: "Montserrat";
-}
-
-#alert{
-  color:rgb(153, 30, 30);
-  font-family: "Montserrat";
-  display: flex;
-  justify-content: center;
-  padding-bottom: .5rem;
-}
-
 h2{
   text-decoration:none;
   border-bottom: none;
@@ -121,5 +98,28 @@ h2{
 
 p{
   font-size: 1.7rem;
+}
+
+#container{
+  display: flex;
+  justify-content: center;
+}
+
+@media only screen and (max-height: 700px) {
+  .login-body {
+  position: relative;
+  background: #fff;
+  border-radius: 30px;
+  border: 2px solid #333;
+  width: auto;
+  height: auto;
+  margin: auto;
+  position: relative;
+  font-family: "DM Sans", sans-serif;
+  text-align: center;
+  padding: 1rem 3rem;
+  width: auto;
+  font-size: auto;
+  }
 }
 </style>
