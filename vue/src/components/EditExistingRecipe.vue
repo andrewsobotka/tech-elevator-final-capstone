@@ -155,7 +155,7 @@
         <button type="submit" value="Submit New Recipe" class="submit-btn">
           Change Up This Recipe
         </button>
-        {{editRecipe}}
+        <!-- {{editRecipe}} -->
       </div>
     </form>
   </div>
