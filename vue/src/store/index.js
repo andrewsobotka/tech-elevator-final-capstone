@@ -33,7 +33,7 @@ export default new Vuex.Store({
     selectedTagId:0,
     selectedTag:"",
     filteredList:[{}],
-    groceryList:[{ingredient_Id: 500, item:"1 carton of milk", recipeName:"Mac and Cheese", isComplete: false}, {ingredient_id: 501, item:"1 carton of eggs", recipeName: "Omelet", isComplete: false},{ingredient_Id: 502, item: "1 block of parmesan cheese", recipeName: "Spaghetti", isComplete: false } ],
+    groceryList:[{item:"1 carton of milk", recipeName:"Mac and Cheese"}, {item:"1 carton of eggs", recipeName: "Omelet"},{item: "1 block of parmesan cheese", recipeName: "Spaghetti"} ],
     featuredList:[{favorite:false}],
     recipe:{featured:false},
     keyword:"",

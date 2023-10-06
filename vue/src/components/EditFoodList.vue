@@ -50,7 +50,7 @@
       <br />
 
       <div id="button-container">
-        <button class="add-btn" v-on:click="$store.state.groceryList.push('')">
+        <button class="add-btn" v-on:click="$store.state.groceryList.push({item:'', recipeName:''})">
           Add Item
         </button>
         <button class="select-all-btn" @click="toggleSelectAll">

@@ -1,6 +1,5 @@
 <template>
   <div class="explore">
-     {{results}}
     <h3>Explore Recipes</h3>
     <div class="borderbox"></div>
     <!-- <div id="search">
