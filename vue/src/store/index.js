@@ -33,8 +33,8 @@ export default new Vuex.Store({
     selectedTagId:0,
     selectedTag:"",
     filteredList:[{}],
-    groceryList:[{item:"1 carton of milk", recipeName:"Mac and Cheese"}, {item:"1 carton of eggs", recipeName: "Omelet"},{item: "1 block of parmesan cheese", recipeName: "Spaghetti" } ],
-    featuredList:[{}],
+    groceryList:[{ingredient_Id: 500, item:"1 carton of milk", recipeName:"Mac and Cheese", isComplete: false}, {ingredient_id: 501, item:"1 carton of eggs", recipeName: "Omelet", isComplete: false},{ingredient_Id: 502, item: "1 block of parmesan cheese", recipeName: "Spaghetti", isComplete: false } ],
+    featuredList:[{favorite:false}],
     recipe:{featured:false},
     keyword:"",
     favoritedLibrary:[],
@@ -114,6 +114,11 @@ export default new Vuex.Store({
     },
     FLIP_FAVORITE(state, recipe){
       recipe.favorite = !recipe.favorite
+      for(let i = 0; i < state.featuredList.length; i++){
+        if(state.featuredList[i].recipeId === recipe.recipeId){
+          state.featuredList[i].favorite = !state.featuredList[i].favorite;
+        }
+      }
     },
     SET_TAGS(state, tag){
       state.tags = tag;
@@ -149,6 +154,13 @@ export default new Vuex.Store({
           state.recipes[i] = editedRecipe;
         }
       }
+    },
+    ADD_TO_GROCERY_LIST(state, ingredient){
+      state.groceryList = ingredient;
+    },
+    TOGGLE_ITEM_COMPLETE(state, index){
+
+      state.groceryList[index].isComplete = !state.groceryList[index].isComplete
     }
   }
 })

@@ -19,7 +19,7 @@
   <div id="recipeCardContainer">
 
     <RecipeCard
-      v-for="recipe in $store.state.featuredList.reverse()"
+      v-for="recipe in $store.state.recipes"
       v-bind:key="recipe.recipeId"
       v-bind:recipe ="recipe"
      /> 
@@ -41,7 +41,7 @@ export default {
   },
   created(){
     APIService.getRecipesByFeatured().then(response=>{
-      this.$store.commit('SET_FEATURED', response.data)
+      this.$store.commit('SET_RECIPES', response.data)
     })
   },
   computed:{

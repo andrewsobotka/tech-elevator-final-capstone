@@ -38,6 +38,17 @@
         <textarea name="description" v-model="editRecipe.description" />
       </div>
 
+      <div id="url-section">
+        <label for="image">Add a URL for an Image:</label><br>
+        <input
+          id="url"
+          type="text" class="imageUrl"
+          name="image"
+          v-model="editRecipe.imgUrl"
+          placeholder="www.image.com"
+        />
+      </div>
+
       <div class="ingredientList">
         <label for="ingredient">Ingredients:</label>
         <button class="ingredients-btn">
