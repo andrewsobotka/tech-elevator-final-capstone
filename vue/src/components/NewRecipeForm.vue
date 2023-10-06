@@ -172,11 +172,13 @@ export default {
         steps: [{step_id:0, rank:0, instruction:""}],
         tags:[],
         keywords:'',
+        featured: false
       },
     };
   },
   methods: {
     createNewRecipe() {
+      this.newRecipe.featured = false;
       APIService.addRecipe(this.newRecipe)
         .then(response => {
           this.$store.commit('ADD_RECIPES', response.data)
