@@ -59,7 +59,7 @@
                 class="ingredients-input"
                 placeholder="ie. Apples"
                 v-model="ingredient.ingredient"
-                @keyup.enter="ingredient.ingredient.prevent.push('')"
+                @keyup.enter="ingredient.ingredient.push('')"
               />
 
               <input
@@ -77,7 +77,7 @@
 
         <div class="deleteDiv">
           <button class="delete-btn">
-            <a v-on:click="deleteIngredients">Delete Selected Ingredients</a>
+            <a v-on:click.prevent="deleteIngredients">Delete Selected Ingredients</a>
           </button>
    
       </div>
@@ -86,7 +86,7 @@
           <ol>
           <label for="ingredient" class="stepsLabel">Steps:</label>
           <button class="ingredients-btn addSteps-btn">
-            <a v-on:click="editRecipe.steps.prevent.push('')">Add Step</a>
+            <a v-on:click.prevent="editRecipe.steps.push('')">Add Step</a>
           </button>
           <br />
           <br />
@@ -99,7 +99,7 @@
                 class="steps-input"
                 placeholder="ie: Gather Ingredients..."
                 v-model="step.instruction"
-                @keyup.enter="editRecipe.steps.prevent.push('')"
+                @keyup.enter="editRecipe.steps.push('')"
               />
               <input
                 type="checkbox"
@@ -114,7 +114,7 @@
 
           <div class="deleteDiv">
             <button class="delete-btn">
-              <a v-on:click="deleteSteps">Delete Selected Steps</a>
+              <a v-on:click.prevent="deleteSteps">Delete Selected Steps</a>
             </button>
         
     
@@ -140,7 +140,7 @@
 
       <div class="submitDiv">
         <button type="submit" value="Submit New Recipe" class="submit-btn">
-          Edit Recipe
+          Submit New Recipe
         </button>
       </div>
     </form>
